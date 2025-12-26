@@ -1,0 +1,265 @@
+<section class="banner-hero-container">
+  <div class="banner-slides-wrapper" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+    <div class="banner-slide" *ngFor="let slide of slides; let i = index">
+      
+      <img [src]="slide.image" alt="Banner" class="banner-bg-image" [class.banner-zoom-active]="i === currentSlide">
+      
+      <div class="banner-overlay">
+        <div class="banner-left-line" [class.banner-line-active]="i === currentSlide"></div>
+
+        <div class="banner-text-content" *ngIf="i === currentSlide">
+          <span class="banner-subtitle banner-anim-up-1">{{ slide.subtitle }}</span>
+          <h1 class="banner-title banner-anim-up-2">{{ slide.title }}</h1>
+          <p class="banner-description banner-anim-up-3">{{ slide.description }}</p>
+          
+          <div class="banner-btn-group banner-anim-up-4">
+            <button class="banner-btn-main">Explore Our Solutions ➔</button>
+            <button class="banner-btn-video">
+              <div class="banner-play-pulse">
+                <span class="banner-play-icon">▶</span>
+              </div>
+              Watch Our Story
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="banner-right-angle" [class.banner-angle-active]="i === currentSlide"></div>
+    </div>
+  </div>
+
+  <button class="banner-nav-arrow banner-prev" (click)="prevSlide()">&#10094;</button>
+  <button class="banner-nav-arrow banner-next" (click)="nextSlide()">&#10095;</button>
+
+  <div class="banner-dots-nav">
+    <span *ngFor="let slide of slides; let i = index" 
+          [class.banner-dot-active]="i === currentSlide"
+          (click)="goToSlide(i)"></span>
+  </div>
+</section>
+<!-- About Us -->
+<section class="about-section" #aboutSection>
+  <div class="about-container">
+    
+    <div class="about-stats-column reveal-item reveal-left">
+      <div class="about-stat-item">
+        <h2 class="about-stat-number" data-count="12">0</h2>
+        <p class="about-stat-label">Services Year</p>
+      </div>
+      <div class="about-stat-item">
+        <h2 class="about-stat-number" data-count="300">0</h2>
+        <p class="about-stat-label">Clients</p>
+      </div>
+      <div class="about-stat-item">
+        <h2 class="about-stat-number" data-count="500">0</h2>
+        <p class="about-stat-label">Project Completed</p>
+      </div>
+      <!-- <div class="about-stat-item">
+        <h2 class="about-stat-number" data-count="8">0</h2>
+        <p class="about-stat-label">Earning Year</p>
+      </div> -->
+    </div>
+
+    <div class="about-image-wrapper reveal-item reveal-zoom">
+      <div class="about-main-img-box">
+        <img src="../../../assets/images/about--section-1.webp" alt="Construction" class="about-img-main">
+      </div>
+      <div class="about-sub-img-box">
+        <img src="../../../assets/images/about-section-2.webp" alt="Building" class="about-img-sub">
+      </div>
+      <div class="about-green-badge"></div>
+    </div>
+
+    <div class="about-content-column">
+      <div class="reveal-item reveal-up-1">
+        <span class="about-subtitle">➔ ABOUT AUROFLUX</span>
+        <h1 class="about-title">Building Dreams One Brick at a Time</h1>
+      </div>
+      
+      <p class="about-description reveal-item reveal-up-2">
+        Auroflux is an end-to-end engineering solutions provider specializing in PPR pipes and fittings. 
+        With a strong foundation in engineering principles and advanced technological expertise, we deliver reliable, 
+        efficient, and future-ready solutions for mechanical and automation requirements across industries.
+      </p>
+
+      <ul class="about-features-list reveal-item reveal-up-3">
+        <li><span class="about-check">✔</span> End-to-End Engineering Solutions</li>
+        <li><span class="about-check">✔</span> Advanced PPR Piping Systems</li>
+        <li><span class="about-check">✔</span> Energy-Efficient Technical Designs</li>
+      </ul>
+
+      <div class="about-footer reveal-item reveal-up-4">
+        <button class="about-btn-read">READ MORE ➔</button>
+        
+        <div class="about-author">
+          <img src="../../../assets/images/mama.webp" alt="Author" class="about-author-img">
+          <div class="about-author-info">
+            <p class="about-author-name">Raja Srinivasan</p>
+            <p class="about-author-role">Founder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Service Section -->
+<section class="service-section-wrapper" #serviceSection>
+  <div class="service-container">
+    
+    <div class="service-header-area">
+      <span class="service-subtitle">SERVICES</span>
+      <h2 class="service-main-title">The Best Service For You</h2>
+    </div>
+
+    <div class="service-slider-wrapper">
+      <div class="service-slider-container">
+        <div class="service-cards-grid" #serviceSliderTrack>
+          <div class="service-main-card" *ngFor="let item of serviceInfiniteServices">
+            
+            <div class="service-card-top-bar">
+              <div class="service-icon-container">
+                <i [class]="item.icon"></i>
+              </div>
+              <div class="service-id-number">{{item.id}}</div>
+            </div>
+
+            <div class="service-card-content">
+              <h3 class="service-item-title">{{item.title}}</h3>
+              <p class="service-item-description">{{item.description}}</p>
+              
+              <div class="service-image-box">
+                <img [src]="item.image" [alt]="item.title" class="service-image">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button class="service-nav-btn service-nav-prev" 
+              (click)="servicePrevSlide()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <button class="service-nav-btn service-nav-next" 
+              (click)="serviceNextSlide()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+  </div>
+</section>
+<!-- Why Choose US-->
+
+<section class="why-choose-us-section" #whyChooseSection>
+  <div class="why-choose-us-container">
+    <!-- Left Side - Image -->
+    <div class="why-choose-us-left-side">
+      <div class="why-choose-us-image-wrapper">
+        <img 
+          src="../../../assets/images/Why-Choose-Us.webp" 
+          alt="Engineer Woman" 
+          class="why-choose-us-engineer-image"
+        />
+      </div>
+      <div class="why-choose-us-arrow-divider"></div>
+    </div>
+
+    <!-- Right Side - Content -->
+    <div class="why-choose-us-right-side">
+      <div class="why-choose-us-content-wrapper">
+        <div class="why-choose-us-section-tag">
+          <span class="why-choose-us-arrow-icon">→</span>
+          <span class="why-choose-us-tag-text">WHY WE CHOOSE US</span>
+        </div>
+
+        <h2 class="why-choose-us-main-heading">
+          Built for Performance & Efficiency
+        </h2>
+
+        <p class="why-choose-us-description"> 
+         At Auroflux, we combine strong engineering fundamentals with advanced technology to deliver reliable,
+          energy-efficient solutions. Our approach ensures long-term operational benefits, reduced energy costs,
+           and measurable value for every customer.
+        </p>
+
+        <div class="why-choose-us-features-grid">
+          <div class="why-choose-us-feature-card" *ngFor="let feature of features">
+            <div class="why-choose-us-feature-icon">
+              <!-- <img [src]="feature.icon" [alt]="feature.title" /> -->
+              <i [class]="feature.icon"></i>
+            </div>
+            <div class="why-choose-us-feature-content">
+              <h3 class="why-choose-us-feature-title">{{ feature.title }}</h3>
+              <p class="why-choose-us-feature-subtitle">{{ feature.subtitle }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- BLog Section -->
+ <section class="blog-container" #blogSection>
+  <div class="blog-header">
+    <div class="blog-subtitle">
+      <span class="blog-line"></span>
+      <span class="blog-subtitle-text">BLOG & NEWS</span>
+      <span class="blog-line"></span>
+    </div>
+    <h2 class="blog-title">Latest Blog & News</h2>
+  </div>
+
+  <div class="blog-grid">
+    <article class="blog-card" *ngFor="let post of blogPosts">
+      <div class="blog-card-image-wrapper">
+        <img [src]="post.image" [alt]="post.title" class="blog-card-image">
+        <!-- <div class="blog-date-badge"> -->
+          <!-- <span class="blog-day">{{post.day}}</span>
+          <span class="blog-month">{{post.month}}</span> -->
+        <!-- </div> -->
+      </div>
+
+      <div class="blog-card-content">
+        <div class="blog-meta-info">
+          <!-- <span class="blog-meta-item">
+            <i class="fas fa-comment"></i> {{post.comments}} Comments
+          </span>
+          <span class="blog-meta-item">
+            <i class="fas fa-user"></i> {{post.author}}
+          </span> -->
+        </div>
+        <h3 class="blog-card-title">{{post.title}}</h3>
+        <p class="blog-card-excerpt">{{post.excerpt}}</p>
+        <a href="#" class="blog-read-more">
+          READ MORE <span class="blog-arrow">→</span>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+<!-- Cta section -->
+<section class="cta-banner-container">
+  <div class="cta-image-side">
+    <div class="cta-logo-container">
+      <img src="../../../assets/images/auroflux-logo.webp" alt="Auroflux Logo" class="cta-logo-img">
+      <div class="cta-logo-text">
+        <span class="cta-sub-text">Engineering Solutions</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-content-side">
+    <div class="cta-text-wrapper">
+      <h2 class="cta-heading">Schedule Your Free Engineering Consultation</h2>
+    </div>
+    <div class="cta-button-wrapper">
+      <button class="cta-quote-btn">
+        Book Consultation
+        <span class="cta-arrow">→</span>
+      </button>
+    </div>
+  </div>
+</section>

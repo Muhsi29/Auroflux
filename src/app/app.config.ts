@@ -1,11 +1,12 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+// app.config.ts
 import { provideRouter } from '@angular/router';
+import { Home } from './pages/home/home';
 
-import { routes } from './app.routes';
-
-export const appConfig: ApplicationConfig = {
+export const appConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
-  ]
+    provideRouter([
+      { path: '', component: Home },
+      // add more routes here if needed
+    ]),
+  ],
 };
