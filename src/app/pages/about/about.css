@@ -1,0 +1,405 @@
+/* --- GLOBAL RESET (Applied via Component) --- */
+:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  --banner-green: #22B34A;
+  --banner-white: #ffffff;
+  --text-dark: #0277C7;
+
+  /* #00A887  Alternate Green*/
+  
+  /* Typography Scale */
+  --font-subtitle-size: 14.4px;
+  --font-title-size: 67px;
+  --font-desc-size: 18.4px;
+  --font-btn-size: 15.2px;
+}
+
+/* Forces the body to have no margin even if not set in styles.css */
+:host-context(body) {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================
+   ABOUT US BANNER - BASE STYLES
+   ============================================ */
+.about-us-banner {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background-color: #1a1d2e;
+  background-image: url('/assets/images/success-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+  }
+}
+
+/* ============================================
+   BANNER CONTENT
+   ============================================ */
+.about-banner-content {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.about-banner-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-banner-text-area {
+  max-width: 600px;
+}
+
+.about-banner-title {
+  font-size: 55px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: white;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about-banner-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.about-banner-home-link {
+  color: #22b34a;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.about-banner-home-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #22b34a;
+  transition: width 0.3s ease;
+}
+
+.about-banner-home-link:hover {
+  color: #ffffff;
+}
+
+.about-banner-home-link:hover::after {
+  width: 100%;
+}
+
+.about-banner-separator {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.about-banner-current-page {
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ORANGE ACCENT SHAPE
+   ============================================ */
+.about-banner-orange-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: #ff5e14;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+  z-index: 1;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+}
+
+/* ============================================
+   MACHINE IMAGE
+   ============================================ */
+.about-banner-machine-wrapper {
+  position: absolute;
+  right: 5%;
+  bottom: -20px;
+  z-index: 3;
+  width: 450px;
+  animation: floatMachine 3s ease-in-out infinite;
+  transition: all 0.5s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    animation-play-state: paused;
+  }
+}
+
+@keyframes floatMachine {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.about-banner-machine-img {
+  width: 100%;
+  filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+  transition: transform 0.5s ease;
+}
+
+.about-banner-machine-wrapper:hover .about-banner-machine-img {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px)
+   ============================================ */
+@media screen and (max-width: 1024px) {
+  .about-us-banner {
+    height: 350px;
+  }
+
+  .about-banner-title {
+    font-size: 48px;
+  }
+
+  .about-banner-container {
+    width: 90%;
+  }
+
+  .about-banner-machine-wrapper {
+    width: 380px;
+    right: 3%;
+  }
+
+  .about-banner-orange-accent {
+    width: 35%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .about-us-banner {
+    height: 300px;
+  }
+
+  .about-banner-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  .about-banner-breadcrumb {
+    font-size: 15px;
+  }
+
+  .about-banner-container {
+    width: 92%;
+    padding: 0 15px;
+  }
+
+  .about-banner-machine-wrapper {
+    width: 280px;
+    right: 2%;
+    bottom: -10px;
+  }
+
+  .about-banner-orange-accent {
+    width: 40%;
+    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .about-banner-text-area {
+    max-width: 500px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .about-us-banner {
+    height: 250px;
+  }
+
+  .about-banner-title {
+    font-size: 36px;
+  }
+
+  .about-banner-breadcrumb {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .about-banner-container {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .about-banner-machine-wrapper {
+    width: 200px;
+    right: 1%;
+    bottom: -5px;
+  }
+
+  .about-banner-orange-accent {
+    width: 50%;
+    clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .about-banner-text-area {
+    max-width: 300px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (320px)
+   ============================================ */
+@media screen and (max-width: 320px) {
+  .about-us-banner {
+    height: 220px;
+  }
+
+  .about-banner-title {
+    font-size: 32px;
+  }
+
+  .about-banner-breadcrumb {
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+
+  .about-banner-machine-wrapper {
+    width: 160px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .about-banner-orange-accent {
+    width: 60%;
+    opacity: 0.6;
+  }
+}
+
+/* ============================================
+   TABLET LANDSCAPE (Between 769px and 1024px)
+   ============================================ */
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .about-us-banner {
+    height: 320px;
+  }
+
+  .about-banner-machine-wrapper {
+    width: 350px;
+    right: 4%;
+    bottom: -15px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .about-banner-machine-wrapper {
+    animation: none;
+  }
+
+  .about-banner-machine-wrapper:hover,
+  .about-banner-machine-wrapper:hover .about-banner-machine-img,
+  .about-banner-home-link::after {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .about-us-banner::before {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
+  }
+
+  .about-banner-title {
+    color: #f1f5f9;
+  }
+
+  .about-banner-current-page {
+    color: #e2e8f0;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.about-banner-home-link:focus {
+  outline: 2px solid #22b34a;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.about-banner-home-link:focus-visible {
+  background-color: rgba(34, 179, 74, 0.1);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .about-us-banner {
+    height: 200px;
+    background: #1a1d2e !important;
+  }
+
+  .about-banner-orange-accent,
+  .about-banner-machine-wrapper {
+    display: none;
+  }
+
+  .about-banner-title {
+    color: #000000;
+    font-size: 32px;
+  }
+
+  .about-banner-breadcrumb {
+    color: #666666;
+  }
+}

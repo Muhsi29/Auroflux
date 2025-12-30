@@ -27,8 +27,8 @@
       "input": "src/assets",
       "output": "/assets"
     },  {
-      "glob": "favicon.ico",
-      "input": "src",
+      "glob": "auroflux.ico",
+      "input": "public",
       "output": "/"
     }
             ],

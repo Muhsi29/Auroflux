@@ -1,10 +1,12 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef,ViewChild,HostListener } from '@angular/core';
-import { CommonModule, isPlatformBrowser,} from '@angular/common';
+import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, ViewChild, HostListener } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+
 interface Feature {
   icon: string;
   title: string;
   subtitle: string;
 }
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -12,26 +14,26 @@ interface Feature {
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-
 export class Home implements OnInit, OnDestroy, AfterViewInit {
-   @ViewChild('aboutSection') aboutSection!: ElementRef;
+  @ViewChild('aboutSection') aboutSection!: ElementRef;
   @ViewChild('serviceSection') serviceSection!: ElementRef;
   @ViewChild('serviceSliderTrack') serviceSliderTrack!: ElementRef;
   @ViewChild('bannerSection') bannerSection!: ElementRef;
   @ViewChild('whyChooseSection') whyChooseSection!: ElementRef;
   @ViewChild('blogSection') blogSection!: ElementRef;
- 
-  
+  @ViewChild('productSlider') productSlider!: ElementRef;
+  @ViewChild('productSection') productSection!: ElementRef;
+
   // Banner variables
   currentSlide = 0;
   private bannerAutoScrollInterval: any;
   private bannerAutoScrollDelay = 100;
   private isBannerHovered = false;
-  
+
   // About section variables
   private aboutObserver!: IntersectionObserver;
   private aboutHasAnimated = false;
-  
+
   // Service section variables
   private serviceObserver!: IntersectionObserver;
   private serviceHasAnimated = false;
@@ -39,33 +41,48 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
   private isServiceHovered = false;
   private isServiceAnimating = false;
 
+  // Horizontal scroll properties - CHANGED: Make this public
+  private isServiceScrolling = false;
+  private serviceScrollVelocity = 0;
+  private serviceScrollInertia = 0.95;
+  private serviceScrollThreshold = 5;
+  private serviceLastWheelTime = 0;
+  private serviceWheelDeltaX = 0;
+  private serviceWheelDeltaY = 0;
+  private serviceScrollDirection: 'horizontal' | 'vertical' | null = null;
+  private serviceTouchStartX = 0;
+  private serviceTouchStartY = 0;
+  private serviceIsTouchScrolling = false;
+  
+  // CHANGED: Make this public to use in HTML template
+  serviceIsHorizontalScrollActive = false;
+
   //Why Choose US 
-   private whyChooseObserver!: IntersectionObserver;
+  private whyChooseObserver!: IntersectionObserver;
   private whyChooseHasAnimated = false;
 
   // Blog Section
   private blogObserver!: IntersectionObserver;
   private blogHasAnimated = false;
 
-
   slides = [
     {
       subtitle: 'YOUR VISION, OUR ENGINEERING',
       title: 'Solutions for Modern Infrastructure',
       description: 'Auroflux is an end-to-end engineering solutions provider specializing in PPR pipes and fittings. We combine strong engineering fundamentals with advanced technology to deliver reliable, energy-efficient solutions for mechanical and automation needs.',
-      image: '../../../src/assets/images/Photo246.jpg'
+      image: '../../../assets/images/banner-1.webp'
     },  
     {
       subtitle: 'ENGINEERED FOR PERFORMANCE',
       title: 'Smarter Energy Solutions',
       description: 'With deep expertise in PPR piping systems, Auroflux delivers innovative engineering solutions backed by experienced professionals. Our focus on energy-saving technologies ensures long-term value and performance for every customer.',
-      image:'./assets/images/banner-2.jpeg'
+      image:'./assets/images/banner-2.webp'
     },
     {
       subtitle: 'BUILDING TOMORROW, TODAY',
       title: 'Reliable PPR Systems',
       description: 'Auroflux Technology Private Limited provides advanced PPR pipes and fittings with end-to-end engineering support. Our solutions are designed to optimize energy usage and deliver indirect cost savings through smart, efficient engineering.',
-      image: '../../../assets/images/banner-3.webp'
+      image: '../../../assets/images/service-1.webp'
     }
   ];
 
@@ -88,7 +105,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
       id: '03',
       title: 'Cooling & Chilled Water Systems',
       description: ' We design and deliver optimized cooling tower and chilled water systems by accurately calculating heat loads, selecting suitable equipment, and ensuring energy-efficient operation for industrial applications.',
-      icon: 'fas fa-snowflake',
+      icon: 'fas fa-temperature-low',
       image: '../../../assets/images/service-3.webp'
     },
     {
@@ -125,11 +142,14 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     this.startBannerAutoScroll();
     this.serviceCreateInfiniteLoop();
     this.serviceUpdateSliderPosition();
+    this.homeProductCalculateCardsPerView();
+    this.homeProductStartAutoScroll();
   }
 
   ngOnDestroy() {
     this.stopBannerAutoScroll();
     this.stopServiceAutoSlide();
+    this.homeProductStopAutoScroll();
     
     if (this.aboutObserver) {
       this.aboutObserver.disconnect();
@@ -144,6 +164,13 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
      if (this.blogObserver) {
       this.blogObserver.disconnect();
     }
+
+    // Clean up event listeners
+    this.cleanupServiceEventListeners();
+    
+    // Restore body overflow
+    document.body.style.overflow = '';
+    document.body.classList.remove('no-vertical-scroll');
   }
 
   ngAfterViewInit() {
@@ -155,7 +182,13 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     this.setupServiceHoverListeners();
     this.setupWhyChooseIntersectionObserver();
     this.setupBlogIntersectionObserver();
-    this.updateCardAnimationDelay();
+    
+    
+    
+    // Initialize horizontal scroll
+    setTimeout(() => {
+      this.setupServiceHorizontalScroll();
+    }, 500);
   }
 
   // ============= BANNER SECTION METHODS =============
@@ -339,6 +372,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
           this.serviceUpdateSliderPosition();
           this.isServiceAnimating = false;
           this.startServiceAutoSlide();
+          this.serviceIsHorizontalScrollActive = false;
         }, 50);
       }, 600);
     } else {
@@ -368,6 +402,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
         setTimeout(() => {
           this.isServiceAnimating = false;
           this.startServiceAutoSlide();
+          this.serviceIsHorizontalScrollActive = false;
         }, 600);
       }, 50);
     } else {
@@ -388,11 +423,11 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
   }
 
   startServiceAutoSlide() {
-    if (this.isServiceHovered) return;
+    if (this.isServiceHovered || this.serviceIsHorizontalScrollActive) return;
     
     this.stopServiceAutoSlide();
     this.serviceAutoSlideInterval = setInterval(() => {
-      if (!this.isServiceHovered && !this.isServiceAnimating) {
+      if (!this.isServiceHovered && !this.isServiceAnimating && !this.serviceIsHorizontalScrollActive) {
         this.serviceNextSlide();
       }
     }, 5000);
@@ -404,9 +439,278 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  // ============= HORIZONTAL SCROLL METHODS =============
+  private setupServiceHorizontalScroll() {
+    if (!this.serviceSection?.nativeElement) return;
+
+    const serviceEl = this.serviceSection.nativeElement;
+    const sliderContainer = serviceEl.querySelector('.service-slider-container');
+    
+    if (!sliderContainer) return;
+    
+    // Wheel event for mouse wheel
+    sliderContainer.addEventListener('wheel', this.handleServiceWheel.bind(this), { passive: false });
+    
+    // Touch events for trackpad
+    sliderContainer.addEventListener('touchstart', this.handleServiceTouchStart.bind(this), { passive: true });
+    sliderContainer.addEventListener('touchmove', this.handleServiceTouchMove.bind(this), { passive: false });
+    sliderContainer.addEventListener('touchend', this.handleServiceTouchEnd.bind(this));
+    
+    // Mouse enter/leave events
+    sliderContainer.addEventListener('mouseenter', this.handleServiceMouseEnter.bind(this));
+    sliderContainer.addEventListener('mouseleave', this.handleServiceMouseLeave.bind(this));
+    
+    // Prevent default drag behavior
+    sliderContainer.addEventListener('dragstart', (e: Event) => {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Animation frame for smooth scrolling
+    this.animateServiceScroll();
+  }
+
+  private handleServiceWheel(event: WheelEvent) {
+    if (!this.serviceSection?.nativeElement.contains(event.target as Node)) return;
+    
+    const currentTime = Date.now();
+    const deltaTime = currentTime - this.serviceLastWheelTime;
+    
+    // Accumulate wheel deltas
+    this.serviceWheelDeltaX += Math.abs(event.deltaX);
+    this.serviceWheelDeltaY += Math.abs(event.deltaY);
+    
+    // Determine scroll direction based on first significant movement
+    if (this.serviceScrollDirection === null) {
+      if (this.serviceWheelDeltaX > 10 && this.serviceWheelDeltaX > this.serviceWheelDeltaY) {
+        this.serviceScrollDirection = 'horizontal';
+        this.serviceIsHorizontalScrollActive = true;
+        event.preventDefault();
+      } else if (this.serviceWheelDeltaY > 10 && this.serviceWheelDeltaY > this.serviceWheelDeltaX) {
+        this.serviceScrollDirection = 'vertical';
+        this.serviceIsHorizontalScrollActive = false;
+      }
+    }
+    
+    // If horizontal scrolling is active, handle it
+    if (this.serviceScrollDirection === 'horizontal' && this.serviceIsHorizontalScrollActive) {
+      event.preventDefault();
+      event.stopPropagation();
+      
+      // Calculate scroll amount (prefer deltaY for vertical wheel, deltaX for horizontal wheel)
+      const scrollAmount = event.deltaMode === 0 ? event.deltaY : event.deltaY * 10;
+      
+      // Apply scrolling with reduced sensitivity
+      this.scrollServiceHorizontally(-scrollAmount * 0.3);
+      
+      // Lock vertical scroll
+      document.body.classList.add('no-vertical-scroll');
+    }
+    
+    // Reset direction after a pause in scrolling
+    if (deltaTime > 150) {
+      this.serviceScrollDirection = null;
+      this.serviceWheelDeltaX = 0;
+      this.serviceWheelDeltaY = 0;
+      
+      // Check if we've reached boundaries
+      this.checkServiceBoundaries();
+    }
+    
+    this.serviceLastWheelTime = currentTime;
+  }
+
+  private handleServiceTouchStart(event: TouchEvent) {
+    if (event.touches.length === 1 && this.serviceSection?.nativeElement.contains(event.target as Node)) {
+      this.serviceTouchStartX = event.touches[0].clientX;
+      this.serviceTouchStartY = event.touches[0].clientY;
+      this.serviceIsTouchScrolling = false;
+      this.serviceIsHorizontalScrollActive = false;
+    }
+  }
+
+  private handleServiceTouchMove(event: TouchEvent) {
+    if (event.touches.length === 1 && this.serviceSection?.nativeElement.contains(event.target as Node)) {
+      const touchX = event.touches[0].clientX;
+      const touchY = event.touches[0].clientY;
+      const deltaX = touchX - this.serviceTouchStartX;
+      const deltaY = touchY - this.serviceTouchStartY;
+      
+      // Determine scroll direction
+      if (!this.serviceIsTouchScrolling) {
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > this.serviceScrollThreshold) {
+          this.serviceIsTouchScrolling = true;
+          this.serviceIsHorizontalScrollActive = true;
+          event.preventDefault();
+        }
+      }
+      
+      // Handle horizontal scrolling
+      if (this.serviceIsTouchScrolling && this.serviceIsHorizontalScrollActive) {
+        event.preventDefault();
+        
+        // Apply scroll with inertia
+        this.scrollServiceHorizontally(-deltaX * 2);
+        
+        // Update touch start position for next move
+        this.serviceTouchStartX = touchX;
+        this.serviceTouchStartY = touchY;
+        
+        // Lock vertical scroll
+        document.body.classList.add('no-vertical-scroll');
+      }
+    }
+  }
+
+  private handleServiceTouchEnd() {
+    if (this.serviceIsTouchScrolling) {
+      // Apply momentum
+      this.serviceScrollVelocity *= 0.8;
+      
+      // Check boundaries
+      setTimeout(() => {
+        this.checkServiceBoundaries();
+      }, 100);
+    }
+    
+    this.serviceIsTouchScrolling = false;
+    this.serviceTouchStartX = 0;
+    this.serviceTouchStartY = 0;
+  }
+
+  private handleServiceMouseEnter() {
+    this.isServiceHovered = true;
+    this.stopServiceAutoSlide();
+  }
+
+  private handleServiceMouseLeave() {
+    this.isServiceHovered = false;
+    
+    // Only resume auto slide if not manually scrolling
+    if (!this.serviceIsHorizontalScrollActive) {
+      this.startServiceAutoSlide();
+    }
+    
+    // Reset scroll state
+    this.serviceScrollDirection = null;
+    this.serviceWheelDeltaX = 0;
+    this.serviceWheelDeltaY = 0;
+    
+    // Restore vertical scroll
+    document.body.classList.remove('no-vertical-scroll');
+    this.serviceIsHorizontalScrollActive = false;
+  }
+
+  private scrollServiceHorizontally(delta: number) {
+    this.serviceScrollVelocity = delta * 0.5;
+    this.isServiceScrolling = true;
+    
+    // Calculate if we should change slides
+    const slideThreshold = (this.serviceCardWidth + this.serviceCardGap) * 0.3;
+    
+    if (Math.abs(this.serviceScrollVelocity) > slideThreshold) {
+      if (this.serviceScrollVelocity > 0) {
+        this.servicePrevSlide();
+      } else {
+        this.serviceNextSlide();
+      }
+      this.serviceScrollVelocity = 0;
+    } else {
+      // Apply smooth scrolling
+      if (this.serviceSliderTrack?.nativeElement) {
+        const currentTranslate = this.getCurrentServiceTranslate();
+        const newTranslate = currentTranslate + this.serviceScrollVelocity;
+        this.serviceSliderTrack.nativeElement.style.transform = `translateX(${newTranslate}px)`;
+      }
+    }
+  }
+
+  private animateServiceScroll() {
+    const animate = () => {
+      if (Math.abs(this.serviceScrollVelocity) > 0.5) {
+        this.serviceScrollVelocity *= this.serviceScrollInertia;
+        
+        // Apply remaining velocity
+        if (this.serviceSliderTrack?.nativeElement) {
+          const currentTranslate = this.getCurrentServiceTranslate();
+          const newTranslate = currentTranslate + this.serviceScrollVelocity;
+          this.serviceSliderTrack.nativeElement.style.transform = `translateX(${newTranslate}px)`;
+        }
+        
+        requestAnimationFrame(animate);
+      } else {
+        this.serviceScrollVelocity = 0;
+        this.isServiceScrolling = false;
+        
+        // Snap to nearest slide
+        this.snapToNearestSlide();
+      }
+    };
+    
+    requestAnimationFrame(animate);
+  }
+
+  private snapToNearestSlide() {
+    if (!this.serviceSliderTrack?.nativeElement || this.isServiceAnimating) return;
+    
+    const currentTranslate = this.getCurrentServiceTranslate();
+    const slideWidth = this.serviceCardWidth + this.serviceCardGap;
+    const nearestSlide = Math.round(-currentTranslate / slideWidth);
+    
+    // Clamp to valid range
+    const clampedSlide = Math.max(0, Math.min(nearestSlide, this.services.length - 1));
+    
+    if (clampedSlide !== this.serviceCurrentSlide) {
+      this.serviceCurrentSlide = clampedSlide;
+      this.serviceUpdateSliderPosition();
+    }
+  }
+
+  private checkServiceBoundaries() {
+    const currentTranslate = this.getCurrentServiceTranslate();
+    const maxTranslate = -(this.services.length - 1) * (this.serviceCardWidth + this.serviceCardGap);
+    
+    // If at boundaries, release vertical scroll lock
+    if (currentTranslate >= 0 || currentTranslate <= maxTranslate) {
+      this.serviceIsHorizontalScrollActive = false;
+      document.body.classList.remove('no-vertical-scroll');
+    }
+  }
+
+  private getCurrentServiceTranslate(): number {
+    if (!this.serviceSliderTrack?.nativeElement) return 0;
+    
+    const transform = this.serviceSliderTrack.nativeElement.style.transform;
+    if (!transform || transform === 'none') return 0;
+    
+    const match = transform.match(/translateX\(([-\d.]+)px\)/);
+    return match ? parseFloat(match[1]) : 0;
+  }
+
+  private cleanupServiceEventListeners() {
+    if (this.serviceSection?.nativeElement) {
+      const sliderContainer = this.serviceSection.nativeElement.querySelector('.service-slider-container');
+      if (sliderContainer) {
+        sliderContainer.removeEventListener('wheel', this.handleServiceWheel.bind(this));
+        sliderContainer.removeEventListener('touchstart', this.handleServiceTouchStart.bind(this));
+        sliderContainer.removeEventListener('touchmove', this.handleServiceTouchMove.bind(this));
+        sliderContainer.removeEventListener('touchend', this.handleServiceTouchEnd.bind(this));
+        sliderContainer.removeEventListener('mouseenter', this.handleServiceMouseEnter.bind(this));
+        sliderContainer.removeEventListener('mouseleave', this.handleServiceMouseLeave.bind(this));
+      }
+    }
+  }
+
   @HostListener('window:resize')
   onResize() {
     this.updateServiceCardWidth();
+    
+    // Reset scroll state on resize
+    this.serviceScrollVelocity = 0;
+    this.serviceScrollDirection = null;
+    this.isServiceScrolling = false;
+    this.serviceIsHorizontalScrollActive = false;
+    document.body.classList.remove('no-vertical-scroll');
   }
 
   updateServiceCardWidth() {
@@ -414,8 +718,8 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
       this.serviceCardWidth = 280;
       this.serviceCardGap = 25;
     } else if (window.innerWidth <= 480) {
-      this.serviceCardWidth = 300;
-      this.serviceCardGap = 25;
+      this.serviceCardWidth = 400;
+      this.serviceCardGap = 15;
     } else if (window.innerWidth <= 768) {
       this.serviceCardWidth = 340;
       this.serviceCardGap = 30;
@@ -475,37 +779,178 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
       this.whyChooseObserver.observe(this.whyChooseSection.nativeElement);
     }
   }
-  // Blog section
-   blogPosts = [
+    homeProductCurrentIndex = 0;
+  homeProductItems = [
     {
-      image: '../../../assets/images/blog-1.webp',
-      day: '',
-      month: '',
-      comments: '',
-      author: 'Admin',
-      title: 'Steel Structure Fabrication: The Backbone of Modern Construction',
-      excerpt: 'Steel structure fabrication offers superior strength, faster construction, and flexible design. Its durability and sustainability make it ideal for modern infrastructure projects.'
+      name: 'HDPE & PPR Piping Systems',
+      description: 'Durable HDPE and PPR piping solutions designed and installed for reliable industrial applications.',
+      image: '../../../assets/images/Product-1.webp',
+
     },
     {
-      image: '../../../assets/images/blog-3.webp',
-      day: '',
-      month: '',
-      comments: '',
+      name: 'Metallic Piping Solutions',
+      description: 'Metallic piping systems supplied and installed for dependable industrial utilities and services.',
+      image: '../../../assets/images/Product-2.webp',
+  
+    },
+    {
+      name: 'Pressure Vessels',
+      description: 'Pressure vessels designed and fabricated to standards for safe and reliable industrial applications.',
+      image: '../../../assets/images/Product-3.webp',
+    
+    },
+    {
+      name: 'Process Chillers',
+      description: 'Process chillers selected and integrated based on detailed heat load studies for industrial cooling needs..',
+      image: '../../../assets/images/Product-4.webp',
+    
+    },
+    {
+      name: 'Solar Thermal Systems',
+      description: 'Solar thermal piping and erection solutions executed for large-scale industrial heat applications.',
+      image: '../../../assets/images/Product-5.webp',
+
+    },
+    {
+      name: 'VFD Control Panels',
+      description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
+      image: '../../../assets/images/Product-6.webp',
+  
+    }
+  ];
+
+  private homeProductAutoScrollInterval: any;
+  private homeProductIsHovered = false;
+  private homeProductScrollPosition = 0;
+  private homeProductCardsPerView = 3;
+  private homeProductCardWidth = 380;
+  private homeProductCardGap = 30;
+
+  @HostListener('window:resize')
+  onHomeProductResize() {
+    this.homeProductCalculateCardsPerView();
+    this.homeProductUpdateScrollPosition();
+  }
+
+  private homeProductCalculateCardsPerView() {
+    if (window.innerWidth < 640) {
+      this.homeProductCardsPerView = 1;
+      this.homeProductCardWidth = window.innerWidth - 40;
+    } else if (window.innerWidth < 1024) {
+      this.homeProductCardsPerView = 2;
+      this.homeProductCardWidth = (window.innerWidth - 80) / 2;
+    } else {
+      this.homeProductCardsPerView = 3;
+      this.homeProductCardWidth = 380;
+    }
+  }
+
+  homeProductScrollGrid(direction: number) {
+    this.homeProductStopAutoScroll();
+    
+    const maxScroll = (this.homeProductItems.length - this.homeProductCardsPerView) * 
+                     (this.homeProductCardWidth + this.homeProductCardGap);
+    
+    this.homeProductScrollPosition += direction * (this.homeProductCardWidth + this.homeProductCardGap);
+    
+    if (this.homeProductScrollPosition < 0) {
+      this.homeProductScrollPosition = maxScroll;
+    } else if (this.homeProductScrollPosition > maxScroll) {
+      this.homeProductScrollPosition = 0;
+    }
+    
+    this.homeProductUpdateScrollPosition();
+    this.homeProductUpdateCurrentIndex();
+    
+    setTimeout(() => {
+      this.homeProductStartAutoScroll();
+    }, 3000);
+  }
+
+  homeProductGoToCard(index: number) {
+    this.homeProductStopAutoScroll();
+    this.homeProductCurrentIndex = index;
+    this.homeProductScrollPosition = index * (this.homeProductCardWidth + this.homeProductCardGap);
+    this.homeProductUpdateScrollPosition();
+    
+    setTimeout(() => {
+      this.homeProductStartAutoScroll();
+    }, 3000);
+  }
+
+  private homeProductUpdateScrollPosition() {
+    const grid = document.querySelector('.home-product-grid') as HTMLElement;
+    if (grid) {
+      grid.style.transform = `translateX(-${this.homeProductScrollPosition}px)`;
+    }
+  }
+
+  private homeProductUpdateCurrentIndex() {
+    this.homeProductCurrentIndex = Math.round(
+      this.homeProductScrollPosition / (this.homeProductCardWidth + this.homeProductCardGap)
+    );
+  }
+
+  private homeProductStartAutoScroll() {
+    if (this.homeProductIsHovered) return;
+    
+    this.homeProductStopAutoScroll();
+    this.homeProductAutoScrollInterval = setInterval(() => {
+      this.homeProductScrollGrid(1);
+    }, 5000);
+  }
+
+  private homeProductStopAutoScroll() {
+    if (this.homeProductAutoScrollInterval) {
+      clearInterval(this.homeProductAutoScrollInterval);
+    }
+  }
+
+  onHomeProductMouseEnter() {
+    this.homeProductIsHovered = true;
+    this.homeProductStopAutoScroll();
+  }
+
+  onHomeProductMouseLeave() {
+    this.homeProductIsHovered = false;
+    this.homeProductStartAutoScroll();
+  }
+  // Blog section
+   // Featured post (left side)
+  featuredPost = {
+    image: '../../../assets/images/blog-1.webp',
+    day: '15',
+    month: 'MAR',
+    comments: '12',
+    author: 'Admin',
+    title: 'Steel Structure Fabrication: The Backbone of Modern Construction',
+    excerpt: 'Steel structure fabrication offers superior strength, faster construction, and flexible design. Its durability and sustainability make it ideal for modern infrastructure projects.'
+  };
+
+  // Side posts (right side)
+  sidePosts = [
+    {
+      image: '../../../assets/images/blog-2.webp',
+      day: '22',
+      month: 'MAR',
+      comments: '8',
       author: 'Engineering Lead',
       title: 'Compressed Air Dryers: Ensuring Clean, Dry & Efficient Air Systems',
       excerpt: 'Compressed air dryers remove moisture and contaminants to ensure efficient, reliable, and long-lasting compressed air systems across industrial applications.'
     },
     {
-      image: '../../../assets/images/blog-2.webp',
-      day: '',
-      month: '',
-      comments: '',
+      image: '../../../assets/images/blog-3.webp',
+      day: '30',
+      month: 'MAR',
+      comments: '15',
       author: 'Project Manager',
       title: 'Plate Heat Exchangers: Compact Solutions for Efficient Heat Transfer',
       excerpt: 'Plate heat exchangers enable efficient heat transfer between fluids with a compact design, high thermal performance, and flexibility for diverse industrial applications.'
     }
   ];
-   setupBlogIntersectionObserver() {
+
+
+  setupBlogIntersectionObserver() {
     const options = {
       root: null,
       rootMargin: '0px',
@@ -515,9 +960,9 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     this.blogObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !this.blogHasAnimated) {
-          entry.target.classList.add('in-view');
+          entry.target.classList.add('blog-in-view');
           this.blogHasAnimated = true;
-          this.blogObserver.unobserve(entry.target);
+          this.blogObserver?.unobserve(entry.target);
         }
       });
     }, options);
@@ -527,14 +972,6 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  updateCardAnimationDelay() {
-    setTimeout(() => {
-      const cards = document.querySelectorAll('.blog-card');
-      cards.forEach((card: any, index) => {
-        card.style.setProperty('--card-index', index);
-      });
-    }, 100);
-  }
-
+  
 
 }

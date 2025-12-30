@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
   
   isSticky = false;
   isMenuOpen = false;
+  menuOpen = false;
+
   private stickyThreshold = 100;
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
+    this.menuOpen = !this.menuOpen;
     this.isMenuOpen = !this.isMenuOpen;
     
     // Toggle body scroll when menu is open
