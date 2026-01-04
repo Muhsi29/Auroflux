@@ -15,7 +15,218 @@
 
   <div class="about-banner-orange-accent"></div>
 
-  <div class="about-banner-machine-wrapper">
-    <img src="assets/images/jcb-machine.png" alt="Construction Machine" class="about-banner-machine-img">
+  <!-- <div class="about-banner-machine-wrapper">
+    <img src="#" alt="Construction Machine" class="about-banner-machine-img">
+  </div> -->
+</section>
+<!--About Section-->
+
+<section class="who-we-are-section" #whoWeAreSection>
+  <div class="who-we-are-container">
+    <div class="who-we-are-row">
+      
+      <!-- Left Column - Content -->
+      <div class="who-we-are-col-left">
+        <div class="who-we-are-content-header">
+          <div class="who-we-are-subtitle-wrapper">
+            <span class="who-we-about-line-left"></span>
+            <span class="who-we-about-subtitle-text">WHO WE ARE</span>
+            <span class="who-we-about-line-right"></span>
+          </div>
+        </div>
+        
+        <h2 class="who-we-about-title">End-to-End Piping & Engineering Solutions</h2>
+        
+        <p class="who-we-about-description">
+         Auroflux Technology delivers complete PPR piping and engineering solutions for compressed air, 
+         chiller water, and cooling systems. Founded in 2007, we combine proven expertise with
+          energy-efficient designs to deliver reliable, ROI-driven results.
+        </p>
+
+        <div class="who-we-about-features">
+          <div class="who-we-about-feature-item">
+            <div class="who-we-about-icon-box">
+              <i class="fas fa-eye who-we-about-fa-icon"></i>
+            </div>
+            <div class="who-we-about-feature-text">
+              <h3 class="who-we-about-feature-title">Our Vision</h3>
+              <p class="who-we-about-feature-desc">To be the first choice engineering partner by delivering efficient, sustainable, and high-performance piping solutions.</p>
+            </div>
+          </div>
+          
+          <div class="who-we-about-feature-item">
+            <div class="who-we-about-icon-box">
+              <i class="fas fa-bullseye who-we-about-fa-icon"></i>
+            </div>
+            <div class="who-we-about-feature-text">
+              <h3 class="who-we-about-feature-title">Our Mission</h3>
+              <p class="who-we-about-feature-desc">Providing end-to-end engineering and maintenance solutions through quality products, advanced technology.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- <ul class="who-we-about-check-list">
+          <li class="who-we-about-list-item">Academic Excellence</li>
+          <li class="who-we-about-list-item">Creative Arts Development</li>
+        </ul> -->
+
+        <button class="who-we-about-btn-quote" (click)="learnMore()">
+          Learn More 
+          <span class="who-we-about-arrow-icon">&rarr;</span>
+        </button>
+      </div>
+
+      <!-- Right Column - Image -->
+      <div class="who-we-are-col-right">
+        <div class="who-we-about-image-stack">
+          <div class="who-we-about-main-img-wrapper">
+            <img src="../../../assets/images/Why-Choose-Us.webp" alt="Children learning at school" class="who-we-about-main-img">
+            <div class="who-we-about-experience-badge">
+              <span class="who-we-about-number">500+</span>
+              <span class="who-we-about-text">Projects Delivered</span>
+            </div>
+          </div>
+          
+          <div class="who-we-about-client-group">
+            <div class="who-we-about-client-avatars">
+              <div class="who-we-about-client-avatar"></div>
+              <div class="who-we-about-client-avatar"></div>
+              <div class="who-we-about-client-avatar"></div>
+              <div class="who-we-about-client-more">+</div>
+            </div>
+            <p class="who-we-about-client-text">Trusted by <strong>industries across India</strong></p>
+          </div>
+          
+          <div class="who-we-about-vertical-line"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--Service Section-->
+<section class="about-service-section" #aboutServiceSection>
+  <div class="about-service-container">
+    <div class="about-service-header">
+      <span class="about-service-badge">OUR SERVICES</span>
+      <h1 class="about-service-title">Premium Engineering Services by Auroflux</h1>
+      <p class="about-service-subtitle">
+        End-to-end piping and energy-efficient engineering solutions for industrial applications.
+      </p>
+    </div>
+
+    <div class="about-service-grid">
+      <div class="about-service-card" *ngFor="let service of services; let i = index" 
+           [style.animation-delay]="i * 0.1 + 's'">
+        <div class="about-service-icon-container">
+          <i [class]="'fas ' + service.icon + ' about-service-fa-icon'"></i>
+        </div>
+        <div class="about-service-content">
+          <h3 class="about-service-card-title">{{ service.title }}</h3>
+          <p class="about-service-card-desc">{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Team Section -->
+<section class="team-team-section" #teamSection>
+  <div class="team-team-container">
+    <div class="team-team-header">
+      <span class="team-team-subtitle">GREAT TEAM</span>
+      <h2 class="team-team-title">Meet Our Experience Team</h2>
+    </div>
+
+    <div class="team-team-grid">
+      <div *ngFor="let member of teamMembers; let i = index" 
+           class="team-team-card"
+           [style.animation-delay]="i * 0.1 + 's'">
+        
+        <div class="team-team-card-inner">
+          
+          <div class="team-team-image-wrapper">
+            <img [src]="member.image" [alt]="member.name" class="team-team-img">
+            
+            <div class="team-team-share-btn" (click)="toggleSocial(i)">
+              <i class="fas fa-share-alt"></i>
+            </div>
+            
+            <div class="team-team-social-sidebar" [class.active]="activeSocialIndex === i">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Vimeo"><i class="fab fa-vimeo-v"></i></a>
+            </div>
+          </div>
+
+          <div class="team-team-info-wrapper">
+            <h3 class="team-team-name">{{ member.name }}</h3>
+            <p class="team-team-role">{{ member.role }}</p>
+            <div class="team-team-divider"></div>
+            <div class="team-team-contact">
+              <i class="fas fa-phone-alt"></i>
+              <span>{{ member.phone }}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Our Client Section-->
+<section class="our-clients-section" #ourClientsSection>
+  <div class="our-clients-container">
+    <div class="our-clients-header">
+      <span class="our-clients-subtitle">OUR CLIENTS</span>
+      <h2 class="our-clients-title">Our Trusted Clients</h2>
+    </div>
+
+    <div class="our-clients-slider-container" 
+         (mouseenter)="onSliderHover()" 
+         (mouseleave)="onSliderLeave()">
+      
+      <!-- Left Arrow -->
+      <button class="our-clients-arrow our-clients-arrow-left" (click)="scrollLeft()" aria-label="Previous client">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <div class="our-clients-slider-track" #sliderTrack>
+        <!-- First set of logos -->
+        <div class="our-clients-slide" *ngFor="let client of clients; let i = index" [attr.data-index]="i">
+          <div class="our-clients-logo-wrapper">
+            <img [src]="client.logo" [alt]="client.name" class="our-clients-logo">
+            <div class="our-clients-client-name">{{ client.name }}</div>
+          </div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="our-clients-slide" *ngFor="let client of clients; let i = index" [attr.data-index]="i + clients.length">
+          <div class="our-clients-logo-wrapper">
+            <img [src]="client.logo" [alt]="client.name" class="our-clients-logo">
+            <div class="our-clients-client-name">{{ client.name }}</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Arrow -->
+      <button class="our-clients-arrow our-clients-arrow-right" (click)="scrollRight()" aria-label="Next client">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+<!--Cta Section -->
+<section class="contact-cta-section">
+  <div class="contact-cta-container">
+    <div class="contact-cta-content-wrapper">
+      <div class="contact-cta-text-content">
+        <span class="contact-cta-subtitle">GET IN TOUCH</span>
+        <h1 class="contact-cta-heading">Contact Our Engineering Team</h1>
+      </div>
+      <button class="contact-cta-action-btn">
+        Request Consultation
+        <span class="contact-cta-btn-arrow">→</span>
+      </button>
+    </div>
   </div>
 </section>

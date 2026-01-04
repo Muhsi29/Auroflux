@@ -6,8 +6,8 @@ import { About } from './pages/about/about';
 export const appConfig = {
   providers: [
     provideRouter([
-      { path: '', component: Home },
-      {path: '',component:About}
+      { path: 'home', component: Home },
+      {path: 'about',component:About}
     ]),
     provideAnimations(), // ✅ Correct usage
   ],
