@@ -1,0 +1,62 @@
+<!-- Projects Banner -->
+<section class="projects-us-banner">
+  <div class="projects-banner-content">
+    <div class="projects-banner-container">
+      <div class="projects-banner-text-area">
+        <h1 class="projects-banner-title">Our Projects</h1>
+        <nav class="projects-banner-breadcrumb" aria-label="breadcrumb">
+          <span class="projects-banner-home-link">Home</span>
+          <span class="projects-banner-separator">»</span>
+          <span class="projects-banner-current-page">Projects</span>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="projects-banner-orange-accent"></div>
+
+  <!-- <div class="projects-banner-machine-wrapper">
+    <img src="#" alt="Construction Machine" class="projects-banner-machine-img">
+  </div> -->
+</section>
+
+<!-- All Projects -->
+
+<!-- Projects Section -->
+<section class="projects-section">
+  <div class="projects-container">
+    
+    <!-- Header Section -->
+    <div class="projects-header-section">
+      <h2 class="projects-header-title">Our Projects</h2>
+      <p class="projects-header-description">
+        We deliver exceptional construction projects with quality craftsmanship and innovative solutions. 
+        Explore our diverse portfolio of completed works.
+      </p>
+    </div>
+    
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      
+      <div class="projects-card" *ngFor="let project of projects" (click)="openProject(project.id)">
+        <!-- Circle Before Animation -->
+        <div class="projects-circle-before"></div>
+        
+        <!-- Corner Decor -->
+        <div class="projects-corner-decor"></div>
+        
+        <div class="projects-image-wrapper">
+          <img [src]="project.imageUrl" [alt]="project.title" class="projects-image">
+        </div>
+        
+        <div class="projects-content">
+          <h3 class="projects-title">{{ project.title }}</h3>
+          <p class="projects-description">{{ project.description }}</p>
+          
+          <a href="#" class="projects-link">View Details</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -82,60 +82,60 @@ export class About implements AfterViewInit, OnDestroy {
 
   clients: Client[] = [
     { 
-      name: 'International Education', 
-      logo: '../../../assets/images/samsung-logo-1.png' 
+      name: 'Tractors and Farm Equipment Limited', 
+      logo: '../../../assets/client-logo/logo-1.png' 
     },
     { 
-      name: 'IMAX', 
-      logo: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=80&bg=FFFFFF' 
+      name: 'Valeo', 
+      logo: '../../../assets/client-logo/logo-2.png' 
     },
     { 
-      name: 'Special Olympics', 
-      logo: 'https://images.unsplash.com/photo-1633409361618-c73427e4e206?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=80&bg=FFFFFF' 
+      name: 'wheels India Limited', 
+      logo: '../../../assets/client-logo/logo-3.png' 
     },
     { 
-      name: 'LogIQids', 
-      logo: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=80&bg=FFFFFF' 
+      name: 'Samsung', 
+      logo: '../../../assets/client-logo/logo-4.png' 
     },
     { 
-      name: 'Caprics', 
-      logo: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=80&bg=FFFFFF' 
+      name: 'Toshiba Machine', 
+      logo: '../../../assets/client-logo/logo-5.jfif' 
     },
     { 
-      name: 'American', 
-      logo: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=60&bg=FFFFFF' 
+      name: 'Flexol', 
+      logo: '../../../assets/client-logo/logo-6.jfif' 
     },
     { 
-      name: 'Burlington', 
-      logo: 'https://images.unsplash.com/photo-1633409361618-c73427e4e206?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=60&bg=FFFFFF' 
+      name: 'Delphi-Tvs', 
+      logo: '../../../assets/client-logo/logo-7.png' 
     },
     { 
-      name: 'TechCorp', 
-      logo: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=60&bg=FFFFFF' 
+      name: 'Reynolds', 
+      logo: '../../../assets/client-logo/logo-8.png' 
     },
     { 
-      name: 'Global Solutions', 
-      logo: 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=60&bg=FFFFFF' 
+      name: 'Power Ventures Pic', 
+      logo: '../../../assets/client-logo/logo-9.png' 
     },
     { 
-      name: 'Innovate Inc', 
-      logo: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=60&bg=FFFFFF' 
+      name: 'MRF', 
+      logo: '../../../assets/client-logo/logo-10.png' 
     },
     { 
-      name: 'Future Labs', 
-      logo: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=50&bg=FFFFFF' 
+      name: 'Saint Gobain', 
+      logo: '../../../assets/client-logo/logo-11.webp' 
     },
     { 
-      name: 'Alpha Systems', 
-      logo: 'https://images.unsplash.com/photo-1633409361618-c73427e4e206?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=50&bg=FFFFFF' 
+      name: 'Sundaram-Clayton Limited', 
+      logo: '../../../assets/client-logo/logo-12.jpg' 
     },
     { 
-      name: 'Omega Tech', 
-      logo: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=50&bg=FFFFFF' 
+      name: 'Aspiration Energy', 
+      logo: '../../../assets/client-logo/logo-13.png' 
     },
     { 
-      name: 'Digital Edge', 
-      logo: 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=80&q=50&bg=FFFFFF' 
+      name: 'Gem Trust Technology', 
+      logo: '../../../assets/client-logo/logo-14.jfif' 
     }
   ];
 

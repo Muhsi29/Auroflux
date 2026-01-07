@@ -1,0 +1,28 @@
+<!-- Project Details Banner -->
+<section class="project-details-banner">
+  <div class="project-details-banner-content">
+    <div class="project-details-banner-container">
+      <div class="project-details-banner-text-area">
+        <h1 class="project-details-banner-title">Project Details</h1>
+        <nav class="project-details-banner-breadcrumb" aria-label="breadcrumb">
+          <span class="project-details-banner-home-link">Home</span>
+          <span class="project-details-banner-separator">»</span>
+          <span class="project-details-banner-project-link">Projects</span>
+          <span class="project-details-banner-separator">»</span>
+          <span class="project-details-banner-current-page">Project Details</span>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-details-banner-orange-accent"></div>
+
+  <!-- <div class="project-details-banner-machine-wrapper">
+    <img src="#" alt="Construction Machine" class="project-details-banner-machine-img">
+  </div> -->
+</section>
+<div class="details-card" *ngIf="project">
+  <img [src]="project.imageUrl" />
+  <h2>{{ project.title }}</h2>
+  <p>{{ project.description }}</p>
+</div>

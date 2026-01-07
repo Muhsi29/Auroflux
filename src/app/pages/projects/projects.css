@@ -1,0 +1,991 @@
+/* --- GLOBAL RESET (Applied via Component) --- */
+:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  --banner-green: #22B34A;
+  --banner-white: #ffffff;
+  --text-dark: #0277C7;
+
+  /* #00A887  Alternate Green*/
+  
+  /* Typography Scale */
+  --font-subtitle-size: 14.4px;
+  --font-title-size: 67px;
+  --font-desc-size: 18.4px;
+  --font-btn-size: 15.2px;
+}
+
+/* Forces the body to have no margin even if not set in styles.css */
+:host-context(body) {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================
+   PROJECTS US BANNER - BASE STYLES
+   ============================================ */
+.projects-us-banner {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background-color: #1a1d2e;
+  background-image: url('../../../assets/images/banner-1.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 300px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+  }
+}
+
+/* ============================================
+   BANNER CONTENT
+   ============================================ */
+.projects-banner-content {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.projects-banner-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.projects-banner-text-area {
+  max-width: 600px;
+}
+
+.projects-banner-title {
+  font-size: 55px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: white;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.projects-banner-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.projects-banner-home-link {
+  color: #22b34a;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.projects-banner-home-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #22b34a;
+  transition: width 0.3s ease;
+}
+
+.projects-banner-home-link:hover {
+  color: #ffffff;
+}
+
+.projects-banner-home-link:hover::after {
+  width: 100%;
+}
+
+.projects-banner-separator {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.projects-banner-current-page {
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ORANGE ACCENT SHAPE
+   ============================================ */
+.projects-banner-orange-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: #ff5e14;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+  z-index: 1;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+}
+
+/* ============================================
+   MACHINE IMAGE
+   ============================================ */
+.projects-banner-machine-wrapper {
+  position: absolute;
+  right: 5%;
+  bottom: -20px;
+  z-index: 3;
+  width: 450px;
+  animation: floatMachine 3s ease-in-out infinite;
+  transition: all 0.5s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    animation-play-state: paused;
+  }
+}
+
+@keyframes floatMachine {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.projects-banner-machine-img {
+  width: 100%;
+  filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+  transition: transform 0.5s ease;
+}
+
+.projects-banner-machine-wrapper:hover .projects-banner-machine-img {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px)
+   ============================================ */
+@media screen and (max-width: 1024px) {
+  .projects-us-banner {
+    height: 350px;
+  }
+
+  .projects-banner-title {
+    font-size: 48px;
+  }
+
+  .projects-banner-container {
+    width: 90%;
+  }
+
+  .projects-banner-machine-wrapper {
+    width: 380px;
+    right: 3%;
+  }
+
+  .projects-banner-orange-accent {
+    width: 35%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .projects-us-banner {
+    height: 300px;
+  }
+
+  .projects-banner-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  .projects-banner-breadcrumb {
+    font-size: 15px;
+  }
+
+  .projects-banner-container {
+    width: 92%;
+    padding: 0 15px;
+  }
+
+  .projects-banner-machine-wrapper {
+    width: 280px;
+    right: 2%;
+    bottom: -10px;
+  }
+
+  .projects-banner-orange-accent {
+    width: 40%;
+    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .projects-banner-text-area {
+    max-width: 500px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .projects-us-banner {
+    height: 250px;
+  }
+
+  .projects-banner-title {
+    font-size: 36px;
+  }
+
+  .projects-banner-breadcrumb {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .projects-banner-container {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .projects-banner-machine-wrapper {
+    width: 200px;
+    right: 1%;
+    bottom: -5px;
+  }
+
+  .projects-banner-orange-accent {
+    width: 50%;
+    clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .projects-banner-text-area {
+    max-width: 300px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (320px)
+   ============================================ */
+@media screen and (max-width: 320px) {
+  .projects-us-banner {
+    height: 220px;
+  }
+
+  .projects-banner-title {
+    font-size: 32px;
+  }
+
+  .projects-banner-breadcrumb {
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+
+  .projects-banner-machine-wrapper {
+    width: 160px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .projects-banner-orange-accent {
+    width: 60%;
+    opacity: 0.6;
+  }
+}
+
+/* ============================================
+   TABLET LANDSCAPE (Between 769px and 1024px)
+   ============================================ */
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .projects-us-banner {
+    height: 320px;
+  }
+
+  .projects-banner-machine-wrapper {
+    width: 350px;
+    right: 4%;
+    bottom: -15px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .projects-banner-machine-wrapper {
+    animation: none;
+  }
+
+  .projects-banner-machine-wrapper:hover,
+  .projects-banner-machine-wrapper:hover .projects-banner-machine-img,
+  .projects-banner-home-link::after {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .projects-us-banner::before {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
+  }
+
+  .projects-banner-title {
+    color: #f1f5f9;
+  }
+
+  .projects-banner-current-page {
+    color: #e2e8f0;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.projects-banner-home-link:focus {
+  outline: 2px solid #22b34a;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.projects-banner-home-link:focus-visible {
+  background-color: rgba(34, 179, 74, 0.1);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .projects-us-banner {
+    height: 200px;
+    background: #1a1d2e !important;
+  }
+
+  .projects-banner-orange-accent,
+  .projects-banner-machine-wrapper {
+    display: none;
+  }
+
+  .projects-banner-title {
+    color: #000000;
+    font-size: 32px;
+  }
+
+  .projects-banner-breadcrumb {
+    color: #666666;
+  }
+}
+
+/* All Projects */
+
+/* ============================================
+   PROJECTS SECTION - BASE STYLES
+   ============================================ */
+.projects-section {
+  font-family: "Poppins", sans-serif;
+  background-color: #e6edf7;
+  color: #202020;
+  padding-top: 115px;
+  padding-bottom: 120px;
+  width: 100%;
+}
+
+.projects-container {
+  padding: 0 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 85%;
+}
+
+/* ============================================
+   HEADER SECTION STYLES (From your new code)
+   ============================================ */
+.projects-header-section {
+  margin-bottom: 34px;
+  text-align: center;
+}
+
+.projects-header-title {
+  position: relative;
+  padding-bottom: 14px;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 55px;
+  color: var(--text-dark);
+}
+
+.projects-header-title:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--text-dark);
+  border-radius: 3px;
+}
+
+.projects-header-title:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(30px);
+  width: 10px;
+  height: 3px;
+  background-color: #22B34A;
+  border-radius: 3px;
+}
+
+.projects-header-description {
+  font-size: 18px;
+  color: #000000;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ============================================
+   PROJECTS GRID
+   ============================================ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+/* ============================================
+   PROJECTS CARD (Combined Animation)
+   ============================================ */
+.projects-card {
+  position: relative;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+  border: 2px solid #22B34A;
+  padding: 40px 30px;
+}
+
+.projects-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   PROJECTS IMAGE
+   ============================================ */
+.projects-image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.projects-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+  border-radius: 5px;
+}
+
+.projects-card:hover .projects-image {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   CIRCLE BEFORE ANIMATION (From your new code)
+   ============================================ */
+.projects-circle-before {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  transform: translate(40%, -40%);
+  width: 150px;
+  height: 150px;
+  background-color:rgba(34, 179, 74, 0.95);
+  border: 6px solid #22B34A;
+  border-radius: 50%;
+  opacity: 0.5;
+  /* z-index: 10; */
+  transition: all .6s;
+}
+
+.projects-card:hover .projects-circle-before {
+  width: 100%;
+  height: 100%;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+  opacity: 1;
+  background-color: rgba(34, 179, 74, 0.95); /* Your green color */
+}
+
+/* ============================================
+   PROJECTS CONTENT (Combined Styles)
+   ============================================ */
+.projects-content {
+  position: relative;
+  padding: 25px 0 0;
+  z-index: 20;
+  transition: all .3s;
+}
+
+/* ICON STYLING (Adjusted for image) */
+.projects-icon-wrapper {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 70px;
+  height: 70px;
+  background-color: var(--text-dark);
+  border-radius: 5px;
+  line-height: 70px;
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+  transition: all .3s;
+}
+
+.projects-card:hover .projects-icon-wrapper {
+  background-color: #fff;
+  color: var(--text-dark);
+}
+
+.projects-title {
+  margin-bottom: 18px;
+  font-weight: 700;
+  font-size: 23px;
+  transition: color .3s;
+  color: #1a1d2e;
+}
+
+.projects-card:hover .projects-title {
+  color: #fff;
+}
+
+.projects-description {
+  margin-bottom: 20px;
+  font-size: 14px;
+  transition: color .3s;
+  color: #777777;
+  line-height: 1.6;
+}
+
+.projects-card:hover .projects-description {
+  color: #fff;
+}
+
+/* LINK STYLING */
+.projects-link {
+  position: relative;
+  font-size: 18px;
+  color: #202020;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .3s;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.projects-card:hover .projects-link {
+  color: #fff;
+}
+
+.projects-link:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--text-dark);
+  transition: background-color .3s;
+}
+
+.projects-card:hover .projects-link:after {
+  background-color: #fff;
+}
+
+/* ============================================
+   CORNER DECORATION (Your existing)
+   ============================================ */
+/* .projects-corner-decor {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 40px 40px;
+  border-color: transparent transparent var(--text-dark) transparent;
+  transition: all 0.3s ease;
+  z-index: 30;
+  pointer-events: none;
+} */
+
+/* Corner decor expands and rotates on hover
+.projects-card:hover .projects-corner-decor {
+  border-width: 0 0 100px 100px;
+  border-color: transparent transparent #ffffff transparent;
+  transform: rotate(45deg) translate(20px, 20px);
+  opacity: 0.1;
+} */
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px)
+   ============================================ */
+@media screen and (max-width: 1024px) {
+  .projects-section {
+    padding: 80px 0;
+  }
+
+  .projects-container {
+    width: 90%;
+    padding: 0 15px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  .projects-card {
+    padding: 30px 25px;
+  }
+
+  .projects-image {
+    height: 180px;
+  }
+
+  .projects-title {
+    font-size: 20px;
+  }
+
+  .projects-description {
+    font-size: 13px;
+  }
+
+  .projects-header-title {
+    font-size: 28px;
+  }
+
+  .projects-corner-decor {
+    border-width: 0 0 35px 35px;
+  }
+
+  .projects-card:hover .projects-corner-decor {
+    border-width: 0 0 80px 80px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .projects-section {
+    padding: 60px 0;
+  }
+
+  .projects-container {
+    width: 92%;
+    padding: 0 12px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .projects-card {
+    padding: 25px 20px;
+  }
+
+  .projects-image {
+    height: 170px;
+  }
+
+  .projects-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .projects-description {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .projects-header-title {
+    font-size: 26px;
+  }
+
+  .projects-header-description {
+    font-size: 13px;
+  }
+
+  .projects-corner-decor {
+    border-width: 0 0 30px 30px;
+  }
+
+  .projects-card:hover .projects-corner-decor {
+    border-width: 0 0 70px 70px;
+  }
+
+  .projects-link {
+    font-size: 16px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .projects-section {
+    padding: 40px 0;
+  }
+
+  .projects-container {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .projects-card {
+    padding: 20px 18px;
+  }
+
+  .projects-image {
+    height: 160px;
+  }
+
+  .projects-title {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  .projects-description {
+    font-size: 12px;
+  }
+
+  .projects-header-title {
+    font-size: 24px;
+  }
+
+  .projects-header-description {
+    font-size: 12px;
+  }
+
+  .projects-corner-decor {
+    border-width: 0 0 25px 25px;
+  }
+
+  .projects-card:hover .projects-corner-decor {
+    border-width: 0 0 60px 60px;
+  }
+
+  .projects-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .projects-link {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   SMALL MOBILE (320px)
+   ============================================ */
+@media screen and (max-width: 320px) {
+  .projects-section {
+    padding: 30px 0;
+  }
+
+  .projects-container {
+    width: 97%;
+    padding: 0 8px;
+  }
+
+  .projects-image {
+    height: 150px;
+  }
+
+  .projects-card {
+    padding: 18px 15px;
+  }
+
+  .projects-title {
+    font-size: 16px;
+  }
+
+  .projects-description {
+    font-size: 11px;
+  }
+
+  .projects-header-title {
+    font-size: 22px;
+  }
+
+  .projects-corner-decor {
+    border-width: 0 0 20px 20px;
+  }
+
+  .projects-card:hover .projects-corner-decor {
+    border-width: 0 0 50px 50px;
+  }
+}
+
+/* ============================================
+   TABLET LANDSCAPE (Between 769px and 1024px)
+   ============================================ */
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .projects-card,
+  .projects-card:hover,
+  .projects-image,
+  .projects-card:hover .projects-image,
+  .projects-corner-decor,
+  .projects-card:hover .projects-corner-decor,
+  .projects-circle-before,
+  .projects-icon-wrapper,
+  .projects-title,
+  .projects-description,
+  .projects-link {
+    transition: none;
+    transform: none;
+  }
+
+  .projects-card:hover .projects-circle-before {
+    opacity: 1;
+    background-color: rgba(34, 179, 74, 0.95);
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .projects-section {
+    background-color: #1a1a1a;
+  }
+
+  .projects-card {
+    background: #2d2d2d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: #22B34A;
+  }
+
+  .projects-content {
+    background: transparent;
+  }
+
+  .projects-title {
+    color: #f1f5f9;
+  }
+
+  .projects-description {
+    color: #b0b0b0;
+  }
+
+  .projects-header-title {
+    color: #f1f5f9;
+  }
+
+  .projects-header-description {
+    color: #b0b0b0;
+  }
+
+  .projects-link {
+    color: #f1f5f9;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .projects-section {
+    padding: 20px 0;
+    background: #ffffff;
+  }
+
+  .projects-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-color: #ddd !important;
+  }
+
+  .projects-corner-decor,
+  .projects-circle-before {
+    display: none;
+  }
+
+  .projects-image {
+    height: 150px;
+  }
+
+  .projects-title {
+    color: #000000;
+  }
+
+  .projects-description {
+    color: #666666;
+  }
+
+  .projects-header-title {
+    color: #000000;
+  }
+
+  .projects-header-description {
+    color: #666666;
+  }
+}
