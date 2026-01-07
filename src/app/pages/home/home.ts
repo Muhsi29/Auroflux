@@ -6,6 +6,13 @@ interface Feature {
   title: string;
   subtitle: string;
 }
+export interface HomeServiceService {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -16,8 +23,6 @@ interface Feature {
 })
 export class Home implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('aboutSection') aboutSection!: ElementRef;
-  @ViewChild('serviceSection') serviceSection!: ElementRef;
-  @ViewChild('serviceSliderTrack') serviceSliderTrack!: ElementRef;
   @ViewChild('bannerSection') bannerSection!: ElementRef;
   @ViewChild('whyChooseSection') whyChooseSection!: ElementRef;
   @ViewChild('blogSection') blogSection!: ElementRef;
@@ -34,28 +39,6 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
   private aboutObserver!: IntersectionObserver;
   private aboutHasAnimated = false;
 
-  // Service section variables
-  private serviceObserver!: IntersectionObserver;
-  private serviceHasAnimated = false;
-  private serviceAutoSlideInterval: any;
-  private isServiceHovered = false;
-  private isServiceAnimating = false;
-
-  // Horizontal scroll properties
-  private isServiceScrolling = false;
-  private serviceScrollVelocity = 0;
-  private serviceScrollInertia = 0.95;
-  private serviceScrollThreshold = 5;
-  private serviceLastWheelTime = 0;
-  private serviceWheelDeltaX = 0;
-  private serviceWheelDeltaY = 0;
-  private serviceScrollDirection: 'horizontal' | 'vertical' | null = null;
-  private serviceTouchStartX = 0;
-  private serviceTouchStartY = 0;
-  private serviceIsTouchScrolling = false;
-  
-  serviceIsHorizontalScrollActive = false;
-
   //Why Choose US 
   private whyChooseObserver!: IntersectionObserver;
   private whyChooseHasAnimated = false;
@@ -64,14 +47,6 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
   private blogObserver!: IntersectionObserver;
   private blogHasAnimated = false;
 
-    // Drag scroll properties (ADD THESE)
-  private isDragging = false;
-  private startX = 0;
-  private scrollLeftStart = 0;
-  private dragVelocity = 0;
-  private lastDragX = 0;
-  private lastDragTime = 0;
-  private dragAnimationFrame: any;
 
   slides = [
     {
@@ -139,73 +114,48 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     }
   ];
 
-  serviceCurrentSlide = 0;
-  serviceInfiniteServices: any[] = [];
-  private serviceCardWidth = 420;
-  private serviceCardGap = 40;
-
-  constructor() { }
 
   ngOnInit() {
     this.startBannerAutoScroll();
-    this.serviceCreateInfiniteLoop();
-    this.serviceUpdateSliderPosition();
+
     this.homeProductCalculateCardsPerView();
     this.homeProductStartAutoScroll();
+        this.homeServiceCalculateResponsiveValues();
+    this.homeServiceInitializePagination();
+    this.homeServiceUpdateSliderPosition();
   }
 
   ngOnDestroy() {
     this.stopBannerAutoScroll();
-    this.stopServiceAutoSlide();
+
     this.homeProductStopAutoScroll();
     
     if (this.aboutObserver) {
       this.aboutObserver.disconnect();
     }
     
-    if (this.serviceObserver) {
-      this.serviceObserver.disconnect();
-    }
     if (this.whyChooseObserver) {
       this.whyChooseObserver.disconnect();
     }
      if (this.blogObserver) {
       this.blogObserver.disconnect();
     }
-
-    // Clean up event listeners
-    this.cleanupServiceEventListeners();
+     this.homeServiceCalculateResponsiveValues();
+    this.homeServiceInitializePagination();
+    this.homeServiceUpdateSliderPosition();
     
-    // Restore body overflow
-    document.body.style.overflow = '';
-    document.body.classList.remove('no-vertical-scroll');
-    this.cleanupServiceDragScroll();
-    
-    if (this.dragAnimationFrame) {
-      cancelAnimationFrame(this.dragAnimationFrame);
-    }
   }
 
   ngAfterViewInit() {
     this.setupAboutIntersectionObserver();
-    this.setupServiceIntersectionObserver();
-    this.updateServiceCardAnimationDelay();
-    this.startServiceAutoSlide();
     this.setupBannerHoverListeners();
-    this.setupServiceHoverListeners();
     this.setupWhyChooseIntersectionObserver();
     this.setupBlogIntersectionObserver();
-    
-    
-    
-    // Initialize horizontal scroll
+       // Small delay to ensure DOM is ready
     setTimeout(() => {
-      this.setupServiceHorizontalScroll();
-      this.updateServiceCardWidth();
-    }, 500);
-    setTimeout(() => {
-      this.setupServiceDragScroll();
-    }, 500);
+      this.homeServiceCalculateResponsiveValues();
+      this.homeServiceUpdateSliderPosition();
+    }, 100);
   }
 
   // ============= BANNER SECTION METHODS =============
@@ -312,650 +262,6 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
         }
       }, duration / steps);
     });
-  }
-
-  // ============= SERVICE SECTION METHODS =============
-  private setupServiceHoverListeners() {
-    if (this.serviceSection?.nativeElement) {
-      const serviceEl = this.serviceSection.nativeElement;
-      
-      serviceEl.addEventListener('mouseenter', () => {
-        this.isServiceHovered = true;
-        this.stopServiceAutoSlide();
-      });
-      
-      serviceEl.addEventListener('mouseleave', () => {
-        this.isServiceHovered = false;
-        this.startServiceAutoSlide();
-      });
-    }
-  }
-
-  setupServiceIntersectionObserver() {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.2
-    };
-
-    this.serviceObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.serviceHasAnimated) {
-          entry.target.classList.add('in-view');
-          this.serviceHasAnimated = true;
-          this.updateServiceCardAnimationDelay();
-        }
-      });
-    }, options);
-
-    if (this.serviceSection?.nativeElement) {
-      this.serviceObserver.observe(this.serviceSection.nativeElement);
-    }
-  }
-
-  updateServiceCardAnimationDelay() {
-    setTimeout(() => {
-      const cards = document.querySelectorAll('.service-main-card');
-      cards.forEach((card: any, index) => {
-        card.style.setProperty('--card-index', index % this.services.length);
-      });
-    }, 100);
-  }
-
-  serviceCreateInfiniteLoop(): void {
-    this.serviceInfiniteServices = [
-      ...this.services,
-      ...this.services,
-      ...this.services
-    ];
-  }
-
-  serviceNextSlide(): void {
-    if (this.isServiceAnimating) return;
-    
-    this.isServiceAnimating = true;
-    this.stopServiceAutoSlide();
-    
-    this.serviceCurrentSlide++;
-    
-    if (this.serviceCurrentSlide >= this.services.length) {
-      setTimeout(() => {
-        this.serviceSliderTrack.nativeElement.style.transition = 'none';
-        this.serviceCurrentSlide = 0;
-        this.serviceUpdateSliderPosition();
-        
-        setTimeout(() => {
-          this.serviceSliderTrack.nativeElement.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-          this.serviceUpdateSliderPosition();
-          this.isServiceAnimating = false;
-          this.startServiceAutoSlide();
-          this.serviceIsHorizontalScrollActive = false;
-        }, 50);
-      }, 600);
-    } else {
-      this.serviceUpdateSliderPosition();
-      setTimeout(() => {
-        this.isServiceAnimating = false;
-        this.startServiceAutoSlide();
-      }, 600);
-    }
-  }
-
-  servicePrevSlide(): void {
-    if (this.isServiceAnimating) return;
-    
-    this.isServiceAnimating = true;
-    this.stopServiceAutoSlide();
-    
-    if (this.serviceCurrentSlide === 0) {
-      this.serviceSliderTrack.nativeElement.style.transition = 'none';
-      this.serviceCurrentSlide = this.services.length;
-      this.serviceUpdateSliderPosition();
-      
-      setTimeout(() => {
-        this.serviceSliderTrack.nativeElement.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        this.serviceCurrentSlide--;
-        this.serviceUpdateSliderPosition();
-        setTimeout(() => {
-          this.isServiceAnimating = false;
-          this.startServiceAutoSlide();
-          this.serviceIsHorizontalScrollActive = false;
-        }, 600);
-      }, 50);
-    } else {
-      this.serviceCurrentSlide--;
-      this.serviceUpdateSliderPosition();
-      setTimeout(() => {
-        this.isServiceAnimating = false;
-        this.startServiceAutoSlide();
-      }, 600);
-    }
-  }
-
-  serviceUpdateSliderPosition(): void {
-    if (this.serviceSliderTrack) {
-      const translateValue = -(this.serviceCurrentSlide * (this.serviceCardWidth + this.serviceCardGap));
-      this.serviceSliderTrack.nativeElement.style.transform = `translateX(${translateValue}px)`;
-    }
-  }
-
-  startServiceAutoSlide() {
-    if (this.isServiceHovered || this.serviceIsHorizontalScrollActive) return;
-    
-    this.stopServiceAutoSlide();
-    this.serviceAutoSlideInterval = setInterval(() => {
-      if (!this.isServiceHovered && !this.isServiceAnimating && !this.serviceIsHorizontalScrollActive) {
-        this.serviceNextSlide();
-      }
-    }, 5000);
-  }
-
-  stopServiceAutoSlide() {
-    if (this.serviceAutoSlideInterval) {
-      clearInterval(this.serviceAutoSlideInterval);
-    }
-  }
-
-  // ============= HORIZONTAL SCROLL METHODS =============
-  private setupServiceHorizontalScroll() {
-    if (!this.serviceSection?.nativeElement) return;
-
-    const serviceEl = this.serviceSection.nativeElement;
-    const sliderContainer = serviceEl.querySelector('.service-slider-container');
-    
-    if (!sliderContainer) return;
-    
-    // Wheel event for mouse wheel (desktop/laptop only)
-    if (window.innerWidth > 768) {
-      sliderContainer.addEventListener('wheel', this.handleServiceWheel.bind(this), { passive: false });
-    }
-    
-    // Touch events for mobile
-    sliderContainer.addEventListener('touchstart', this.handleServiceTouchStart.bind(this), { passive: true });
-    sliderContainer.addEventListener('touchmove', this.handleServiceTouchMove.bind(this), { passive: false });
-    sliderContainer.addEventListener('touchend', this.handleServiceTouchEnd.bind(this));
-    
-    // Mouse enter/leave events
-    sliderContainer.addEventListener('mouseenter', this.handleServiceMouseEnter.bind(this));
-    sliderContainer.addEventListener('mouseleave', this.handleServiceMouseLeave.bind(this));
-    
-    // Prevent default drag behavior
-    sliderContainer.addEventListener('dragstart', (e: Event) => {
-      e.preventDefault();
-      return false;
-    });
-    
-    // Animation frame for smooth scrolling
-    this.animateServiceScroll();
-  }
-
-  private handleServiceWheel(event: WheelEvent) {
-    // Only handle on desktop/laptop (>768px)
-    if (window.innerWidth <= 768) return;
-    
-    if (!this.serviceSection?.nativeElement.contains(event.target as Node)) return;
-    
-    const currentTime = Date.now();
-    const deltaTime = currentTime - this.serviceLastWheelTime;
-    
-    // Accumulate wheel deltas
-    this.serviceWheelDeltaX += Math.abs(event.deltaX);
-    this.serviceWheelDeltaY += Math.abs(event.deltaY);
-    
-    // Determine scroll direction based on first significant movement
-    if (this.serviceScrollDirection === null) {
-      if (this.serviceWheelDeltaX > 10 && this.serviceWheelDeltaX > this.serviceWheelDeltaY) {
-        this.serviceScrollDirection = 'horizontal';
-        this.serviceIsHorizontalScrollActive = true;
-        event.preventDefault();
-      } else if (this.serviceWheelDeltaY > 10 && this.serviceWheelDeltaY > this.serviceWheelDeltaX) {
-        this.serviceScrollDirection = 'vertical';
-        this.serviceIsHorizontalScrollActive = false;
-      }
-    }
-    
-    // If horizontal scrolling is active, handle it
-    if (this.serviceScrollDirection === 'horizontal' && this.serviceIsHorizontalScrollActive) {
-      event.preventDefault();
-      event.stopPropagation();
-      
-      // Calculate scroll amount (prefer deltaY for vertical wheel, deltaX for horizontal wheel)
-      const scrollAmount = event.deltaMode === 0 ? event.deltaY : event.deltaY * 10;
-      
-      // Apply scrolling with reduced sensitivity
-      this.scrollServiceHorizontally(-scrollAmount * 0.3);
-      
-      // Lock vertical scroll
-      document.body.classList.add('no-vertical-scroll');
-    }
-    
-    // Reset direction after a pause in scrolling
-    if (deltaTime > 150) {
-      this.serviceScrollDirection = null;
-      this.serviceWheelDeltaX = 0;
-      this.serviceWheelDeltaY = 0;
-      
-      // Check if we've reached boundaries
-      this.checkServiceBoundaries();
-    }
-    
-    this.serviceLastWheelTime = currentTime;
-  }
-
-  private handleServiceTouchStart(event: TouchEvent) {
-    if (event.touches.length === 1 && this.serviceSection?.nativeElement.contains(event.target as Node)) {
-      this.serviceTouchStartX = event.touches[0].clientX;
-      this.serviceTouchStartY = event.touches[0].clientY;
-      this.serviceIsTouchScrolling = false;
-      this.serviceIsHorizontalScrollActive = false;
-    }
-  }
-
-  private handleServiceTouchMove(event: TouchEvent) {
-    if (event.touches.length === 1 && this.serviceSection?.nativeElement.contains(event.target as Node)) {
-      const touchX = event.touches[0].clientX;
-      const touchY = event.touches[0].clientY;
-      const deltaX = touchX - this.serviceTouchStartX;
-      const deltaY = touchY - this.serviceTouchStartY;
-      
-      // Determine scroll direction
-      if (!this.serviceIsTouchScrolling) {
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > this.serviceScrollThreshold) {
-          this.serviceIsTouchScrolling = true;
-          this.serviceIsHorizontalScrollActive = true;
-          event.preventDefault();
-        }
-      }
-      
-      // Handle horizontal scrolling
-      if (this.serviceIsTouchScrolling && this.serviceIsHorizontalScrollActive) {
-        event.preventDefault();
-        
-        // Apply scroll with inertia
-        this.scrollServiceHorizontally(-deltaX * 2);
-        
-        // Update touch start position for next move
-        this.serviceTouchStartX = touchX;
-        this.serviceTouchStartY = touchY;
-        
-        // Lock vertical scroll
-        document.body.classList.add('no-vertical-scroll');
-      }
-    }
-  }
-
-  private handleServiceTouchEnd() {
-    if (this.serviceIsTouchScrolling) {
-      // Apply momentum
-      this.serviceScrollVelocity *= 0.8;
-      
-      // Check boundaries
-      setTimeout(() => {
-        this.checkServiceBoundaries();
-      }, 100);
-    }
-    
-    this.serviceIsTouchScrolling = false;
-    this.serviceTouchStartX = 0;
-    this.serviceTouchStartY = 0;
-  }
-
-  private handleServiceMouseEnter() {
-    this.isServiceHovered = true;
-    this.stopServiceAutoSlide();
-  }
-
-  private handleServiceMouseLeave() {
-    this.isServiceHovered = false;
-    
-    // Only resume auto slide if not manually scrolling
-    if (!this.serviceIsHorizontalScrollActive) {
-      this.startServiceAutoSlide();
-    }
-    
-    // Reset scroll state
-    this.serviceScrollDirection = null;
-    this.serviceWheelDeltaX = 0;
-    this.serviceWheelDeltaY = 0;
-    
-    // Restore vertical scroll
-    document.body.classList.remove('no-vertical-scroll');
-    this.serviceIsHorizontalScrollActive = false;
-  }
-
-  private scrollServiceHorizontally(delta: number) {
-    this.serviceScrollVelocity = delta * 0.5;
-    this.isServiceScrolling = true;
-    
-    // Calculate if we should change slides
-    const slideThreshold = (this.serviceCardWidth + this.serviceCardGap) * 0.3;
-    
-    if (Math.abs(this.serviceScrollVelocity) > slideThreshold) {
-      if (this.serviceScrollVelocity > 0) {
-        this.servicePrevSlide();
-      } else {
-        this.serviceNextSlide();
-      }
-      this.serviceScrollVelocity = 0;
-    } else {
-      // Apply smooth scrolling
-      if (this.serviceSliderTrack?.nativeElement) {
-        const currentTranslate = this.getCurrentServiceTranslate();
-        const newTranslate = currentTranslate + this.serviceScrollVelocity;
-        this.serviceSliderTrack.nativeElement.style.transform = `translateX(${newTranslate}px)`;
-      }
-    }
-  }
-
-  private animateServiceScroll() {
-    const animate = () => {
-      if (Math.abs(this.serviceScrollVelocity) > 0.5) {
-        this.serviceScrollVelocity *= this.serviceScrollInertia;
-        
-        // Apply remaining velocity
-        if (this.serviceSliderTrack?.nativeElement) {
-          const currentTranslate = this.getCurrentServiceTranslate();
-          const newTranslate = currentTranslate + this.serviceScrollVelocity;
-          this.serviceSliderTrack.nativeElement.style.transform = `translateX(${newTranslate}px)`;
-        }
-        
-        requestAnimationFrame(animate);
-      } else {
-        this.serviceScrollVelocity = 0;
-        this.isServiceScrolling = false;
-        
-        // Snap to nearest slide
-        this.snapToNearestSlide();
-      }
-    };
-    
-    requestAnimationFrame(animate);
-  }
-
-  private snapToNearestSlide() {
-    if (!this.serviceSliderTrack?.nativeElement || this.isServiceAnimating) return;
-    
-    const currentTranslate = this.getCurrentServiceTranslate();
-    const slideWidth = this.serviceCardWidth + this.serviceCardGap;
-    const nearestSlide = Math.round(-currentTranslate / slideWidth);
-    
-    // Clamp to valid range
-    const clampedSlide = Math.max(0, Math.min(nearestSlide, this.services.length - 1));
-    
-    if (clampedSlide !== this.serviceCurrentSlide) {
-      this.serviceCurrentSlide = clampedSlide;
-      this.serviceUpdateSliderPosition();
-    }
-  }
-
-  private checkServiceBoundaries() {
-    const currentTranslate = this.getCurrentServiceTranslate();
-    const maxTranslate = -(this.services.length - 1) * (this.serviceCardWidth + this.serviceCardGap);
-    
-    // If at boundaries, release vertical scroll lock
-    if (currentTranslate >= 0 || currentTranslate <= maxTranslate) {
-      this.serviceIsHorizontalScrollActive = false;
-      document.body.classList.remove('no-vertical-scroll');
-    }
-  }
-
-  private getCurrentServiceTranslate(): number {
-    if (!this.serviceSliderTrack?.nativeElement) return 0;
-    
-    const transform = this.serviceSliderTrack.nativeElement.style.transform;
-    if (!transform || transform === 'none') return 0;
-    
-    const match = transform.match(/translateX\(([-\d.]+)px\)/);
-    return match ? parseFloat(match[1]) : 0;
-  }
-
-  private cleanupServiceEventListeners() {
-    if (this.serviceSection?.nativeElement) {
-      const sliderContainer = this.serviceSection.nativeElement.querySelector('.service-slider-container');
-      if (sliderContainer) {
-        sliderContainer.removeEventListener('wheel', this.handleServiceWheel.bind(this));
-        sliderContainer.removeEventListener('touchstart', this.handleServiceTouchStart.bind(this));
-        sliderContainer.removeEventListener('touchmove', this.handleServiceTouchMove.bind(this));
-        sliderContainer.removeEventListener('touchend', this.handleServiceTouchEnd.bind(this));
-        sliderContainer.removeEventListener('mouseenter', this.handleServiceMouseEnter.bind(this));
-        sliderContainer.removeEventListener('mouseleave', this.handleServiceMouseLeave.bind(this));
-      }
-    }
-  }
-
-  // @HostListener('window:resize')
-  // onResize() {
-  //   this.updateServiceCardWidth();
-    
-  //   // Reset scroll state on resize
-  //   this.serviceScrollVelocity = 0;
-  //   this.serviceScrollDirection = null;
-  //   this.isServiceScrolling = false;
-  //   this.serviceIsHorizontalScrollActive = false;
-  //   document.body.classList.remove('no-vertical-scroll');
-  // }
-
-  updateServiceCardWidth() {
-    if (window.innerWidth <= 320) {
-      this.serviceCardWidth = 280;
-      this.serviceCardGap = 20;
-    } else if (window.innerWidth <= 480) {
-      this.serviceCardWidth = window.innerWidth - 40;
-      this.serviceCardGap = 20;
-    } else if (window.innerWidth <= 768) {
-      this.serviceCardWidth = 340;
-      this.serviceCardGap = 30;
-    } else if (window.innerWidth <= 1024) {
-      this.serviceCardWidth = 380;
-      this.serviceCardGap = 35;
-    } else {
-      this.serviceCardWidth = 500;
-      this.serviceCardGap = 40;
-    }
-    
-    this.serviceUpdateSliderPosition();
-  }
-// ============= DRAG SCROLL METHODS (ADD THESE) =============
-  
-  private setupServiceDragScroll() {
-    if (!this.serviceSliderTrack?.nativeElement) return;
-    
-    const sliderTrack = this.serviceSliderTrack.nativeElement;
-    
-    // Mouse events for drag
-    sliderTrack.addEventListener('mousedown', this.handleDragStart.bind(this));
-    document.addEventListener('mousemove', this.handleDragMove.bind(this));
-    document.addEventListener('mouseup', this.handleDragEnd.bind(this));
-    document.addEventListener('mouseleave', this.handleDragEnd.bind(this));
-    
-    // Prevent default drag behavior on images
-    const images = sliderTrack.querySelectorAll('img');
-    images.forEach((img: Element) => {
-      img.addEventListener('dragstart', (e) => e.preventDefault());
-    });
-    
-    // Prevent text selection while dragging
-    sliderTrack.style.userSelect = 'none';
-    sliderTrack.style.webkitUserSelect = 'none';
-  }
-
-  private handleDragStart(event: MouseEvent) {
-    // Only enable drag on desktop/laptop (viewport width > 768px)
-    if (window.innerWidth <= 768) return;
-    
-    // Prevent dragging if clicking on buttons
-    if ((event.target as HTMLElement).closest('.service-nav-btn')) return;
-    
-    this.isDragging = true;
-    this.startX = event.pageX;
-    this.lastDragX = event.pageX;
-    this.lastDragTime = Date.now();
-    this.scrollLeftStart = this.getCurrentServiceTranslate();
-    this.dragVelocity = 0;
-    
-    // Stop auto slide while dragging
-    this.stopServiceAutoSlide();
-    this.serviceIsHorizontalScrollActive = true;
-    
-    // Change cursor
-    if (this.serviceSliderTrack?.nativeElement) {
-      this.serviceSliderTrack.nativeElement.style.cursor = 'grabbing';
-    }
-    
-    // Prevent text selection
-    event.preventDefault();
-  }
-
-  private handleDragMove(event: MouseEvent) {
-    if (!this.isDragging) return;
-    
-    event.preventDefault();
-    
-    const currentX = event.pageX;
-    const deltaX = currentX - this.startX;
-    const currentTime = Date.now();
-    const deltaTime = currentTime - this.lastDragTime;
-    
-    // Calculate velocity for momentum
-    if (deltaTime > 0) {
-      this.dragVelocity = (currentX - this.lastDragX) / deltaTime * 16; // Normalize to ~60fps
-    }
-    
-    this.lastDragX = currentX;
-    this.lastDragTime = currentTime;
-    
-    // Apply drag movement
-    if (this.serviceSliderTrack?.nativeElement) {
-      const newTranslate = this.scrollLeftStart + deltaX;
-      
-      // Add resistance at boundaries
-      const maxTranslate = 0;
-      const minTranslate = -(this.services.length * (this.serviceCardWidth + this.serviceCardGap));
-      
-      let finalTranslate = newTranslate;
-      
-      if (newTranslate > maxTranslate) {
-        const overflow = newTranslate - maxTranslate;
-        finalTranslate = maxTranslate + overflow * 0.3; // Resistance effect
-      } else if (newTranslate < minTranslate) {
-        const overflow = minTranslate - newTranslate;
-        finalTranslate = minTranslate - overflow * 0.3; // Resistance effect
-      }
-      
-      this.serviceSliderTrack.nativeElement.style.transition = 'none';
-      this.serviceSliderTrack.nativeElement.style.transform = `translateX(${finalTranslate}px)`;
-    }
-  }
-
-  private handleDragEnd(event: MouseEvent) {
-    if (!this.isDragging) return;
-    
-    this.isDragging = false;
-    
-    // Restore cursor
-    if (this.serviceSliderTrack?.nativeElement) {
-      this.serviceSliderTrack.nativeElement.style.cursor = 'grab';
-    }
-    
-    // Apply momentum scrolling
-    this.applyDragMomentum();
-  }
-
-  private applyDragMomentum() {
-    const minVelocity = 0.5;
-    const friction = 0.92;
-    const snapThreshold = 50; // Distance threshold to trigger slide change
-    
-    const animate = () => {
-      if (Math.abs(this.dragVelocity) > minVelocity) {
-        this.dragVelocity *= friction;
-        
-        const currentTranslate = this.getCurrentServiceTranslate();
-        const newTranslate = currentTranslate + this.dragVelocity;
-        
-        if (this.serviceSliderTrack?.nativeElement) {
-          this.serviceSliderTrack.nativeElement.style.transition = 'none';
-          this.serviceSliderTrack.nativeElement.style.transform = `translateX(${newTranslate}px)`;
-        }
-        
-        this.dragAnimationFrame = requestAnimationFrame(animate);
-      } else {
-        // Momentum finished, snap to nearest slide
-        this.snapToNearestSlideAfterDrag();
-      }
-    };
-    
-    // Start momentum animation if velocity is significant
-    if (Math.abs(this.dragVelocity) > minVelocity) {
-      animate();
-    } else {
-      this.snapToNearestSlideAfterDrag();
-    }
-  }
-
-  private snapToNearestSlideAfterDrag() {
-    if (!this.serviceSliderTrack?.nativeElement) return;
-    
-    const currentTranslate = this.getCurrentServiceTranslate();
-    const slideWidth = this.serviceCardWidth + this.serviceCardGap;
-    
-    // Calculate which slide we're closest to
-    let nearestSlide = Math.round(-currentTranslate / slideWidth);
-    
-    // Clamp to valid range
-    nearestSlide = Math.max(0, Math.min(nearestSlide, this.services.length - 1));
-    
-    // Handle infinite loop wrapping
-    if (nearestSlide >= this.services.length) {
-      this.serviceCurrentSlide = 0;
-      this.serviceSliderTrack.nativeElement.style.transition = 'none';
-      this.serviceUpdateSliderPosition();
-      
-      setTimeout(() => {
-        if (this.serviceSliderTrack?.nativeElement) {
-          this.serviceSliderTrack.nativeElement.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
-      }, 50);
-    } else {
-      this.serviceCurrentSlide = nearestSlide;
-      this.serviceSliderTrack.nativeElement.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-      this.serviceUpdateSliderPosition();
-    }
-    
-    // Re-enable auto slide after snapping
-    setTimeout(() => {
-      this.serviceIsHorizontalScrollActive = false;
-      if (!this.isServiceHovered) {
-        this.startServiceAutoSlide();
-      }
-    }, 600);
-  }
-
-  private cleanupServiceDragScroll() {
-    if (this.serviceSliderTrack?.nativeElement) {
-      const sliderTrack = this.serviceSliderTrack.nativeElement;
-      sliderTrack.removeEventListener('mousedown', this.handleDragStart.bind(this));
-    }
-    
-    document.removeEventListener('mousemove', this.handleDragMove.bind(this));
-    document.removeEventListener('mouseup', this.handleDragEnd.bind(this));
-    document.removeEventListener('mouseleave', this.handleDragEnd.bind(this));
-  }
-
-  // Update the existing method to reset drag state
-  @HostListener('window:resize')
-  onResize() {
-    this.updateServiceCardWidth();
-    
-    // Reset all scroll states
-    this.serviceScrollVelocity = 0;
-    this.serviceScrollDirection = null;
-    this.isServiceScrolling = false;
-    this.serviceIsHorizontalScrollActive = false;
-    this.isDragging = false; // ADD THIS
-    this.dragVelocity = 0; // ADD THIS
-    
-    document.body.classList.remove('no-vertical-scroll');
   }
 
 
@@ -1198,6 +504,170 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  
+ @ViewChild('sliderViewport', { static: false }) sliderViewport!: ElementRef;
 
+  public homeServiceServices: HomeServiceService[] = [
+    { 
+      id: '01', 
+      title: 'Building Construction', 
+      description: 'Professional construction services with modern techniques and quality materials.',
+      image: 'assets/service1.jpg',
+      icon: 'fa-building'
+    },
+    { 
+      id: '02', 
+      title: 'Architecture Design', 
+      description: 'Innovative architectural designs that blend functionality with aesthetic appeal.',
+      image: 'assets/service2.jpg',
+      icon: 'fa-drafting-compass'
+    },
+    { 
+      id: '03', 
+      title: 'Building Renovation', 
+      description: 'Transform your existing spaces with our expert renovation services.',
+      image: 'assets/service3.jpg',
+      icon: 'fa-hammer'
+    },
+    { 
+      id: '04', 
+      title: 'Quality Materials', 
+      description: 'Premium quality materials ensuring durability and sustainability.',
+      image: 'assets/service4.jpg',
+      icon: 'fa-award'
+    },
+    { 
+      id: '05', 
+      title: 'Project Management', 
+      description: 'End-to-end project management for timely and efficient completion.',
+      image: 'assets/service5.jpg',
+      icon: 'fa-chart-line'
+    },
+    { 
+      id: '06', 
+      title: 'Interior Design', 
+      description: 'Create beautiful and functional interiors that reflect your style.',
+      image: 'assets/service6.jpg',
+      icon: 'fa-palette'
+    },
+    { 
+      id: '07', 
+      title: 'Structural Engineering', 
+      description: 'Expert structural analysis and engineering solutions.',
+      image: 'assets/service7.jpg',
+      icon: 'fa-cogs'
+    },
+    { 
+      id: '08', 
+      title: 'Green Building', 
+      description: 'Sustainable and eco-friendly building solutions.',
+      image: 'assets/service8.jpg',
+      icon: 'fa-leaf'
+    },
+  ];
+
+  public homeServiceCurrentSlide = 0;
+  public homeServiceCurrentOffset = 0;
+  public homeServiceShowDots = false;
+  public homeServicePaginationDots: number[] = [];
+  
+  private homeServiceCardsPerSlide = 4;
+  private homeServiceCardWidth = 310;
+  private homeServiceCardGap = 20;
+  private homeServiceTotalSlides = 0;
+  private homeServiceResizeTimeout: any;
+  private isMobile = false;
+
+  @HostListener('window:resize')
+  homeServiceOnResize(): void {
+    if (this.homeServiceResizeTimeout) {
+      clearTimeout(this.homeServiceResizeTimeout);
+    }
+    
+    this.homeServiceResizeTimeout = setTimeout(() => {
+      this.homeServiceCalculateResponsiveValues();
+      this.homeServiceUpdateSliderPosition();
+      this.homeServiceInitializePagination();
+    }, 150);
+  }
+
+  private homeServiceCalculateResponsiveValues(): void {
+    const windowWidth = window.innerWidth;
+    
+    if (windowWidth <= 480) {
+      this.homeServiceCardsPerSlide = 1;
+      this.homeServiceShowDots = true;
+      this.isMobile = true;
+    } else if (windowWidth <= 768) {
+      this.homeServiceCardsPerSlide = 2;
+      this.homeServiceShowDots = true;
+      this.isMobile = true;
+    } else if (windowWidth <= 1023) {
+      this.homeServiceCardsPerSlide = 3;
+      this.homeServiceShowDots = true;
+      this.isMobile = true;
+    } else {
+      this.homeServiceCardsPerSlide = 4;
+      this.homeServiceShowDots = false;
+      this.isMobile = false;
+    }
+    
+    this.homeServiceTotalSlides = Math.ceil(this.homeServiceServices.length / this.homeServiceCardsPerSlide);
+    
+    // Reset slide if out of bounds
+    if (this.homeServiceCurrentSlide >= this.homeServiceTotalSlides) {
+      this.homeServiceCurrentSlide = 0;
+    }
+  }
+
+  private homeServiceInitializePagination(): void {
+    this.homeServicePaginationDots = Array.from(
+      { length: this.homeServiceTotalSlides }, 
+      (_, i) => i
+    );
+  }
+
+  private homeServiceUpdateSliderPosition(): void {
+    if (this.isMobile) {
+      // On mobile/tablet, don't use transform - let native scroll work
+      this.homeServiceCurrentOffset = 0;
+    } else {
+      // On desktop, use transform for slider
+      const slideWidth = (this.homeServiceCardWidth + this.homeServiceCardGap) * this.homeServiceCardsPerSlide;
+      this.homeServiceCurrentOffset = -(this.homeServiceCurrentSlide * slideWidth);
+    }
+  }
+
+  public homeServiceNextSlide(): void {
+    if (this.homeServiceCurrentSlide < this.homeServiceTotalSlides - 1) {
+      this.homeServiceCurrentSlide++;
+    } else {
+      this.homeServiceCurrentSlide = 0;
+    }
+    this.homeServiceUpdateSliderPosition();
+  }
+
+  public homeServicePrevSlide(): void {
+    if (this.homeServiceCurrentSlide > 0) {
+      this.homeServiceCurrentSlide--;
+    } else {
+      this.homeServiceCurrentSlide = this.homeServiceTotalSlides - 1;
+    }
+    this.homeServiceUpdateSliderPosition();
+  }
+
+  public homeServiceGoToSlide(slideIndex: number): void {
+    if (slideIndex >= 0 && slideIndex < this.homeServiceTotalSlides) {
+      this.homeServiceCurrentSlide = slideIndex;
+      this.homeServiceUpdateSliderPosition();
+      
+      // On mobile, scroll to the appropriate position
+      if (this.isMobile && this.sliderViewport) {
+        const scrollAmount = slideIndex * (this.homeServiceCardWidth + this.homeServiceCardGap) * this.homeServiceCardsPerSlide;
+        this.sliderViewport.nativeElement.scrollTo({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
 }
