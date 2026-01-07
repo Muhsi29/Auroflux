@@ -1,4 +1,4 @@
-/* --- GLOBAL RESET (Applied via Component) --- */
+/* --- GLOBAL RESET --- */
 :host {
   display: block;
   width: 100%;
@@ -7,8 +7,7 @@
   --banner-green: #22B34A;
   --banner-white: #ffffff;
   --text-dark: #0277C7;
-
-  /* #00A887  Alternate Green*/
+  --accent-orange: #ff5e14;
   
   /* Typography Scale */
   --font-subtitle-size: 14.4px;
@@ -17,7 +16,6 @@
   --font-btn-size: 15.2px;
 }
 
-/* Forces the body to have no margin even if not set in styles.css */
 :host-context(body) {
   margin: 0;
   padding: 0;
@@ -29,9 +27,9 @@
 }
 
 /* ============================================
-   PROJECT DETAILS BANNER - BASE STYLES
+   BANNER SECTION - USING YOUR EXISTING CLASSES
    ============================================ */
-.project-details-banner {
+.about-us-banner {
   position: relative;
   height: 400px;
   width: 100%;
@@ -46,7 +44,7 @@
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 300px 0;
+    padding: 300px 0;
 
   &::before {
     content: '';
@@ -60,27 +58,24 @@
   }
 }
 
-/* ============================================
-   BANNER CONTENT
-   ============================================ */
-.project-details-banner-content {
+.about-banner-content {
   width: 100%;
   position: relative;
   z-index: 2;
 }
 
-.project-details-banner-container {
+.about-banner-container {
   width: 85%;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.project-details-banner-text-area {
+.about-banner-text-area {
   max-width: 600px;
 }
 
-.project-details-banner-title {
+.about-banner-title {
   font-size: 55px;
   font-weight: 500;
   margin-bottom: 15px;
@@ -89,15 +84,15 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.project-details-banner-breadcrumb {
+.about-banner-breadcrumb {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 16px;
 }
 
-.project-details-banner-home-link,
-.project-details-banner-project-link {
+.about-banner-home-link,
+.about-banner-project-link {
   color: #22b34a;
   font-weight: 700;
   cursor: pointer;
@@ -106,8 +101,8 @@
   padding-bottom: 3px;
 }
 
-.project-details-banner-home-link::after,
-.project-details-banner-project-link::after {
+.about-banner-home-link::after,
+.about-banner-project-link::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -118,31 +113,28 @@
   transition: width 0.3s ease;
 }
 
-.project-details-banner-home-link:hover,
-.project-details-banner-project-link:hover {
+.about-banner-home-link:hover,
+.about-banner-project-link:hover {
   color: #ffffff;
 }
 
-.project-details-banner-home-link:hover::after,
-.project-details-banner-project-link:hover::after {
+.about-banner-home-link:hover::after,
+.about-banner-project-link:hover::after {
   width: 100%;
 }
 
-.project-details-banner-separator {
+.about-banner-separator {
   color: rgba(255, 255, 255, 0.6);
   font-size: 14px;
 }
 
-.project-details-banner-current-page {
+.about-banner-current-page {
   color: white;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
 
-/* ============================================
-   ORANGE ACCENT SHAPE
-   ============================================ */
-.project-details-banner-orange-accent {
+.about-banner-orange-accent {
   position: absolute;
   top: 0;
   right: 0;
@@ -156,65 +148,242 @@
 }
 
 /* ============================================
-   MACHINE IMAGE
+   PROJECT DETAILS CONTENT - YOUR EXISTING CLASSES
    ============================================ */
-.project-details-banner-machine-wrapper {
-  position: absolute;
-  right: 5%;
-  bottom: -20px;
-  z-index: 3;
-  width: 450px;
-  animation: floatMachine 3s ease-in-out infinite;
-  transition: all 0.5s ease;
-
-  &:hover {
-    transform: translateY(-10px);
-    animation-play-state: paused;
-  }
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
 }
 
-@keyframes floatMachine {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-.project-details-banner-machine-img {
+.hero-section {
   width: 100%;
-  filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+  margin-bottom: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
   transition: transform 0.5s ease;
 }
 
-.project-details-banner-machine-wrapper:hover .project-details-banner-machine-img {
-  transform: scale(1.05);
+.hero-image:hover {
+  transform: scale(1.02);
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-tag {
+  color: #888;
+  font-size: var(--font-subtitle-size);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.main-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 10px 0 35px 0;
+  color: #1a1d2e;
+  line-height: 1.2;
+}
+
+.intro-text {
+  margin-bottom: 40px;
+}
+
+.intro-text p {
+  margin-bottom: 25px;
+  color: #666;
+  font-size: var(--font-desc-size);
+  line-height: 1.8;
+}
+
+/* ============================================
+   GRID SYSTEM
+   ============================================ */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 60px;
+  margin-top: 50px;
+}
+
+.details-column {
+  padding-right: 20px;
+}
+
+.details-column h3 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #1a1d2e;
+}
+
+.details-column p {
+  color: #666;
+  font-size: var(--font-desc-size);
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.details-column h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 40px 0 20px 0;
+  color: #1a1d2e;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--banner-green);
+}
+
+/* ============================================
+   FEATURE LIST
+   ============================================ */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0 40px 0;
+}
+
+.feature-list li {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: flex-start;
+  font-size: var(--font-desc-size);
+  color: #555;
+}
+
+.check-icon {
+  background-color: var(--banner-green);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-right: 15px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.footer-note {
+  color: #666;
+  font-size: var(--font-desc-size);
+  line-height: 1.8;
+  font-style: italic;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border-left: 4px solid var(--banner-green);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ============================================
+   SIDEBAR STYLING
+   ============================================ */
+.info-sidebar {
+  background-color: #f4f7f9;
+  padding: 40px;
+  border-radius: 8px;
+  height: fit-content;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eaeaea;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #1a1d2e;
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  background-color: var(--text-dark);
+  margin-bottom: 30px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row .label {
+  font-weight: 600;
+  color: #222;
+  flex: 1;
+}
+
+.info-row .value {
+  color: #666;
+  text-align: right;
+  flex: 1;
+  font-weight: 500;
 }
 
 /* ============================================
    RESPONSIVE DESIGN - LAPTOP (1024px)
    ============================================ */
 @media screen and (max-width: 1024px) {
-  .project-details-banner {
+  .page-container {
+    padding: 50px 30px;
+  }
+  
+  .grid-layout {
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+  }
+  
+  .main-title {
+    font-size: 42px;
+  }
+  
+  .details-column h3 {
+    font-size: 28px;
+  }
+  
+  .about-us-banner {
     height: 350px;
   }
-
-  .project-details-banner-title {
+  
+  .about-banner-title {
     font-size: 48px;
   }
-
-  .project-details-banner-container {
+  
+  .about-banner-container {
     width: 90%;
   }
-
-  .project-details-banner-machine-wrapper {
-    width: 380px;
-    right: 3%;
-  }
-
-  .project-details-banner-orange-accent {
+  
+  .about-banner-orange-accent {
     width: 35%;
+  }
+  
+  .hero-image {
+    max-height: 500px;
   }
 }
 
@@ -222,37 +391,65 @@
    RESPONSIVE DESIGN - TABLET (768px)
    ============================================ */
 @media screen and (max-width: 768px) {
-  .project-details-banner {
+  .page-container {
+    padding: 40px 20px;
+  }
+  
+  .grid-layout {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .main-title {
+    font-size: 36px;
+    margin: 10px 0 25px 0;
+  }
+  
+  .details-column h3 {
+    font-size: 24px;
+  }
+  
+  .details-column h4 {
+    font-size: 20px;
+  }
+  
+  .details-column {
+    padding-right: 0;
+  }
+  
+  .info-sidebar {
+    padding: 30px;
+  }
+  
+  .about-us-banner {
     height: 300px;
   }
-
-  .project-details-banner-title {
+  
+  .about-banner-title {
     font-size: 42px;
     margin-bottom: 10px;
   }
-
-  .project-details-banner-breadcrumb {
+  
+  .about-banner-breadcrumb {
     font-size: 15px;
   }
-
-  .project-details-banner-container {
+  
+  .about-banner-container {
     width: 92%;
     padding: 0 15px;
   }
-
-  .project-details-banner-machine-wrapper {
-    width: 280px;
-    right: 2%;
-    bottom: -10px;
-  }
-
-  .project-details-banner-orange-accent {
+  
+  .about-banner-orange-accent {
     width: 40%;
     clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
-
-  .project-details-banner-text-area {
+  
+  .about-banner-text-area {
     max-width: 500px;
+  }
+  
+  .hero-image {
+    max-height: 400px;
   }
 }
 
@@ -260,37 +457,72 @@
    RESPONSIVE DESIGN - MOBILE (480px)
    ============================================ */
 @media screen and (max-width: 480px) {
-  .project-details-banner {
+  .page-container {
+    padding: 30px 15px;
+  }
+  
+  .main-title {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  
+  .details-column h3 {
+    font-size: 20px;
+  }
+  
+  .details-column h4 {
+    font-size: 18px;
+  }
+  
+  .info-row {
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px 0;
+  }
+  
+  .info-row .value {
+    text-align: left;
+  }
+  
+  .about-us-banner {
     height: 250px;
   }
-
-  .project-details-banner-title {
+  
+  .about-banner-title {
     font-size: 36px;
   }
-
-  .project-details-banner-breadcrumb {
+  
+  .about-banner-breadcrumb {
     font-size: 14px;
     gap: 8px;
   }
-
-  .project-details-banner-container {
+  
+  .about-banner-container {
     width: 95%;
     padding: 0 10px;
   }
-
-  .project-details-banner-machine-wrapper {
-    width: 200px;
-    right: 1%;
-    bottom: -5px;
-  }
-
-  .project-details-banner-orange-accent {
+  
+  .about-banner-orange-accent {
     width: 50%;
     clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
-
-  .project-details-banner-text-area {
+  
+  .about-banner-text-area {
     max-width: 300px;
+  }
+  
+  .hero-image {
+    max-height: 300px;
+  }
+  
+  .intro-text p,
+  .details-column p,
+  .footer-note {
+    font-size: 16px;
+  }
+  
+  .info-sidebar {
+    padding: 25px 20px;
   }
 }
 
@@ -298,28 +530,34 @@
    RESPONSIVE DESIGN - SMALL MOBILE (320px)
    ============================================ */
 @media screen and (max-width: 320px) {
-  .project-details-banner {
+  .main-title {
+    font-size: 24px;
+  }
+  
+  .details-column h3 {
+    font-size: 18px;
+  }
+  
+  .about-us-banner {
     height: 220px;
   }
-
-  .project-details-banner-title {
+  
+  .about-banner-title {
     font-size: 32px;
   }
-
-  .project-details-banner-breadcrumb {
+  
+  .about-banner-breadcrumb {
     font-size: 13px;
     flex-wrap: wrap;
   }
-
-  .project-details-banner-machine-wrapper {
-    width: 160px;
-    right: 0;
-    bottom: 0;
-  }
-
-  .project-details-banner-orange-accent {
+  
+  .about-banner-orange-accent {
     width: 60%;
     opacity: 0.6;
+  }
+  
+  .feature-list li {
+    font-size: 15px;
   }
 }
 
@@ -327,86 +565,31 @@
    TABLET LANDSCAPE (Between 769px and 1024px)
    ============================================ */
 @media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-  .project-details-banner {
+  .hero-image {
+    max-height: 450px;
+  }
+  
+  .about-us-banner {
     height: 320px;
   }
-
-  .project-details-banner-machine-wrapper {
-    width: 350px;
-    right: 4%;
-    bottom: -15px;
-  }
-}
-
-/* ============================================
-   REDUCED MOTION SUPPORT
-   ============================================ */
-@media (prefers-reduced-motion: reduce) {
-  .project-details-banner-machine-wrapper {
-    animation: none;
-  }
-
-  .project-details-banner-machine-wrapper:hover,
-  .project-details-banner-machine-wrapper:hover .project-details-banner-machine-img,
-  .project-details-banner-home-link::after,
-  .project-details-banner-project-link::after {
-    transition: none;
-    transform: none;
-  }
-}
-
-/* ============================================
-   DARK MODE SUPPORT
-   ============================================ */
-@media (prefers-color-scheme: dark) {
-  .project-details-banner::before {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
-  }
-
-  .project-details-banner-title {
-    color: #f1f5f9;
-  }
-
-  .project-details-banner-current-page {
-    color: #e2e8f0;
+  
+  .grid-layout {
+    grid-template-columns: 1fr 320px;
+    gap: 30px;
   }
 }
 
 /* ============================================
    ACCESSIBILITY IMPROVEMENTS
    ============================================ */
-.project-details-banner-home-link:focus,
-.project-details-banner-project-link:focus {
+.about-banner-home-link:focus,
+.about-banner-project-link:focus {
   outline: 2px solid #22b34a;
   outline-offset: 4px;
   border-radius: 2px;
 }
 
-.project-details-banner-home-link:focus-visible,
-.project-details-banner-project-link:focus-visible {
+.about-banner-home-link:focus-visible,
+.about-banner-project-link:focus-visible {
   background-color: rgba(34, 179, 74, 0.1);
-}
-
-/* ============================================
-   PRINT STYLES
-   ============================================ */
-@media print {
-  .project-details-banner {
-    height: 200px;
-    background: #1a1d2e !important;
-  }
-
-  .project-details-banner-orange-accent,
-  .project-details-banner-machine-wrapper {
-    display: none;
-  }
-
-  .project-details-banner-title {
-    color: #000000;
-    font-size: 32px;
-  }
-
-  .project-details-banner-breadcrumb {
-    color: #666666;
-  }
 }

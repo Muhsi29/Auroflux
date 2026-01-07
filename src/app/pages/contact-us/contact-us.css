@@ -1,0 +1,962 @@
+/* --- GLOBAL RESET (Applied via Component) --- */
+:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  --banner-green: #22B34A;
+  --banner-white: #ffffff;
+  --text-dark: #0277C7;
+
+  /* #00A887  Alternate Green*/
+  
+  /* Typography Scale */
+  --font-subtitle-size: 14.4px;
+  --font-title-size: 67px;
+  --font-desc-size: 18.4px;
+  --font-btn-size: 15.2px;
+}
+
+/* Forces the body to have no margin even if not set in styles.css */
+:host-context(body) {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================
+   CONTACT US BANNER - BASE STYLES
+   ============================================ */
+.contact-us-banner {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background-color: #1a1d2e;
+  background-image: url('../../../assets/images/banner-1.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 300px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+  }
+}
+
+/* ============================================
+   BANNER CONTENT
+   ============================================ */
+.contact-us-banner-content {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-us-banner-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact-us-banner-text-area {
+  max-width: 600px;
+}
+
+.contact-us-banner-title {
+  font-size: 55px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: white;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.contact-us-banner-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.contact-us-banner-home-link {
+  color: #22b34a;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.contact-us-banner-home-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #22b34a;
+  transition: width 0.3s ease;
+}
+
+.contact-us-banner-home-link:hover {
+  color: #ffffff;
+}
+
+.contact-us-banner-home-link:hover::after {
+  width: 100%;
+}
+
+.contact-us-banner-separator {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.contact-us-banner-current-page {
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ORANGE ACCENT SHAPE
+   ============================================ */
+.contact-us-banner-orange-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: #ff5e14;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+  z-index: 1;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+}
+
+/* ============================================
+   MACHINE IMAGE
+   ============================================ */
+.contact-us-banner-machine-wrapper {
+  position: absolute;
+  right: 5%;
+  bottom: -20px;
+  z-index: 3;
+  width: 450px;
+  animation: floatMachine 3s ease-in-out infinite;
+  transition: all 0.5s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    animation-play-state: paused;
+  }
+}
+
+@keyframes floatMachine {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.contact-us-banner-machine-img {
+  width: 100%;
+  filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+  transition: transform 0.5s ease;
+}
+
+.contact-us-banner-machine-wrapper:hover .contact-us-banner-machine-img {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px)
+   ============================================ */
+@media screen and (max-width: 1024px) {
+  .contact-us-banner {
+    height: 350px;
+  }
+
+  .contact-us-banner-title {
+    font-size: 48px;
+  }
+
+  .contact-us-banner-container {
+    width: 90%;
+  }
+
+  .contact-us-banner-machine-wrapper {
+    width: 380px;
+    right: 3%;
+  }
+
+  .contact-us-banner-orange-accent {
+    width: 35%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .contact-us-banner {
+    height: 300px;
+  }
+
+  .contact-us-banner-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  .contact-us-banner-breadcrumb {
+    font-size: 15px;
+  }
+
+  .contact-us-banner-container {
+    width: 92%;
+    padding: 0 15px;
+  }
+
+  .contact-us-banner-machine-wrapper {
+    width: 280px;
+    right: 2%;
+    bottom: -10px;
+  }
+
+  .contact-us-banner-orange-accent {
+    width: 40%;
+    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .contact-us-banner-text-area {
+    max-width: 500px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .contact-us-banner {
+    height: 250px;
+  }
+
+  .contact-us-banner-title {
+    font-size: 36px;
+  }
+
+  .contact-us-banner-breadcrumb {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .contact-us-banner-container {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .contact-us-banner-machine-wrapper {
+    width: 200px;
+    right: 1%;
+    bottom: -5px;
+  }
+
+  .contact-us-banner-orange-accent {
+    width: 50%;
+    clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .contact-us-banner-text-area {
+    max-width: 300px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (320px)
+   ============================================ */
+@media screen and (max-width: 320px) {
+  .contact-us-banner {
+    height: 220px;
+  }
+
+  .contact-us-banner-title {
+    font-size: 32px;
+  }
+
+  .contact-us-banner-breadcrumb {
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+
+  .contact-us-banner-machine-wrapper {
+    width: 160px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .contact-us-banner-orange-accent {
+    width: 60%;
+    opacity: 0.6;
+  }
+}
+
+/* ============================================
+   TABLET LANDSCAPE (Between 769px and 1024px)
+   ============================================ */
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .contact-us-banner {
+    height: 320px;
+  }
+
+  .contact-us-banner-machine-wrapper {
+    width: 350px;
+    right: 4%;
+    bottom: -15px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .contact-us-banner-machine-wrapper {
+    animation: none;
+  }
+
+  .contact-us-banner-machine-wrapper:hover,
+  .contact-us-banner-machine-wrapper:hover .contact-us-banner-machine-img,
+  .contact-us-banner-home-link::after {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .contact-us-banner::before {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
+  }
+
+  .contact-us-banner-title {
+    color: #f1f5f9;
+  }
+
+  .contact-us-banner-current-page {
+    color: #e2e8f0;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.contact-us-banner-home-link:focus {
+  outline: 2px solid #22b34a;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.contact-us-banner-home-link:focus-visible {
+  background-color: rgba(34, 179, 74, 0.1);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .contact-us-banner {
+    height: 200px;
+    background: #1a1d2e !important;
+  }
+
+  .contact-us-banner-orange-accent,
+  .contact-us-banner-machine-wrapper {
+    display: none;
+  }
+
+  .contact-us-banner-title {
+    color: #000000;
+    font-size: 32px;
+  }
+
+  .contact-us-banner-breadcrumb {
+    color: #666666;
+  }
+}
+
+/* ============================================
+   CONTACT DETAILS SECTION - BASE STYLES
+   ============================================ */
+.contact-details-section {
+  width: 100%;
+  margin: 0;
+  padding: 80px 0; /* Removed horizontal padding */
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.contact-details-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   HEADER STYLING
+   ============================================ */
+.contact-details-header-container {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.contact-details-top-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--contact-orange);
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.contact-details-inner-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--contact-orange);
+  border-radius: 50%;
+}
+
+.contact-details-sub-title {
+  color: var(--banner-green);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: var(--font-subtitle-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.contact-details-arrow {
+  font-size: 16px;
+  line-height: 1;
+  animation: arrowPulse 2s infinite;
+}
+
+@keyframes arrowPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.contact-details-main-heading {
+  font-size: 55px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.1;
+  position: relative;
+  
+  /* &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--banner-green), transparent);
+  } */
+}
+
+/* ============================================
+   CARDS LAYOUT - TOUCH EDGES & CENTERED
+   ============================================ */
+.contact-details-cards-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.contact-details-info-card {
+  flex: 1;
+  background-color: #f8fafc;
+  padding: 40px 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  border-radius: 10px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  min-width: 0; /* Allow cards to shrink properly */
+  
+  &:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:hover .contact-details-card-hover-effect {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-details-card-hover-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--banner-green), var(--contact-orange));
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+/* ============================================
+   ICON BOX WITH GREEN COLOR & ANIMATIONS
+   ============================================ */
+.contact-details-icon-box {
+  background-color: #ffffff;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 2;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(34, 179, 74, 0.2);
+    animation: ripple 2s infinite;
+    z-index: -1;
+  }
+  
+  .contact-details-info-card:hover & {
+    background-color: var(--banner-green);
+    transform: rotateY(180deg) scale(1.1);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 140%;
+    height: 140%;
+    opacity: 0;
+  }
+}
+
+.contact-details-icon-box i {
+  font-size: 32px;
+  color: var(--banner-green);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  .contact-details-info-card:hover & {
+    color: #ffffff;
+    transform: rotateY(-180deg) scale(1.2);
+  }
+}
+
+/* ============================================
+   CONTENT BOX
+   ============================================ */
+.contact-details-content-box {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  
+  .contact-details-info-card:hover & {
+    .contact-details-card-title {
+      color: var(--banner-green);
+    }
+  }
+}
+
+.contact-details-card-title {
+  margin: 0 0 15px 0;
+  font-size: var(--font-card-title);
+  font-weight: 700;
+  color: var(--contact-text-primary);
+  line-height: 1.2;
+  transition: color 0.4s ease;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--banner-green);
+    transition: width 0.4s ease;
+  }
+  
+  .contact-details-info-card:hover &::after {
+    width: 60px;
+  }
+}
+
+.contact-details-card-text {
+  margin: 0 0 10px 0;
+  color: var(--contact-text-secondary);
+  font-size: var(--font-card-text);
+  line-height: 1.6;
+  transition: color 0.3s ease;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  .contact-details-info-card:hover & {
+    color: #444444;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px)
+   ============================================ */
+@media screen and (max-width: 1024px) {
+  .contact-details-section {
+    padding: 60px 0;
+  }
+  
+  .contact-details-container {
+    padding: 0 20px;
+  }
+  
+  .contact-details-main-heading {
+    font-size: 48px;
+  }
+  
+  .contact-details-cards-grid {
+    gap: 20px;
+  }
+  
+  .contact-details-info-card {
+    padding: 35px 25px;
+  }
+  
+  .contact-details-icon-box {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .contact-details-icon-box i {
+    font-size: 28px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .contact-details-section {
+    padding: 50px 0;
+  }
+  
+  .contact-details-container {
+    padding: 0 15px;
+  }
+  
+  .contact-details-header-container {
+    margin-bottom: 40px;
+  }
+  
+  .contact-details-main-heading {
+    font-size: 42px;
+    
+    &::after {
+      width: 80px;
+    }
+  }
+  
+  .contact-details-cards-grid {
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .contact-details-info-card {
+    padding: 35px 30px;
+  }
+  
+  .contact-details-sub-title {
+    font-size: 13px;
+  }
+  
+  .contact-details-icon-box::before {
+    animation: ripple 3s infinite;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .contact-details-section {
+    padding: 40px 0;
+  }
+  
+  .contact-details-container {
+    padding: 0 15px;
+  }
+  
+  .contact-details-main-heading {
+    font-size: 36px;
+    
+    &::after {
+      width: 60px;
+    }
+  }
+  
+  .contact-details-info-card {
+    padding: 30px 25px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .contact-details-icon-box {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .contact-details-icon-box i {
+    font-size: 26px;
+  }
+  
+  .contact-details-card-title {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  .contact-details-card-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (320px)
+   ============================================ */
+@media screen and (max-width: 320px) {
+  .contact-details-section {
+    padding: 30px 0;
+  }
+  
+  .contact-details-container {
+    padding: 0 10px;
+  }
+  
+  .contact-details-main-heading {
+    font-size: 32px;
+    
+    &::after {
+      width: 50px;
+    }
+  }
+  
+  .contact-details-info-card {
+    padding: 25px 20px;
+  }
+  
+  .contact-details-sub-title {
+    font-size: 12px;
+    gap: 5px;
+  }
+  
+  .contact-details-arrow {
+    font-size: 14px;
+  }
+  
+  .contact-details-icon-box {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .contact-details-icon-box i {
+    font-size: 24px;
+  }
+}
+
+/* ============================================
+   TABLET LANDSCAPE (Between 769px and 1024px)
+   ============================================ */
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .contact-details-section {
+    padding: 60px 0;
+  }
+  
+  .contact-details-container {
+    padding: 0 30px;
+  }
+  
+  .contact-details-cards-grid {
+    gap: 25px;
+  }
+  
+  .contact-details-info-card {
+    padding: 40px 30px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.contact-details-info-card:focus-within {
+  outline: 3px solid var(--banner-green);
+  outline-offset: 3px;
+}
+
+.contact-details-info-card:focus-within .contact-details-icon-box {
+  background-color: var(--banner-green);
+}
+
+.contact-details-info-card:focus-within .contact-details-icon-box i {
+  color: #ffffff;
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .contact-details-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+  
+  .contact-details-main-heading {
+    color: #f1f5f9;
+  }
+  
+  .contact-details-info-card {
+    background-color: #2d2d2d;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .contact-details-info-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .contact-details-icon-box {
+    background-color: rgba(34, 179, 74, 0.15);
+  }
+  
+  .contact-details-card-title {
+    color: #e2e8f0;
+  }
+  
+  .contact-details-card-text {
+    color: #a0aec0;
+  }
+  
+  .contact-details-info-card:hover .contact-details-card-text {
+    color: #cbd5e0;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .contact-details-section {
+    padding: 40px 0;
+    background-color: #ffffff !important;
+  }
+  
+  .contact-details-container {
+    padding: 0 20px;
+  }
+  
+  .contact-details-info-card {
+    background-color: #ffffff !important;
+    border: 1px solid #ddd;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+  
+  .contact-details-main-heading {
+    color: #000000;
+    
+    &::after {
+      background: #000000;
+    }
+  }
+  
+  .contact-details-card-text {
+    color: #333333;
+  }
+  
+  .contact-details-icon-box i {
+    color: #000000 !important;
+  }
+  
+  .contact-details-card-hover-effect,
+  .contact-details-icon-box::before {
+    display: none;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .contact-details-arrow,
+  .contact-details-icon-box::before,
+  .contact-details-info-card,
+  .contact-details-icon-box i {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .contact-details-info-card:hover {
+    transform: none;
+  }
+}
