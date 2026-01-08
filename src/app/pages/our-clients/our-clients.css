@@ -1,0 +1,782 @@
+/* =========================================================
+   GLOBAL RESET + VARIABLES
+   ========================================================= */
+:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  /* Brand */
+  --banner-green: #22b34a;
+  --banner-white: #ffffff;
+  --text-dark: #0277c7;
+
+  /* Typography */
+  --title-lap: 45px;
+  --title-tab: 35px;
+  --title-phn: 25px;
+
+  --subtitle-lap: 14px;
+  --subtitle-tab: 12px;
+  --subtitle-phn: 12px;
+
+  --desc-lap: 16px;
+  --desc-tab: 15px;
+  --desc-phn: 14px;
+}
+
+:host-context(body) {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   TYPOGRAPHY SYSTEM (USE EVERYWHERE)
+   ========================================================= */
+.title {
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: var(--title-lap);
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-weight: 500;
+  font-size: var(--subtitle-lap);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.description {
+  color: #374151;
+  font-size: var(--desc-lap);
+  line-height: 1.7;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .title { font-size: var(--title-tab); }
+  .subtitle { font-size: var(--subtitle-tab); }
+  .description { font-size: var(--desc-tab); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .title { font-size: var(--title-phn); }
+  .subtitle { font-size: var(--subtitle-phn); }
+  .description { font-size: var(--desc-phn); }
+}
+
+/* =========================================================
+   SERVICE / CLIENTS BANNER - REVERTED TO ORIGINAL
+   ========================================================= */
+.service-us-banner {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background: #1a1d2e url('../../../assets/images/banner-1.webp') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 300px 0;
+  overflow: hidden;
+}
+
+.service-us-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.4));
+  z-index: 1;
+}
+
+.service-banner-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.service-banner-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.service-banner-title {
+  color: #ffffff;
+  font-size: 55px;
+  font-weight: 500;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.3);
+}
+
+.service-banner-orange-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: #ff5e14;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+/* Banner Responsive */
+@media (max-width: 1024px) {
+  .service-us-banner { height: 350px; }
+  .service-banner-title { font-size: 48px; }
+}
+
+@media (max-width: 768px) {
+  .service-us-banner { height: 300px; }
+  .service-banner-title { font-size: 42px; }
+}
+
+@media (max-width: 480px) {
+  .service-us-banner { height: 250px; }
+  .service-banner-title { font-size: 36px; }
+}
+
+/* =========================================================
+   PARTNERS SECTION
+   ========================================================= */
+.partners-section {
+  padding: 50px 0;
+  background: #ffffff;
+}
+
+.partners-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 24px;
+}
+
+.partner-card {
+  height: 120px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s ease;
+  padding: 20px;
+}
+
+.partner-card img {
+  max-width: 70%;
+  max-height: 60%;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: all 0.35s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--banner-green);
+  box-shadow: 0 20px 40px rgba(0,0,0,.12);
+}
+
+.partner-card:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.partners-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Partners Responsive */
+@media (max-width: 1200px) {
+  .partners-grid { 
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  .partner-card { height: 110px; }
+}
+
+@media (max-width: 992px) {
+  .partners-grid { 
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .partner-card { height: 100px; }
+  .partners-section { padding: 40px 0; }
+}
+
+@media (max-width: 768px) {
+  .partners-grid { 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .partner-card { 
+    height: 90px;
+    padding: 15px;
+  }
+  .partners-title { margin-bottom: 40px; }
+}
+
+@media (max-width: 576px) {
+  .partners-grid { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .partner-card { 
+    height: 80px;
+    padding: 12px;
+  }
+  .partners-section { padding: 30px 0; }
+  .partners-title { margin-bottom: 30px; }
+}
+
+@media (max-width: 400px) {
+  .partners-grid { 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .partner-card { 
+    height: 70px;
+    padding: 10px;
+  }
+}
+
+/* =========================================================
+   FEATURED TESTIMONIAL
+   ========================================================= */
+.testimonial-modern {
+  padding: 60px 0;
+  background: #f8fafc;
+}
+
+.testimonial-wrapper {
+  width: 85%;
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  gap: 90px;
+  align-items: center;
+}
+
+.testimonial-left {
+  position: relative;
+  flex: 0.9;
+}
+
+.testimonial-photo {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.18);
+  object-fit: cover;
+}
+
+.testimonial-client-card {
+  position: absolute;
+  bottom: -40px;
+  left: 30px;
+  background: #ffffff;
+  padding: 18px 22px;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.15);
+  transition: all 0.35s ease;
+  max-width: 280px;
+}
+
+.testimonial-client-card:hover {
+  background: var(--banner-green);
+  transform: translateY(-4px);
+}
+
+.testimonial-client-card:hover * {
+  color: #ffffff;
+}
+
+.testimonial-right {
+  flex: 1.2;
+}
+
+.testimonial-stars {
+  font-size: 20px;
+  color: #fbbf24;
+  margin-bottom: 18px;
+}
+
+.testimonial-headline.title {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.testimonial-right .description {
+  margin-bottom: 15px;
+}
+
+.testimonial-right .description:last-child {
+  margin-bottom: 0;
+}
+
+/* Testimonial Responsive */
+@media (max-width: 1024px) {
+  .testimonial-wrapper {
+    gap: 60px;
+  }
+  .testimonial-headline.title {
+    font-size: 30px;
+  }
+  .testimonial-client-card {
+    left: 20px;
+    bottom: -30px;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-modern {
+    padding: 40px 0;
+  }
+  
+  .testimonial-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .testimonial-left {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .testimonial-client-card {
+    position: static;
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .testimonial-right {
+    width: 100%;
+  }
+
+  .testimonial-headline.title {
+    font-size: 28px;
+  }
+
+  .testimonial-stars {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-modern {
+    padding: 30px 0;
+  }
+  
+  .testimonial-wrapper {
+    gap: 30px;
+  }
+
+  .testimonial-headline.title {
+    font-size: 24px;
+  }
+
+  .testimonial-client-card {
+    padding: 15px 18px;
+  }
+
+  .testimonial-stars {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+}
+
+/* =========================================================
+   TESTIMONIAL CERTIFICATE SLIDER
+   ========================================================= */
+.testimonial-certificates {
+  padding: 120px 0;
+  background: #ffffff;
+}
+
+.certificates-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.certificate-slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.certificate-track {
+  display: flex;
+  gap: 40px;
+  animation: slideCertificates 30s linear infinite;
+}
+
+.certificates-heading.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.certificates-subtext.description {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.certificate-slide {
+  min-width: 320px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.certificate-card {
+  height: 420px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+.certificate-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.certificate-title {
+  margin-top: 15px;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.certificate-slide:hover .certificate-card {
+  background: var(--banner-green);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(34,179,74,.35);
+}
+
+@keyframes slideCertificates {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.certificate-slider:hover .certificate-track {
+  animation-play-state: paused;
+}
+
+/* Certificate Slider Responsive */
+@media (max-width: 1024px) {
+  .testimonial-certificates {
+    padding: 80px 0;
+  }
+  
+  .certificate-track {
+    gap: 30px;
+  }
+  
+  .certificate-slide {
+    min-width: 280px;
+  }
+  
+  .certificate-card {
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-certificates {
+    padding: 60px 0;
+  }
+  
+  .certificates-container {
+    width: 90%;
+  }
+  
+  .certificate-track {
+    gap: 25px;
+    animation-duration: 25s;
+  }
+  
+  .certificate-slide {
+    min-width: 250px;
+  }
+  
+  .certificate-card {
+    height: 320px;
+  }
+  
+  .certificates-subtext.description {
+    margin-bottom: 40px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .testimonial-certificates {
+    padding: 40px 0;
+  }
+  
+  .certificate-track {
+    gap: 20px;
+    animation-duration: 20s;
+  }
+  
+  .certificate-slide {
+    min-width: 200px;
+  }
+  
+  .certificate-card {
+    height: 250px;
+  }
+  
+  .certificates-heading.title {
+    padding: 0 20px;
+  }
+  
+  .certificates-subtext.description {
+    margin-bottom: 30px;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .certificate-slide {
+    min-width: 180px;
+  }
+  
+  .certificate-card {
+    height: 220px;
+  }
+  
+  .certificate-track {
+    gap: 15px;
+  }
+}
+
+/* =========================================================
+   CERTIFICATE LIGHTBOX + ZOOM
+   ========================================================= */
+.certificate-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+.lightbox-content {
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-content img {
+  width: 100%;
+  max-height: calc(100vh - 140px);
+  object-fit: contain;
+  padding: 24px;
+  border-radius: 12px;
+  transition: transform .25s ease;
+  background: #ffffff;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 24px;
+  right: 30px;
+  font-size: 34px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10000;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+  background: var(--banner-green);
+  transform: rotate(90deg);
+}
+
+/* Zoom Controls */
+.lightbox-controls {
+  position: fixed;
+  top: 24px;
+  right: 80px;
+  display: flex;
+  gap: 10px;
+  z-index: 10001;
+}
+
+.lightbox-controls button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.lightbox-controls button:hover {
+  background: var(--banner-green);
+  transform: scale(1.1);
+}
+
+/* Lightbox Responsive */
+@media (max-width: 1024px) {
+  .certificate-lightbox { 
+    padding: 50px 30px; 
+  }
+  
+  .lightbox-close { 
+    top: 20px; 
+    right: 25px; 
+  }
+  
+  .lightbox-controls { 
+    top: 20px; 
+    right: 70px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .certificate-lightbox { 
+    padding: 40px 20px; 
+  }
+  
+  .lightbox-close { 
+    top: 18px; 
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    font-size: 28px;
+  }
+  
+  .lightbox-controls { 
+    top: 18px; 
+    right: 60px; 
+  }
+  
+  .lightbox-controls button {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+  
+  .lightbox-content img {
+    max-height: calc(100vh - 120px);
+    padding: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .certificate-lightbox { 
+    padding: 30px 15px; 
+  }
+  
+  .lightbox-close { 
+    top: 15px; 
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+  }
+  
+  .lightbox-controls { 
+    top: 15px; 
+    right: 55px; 
+    gap: 8px;
+  }
+  
+  .lightbox-controls button {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+  
+  .lightbox-content img {
+    max-height: calc(100vh - 100px);
+    padding: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .lightbox-controls { 
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .lightbox-close { 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* =========================================================
+   UTILITY CLASSES FOR RESPONSIVE SPACING
+   ========================================================= */
+@media (max-width: 768px) {
+  .mobile-padding {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .mobile-margin {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .mobile-margin {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
