@@ -7,6 +7,9 @@ import { Projects } from './pages/projects/projects';
 import { ProjectsDetails } from './pages/project-details/projects-details';
 import { ContactUs } from './pages/contact-us/contact-us';
 import { Products } from './pages/products/products';
+import { OurClients } from './pages/our-clients/our-clients';
+import { Gallery } from './pages/gallery/gallery';
+
 
 
 export const appConfig = {
@@ -19,6 +22,9 @@ export const appConfig = {
       { path: 'projects/:id', component: ProjectsDetails},
       {path: 'contact',component:ContactUs},
       {path: 'products',component:Products},
+      {path: 'gallery',component:Gallery},
+      {path: 'contact',component:ContactUs},
+      {path: 'our-clients',component:OurClients}
 
     ]),
     provideAnimations(), // ✅ Correct usage

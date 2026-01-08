@@ -1,0 +1,95 @@
+<section class="projects-us-banner">
+  <div class="projects-banner-content">
+    <div class="projects-banner-container">
+      <div class="projects-banner-text-area">
+        <h1 class="projects-banner-title">Gallery</h1>
+        <nav class="projects-banner-breadcrumb" aria-label="breadcrumb">
+          <span class="projects-banner-home-link">Home</span>
+          <span class="projects-banner-separator">»</span>
+          <span class="projects-banner-current-page">Gallery</span>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     GALLERY SECTIONS
+========================= -->
+<section class="gallery-section">
+  <div
+    class="gallery-topic"
+    *ngFor="let topic of gallery; let tIndex = index"
+  >
+    <h2 class="gallery-topic-title">{{ topic.title }}</h2>
+
+    <div class="gallery-grid">
+      <div
+        class="gallery-item"
+        *ngFor="let img of topic.images; let i = index"
+        (click)="openLightbox(tIndex, i)"
+      >
+        <img [src]="img" alt="Gallery image" />
+        <span class="gallery-view-text">View</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     LIGHTBOX - UPDATED DESIGN
+========================= -->
+<div class="lightbox" *ngIf="lightboxOpen" (click)="closeLightbox()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <!-- TOP CONTROLS -->
+    <div class="lightbox-top-controls">
+      <button class="lightbox-control-btn" (click)="toggleZoom()" title="Zoom">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z" *ngIf="!isZoomed"/>
+          <path d="M7 10h6v1H7z" *ngIf="isZoomed"/>
+        </svg>
+      </button>
+      <button class="lightbox-control-btn lightbox-close" (click)="closeLightbox()" title="Close">
+        ×
+      </button>
+    </div>
+
+    <!-- IMAGE AREA -->
+    <div class="lightbox-image-container">
+      <img
+        [src]="activeImage"
+        class="lightbox-image"
+        [class.zoomed]="isZoomed"
+        alt="Full view"
+        (click)="handleImageClick($event)"
+      />
+    </div>
+
+    <!-- IMAGE TITLE -->
+    <div class="lightbox-image-title">
+      {{ gallery[activeTopicIndex].title }} - Image {{ activeImageIndex + 1 }} of {{ gallery[activeTopicIndex].images.length }}
+    </div>
+
+    <!-- BOTTOM NAVIGATION - CLEAN TEXT-ONLY -->
+    <div class="lightbox-bottom-nav">
+      <button class="lightbox-nav-btn prev" (click)="prevImage()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+        </svg>
+        PREVIOUS
+      </button>
+
+      <div class="lightbox-counter">
+        {{ activeImageIndex + 1 }} / {{ gallery[activeTopicIndex].images.length }}
+      </div>
+
+      <button class="lightbox-nav-btn next" (click)="nextImage()">
+        NEXT
+        <svg viewBox="0 0 24 24">
+          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
