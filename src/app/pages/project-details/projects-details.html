@@ -1,83 +1,112 @@
-<!-- Banner Section -->
-<section class="about-us-banner">
-  <div class="about-banner-content">
-    <div class="about-banner-container">
-      <div class="about-banner-text-area">
-        <h1 class="about-banner-title">Project Details</h1>
-        <nav class="about-banner-breadcrumb" aria-label="breadcrumb">
-          <span class="about-banner-home-link" [routerLink]="['/']">Home</span>
-          <span class="about-banner-separator">»</span>
-          <span class="about-banner-project-link" [routerLink]="['/projects']">Projects</span>
-          <span class="about-banner-separator">»</span>
-          <span class="about-banner-current-page">{{ project.title }}</span>
+<!-- Project Details Banner Section -->
+<section class="pd-hero-banner">
+  <div class="pd-hero-overlay"></div>
+  <div class="pd-hero-content">
+    <div class="pd-hero-container">
+      <div class="pd-hero-text-wrapper">
+        <h1 class="pd-hero-title">Project Details</h1>
+        <nav class="pd-hero-breadcrumb" aria-label="breadcrumb">
+          <span class="pd-breadcrumb-link" [routerLink]="['/']">Home</span>
+          <span class="pd-breadcrumb-divider">»</span>
+          <span class="pd-breadcrumb-link" [routerLink]="['/projects']">Projects</span>
+          <span class="pd-breadcrumb-divider">»</span>
+          <span class="pd-breadcrumb-current">{{ project.title }}</span>
         </nav>
       </div>
     </div>
   </div>
-
-  <div class="about-banner-orange-accent"></div>
+  <div class="pd-hero-accent-shape"></div>
 </section>
 
-<!-- Project Details Content -->
-<div class="page-container" *ngIf="project">
-  <header class="hero-section">
-    <img [src]="project.imageUrl" [alt]="project.title" class="hero-image">
+<!-- Main Project Details Container -->
+<div class="pd-main-wrapper" *ngIf="project">
+  
+  <!-- Project Header Section -->
+  <header class="pd-header-section">
+    <h1 class="pd-header-title">{{ project.title }}</h1>
+    <div class="pd-header-meta">
+      <span class="pd-meta-location">{{ project.location }}</span>
+      <span class="pd-meta-divider">|</span>
+      <span class="pd-meta-year">{{ project.year }}</span>
+    </div>
   </header>
 
-  <main class="content-wrapper">
-    <span class="category-tag">{{ project.category }}</span>
-    <h1 class="main-title">{{ project.description }}</h1>
+  <!-- Main Content Grid Section -->
+  <main class="pd-content-wrapper">
+    <div class="pd-content-grid">
+      
+      <!-- Project Image Section -->
+      <div class="pd-image-container">
+        <img [src]="project.imageUrl" [alt]="project.title" class="pd-project-image">
+      </div>
 
-    <div class="intro-text">
-      <p *ngFor="let paragraph of project.introText">{{ paragraph }}</p>
-    </div>
-
-    <div class="grid-layout">
-      <section class="details-column">
-        <h3>Building Together. Building Stronger Communities</h3>
-        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-        
-        <h4>Project Goal</h4>
-        <p>{{ project.goal }}</p>
-
-        <ul class="feature-list">
-          <li *ngFor="let feature of project.features">
-            <span class="check-icon">✔</span> {{ feature }}
-          </li>
-        </ul>
-
-        <p class="footer-note">{{ project.footerNote }}</p>
-      </section>
-
-      <aside class="info-sidebar">
-        <h3 class="sidebar-title">Project Information</h3>
-        <div class="divider"></div>
-        
-        <div class="info-row">
-          <span class="label">Project Category:</span>
-          <span class="value">{{ project.projectInfo.category }}</span>
+      <!-- Project Description Section -->
+      <div class="pd-description-container">
+        <div class="pd-description-content">
+          <h2 class="pd-description-title">Project Overview</h2>
+          <div class="pd-description-text">
+            <p class="pd-description-paragraph" *ngFor="let paragraph of project.introText">
+              {{ paragraph }}
+            </p>
+          </div>
+          
+          <!-- Project Goal Section -->
+          <div class="pd-goal-container">
+            <h3 class="pd-goal-title">Project Goal</h3>
+            <p class="pd-goal-text">{{ project.goal }}</p>
+          </div>
         </div>
-        <div class="info-row">
-          <span class="label">Clients:</span>
-          <span class="value">{{ project.projectInfo.client }}</span>
-        </div>
-        <div class="info-row">
-          <span class="label">Project Date:</span>
-          <span class="value">{{ project.projectInfo.startDate }}</span>
-        </div>
-        <div class="info-row">
-          <span class="label">Avenue End Date:</span>
-          <span class="value">{{ project.projectInfo.endDate }}</span>
-        </div>
-        <div class="info-row">
-          <span class="label">Locations:</span>
-          <span class="value">{{ project.projectInfo.location }}</span>
-        </div>
-        <div class="info-row">
-          <span class="label">Price After:</span>
-          <span class="value">{{ project.projectInfo.budget }}</span>
-        </div>
-      </aside>
+      </div>
     </div>
   </main>
+
+  <!-- Key Features Showcase Section -->
+  <section class="pd-features-showcase">
+    <div class="pd-features-header">
+      <h2 class="pd-features-main-title">Key Features & Highlights</h2>
+      <p class="pd-features-subtitle">Advanced solutions delivered for this project</p>
+    </div>
+    
+    <div class="pd-features-grid">
+      <article class="pd-feature-card" *ngFor="let feature of project.features; let i = index">
+        <div class="pd-feature-icon-container">
+          <i [class]="getFeatureIcon(i)" class="pd-feature-icon"></i>
+        </div>
+        <div class="pd-feature-text-content">
+          <h3 class="pd-feature-card-title">{{ feature.title }}</h3>
+          <p class="pd-feature-card-description">{{ feature.description }}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
 </div>
+<!-- CTA Section -->
+  <section class="contact-cta-section">
+    <div class="contact-cta-container">
+      <!-- Decorative Elements -->
+      <div class="contact-cta-decoration contact-cta-decoration-1"></div>
+      <div class="contact-cta-decoration contact-cta-decoration-2"></div>
+
+      <div class="contact-cta-content-wrapper">
+        <div class="contact-cta-subtitle-wrapper">
+          <span class="contact-cta-line"></span>
+          <span class="contact-cta-subtitle">GET IN TOUCH</span>
+          <span class="contact-cta-line"></span>
+        </div>
+        
+        <h2 class="contact-cta-heading">Ready to Start Your Next Project?</h2>
+        
+        <p class="contact-cta-description">
+          Our expert engineering team is ready to bring your vision to life with cutting-edge solutions and unmatched precision.
+        </p>
+
+        <div class="contact-cta-button-wrapper">
+          <button class="contact-cta-action-btn">
+            Request Consultation
+            <span class="contact-cta-btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,5 +1,7 @@
-import { Component,OnInit, HostListener, ElementRef, ViewChild} from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Router, NavigationEnd, RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -8,17 +10,38 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('header') header!: ElementRef;
   
   isSticky = false;
   isMenuOpen = false;
-  menuOpen = false;
 
   private stickyThreshold = 100;
+  private routerSubscription?: Subscription;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.checkStickyHeader();
+    
+    // Subscribe to router events to close menu on navigation
+    this.routerSubscription = this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe(() => {
+        // Close menu whenever navigation completes
+        this.closeMenu();
+      });
+  }
+
+  ngOnDestroy() {
+    // Clean up subscription
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+    // Ensure body scroll is restored
+    document.body.style.overflow = '';
   }
 
   @HostListener('window:scroll', [])
@@ -40,7 +63,6 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.menuOpen = !this.menuOpen;
     this.isMenuOpen = !this.isMenuOpen;
     
     // Toggle body scroll when menu is open
@@ -56,7 +78,7 @@ export class HeaderComponent implements OnInit {
     document.body.style.overflow = '';
   }
 
-  // Optional: Close menu when clicking on a link
+  // Close menu when clicking on a navigation link
   onNavLinkClick() {
     if (window.innerWidth <= 768) {
       this.closeMenu();

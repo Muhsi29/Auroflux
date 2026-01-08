@@ -73,3 +73,117 @@
     </div>
   </div>
 </section>
+
+<!--Contact Form-->
+
+<!-- contact-form.component.html -->
+<div class="contact-form-container">
+  <div class="contact-form-wrapper">
+    <h1 class="contact-form-title">Get In Touch</h1>
+    <p class="contact-form-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form-form">
+      
+      <!-- Name and Email Row -->
+      <div class="contact-form-row">
+        <div class="contact-form-group">
+          <div class="contact-form-input-wrapper">
+            <input 
+              type="text" 
+              formControlName="name" 
+              placeholder="Your Name *"
+              class="contact-form-input"
+              [ngClass]="{'contact-form-input-error': name?.touched && name?.invalid}">
+            <span class="contact-form-icon">👤</span>
+          </div>
+          <div *ngIf="name?.touched && name?.invalid" class="contact-form-error">
+            <span *ngIf="name?.errors?.['required']">Name is required</span>
+            <span *ngIf="name?.errors?.['minlength']">Name must be at least 2 characters</span>
+          </div>
+        </div>
+        
+        <div class="contact-form-group">
+          <div class="contact-form-input-wrapper">
+            <input 
+              type="email" 
+              formControlName="email" 
+              placeholder="Email Address *"
+              class="contact-form-input"
+              [ngClass]="{'contact-form-input-error': email?.touched && email?.invalid}">
+            <span class="contact-form-icon">✉️</span>
+          </div>
+          <div *ngIf="email?.touched && email?.invalid" class="contact-form-error">
+            <span *ngIf="email?.errors?.['required']">Email is required</span>
+            <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone and Subject Row -->
+      <div class="contact-form-row">
+        <div class="contact-form-group">
+          <div class="contact-form-input-wrapper">
+            <input 
+              type="tel" 
+              formControlName="phone" 
+              placeholder="Phone Number"
+              class="contact-form-input"
+              [ngClass]="{'contact-form-input-error': phone?.touched && phone?.invalid}">
+            <span class="contact-form-icon">📞</span>
+          </div>
+          <div *ngIf="phone?.touched && phone?.invalid" class="contact-form-error">
+            Please enter a valid phone number
+          </div>
+        </div>
+        
+        <div class="contact-form-group">
+          <div class="contact-form-input-wrapper">
+            <select 
+              formControlName="subject" 
+              class="contact-form-select"
+              [ngClass]="{'contact-form-select-error': isSubmitted && !contactForm.get('subject')?.value}">
+              <option value="" disabled selected>Select Subject</option>
+              <option value="general">General Inquiry</option>
+              <option value="support">Technical Support</option>
+              <option value="sales">Sales Question</option>
+              <option value="feedback">Feedback</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Row -->
+      <div class="contact-form-row">
+        <div class="contact-form-group contact-form-full-width">
+          <div class="contact-form-textarea-wrapper">
+            <textarea 
+              formControlName="message" 
+              placeholder="Your Message *" 
+              rows="5"
+              class="contact-form-textarea"
+              [ngClass]="{'contact-form-textarea-error': message?.touched && message?.invalid}"></textarea>
+          </div>
+          <div *ngIf="message?.touched && message?.invalid" class="contact-form-error">
+            <span *ngIf="message?.errors?.['required']">Message is required</span>
+            <span *ngIf="message?.errors?.['minlength']">Message must be at least 10 characters</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="contact-form-submit-container">
+        <button 
+          type="submit" 
+          class="contact-form-submit-btn"
+          [disabled]="isSubmitted && contactForm.invalid">
+          <span class="contact-form-submit-text">SEND MESSAGE</span>
+          <span class="contact-form-submit-arrow">→</span>
+        </button>
+        
+        <div *ngIf="isSubmitted && contactForm.invalid" class="contact-form-general-error">
+          Please fix the errors above before submitting.
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

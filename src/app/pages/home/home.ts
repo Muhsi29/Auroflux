@@ -69,50 +69,6 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     }
   ];
 
-  services = [
-    {
-      id: '01',
-      title: 'Engineering Consultancy Services',
-      description: 'We provide end-to-end engineering consultancy for industrial utilities, covering cooling towers, compressed air systems, and chilled water solutions with a strong focus on performance, safety, and long-term efficiency',
-      icon: 'fas fa-user-cog',
-      image: '../../../assets/images/service-1.webp'
-    },
-    {
-      id: '02',
-      title: 'Project Execution & Erection',
-      description: 'Our experienced team handles complete project execution including erection and commissioning, ensuring seamless implementation of engineered systems with minimal downtime and maximum reliability.',
-      icon: 'fas fa-tools',
-      image: '../../../assets/images/service-2.webp'
-    },
-    {
-      id: '03',
-      title: 'Cooling & Chilled Water Systems',
-      description: ' We design and deliver optimized cooling tower and chilled water systems by accurately calculating heat loads, selecting suitable equipment, and ensuring energy-efficient operation for industrial applications.',
-      icon: 'fas fa-temperature-low',
-      image: '../../../assets/images/service-3.webp'
-    },
-    {
-      id: '04',
-      title: 'Compressed Air System Design',
-      description: 'We specialize in designing compressed air systems with accurate load assessment, optimized pipe sizing, and minimum pressure drop to ensure efficient air delivery and reduced energy consumption.',
-      icon: 'fas fa-wind',
-      image: '../../../assets/images/service-4.webp'
-    },
-    {
-      id: '05',
-      title: 'Piping Design & Engineering',
-      description: 'Our piping engineering services include pressure drop calculations, pump head selection, pipe sizing optimization, and preparation of detailed P&ID drawings along with Bill of Materials (BoM).',
-      icon: 'fas fa-project-diagram',
-      image: '../../../assets/images/service-5.webp'
-    },
-    {
-      id: '06',
-      title: 'Repair & Maintenance Services',
-      description: 'We undertake repair and maintenance services with spares for critical equipment such as cooling towers, chillers, and compressed air dryers, ensuring system longevity and uninterrupted operations.',
-      icon: 'fas fa-wrench',
-      image: '../../../assets/images/service-6.png'
-    }
-  ];
 
 
   ngOnInit() {
@@ -120,9 +76,9 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
 
     this.homeProductCalculateCardsPerView();
     this.homeProductStartAutoScroll();
-        this.homeServiceCalculateResponsiveValues();
+   this.homeServiceCalculateResponsiveValues();
     this.homeServiceInitializePagination();
-    this.homeServiceUpdateSliderPosition();
+    this.startAutoScroll();
   }
 
   ngOnDestroy() {
@@ -140,9 +96,10 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
      if (this.blogObserver) {
       this.blogObserver.disconnect();
     }
-     this.homeServiceCalculateResponsiveValues();
-    this.homeServiceInitializePagination();
-    this.homeServiceUpdateSliderPosition();
+    this.stopAutoScroll();
+    if (this.homeServiceResizeTimeout) {
+      clearTimeout(this.homeServiceResizeTimeout);
+    }
     
   }
 
@@ -151,11 +108,10 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     this.setupBannerHoverListeners();
     this.setupWhyChooseIntersectionObserver();
     this.setupBlogIntersectionObserver();
-       // Small delay to ensure DOM is ready
-    setTimeout(() => {
-      this.homeServiceCalculateResponsiveValues();
-      this.homeServiceUpdateSliderPosition();
-    }, 100);
+    this.homeServiceCalculateResponsiveValues();
+    this.homeServiceInitializePagination();
+    this.homeServiceUpdateSliderPosition();
+    this.startAutoScroll();
   }
 
   // ============= BANNER SECTION METHODS =============
@@ -311,6 +267,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
       this.whyChooseObserver.observe(this.whyChooseSection.nativeElement);
     }
   }
+  // Home Products 
     homeProductCurrentIndex = 0;
   homeProductItems = [
     {
@@ -504,66 +461,57 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
- @ViewChild('sliderViewport', { static: false }) sliderViewport!: ElementRef;
+@ViewChild('sliderViewport', { static: false }) sliderViewport!: ElementRef;
 
+  // Updated services array with 6 services and Unsplash images
   public homeServiceServices: HomeServiceService[] = [
-    { 
-      id: '01', 
-      title: 'Building Construction', 
-      description: 'Professional construction services with modern techniques and quality materials.',
-      image: 'assets/service1.jpg',
-      icon: 'fa-building'
-    },
-    { 
-      id: '02', 
-      title: 'Architecture Design', 
-      description: 'Innovative architectural designs that blend functionality with aesthetic appeal.',
-      image: 'assets/service2.jpg',
-      icon: 'fa-drafting-compass'
-    },
-    { 
-      id: '03', 
-      title: 'Building Renovation', 
-      description: 'Transform your existing spaces with our expert renovation services.',
-      image: 'assets/service3.jpg',
-      icon: 'fa-hammer'
-    },
-    { 
-      id: '04', 
-      title: 'Quality Materials', 
-      description: 'Premium quality materials ensuring durability and sustainability.',
-      image: 'assets/service4.jpg',
-      icon: 'fa-award'
-    },
-    { 
-      id: '05', 
-      title: 'Project Management', 
-      description: 'End-to-end project management for timely and efficient completion.',
-      image: 'assets/service5.jpg',
-      icon: 'fa-chart-line'
-    },
-    { 
-      id: '06', 
-      title: 'Interior Design', 
-      description: 'Create beautiful and functional interiors that reflect your style.',
-      image: 'assets/service6.jpg',
-      icon: 'fa-palette'
-    },
-    { 
-      id: '07', 
-      title: 'Structural Engineering', 
-      description: 'Expert structural analysis and engineering solutions.',
-      image: 'assets/service7.jpg',
-      icon: 'fa-cogs'
-    },
-    { 
-      id: '08', 
-      title: 'Green Building', 
-      description: 'Sustainable and eco-friendly building solutions.',
-      image: 'assets/service8.jpg',
-      icon: 'fa-leaf'
-    },
-  ];
+  {
+    id: '01',
+    title: 'Engineering Consultancy Services',
+    description: 'Industrial engineering consultancy focused on safety, performance.',
+    icon: 'fa fa-user-cog',
+    image: '../../../assets/images/service-1.webp'
+  },
+  {
+    id: '02',
+    title: 'Project Execution & Erection',
+    description: 'End-to-end project execution, erection services.',
+    icon: 'fa fa-tools',
+    image: '../../../assets/images/service-2.webp'
+  },
+  {
+    id: '03',
+    title: 'Cooling & Chilled Water Systems',
+    description: 'Energy-efficient cooling and chilled water system designs.',
+    icon: 'fa fa-temperature-low',
+    image: '../../../assets/images/service-3.webp'
+  },
+  {
+    id: '04',
+    title: 'Compressed Air System Design',
+    description: 'Optimized compressed air systems with minimal losses.',
+    icon: 'fa fa-wind',
+    image: '../../../assets/images/service-4.webp'
+  },
+  {
+    id: '05',
+    title: 'Piping Design & Engineering',
+    description: 'Optimized piping design with calculations, P&ID, and BoM.',
+    icon: 'fa fa-project-diagram',
+    image: '../../../assets/images/service-5.webp'
+  },
+  {
+    id: '06',
+    title: 'Repair & Maintenance Services',
+    description: 'Reliable repair and maintenance for critical industrial equipment.',
+    icon: 'fa fa-wrench',
+    image: '../../../assets/images/service-6.png'
+  }
+];
+
+
+  // Cloned services for seamless infinite loop (desktop only)
+  public homeServiceServicesForDisplay: HomeServiceService[] = [];
 
   public homeServiceCurrentSlide = 0;
   public homeServiceCurrentOffset = 0;
@@ -576,6 +524,40 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
   private homeServiceTotalSlides = 0;
   private homeServiceResizeTimeout: any;
   private isMobile = false;
+  private autoScrollInterval: any;
+  private autoScrollSpeed = 2000; // 8 seconds
+  private isAutoScrollPaused = false;
+  private isTransitioning = false;
+
+
+  private startAutoScroll(): void {
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+    }
+    
+    // Only auto-scroll on desktop/laptop
+    if (!this.isMobile) {
+      this.autoScrollInterval = setInterval(() => {
+        if (!this.isAutoScrollPaused) {
+          this.homeServiceNextSlide();
+        }
+      }, this.autoScrollSpeed);
+    }
+  }
+
+  private stopAutoScroll(): void {
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+    }
+  }
+
+  public pauseAutoScroll(): void {
+    this.isAutoScrollPaused = true;
+  }
+
+  public resumeAutoScroll(): void {
+    this.isAutoScrollPaused = false;
+  }
 
   @HostListener('window:resize')
   homeServiceOnResize(): void {
@@ -587,6 +569,8 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
       this.homeServiceCalculateResponsiveValues();
       this.homeServiceUpdateSliderPosition();
       this.homeServiceInitializePagination();
+      this.stopAutoScroll();
+      this.startAutoScroll();
     }, 150);
   }
 
@@ -597,18 +581,29 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
       this.homeServiceCardsPerSlide = 1;
       this.homeServiceShowDots = true;
       this.isMobile = true;
+      // Mobile: use original array
+      this.homeServiceServicesForDisplay = [...this.homeServiceServices];
     } else if (windowWidth <= 768) {
       this.homeServiceCardsPerSlide = 2;
       this.homeServiceShowDots = true;
       this.isMobile = true;
+      // Tablet: use original array
+      this.homeServiceServicesForDisplay = [...this.homeServiceServices];
     } else if (windowWidth <= 1023) {
       this.homeServiceCardsPerSlide = 3;
       this.homeServiceShowDots = true;
       this.isMobile = true;
+      // Tablet: use original array
+      this.homeServiceServicesForDisplay = [...this.homeServiceServices];
     } else {
       this.homeServiceCardsPerSlide = 4;
       this.homeServiceShowDots = false;
       this.isMobile = false;
+      // Desktop: clone services for infinite loop (show 4 cards at a time, so clone 4 cards)
+      this.homeServiceServicesForDisplay = [
+        ...this.homeServiceServices,
+        ...this.homeServiceServices.slice(0, this.homeServiceCardsPerSlide)
+      ];
     }
     
     this.homeServiceTotalSlides = Math.ceil(this.homeServiceServices.length / this.homeServiceCardsPerSlide);
@@ -626,33 +621,89 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  private homeServiceUpdateSliderPosition(): void {
+  private homeServiceUpdateSliderPosition(skipTransition: boolean = false): void {
     if (this.isMobile) {
       // On mobile/tablet, don't use transform - let native scroll work
       this.homeServiceCurrentOffset = 0;
     } else {
-      // On desktop, use transform for slider
-      const slideWidth = (this.homeServiceCardWidth + this.homeServiceCardGap) * this.homeServiceCardsPerSlide;
+      // On desktop, move one card at a time
+      const slideWidth = (this.homeServiceCardWidth + this.homeServiceCardGap);
       this.homeServiceCurrentOffset = -(this.homeServiceCurrentSlide * slideWidth);
+      
+      // Handle instant reset for seamless loop
+      if (skipTransition && this.sliderViewport) {
+        const track = this.sliderViewport.nativeElement.querySelector('.home-service-slider-track');
+        if (track) {
+          track.style.transition = 'none';
+          setTimeout(() => {
+            track.style.transition = '';
+          }, 50);
+        }
+      }
     }
   }
 
   public homeServiceNextSlide(): void {
-    if (this.homeServiceCurrentSlide < this.homeServiceTotalSlides - 1) {
+    if (this.isMobile) {
+      // Mobile behavior remains the same
       this.homeServiceCurrentSlide++;
+      if (this.homeServiceCurrentSlide >= this.homeServiceTotalSlides) {
+        this.homeServiceCurrentSlide = 0;
+      }
+      this.homeServiceUpdateSliderPosition();
     } else {
-      this.homeServiceCurrentSlide = 0;
+      // Desktop: move one card at a time with seamless loop
+      if (this.isTransitioning) return;
+      
+      this.isTransitioning = true;
+      this.homeServiceCurrentSlide++;
+      this.homeServiceUpdateSliderPosition();
+      
+      // After animation completes, check if we need to reset
+      setTimeout(() => {
+        if (this.homeServiceCurrentSlide >= this.homeServiceServices.length) {
+          this.homeServiceCurrentSlide = 0;
+          this.homeServiceUpdateSliderPosition(true);
+        }
+        this.isTransitioning = false;
+      }, 800); // Match CSS transition duration
     }
-    this.homeServiceUpdateSliderPosition();
   }
 
   public homeServicePrevSlide(): void {
-    if (this.homeServiceCurrentSlide > 0) {
+    if (this.isMobile) {
+      // Mobile behavior remains the same
       this.homeServiceCurrentSlide--;
+      if (this.homeServiceCurrentSlide < 0) {
+        this.homeServiceCurrentSlide = this.homeServiceTotalSlides - 1;
+      }
+      this.homeServiceUpdateSliderPosition();
     } else {
-      this.homeServiceCurrentSlide = this.homeServiceTotalSlides - 1;
+      // Desktop: move one card at a time with seamless loop
+      if (this.isTransitioning) return;
+      
+      this.isTransitioning = true;
+      
+      // If at the beginning, jump to the end without animation first
+      if (this.homeServiceCurrentSlide === 0) {
+        this.homeServiceCurrentSlide = this.homeServiceServices.length;
+        this.homeServiceUpdateSliderPosition(true);
+        
+        setTimeout(() => {
+          this.homeServiceCurrentSlide--;
+          this.homeServiceUpdateSliderPosition();
+          setTimeout(() => {
+            this.isTransitioning = false;
+          }, 800);
+        }, 50);
+      } else {
+        this.homeServiceCurrentSlide--;
+        this.homeServiceUpdateSliderPosition();
+        setTimeout(() => {
+          this.isTransitioning = false;
+        }, 800);
+      }
     }
-    this.homeServiceUpdateSliderPosition();
   }
 
   public homeServiceGoToSlide(slideIndex: number): void {

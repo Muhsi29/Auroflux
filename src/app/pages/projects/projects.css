@@ -410,11 +410,10 @@
    PROJECTS SECTION - BASE STYLES
    ============================================ */
 .projects-section {
-  font-family: "Poppins", sans-serif;
-  background-color: #e6edf7;
+  background-color: #fff;
   color: #202020;
-  padding-top: 115px;
-  padding-bottom: 120px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   width: 100%;
 }
 
@@ -429,20 +428,20 @@
    HEADER SECTION STYLES (From your new code)
    ============================================ */
 .projects-header-section {
-  margin-bottom: 34px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
 .projects-header-title {
   position: relative;
   padding-bottom: 14px;
-  margin-bottom: 25px;
-  font-weight: 700;
-  font-size: 55px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 45px;
   color: var(--text-dark);
 }
 
-.projects-header-title:before {
+/* .projects-header-title:before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -452,9 +451,9 @@
   height: 3px;
   background-color: var(--text-dark);
   border-radius: 3px;
-}
+} */
 
-.projects-header-title:after {
+/* .projects-header-title:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -464,14 +463,15 @@
   height: 3px;
   background-color: #22B34A;
   border-radius: 3px;
-}
+} */
 
 .projects-header-description {
   font-size: 18px;
   color: #000000;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   line-height: 1.6;
+  font-family: 'Inter', sans-serif;
 }
 
 /* ============================================
@@ -489,7 +489,7 @@
    ============================================ */
 .projects-card {
   position: relative;
-  margin-top: 30px;
+  margin-top: 0;
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -497,7 +497,7 @@
   transition: all 0.3s ease;
   height: 100%;
   border: 2px solid #22B34A;
-  padding: 40px 30px;
+  padding: 30px 25px;
 }
 
 .projects-card:hover {
@@ -543,7 +543,6 @@
   border: 6px solid #22B34A;
   border-radius: 50%;
   opacity: 0.5;
-  /* z-index: 10; */
   transition: all .6s;
 }
 
@@ -554,7 +553,7 @@
   border: 0;
   border-radius: 0;
   opacity: 1;
-  background-color: rgba(34, 179, 74, 0.95); /* Your green color */
+  background-color: rgba(34, 179, 74, 0.95);
 }
 
 /* ============================================
@@ -562,7 +561,7 @@
    ============================================ */
 .projects-content {
   position: relative;
-  padding: 25px 0 0;
+  padding: 20px 0 0;
   z-index: 20;
   transition: all .3s;
 }
@@ -570,7 +569,7 @@
 /* ICON STYLING (Adjusted for image) */
 .projects-icon-wrapper {
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   width: 70px;
   height: 70px;
   background-color: var(--text-dark);
@@ -588,11 +587,11 @@
 }
 
 .projects-title {
-  margin-bottom: 18px;
-  font-weight: 700;
+  margin-bottom: 12px;
+  font-weight: 500;
   font-size: 23px;
   transition: color .3s;
-  color: #1a1d2e;
+  color: var(--text-dark);
 }
 
 .projects-card:hover .projects-title {
@@ -600,10 +599,10 @@
 }
 
 .projects-description {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-size: 14px;
   transition: color .3s;
-  color: #777777;
+  color: #000;
   line-height: 1.6;
 }
 
@@ -615,12 +614,12 @@
 .projects-link {
   position: relative;
   font-size: 18px;
-  color: #202020;
+  color:var(--banner-green);
   text-decoration: none;
   font-weight: 500;
   transition: color .3s;
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .projects-card:hover .projects-link {
@@ -634,7 +633,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background-color: var(--text-dark);
+  background-color: var(--banner-green);
   transition: background-color .3s;
 }
 
@@ -643,41 +642,20 @@
 }
 
 /* ============================================
-   CORNER DECORATION (Your existing)
-   ============================================ */
-/* .projects-corner-decor {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 0 40px 40px;
-  border-color: transparent transparent var(--text-dark) transparent;
-  transition: all 0.3s ease;
-  z-index: 30;
-  pointer-events: none;
-} */
-
-/* Corner decor expands and rotates on hover
-.projects-card:hover .projects-corner-decor {
-  border-width: 0 0 100px 100px;
-  border-color: transparent transparent #ffffff transparent;
-  transform: rotate(45deg) translate(20px, 20px);
-  opacity: 0.1;
-} */
-
-/* ============================================
    RESPONSIVE DESIGN - LAPTOP (1024px)
    ============================================ */
 @media screen and (max-width: 1024px) {
   .projects-section {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .projects-container {
     width: 90%;
     padding: 0 15px;
+  }
+
+  .projects-header-section {
+    margin-bottom: 40px;
   }
 
   .projects-grid {
@@ -686,7 +664,7 @@
   }
 
   .projects-card {
-    padding: 30px 25px;
+    padding: 25px 20px;
   }
 
   .projects-image {
@@ -695,22 +673,16 @@
 
   .projects-title {
     font-size: 20px;
+    margin-bottom: 10px;
   }
 
   .projects-description {
     font-size: 13px;
+    margin-bottom: 12px;
   }
 
   .projects-header-title {
     font-size: 28px;
-  }
-
-  .projects-corner-decor {
-    border-width: 0 0 35px 35px;
-  }
-
-  .projects-card:hover .projects-corner-decor {
-    border-width: 0 0 80px 80px;
   }
 }
 
@@ -719,12 +691,16 @@
    ============================================ */
 @media screen and (max-width: 768px) {
   .projects-section {
-    padding: 60px 0;
+    padding: 50px 0;
   }
 
   .projects-container {
     width: 92%;
     padding: 0 12px;
+  }
+
+  .projects-header-section {
+    margin-bottom: 35px;
   }
 
   .projects-grid {
@@ -733,7 +709,7 @@
   }
 
   .projects-card {
-    padding: 25px 20px;
+    padding: 22px 18px;
   }
 
   .projects-image {
@@ -742,12 +718,13 @@
 
   .projects-title {
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .projects-description {
     font-size: 12px;
     line-height: 1.5;
+    margin-bottom: 10px;
   }
 
   .projects-header-title {
@@ -756,14 +733,6 @@
 
   .projects-header-description {
     font-size: 13px;
-  }
-
-  .projects-corner-decor {
-    border-width: 0 0 30px 30px;
-  }
-
-  .projects-card:hover .projects-corner-decor {
-    border-width: 0 0 70px 70px;
   }
 
   .projects-link {
@@ -784,6 +753,10 @@
     padding: 0 10px;
   }
 
+  .projects-header-section {
+    margin-bottom: 30px;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -792,7 +765,7 @@
   }
 
   .projects-card {
-    padding: 20px 18px;
+    padding: 20px 15px;
   }
 
   .projects-image {
@@ -801,11 +774,12 @@
 
   .projects-title {
     font-size: 17px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .projects-description {
     font-size: 12px;
+    margin-bottom: 10px;
   }
 
   .projects-header-title {
@@ -814,14 +788,6 @@
 
   .projects-header-description {
     font-size: 12px;
-  }
-
-  .projects-corner-decor {
-    border-width: 0 0 25px 25px;
-  }
-
-  .projects-card:hover .projects-corner-decor {
-    border-width: 0 0 60px 60px;
   }
 
   .projects-card:hover {
@@ -846,32 +812,30 @@
     padding: 0 8px;
   }
 
+  .projects-header-section {
+    margin-bottom: 25px;
+  }
+
   .projects-image {
     height: 150px;
   }
 
   .projects-card {
-    padding: 18px 15px;
+    padding: 18px 12px;
   }
 
   .projects-title {
     font-size: 16px;
+    margin-bottom: 8px;
   }
 
   .projects-description {
     font-size: 11px;
+    margin-bottom: 8px;
   }
 
   .projects-header-title {
     font-size: 22px;
-  }
-
-  .projects-corner-decor {
-    border-width: 0 0 20px 20px;
-  }
-
-  .projects-card:hover .projects-corner-decor {
-    border-width: 0 0 50px 50px;
   }
 }
 
@@ -989,3 +953,386 @@
     color: #666666;
   }
 }
+.contact-cta-section {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      background: var(--white);
+    }
+
+    .contact-cta-container {
+    background-image: 
+        linear-gradient(135deg, rgba(248, 249, 250, 0.75) 0%, rgba(255, 255, 255, 0.70) 100%),
+        url('../../../assets/images/Why-Choose-Us.webp');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 70px 40px;
+    }
+
+    /* Premium Overlay Pattern */
+    .contact-cta-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 10px,
+          rgba(34, 179, 74, 0.02) 10px,
+          rgba(34, 179, 74, 0.02) 20px
+        );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .contact-cta-content-wrapper {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .contact-cta-subtitle-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      
+    }
+
+    .contact-cta-line {
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--banner-green),
+        transparent
+      );
+    }
+
+    .contact-cta-subtitle {
+      color: var(--banner-green);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+       font-family: 'Kanit', sans-serif;
+    }
+
+    .contact-cta-heading {
+      font-size: 45px;
+      font-weight: 500;
+      margin: 0 0 20px 0;
+      line-height: 1.2;
+      color: var(--text-dark);
+      text-shadow: 0 2px 10px rgba(26, 29, 46, 0.08);
+    }
+
+    .contact-cta-description {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #000000;
+      margin: 0 auto 40px auto;
+      max-width: 700px;
+       font-family: 'Inter', sans-serif;
+    }
+
+    .contact-cta-button-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-cta-action-btn {
+      background: var(--banner-green);
+      color: #fff;
+      border: none;
+      padding: 18px 45px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.4s var(--transition-ease);
+      box-shadow: 0 8px 25px rgba(34, 179, 74, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-cta-action-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .contact-cta-action-btn:hover::before {
+      left: 100%;
+    }
+
+    .contact-cta-action-btn:hover {
+      background: var(--text-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(34, 179, 74, 0.35);
+    }
+
+    .contact-cta-btn-arrow {
+      font-size: 18px;
+      font-weight: 900;
+      transition: transform 0.4s var(--transition-ease);
+    }
+
+    .contact-cta-action-btn:hover .contact-cta-btn-arrow {
+      transform: translateX(6px);
+    }
+
+    /* Decorative Elements */
+    .contact-cta-decoration {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34, 179, 74, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-cta-decoration-1 {
+      top: 10%;
+      left: 5%;
+    }
+
+    .contact-cta-decoration-2 {
+      bottom: 15%;
+      right: 8%;
+      width: 120px;
+      height: 120px;
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+       ============================================ */
+
+
+    /* Laptop (1024px) */
+    @media screen and (max-width: 1024px) {
+      .contact-cta-container {
+        min-height: 350px;
+        padding: 60px 35px;
+      }
+      
+      .contact-cta-heading {
+        font-size: 45px;
+      }
+
+      .contact-cta-description {
+        font-size: 16px;
+        margin-bottom: 35px;
+      }
+      
+      .contact-cta-action-btn {
+        padding: 17px 40px;
+        font-size: 15px;
+      }
+    }
+
+    /* Tablet (768px) */
+    @media screen and (max-width: 768px) {
+      .contact-cta-container {
+        min-height: 320px;
+        padding: 50px 30px;
+      }
+      
+      .contact-cta-content-wrapper {
+        max-width: 600px;
+      }
+
+      .contact-cta-subtitle-wrapper {
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .contact-cta-line {
+        width: 40px;
+      }
+      
+      .contact-cta-heading {
+        font-size: 35px;
+        margin-bottom: 18px;
+      }
+
+      .contact-cta-description {
+        font-size: 15px;
+        margin-bottom: 32px;
+        max-width: 550px;
+      }
+
+      .contact-cta-action-btn {
+        padding: 16px 38px;
+        font-size: 15px;
+      }
+    }
+
+    /* Mobile (480px) */
+    @media screen and (max-width: 480px) {
+      .contact-cta-container {
+        min-height: 300px;
+        padding: 45px 25px;
+      }
+      
+      .contact-cta-content-wrapper {
+        max-width: 100%;
+      }
+
+      .contact-cta-subtitle-wrapper {
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .contact-cta-line {
+        width: 30px;
+      }
+
+      .contact-cta-subtitle {
+        font-size: 12px;
+        letter-spacing: 2.5px;
+      }
+      
+      .contact-cta-heading {
+        font-size: 25px;
+        margin-bottom: 16px;
+      }
+
+      .contact-cta-description {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+      
+      .contact-cta-action-btn {
+        padding: 15px 35px;
+        font-size: 14px;
+        gap: 10px;
+      }
+      
+      .contact-cta-btn-arrow {
+        font-size: 16px;
+      }
+
+      .contact-cta-decoration {
+        width: 80px;
+        height: 80px;
+      }
+
+      .contact-cta-decoration-2 {
+        width: 90px;
+        height: 90px;
+      }
+    }
+
+    /* Small Mobile (360px) */
+    @media screen and (max-width: 360px) {
+      .contact-cta-container {
+        min-height: 280px;
+        padding: 40px 20px;
+      }
+      
+      .contact-cta-subtitle-wrapper {
+        gap: 12px;
+      }
+
+      .contact-cta-line {
+        width: 25px;
+      }
+
+      .contact-cta-subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+      
+      .contact-cta-heading {
+        font-size: 24px;
+        margin-bottom: 14px;
+      }
+
+      .contact-cta-description {
+        font-size: 13px;
+        margin-bottom: 25px;
+      }
+      
+      .contact-cta-action-btn {
+        padding: 14px 30px;
+        font-size: 13px;
+      }
+    }
+
+    /* Large Screens (1400px+) */
+    @media screen and (min-width: 1400px) {
+      .contact-cta-container {
+        min-height: 420px;
+        padding: 80px 50px;
+      }
+      
+      .contact-cta-content-wrapper {
+        max-width: 1000px;
+      }
+      
+      .contact-cta-heading {
+        font-size: 45px;
+      }
+
+      .contact-cta-description {
+        font-size: 18px;
+        max-width: 750px;
+        margin-bottom: 45px;
+      }
+      
+      .contact-cta-action-btn {
+        padding: 20px 50px;
+        font-size: 17px;
+      }
+    }
+
+    /* Accessibility */
+    .contact-cta-action-btn:focus {
+      outline: 3px solid var(--banner-green);
+      outline-offset: 4px;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .contact-cta-action-btn,
+      .contact-cta-btn-arrow,
+      .contact-cta-action-btn::before {
+        transition: none !important;
+      }
+      
+      .contact-cta-action-btn:hover {
+        transform: none !important;
+      }
+      
+      .contact-cta-action-btn:hover .contact-cta-btn-arrow {
+        transform: none !important;
+      }
+    }

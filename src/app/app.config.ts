@@ -6,6 +6,8 @@ import { Service } from './pages/service/service';
 import { Projects } from './pages/projects/projects';
 import { ProjectsDetails } from './pages/project-details/projects-details';
 import { ContactUs } from './pages/contact-us/contact-us';
+import { Products } from './pages/products/products';
+
 
 export const appConfig = {
   providers: [
@@ -15,7 +17,8 @@ export const appConfig = {
       {path: 'service',component:Service},
       {path: 'projects',component:Projects},
       { path: 'projects/:id', component: ProjectsDetails},
-      {path: 'contact',component:ContactUs}
+      {path: 'contact',component:ContactUs},
+      {path: 'products',component:Products},
 
     ]),
     provideAnimations(), // ✅ Correct usage

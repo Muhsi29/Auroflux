@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   height: 90px;
-  background-color: #ffffff; /* White by default */
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   z-index: 9999;
@@ -13,11 +13,12 @@
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Sticky State - Green background */
+/* Sticky State - Elegant deep navy with subtle gradient */
 .main-header.sticky {
-  background-color: var(--text-dark, #1a1d2e); /* Green/Black color */
+  /* background: linear-gradient(135deg, #234959 0%, #203a43 50%, #2c5364 100%); */
+  background: #2f4858;
   height: 80px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 }
 
 /* Header Container */
@@ -59,16 +60,16 @@
 .logo-subtitle {
   font-size: 12px;
   font-weight: 600;
-  color: #666; /* Dark gray on white background */
+  color: #666;
   letter-spacing: 3px;
   text-transform: uppercase;
   transition: color 0.5s ease;
   margin-top: -50px;
 }
 
-/* On sticky state - change subtitle color */
+/* On sticky state - elegant light color */
 .main-header.sticky .logo-subtitle {
-  color: rgba(255, 255, 255, 0.8); /* Light gray on green background */
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Desktop Navigation */
@@ -91,8 +92,8 @@
 
 .nav-link {
   font-size: 15px;
-  font-weight: 700;
-  color: #000000; /* Black on white background */
+  font-weight: 500;
+  color: #000000;
   text-decoration: none;
   letter-spacing: 1px;
   padding: 8px 0;
@@ -100,9 +101,9 @@
   transition: all 0.3s ease;
 }
 
-/* On sticky state - change nav link color */
+/* On sticky state - crisp white text */
 .main-header.sticky .nav-link {
-  color: #ffffff; /* White on green background */
+  color: #ffffff;
 }
 
 .nav-link::after {
@@ -140,7 +141,7 @@
 .icon-btn {
   background: transparent;
   border: none;
-  color: #000000; /* Black on white background */
+  color: #000000;
   font-size: 18px;
   cursor: pointer;
   padding: 8px;
@@ -149,9 +150,9 @@
   position: relative;
 }
 
-/* On sticky state - change icon color */
+/* On sticky state - white icons */
 .main-header.sticky .icon-btn {
-  color: #ffffff; /* White on green background */
+  color: #ffffff;
 }
 
 .icon-btn:hover {
@@ -179,10 +180,10 @@
   justify-content: center;
 }
 
-/* Quote Button */
+/* Quote Button - Premium styling */
 .quote-btn {
-  background: var(--banner-green, #22b34a);
-  color: #ffffff; /* Black text on green button */
+  background: linear-gradient(135deg, #22b34a 0%, #1a8f3a 100%);
+  color: #ffffff;
   border: none;
   padding: 14px 30px;
   border-radius: 8px;
@@ -191,7 +192,6 @@
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  /* text-transform: uppercase; */
   box-shadow: 0 5px 20px rgba(34, 179, 74, 0.3);
   position: relative;
   overflow: hidden;
@@ -213,21 +213,22 @@
 }
 
 .quote-btn:hover {
-  background: #0277C7;
-  color: #ffffff;
+  background: linear-gradient(135deg, #1a8f3a 0%, #22b34a 100%);
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 30px rgba(34, 179, 74, 0.4);
+  box-shadow: 0 10px 30px rgba(34, 179, 74, 0.5);
 }
 
-/* On sticky state - change button colors */
+/* On sticky state - elegant white button with subtle border */
 .main-header.sticky .quote-btn {
-  background: #ffffff; /* White background */
-  color: var(--text-dark, #1a1d2e); /* Dark text on white button */
+  background: #ffffff;
+  color: #0f2027;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .main-header.sticky .quote-btn:hover {
-  background: var(--banner-green, #22b34a);
-  color: #ffffff; /* White text on green hover */
+  background: linear-gradient(135deg, #22b34a 0%, #1a8f3a 100%);
+  color: #ffffff;
+  border-color: #22b34a;
 }
 
 /* Hamburger Menu Button (Hidden on Desktop) */
@@ -244,18 +245,19 @@
   display: block;
   width: 25px;
   height: 3px;
-  background: #000000; /* Black on white background */
+  background: #000000;
   margin: 5px 0;
   transition: all 0.3s ease;
   border-radius: 2px;
 }
+
 .hamburger-btn.active .hamburger-line {
-  background: #ffffff; /* white on click */
+  background: #ffffff;
 }
 
-/* On sticky state - change hamburger color */
+/* On sticky state - white hamburger */
 .main-header.sticky .hamburger-line {
-  background: #ffffff; /* White on green background */
+  background: #ffffff;
 }
 
 /* Responsive Design */
@@ -301,11 +303,11 @@
     right: -100%;
     width: 300px;
     height: 100vh;
-    background: var(--text-dark, #1a1d2e);
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
     padding: 100px 40px 40px;
     transition: right 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 10000;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
   }
   
   .nav-menu.active {
