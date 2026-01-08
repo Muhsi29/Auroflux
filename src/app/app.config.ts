@@ -6,6 +6,9 @@ import { Service } from './pages/service/service';
 import { Projects } from './pages/projects/projects';
 import { ProjectsDetails } from './pages/project-details/projects-details';
 import { ContactUs } from './pages/contact-us/contact-us';
+import { Gallery } from './pages/gallery/gallery';
+
+
 
 export const appConfig = {
   providers: [
@@ -15,6 +18,7 @@ export const appConfig = {
       {path: 'service',component:Service},
       {path: 'projects',component:Projects},
       { path: 'projects/:id', component: ProjectsDetails},
+      {path: 'gallery',component:Gallery},
       {path: 'contact',component:ContactUs}
 
     ]),
