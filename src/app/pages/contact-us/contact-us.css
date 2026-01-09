@@ -864,43 +864,6 @@
   color: #ffffff;
 }
 
-/* ============================================
-   DARK MODE SUPPORT
-   ============================================ */
-@media (prefers-color-scheme: dark) {
-  .contact-details-section {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  }
-  
-  .contact-details-main-heading {
-    color: #f1f5f9;
-  }
-  
-  .contact-details-info-card {
-    background-color: #2d2d2d;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .contact-details-info-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  }
-  
-  .contact-details-icon-box {
-    background-color: rgba(34, 179, 74, 0.15);
-  }
-  
-  .contact-details-card-title {
-    color: #e2e8f0;
-  }
-  
-  .contact-details-card-text {
-    color: #a0aec0;
-  }
-  
-  .contact-details-info-card:hover .contact-details-card-text {
-    color: #cbd5e0;
-  }
-}
 
 /* ============================================
    PRINT STYLES

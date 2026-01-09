@@ -1,673 +1,1561 @@
+/* ============================================
+   COLOR VARIABLES
+   ============================================ */
+:host {
+  --banner-green: #22B34A;
+  --banner-white: #ffffff;
+  --text-dark: #0277C7;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --border-light: #E5E7EB;
+  --card-shadow: 0 10px 30px rgba(2, 119, 199, 0.08);
+  --card-hover-shadow: 0 20px 40px rgba(2, 119, 199, 0.15);
+}
+
+/* ============================================
+   GLOBAL RESET
+   ============================================ */
+:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--banner-white);
+}
+
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-green: #22B34A;
-            --primary-blue: #0277C7;
-            --text-dark: #000000;
-            --text-light: #555555;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --border-radius: 12px;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--bg-light);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Kanit', sans-serif;
-            color: var(--primary-green);
-            line-height: 1.3;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .section-divider {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-
-        /* Featured Products Section - KPT Pipes */
-        .featured-section {
-            background: var(--bg-white);
-        }
-
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .featured-card {
-            background: var(--bg-white);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e8e8e8;
-        }
-
-        .featured-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .featured-card-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .featured-card-image .placeholder-icon {
-            font-size: 4rem;
-            color: var(--primary-green);
-            opacity: 0.5;
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--primary-green);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            font-family: 'Kanit', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .featured-card-content {
-            padding: 25px;
-        }
-
-        .featured-card-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--primary-blue);
-        }
-
-        .featured-card-content p {
-            color: var(--text-dark);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .feature-list li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .feature-list li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary-green);
-            font-weight: bold;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 6px;
-            font-family: 'Kanit', sans-serif;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-green);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #1a9a3d;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        /* Products Grid Section */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-
-        .product-card {
-            background: var(--bg-white);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .product-card-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .product-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-category-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(2, 119, 199, 0.9);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .product-card-content {
-            padding: 20px;
-        }
-
-        .product-card-content h4 {
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-            color: var(--primary-green);
-        }
-
-        .product-card-content p {
-            color: var(--text-dark);
-            font-size: 0.85rem;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .product-link {
-            color: var(--primary-blue);
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: gap 0.3s ease;
-        }
-
-        .product-link:hover {
-            gap: 10px;
-        }
-
-        .product-link::after {
-            content: "→";
-        }
-
-        /* Category Section */
-        .category-section {
-            background: var(--bg-white);
-        }
-
-        .category-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-
-        .category-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .category-row.reverse {
-            direction: rtl;
-        }
-
-        .category-row.reverse > * {
-            direction: ltr;
-        }
-
-        .category-content h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .category-content .subtitle {
-            color: var(--primary-blue);
-            font-family: 'Kanit', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .category-content p {
-            color: var(--text-dark);
-            font-size: 1rem;
-            margin-bottom: 25px;
-        }
-
-        .category-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .category-feature-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-        }
-
-        .category-feature-item .icon {
-            width: 24px;
-            height: 24px;
-            background: var(--primary-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.7rem;
-            flex-shrink: 0;
-        }
-
-        .category-image {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .category-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-
-        .category-image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: var(--primary-green);
-            opacity: 0.3;
-        }
-
-        /* Industrial Products Grid */
-        .industrial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .industrial-card {
-            background: var(--bg-white);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .industrial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .industrial-card-image {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .industrial-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .industrial-icon {
-            font-size: 4rem;
-            color: var(--primary-blue);
-            opacity: 0.4;
-        }
-
-        .industrial-card-content {
-            padding: 25px;
-        }
-
-        .industrial-card-content h4 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            color: var(--primary-green);
-        }
-
-        .industrial-card-content p {
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .industrial-specs {
-            background: var(--bg-light);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .industrial-specs-title {
-            font-family: 'Kanit', sans-serif;
-            font-size: 0.8rem;
-            color: var(--primary-blue);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .industrial-specs-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .spec-tag {
-            background: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            color: var(--text-dark);
-            border: 1px solid #e0e0e0;
-        }
-
-        /* Solar Section */
-        .solar-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-        }
-
-        .solar-section .section-header h2 {
-            color: white;
-        }
-
-        .solar-section .section-header p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .solar-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
-        .solar-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .solar-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .solar-card-image {
-            width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, #22B34A20 0%, #0277C720 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .solar-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .solar-icon {
-            font-size: 5rem;
-            color: #ffd93d;
-            opacity: 0.6;
-        }
-
-        .solar-card-content {
-            padding: 30px;
-        }
-
-        .solar-card-content h4 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-green);
-        }
-
-        .solar-card-content p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .solar-benefits {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .solar-benefit {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .solar-benefit .check {
-            color: var(--primary-green);
-            font-weight: bold;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .industrial-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 992px) {
-            .featured-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .category-row {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .category-row.reverse {
-                direction: ltr;
-            }
-            
-            .category-image-placeholder,
-            .category-image img {
-                height: 300px;
-            }
-            
-            .section-header h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section {
-                padding: 50px 0;
-            }
-            
-            .featured-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .industrial-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .solar-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .category-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .solar-benefits {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-header h2 {
-                font-size: 1.75rem;
-            }
-            
-            .category-content h3 {
-                font-size: 1.5rem;
-            }
-            
-            .section-header {
-                margin-bottom: 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .featured-card-content,
-            .product-card-content,
-            .industrial-card-content,
-            .solar-card-content {
-                padding: 20px;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .feature-list li {
-                font-size: 0.85rem;
-            }
-        }
+  box-sizing: border-box;
+}
+
+/* ============================================
+   PRODUCTS BANNER - BASE STYLES
+   ============================================ */
+.products-banner {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background-color: #1a1d2e;
+  background-image: url('../../../assets/images/banner-1.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+  padding: 300px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+  }
+}
+
+/* ============================================
+   BANNER CONTENT
+   ============================================ */
+.products-banner-content {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.products-banner-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.products-banner-text-area {
+  max-width: 600px;
+}
+
+.products-banner-title {
+  font-size: 55px;
+  font-weight: 500;
+  margin: 0 0 15px 0;
+  color: white;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.products-banner-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  margin: 0;
+}
+
+.products-banner-home-link {
+  color: var(--banner-green);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.products-banner-home-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--banner-green);
+  transition: width 0.3s ease;
+}
+
+.products-banner-home-link:hover {
+  color: #ffffff;
+}
+
+.products-banner-home-link:hover::after {
+  width: 100%;
+}
+
+.products-banner-separator {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.products-banner-current-page {
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ORANGE ACCENT SHAPE
+   ============================================ */
+.products-banner-orange-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: #ff5e14;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+  z-index: 1;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+}
+
+/* ============================================
+   PRODUCTS CARDS SECTION
+   ============================================ */
+.kpt-products-section {
+  padding: 60px 20px;
+  background-color: var(--banner-white);
+}
+
+.kpt-products-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.kpt-products-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.kpt-products-main-title {
+  font-family: 'Kanit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-dark);
+  display: inline-block;
+  font-size: 45px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+  border-radius: 8px;
+}
+
+.kpt-products-subtitle {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #000000;
+  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Grid Layout */
+.kpt-products-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Individual Card */
+.kpt-products-card {
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--banner-white);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  height: 100%;
+  border: 1px solid var(--border-light);
+}
+
+.kpt-products-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+/* Top Section with Full Background Image */
+.kpt-products-card-top {
+  padding: 25px;
+  height: 260px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: all 0.5s ease;
+}
+
+.kpt-products-card:hover .kpt-products-card-top {
+  transform: scale(1.02);
+}
+
+
+
+/* Bottom Section */
+.kpt-products-card-bottom {
+  padding: 25px;
+  background: var(--banner-white);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.kpt-products-card-title {
+  font-family: 'Kanit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0 0 15px 0;
+  color: var(--banner-green);
+}
+
+.kpt-products-card-description {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  min-height: 70px;
+  flex-grow: 1;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Features List */
+.kpt-products-feature-list {
+  list-style: none;
+  padding: 20px 0 0 0;
+  margin: 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.kpt-products-feature-list li {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  padding: 10px 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.kpt-products-feature-list li:hover {
+  color: var(--text-dark);
+}
+
+.kpt-products-check {
+  margin-right: 12px;
+  font-weight: bold;
+  color: var(--banner-green);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Banner Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .products-banner {
+    height: 280px;
+  }
+
+  .products-banner-title {
+    font-size: 48px;
+  }
+
+  .products-banner-container {
+    width: 90%;
+  }
+
+  .products-banner-orange-accent {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .products-banner {
+    height: 240px;
+  }
+
+  .products-banner-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  .products-banner-breadcrumb {
+    font-size: 15px;
+  }
+
+  .products-banner-container {
+    width: 92%;
+    padding: 0 15px;
+  }
+    .kpt-products-main-title {
+    font-size: 35px;
+    padding: 10px 20px;
+  }
+  
+
+  .products-banner-orange-accent {
+    width: 40%;
+    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .products-banner-text-area {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .products-banner {
+    height: 200px;
+  }
+
+  .products-banner-title {
+    font-size: 36px;
+  }
+
+  .products-banner-breadcrumb {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .products-banner-container {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .products-banner-orange-accent {
+    width: 50%;
+    clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .products-banner-text-area {
+    max-width: 300px;
+  }
+}
+
+/* Cards Section Responsive Styles */
+
+/* Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .kpt-products-section {
+    padding: 40px 15px;
+  }
+  
+  .kpt-products-header {
+    margin-bottom: 40px;
+  }
+  
+  .kpt-products-main-title {
+    font-size: 25px;
+    padding: 10px 20px;
+  }
+  
+  .kpt-products-subtitle {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+  
+  .kpt-products-card-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .kpt-products-card-top {
+    height: 220px;
+    padding: 20px;
+  }
+  
+  .kpt-products-card-bottom {
+    padding: 20px;
+  }
+  
+  .kpt-products-card-title {
+    font-size: 1.4rem;
+  }
+  
+  .kpt-products-card-description {
+    font-size: 0.9rem;
+    min-height: 60px;
+  }
+  
+  .kpt-products-badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Tablet (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .kpt-products-section {
+    padding: 50px 20px;
+  }
+  
+  .kpt-products-header {
+    margin-bottom: 45px;
+  }
+  
+  .kpt-products-main-title {
+    font-size: 2rem;
+  }
+  
+  .kpt-products-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  .kpt-products-card:last-child {
+    grid-column: span 2;
+    max-width: calc(50% - 12.5px);
+    margin: 0 auto;
+  }
+  
+  .kpt-products-card-top {
+    height: 240px;
+  }
+  
+  .kpt-products-card-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Laptop/Desktop (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .kpt-products-section {
+    padding: 55px 25px;
+  }
+  
+  .kpt-products-container {
+    max-width: 900px;
+  }
+  
+  .kpt-products-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+  
+  .kpt-products-card-top {
+    height: 250px;
+  }
+}
+
+/* Desktop (above 1024px) */
+@media (min-width: 1025px) {
+  .kpt-products-section {
+    padding: 60px 20px;
+  }
+  
+  .kpt-products-container {
+    max-width: 1200px;
+  }
+  
+  .kpt-products-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .kpt-products-card-top {
+    height: 260px;
+  }
+}
+
+/* ============================================
+   IMAGE FALLBACK STYLING
+   ============================================ */
+.kpt-products-card-top:not([style*="background"]) {
+  background: linear-gradient(135deg, var(--text-dark), #0056b3) !important;
+}
+
+.kpt-products-card-top:not([style*="background"])::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.3"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M8.5 8.5H10V15H8.5zM14 15h-1.5V9H10V7.5h4V15z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60px 60px;
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.kpt-products-card:focus-within {
+  outline: 2px solid var(--text-dark);
+  outline-offset: 4px;
+}
+
+.kpt-products-badge:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .products-banner {
+    height: 200px;
+    background: #1a1d2e !important;
+  }
+
+  .products-banner-orange-accent {
+    display: none;
+  }
+
+  .products-banner-title {
+    color: #000000;
+    font-size: 32px;
+  }
+
+  .products-banner-breadcrumb {
+    color: #666666;
+  }
+
+  .kpt-products-section {
+    padding: 40px 0;
+  }
+
+  .kpt-products-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .kpt-products-card-top {
+    height: 200px !important;
+  }
+}
+
+
+/* ============================================
+   HOST COMPONENT STYLES
+   ============================================ */
+:host {
+  font-family: 'Kanit', Roboto, Helvetica, Arial, sans-serif;
+  color: #334155;
+  display: block;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+/* ============================================
+   MAIN SECTION
+   ============================================ */
+.industrial-products-section {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ============================================
+   PRODUCT ROW BACKGROUND SECTION
+   ============================================ */
+.industrial-products-row-section {
+  width: 100%;
+  padding: 0;
+}
+
+/* First section (header + first product) */
+.industrial-products-row-section.first-section {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding-top: 60px;
+}
+
+/* Odd sections (2nd, 4th, 6th, etc.) - WHITE BACKGROUND */
+.industrial-products-row-section.odd-section {
+  background-color: #ffffff;
+}
+
+/* Even sections (3rd, 5th, 7th, etc.) - GRADIENT BACKGROUND */
+.industrial-products-row-section.even-section {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+/* ============================================
+   PAGE CONTAINER
+   ============================================ */
+.industrial-products-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+}
+
+/* ============================================
+   HEADER SECTION - MERGED WITH FIRST SECTION
+   ============================================ */
+.industrial-products-header {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0;
+}
+
+.industrial-products-main-title {
+  font-size: 42px;
+  font-weight: 500;
+  color: var(--text-dark, #1e293b);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.industrial-products-subtitle {
+  font-size: 17px;
+  color: #000;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   PRODUCT ROW LAYOUT
+   ============================================ */
+.industrial-products-content-section {
+  width: 100%;
+}
+
+.industrial-products-product-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 0;
+  padding: 80px 0;
+}
+
+.industrial-products-reverse {
+  flex-direction: row-reverse;
+}
+
+.industrial-products-text-content,
+.industrial-products-image-container {
+  flex: 1;
+}
+
+/* ============================================
+   IMAGE STYLING
+   ============================================ */
+.industrial-products-image-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 420px;
+  min-height: 420px;
+}
+
+.industrial-products-image-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+}
+
+.industrial-products-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.industrial-products-image-container:hover .industrial-products-image {
+  transform: scale(1.03);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.industrial-products-product-title {
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--banner-green, #10B981);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.industrial-products-description {
+  line-height: 1.6;
+  color: #000000;
+  margin-bottom: 28px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+.industrial-products-features-section {
+  margin-bottom: 32px;
+}
+
+.industrial-products-features-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--banner-green, #10B981);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.industrial-products-features-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #e2e8f0;
+  margin-left: 16px;
+}
+
+/* ============================================
+   FEATURES GRID WITH ICONS
+   ============================================ */
+.industrial-products-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 32px;
+}
+
+.industrial-products-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.industrial-products-feature-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--banner-green, #10B981);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.industrial-products-feature-text {
+  font-size: 0.95rem;
+  color: #000000;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   BUTTON STYLING
+   ============================================ */
+.industrial-products-spec-link {
+  background-color: var(--banner-green, #10B981);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px 28px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  box-shadow: 0 3px 12px rgba(16, 185, 129, 0.15);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.industrial-products-spec-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.industrial-products-spec-link:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
+}
+
+.industrial-products-spec-link:hover::before {
+  width: 100%;
+}
+
+.industrial-products-spec-link:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(16, 185, 129, 0.25);
+}
+
+.industrial-products-spec-link:focus {
+  outline: 2px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP/DESKTOP (1200px and above)
+   ============================================ */
+@media screen and (min-width: 1201px) {
+  .industrial-products-page-container {
+    max-width: 1400px;
+    padding: 0 60px;
+  }
+  
+  .industrial-products-product-row {
+    gap: 60px;
+    padding: 80px 0;
+  }
+  
+  .industrial-products-image-container {
+    height: 420px;
+    min-height: 420px;
+  }
+  
+  .industrial-products-row-section.first-section {
+    padding-top: 60px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px - 1200px)
+   ============================================ */
+@media screen and (max-width: 1200px) and (min-width: 1024px) {
+  .industrial-products-page-container {
+    max-width: 100%;
+    padding: 0 40px;
+  }
+  
+  .industrial-products-product-row {
+    gap: 50px;
+    padding: 70px 0;
+  }
+  
+  .industrial-products-main-title {
+    font-size: 38px;
+  }
+  
+  .industrial-products-product-title {
+    font-size: 32px;
+  }
+  
+  .industrial-products-image-container {
+    height: 380px;
+    min-height: 380px;
+  }
+  
+  .industrial-products-features-grid {
+    gap: 12px 28px;
+  }
+  
+  .industrial-products-row-section.first-section {
+    padding-top: 50px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px - 1023px)
+   ============================================ */
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+  .industrial-products-page-container {
+    padding: 0 30px;
+  }
+  
+  .industrial-products-product-row {
+    padding: 60px 0;
+  }
+  
+  .industrial-products-header {
+    margin-bottom: 50px;
+  }
+  
+  .industrial-products-main-title {
+    font-size: 32px;
+    margin-bottom: 14px;
+  }
+  
+  .industrial-products-subtitle {
+    font-size: 1.05rem;
+    padding: 0 20px;
+  }
+  
+  .industrial-products-product-row,
+  .industrial-products-reverse {
+    flex-direction: column;
+    gap: 35px;
+    margin-bottom: 0;
+  }
+  
+  .industrial-products-text-content,
+  .industrial-products-image-container {
+    width: 100%;
+    flex: none;
+  }
+  
+  .industrial-products-product-title {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+  
+  .industrial-products-description {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  
+  .industrial-products-image-container {
+    height: 360px;
+    min-height: 360px;
+  }
+  
+  .industrial-products-features-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 25px;
+    margin-bottom: 28px;
+  }
+  
+  .industrial-products-feature-item {
+    font-size: 0.95rem;
+  }
+  
+  .industrial-products-spec-link {
+    padding: 11px 24px;
+  }
+  
+  .industrial-products-row-section.first-section {
+    padding-top: 40px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL TABLET (600px - 768px)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .industrial-products-page-container {
+    padding: 0 25px;
+  }
+  
+  .industrial-products-product-row {
+    padding: 50px 0;
+  }
+  
+  .industrial-products-header {
+    margin-bottom: 40px;
+  }
+  
+  .industrial-products-main-title {
+    font-size: 28px;
+    margin-bottom: 14px;
+    padding: 0 15px;
+  }
+  
+  .industrial-products-subtitle {
+    font-size: 15px;
+    padding: 0 20px;
+  }
+  
+  .industrial-products-product-row,
+  .industrial-products-reverse {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 0;
+  }
+  
+  .industrial-products-product-title {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+  
+  .industrial-products-description {
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+  }
+  
+  .industrial-products-image-container {
+    height: 320px;
+    min-height: 320px;
+  }
+  
+  .industrial-products-features-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .industrial-products-feature-item {
+    align-items: center;
+  }
+  
+  .industrial-products-feature-text {
+    font-size: 0.9rem;
+  }
+  
+  .industrial-products-spec-link {
+    font-size: 0.95rem;
+    padding: 10px 22px;
+  }
+  
+  .industrial-products-row-section.first-section {
+    padding-top: 35px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px - 599px)
+   ============================================ */
+@media screen and (max-width: 599px) {
+  .industrial-products-page-container {
+    padding: 0 20px;
+  }
+  
+  .industrial-products-product-row {
+    padding: 40px 0;
+  }
+  
+  .industrial-products-header {
+    margin-bottom: 35px;
+  }
+  
+  .industrial-products-main-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+    padding: 0 10px;
+  }
+  
+  .industrial-products-subtitle {
+    font-size: 0.95rem;
+    padding: 0 15px;
+  }
+  
+  .industrial-products-product-row,
+  .industrial-products-reverse {
+    gap: 25px;
+    margin-bottom: 0;
+  }
+  
+  .industrial-products-product-title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+  
+  .industrial-products-description {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .industrial-products-image-container {
+    height: 280px;
+    min-height: 280px;
+    border-radius: 8px;
+  }
+  
+  .industrial-products-features-grid {
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  
+  .industrial-products-feature-item {
+    gap: 8px;
+  }
+  
+  .industrial-products-feature-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .industrial-products-feature-text {
+    font-size: 0.85rem;
+  }
+  
+  .industrial-products-spec-link {
+    font-size: 0.9rem;
+    padding: 9px 20px;
+  }
+  
+  .industrial-products-row-section.first-section {
+    padding-top: 30px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (320px - 479px)
+   ============================================ */
+@media screen and (max-width: 479px) {
+  .industrial-products-page-container {
+    padding: 0 15px;
+  }
+  
+  .industrial-products-product-row {
+    padding: 35px 0;
+  }
+  
+  .industrial-products-header {
+    margin-bottom: 30px;
+  }
+  
+  .industrial-products-main-title {
+    font-size: 22px;
+    padding: 0;
+  }
+  
+  .industrial-products-subtitle {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  
+  .industrial-products-product-title {
+    font-size: 22px;
+  }
+  
+  .industrial-products-image-container {
+    height: 240px;
+    min-height: 240px;
+    border-radius: 6px;
+  }
+  
+  .industrial-products-feature-text {
+    font-size: 0.8rem;
+  }
+  
+  .industrial-products-spec-link {
+    font-size: 0.85rem;
+    padding: 8px 18px;
+  }
+  
+  .industrial-products-row-section.first-section {
+    padding-top: 25px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.industrial-products-spec-link:focus-visible {
+  outline: 2px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .industrial-products-page-container {
+    padding: 0;
+  }
+  
+  .industrial-products-row-section {
+    background: none !important;
+    padding: 20px 0 !important;
+  }
+  
+  .industrial-products-image-container {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+    height: 300px !important;
+  }
+  
+  .industrial-products-spec-link {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+    border: 1px solid #cbd5e0 !important;
+  }
+  
+  .industrial-products-feature-icon {
+    color: #000000 !important;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .industrial-products-image-container,
+  .industrial-products-image,
+  .industrial-products-spec-link {
+    transition: none;
+  }
+  
+  .industrial-products-image-container:hover {
+    transform: none;
+  }
+  
+  .industrial-products-image-container:hover .industrial-products-image {
+    transform: none;
+  }
+  
+  .industrial-products-spec-link:hover {
+    transform: none;
+  }
+  
+  .industrial-products-spec-link::before {
+    display: none;
+  }
+}
+
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+.solar-products-main-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 20px;
+  font-family: inherit;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+.solar-products-header-section {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.solar-products-main-title {
+  font-size: 45px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--text-dark); /* Dark blue-gray for heading */
+  line-height: 1.2;
+}
+
+.solar-products-subtitle {
+  color: #000;
+  line-height: 1.6;
+  font-size: 18px;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   GRID CONTAINER
+   ============================================ */
+.solar-products-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+.solar-products-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.solar-products-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================
+   CARD VISUAL SECTION WITH IMAGE
+   ============================================ */
+.solar-products-card-visual {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.solar-products-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.solar-products-card:hover .solar-products-image {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   CARD CONTENT SECTION
+   ============================================ */
+.solar-products-card-content {
+  padding: 40px;
+}
+
+.solar-products-card-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--banner-green); /* Green color for card titles */
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.solar-products-card-description {
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px)
+   ============================================ */
+@media screen and (max-width: 1024px) {
+  .solar-products-main-container {
+    padding: 70px 20px;
+  }
+  
+  .solar-products-header-section {
+    max-width: 700px;
+    margin-bottom: 50px;
+  }
+  
+  .solar-products-main-title {
+    font-size: 36px;
+  }
+  
+  .solar-products-subtitle {
+    font-size: 17px;
+  }
+  
+  .solar-products-grid-container {
+    gap: 30px;
+    max-width: 900px;
+  }
+  
+  .solar-products-card-visual {
+    height: 280px;
+  }
+  
+  .solar-products-card-content {
+    padding: 35px;
+  }
+  
+  .solar-products-card-title {
+    font-size: 26px;
+    margin-bottom: 18px;
+  }
+  
+  .solar-products-card-description {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .solar-products-main-container {
+    padding: 60px 15px;
+  }
+  
+  .solar-products-header-section {
+    margin-bottom: 40px;
+    padding: 0 15px;
+  }
+  
+  .solar-products-main-title {
+    font-size: 32px;
+    margin-bottom: 18px;
+  }
+  
+  .solar-products-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .solar-products-grid-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 600px;
+  }
+  
+  .solar-products-card-visual {
+    height: 260px;
+  }
+  
+  .solar-products-card-content {
+    padding: 30px;
+  }
+  
+  .solar-products-card-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .solar-products-card-description {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .solar-products-main-container {
+    padding: 50px 10px;
+  }
+  
+  .solar-products-header-section {
+    margin-bottom: 35px;
+    padding: 0 10px;
+  }
+  
+  .solar-products-main-title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  
+  .solar-products-subtitle {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .solar-products-grid-container {
+    gap: 25px;
+  }
+  
+  .solar-products-card-visual {
+    height: 220px;
+  }
+  
+  .solar-products-card-content {
+    padding: 25px 20px;
+  }
+  
+  .solar-products-card-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .solar-products-card-description {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (320px)
+   ============================================ */
+@media screen and (max-width: 320px) {
+  .solar-products-main-container {
+    padding: 40px 8px;
+  }
+  
+  .solar-products-header-section {
+    margin-bottom: 30px;
+    padding: 0 8px;
+  }
+  
+  .solar-products-main-title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+  
+  .solar-products-subtitle {
+    font-size: 14px;
+  }
+  
+  .solar-products-card-visual {
+    height: 200px;
+  }
+  
+  .solar-products-card-content {
+    padding: 20px 15px;
+  }
+  
+  .solar-products-card-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .solar-products-card-description {
+    font-size: 13px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+.solar-products-card {
+  will-change: transform;
+}
+
+.solar-products-card:focus-within {
+  outline: 2px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .solar-products-card,
+  .solar-products-card:hover,
+  .solar-products-image,
+  .solar-products-card:hover .solar-products-image {
+    transition: none;
+    transform: none;
+  }
+}

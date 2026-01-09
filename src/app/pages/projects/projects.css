@@ -873,44 +873,6 @@
   }
 }
 
-/* ============================================
-   DARK MODE SUPPORT
-   ============================================ */
-@media (prefers-color-scheme: dark) {
-  .projects-section {
-    background-color: #1a1a1a;
-  }
-
-  .projects-card {
-    background: #2d2d2d;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-color: #22B34A;
-  }
-
-  .projects-content {
-    background: transparent;
-  }
-
-  .projects-title {
-    color: #f1f5f9;
-  }
-
-  .projects-description {
-    color: #b0b0b0;
-  }
-
-  .projects-header-title {
-    color: #f1f5f9;
-  }
-
-  .projects-header-description {
-    color: #b0b0b0;
-  }
-
-  .projects-link {
-    color: #f1f5f9;
-  }
-}
 
 /* ============================================
    PRINT STYLES
