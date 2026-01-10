@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -9,6 +10,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./products.css']
 })
 export class Products {
+  
+constructor(private router: Router) {}
+
+goCta() {
+  this.router.navigate(['/contact']);
+}
  kptProducts = [
   {
     title: 'Thermoplast',

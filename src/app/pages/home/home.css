@@ -50,10 +50,10 @@ p {
   margin-left: -50vw;
   margin-right: -50vw;
   height: 90vh;
-  min-height: 600px;
+  min-height: 500px;
   overflow: hidden;
   /* background: #000; */
-  margin-top:50px ;
+  margin-top:80px ;
 }
 
 .banner-slides-wrapper {

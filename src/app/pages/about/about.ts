@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 interface TeamMember {
   name: string;
@@ -44,38 +45,47 @@ export class About implements AfterViewInit, OnDestroy {
   private currentTranslateX = 0;
   private isSliderHovered = false;
   private animationPaused = false;
+  constructor(private router: Router) {}
+  goCta() {
+  this.router.navigate(['/contact']);
+}
   
   activeSocialIndex: number | null = null;
 
   teamMembers: TeamMember[] = [
+    //  { 
+    //   name: 'Raja Srinivasan', 
+    //   role: 'Founder', 
+    //   image: '../../../assets/teams/mama.webp', 
+    //   phone: '(704) 555-0127' 
+    // },
     { 
-      name: 'Kathryn Murphy', 
-      role: 'Systems Analyst', 
-      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80', 
+      name: 'Bhoovarahan Thirumalai', 
+      role: 'Director', 
+      image: '../../../assets/teams/Bhoo-asp.jpg', 
       phone: '(704) 555-0127' 
     },
     { 
-      name: 'Darlene Robertson', 
-      role: 'Team Leader', 
-      image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80', 
+      name: 'Manoharan', 
+      role: 'Chief Technical Officer', 
+      image: '../../../assets/teams/manoharan-1.jpg', 
       phone: '(704) 555-0127' 
     },
     { 
-      name: 'Leslie Alexander', 
-      role: 'General Manager', 
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80', 
+      name: 'Muniyandi', 
+      role: 'Chief Consultant', 
+      image: '../../../assets/teams/muniyandi.jpg', 
       phone: '(704) 555-0127' 
     },
     { 
-      name: 'Francene Vandyne', 
-      role: 'Project Manager', 
-      image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80', 
+      name: 'A. Rajathi', 
+      role: 'CEO Finance', 
+      image: '../../../assets/teams/Rajathi.jpeg', 
       phone: '(704) 555-0127' 
-    },
-    { 
-      name: 'Michael Johnson', 
-      role: 'Senior Developer', 
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80', 
+    },{ 
+      name: 'Vasanth', 
+      role: 'Head - Electrical & Automation', 
+      image: '../../../assets/teams/vasanth1.jpg', 
       phone: '(704) 555-0127' 
     }
   ];
@@ -139,7 +149,6 @@ export class About implements AfterViewInit, OnDestroy {
     }
   ];
 
-  constructor() { }
 
   ngAfterViewInit(): void {
     this.setupIntersectionObserver();

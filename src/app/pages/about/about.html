@@ -65,7 +65,7 @@
           </div>
         </div>
 
-        <button class="who-we-about-btn-quote" (click)="learnMore()">
+        <button routerLink="/contact" class="who-we-about-btn-quote" (click)="goCta()">
           Learn More 
           <span class="who-we-about-arrow-icon">&rarr;</span>
         </button>
@@ -238,7 +238,7 @@
         </p>
 
         <div class="contact-cta-button-wrapper">
-          <button class="contact-cta-action-btn">
+          <button class="contact-cta-action-btn" (click)="goCta()">
             Request Consultation
             <span class="contact-cta-btn-arrow">→</span>
           </button>

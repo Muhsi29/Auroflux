@@ -36,26 +36,34 @@
     </div>
     
     <!-- Projects Grid -->
-    <div class="projects-grid">
-      
-      <div class="projects-card" *ngFor="let project of projects" (click)="openProject(project.id)">
-        <!-- Circle Before Animation -->
-        <div class="projects-circle-before"></div>
-        
-        <!-- Corner Decor -->
-        <div class="projects-corner-decor"></div>
-        
-        <div class="projects-image-wrapper">
-          <img [src]="project.imageUrl" [alt]="project.title" class="projects-image">
-        </div>
-        
-        <div class="projects-content">
-          <h3 class="projects-title">{{ project.title }}</h3>
-          <p class="projects-description">{{ project.description }}</p>
-          
-          <a routerLink="/projects" class="projects-link">View Details</a>
-        </div>
-      </div>
+    <div class="projects-grid">  
+      <div class="projects-card" *ngFor="let project of projects">
+
+  <!-- Full-card hyperlink -->
+  <a class="projects-card-link"
+     [routerLink]="['/projects', project.id]"
+     aria-label="View project"></a>
+
+  <!-- Circle Before Animation -->
+  <div class="projects-circle-before"></div>
+
+  <!-- Corner Decor -->
+  <div class="projects-corner-decor"></div>
+
+  <div class="projects-image-wrapper">
+    <img [src]="project.imageUrl" [alt]="project.title" class="projects-image">
+  </div>
+
+  <div class="projects-content">
+    <h3 class="projects-title">{{ project.title }}</h3>
+    <p class="projects-description">{{ project.description }}</p>
+
+    <!-- Keep it visual only -->
+    <a  [routerLink]="['/projects', project.id]" class="projects-link">View Details</a>
+  </div>
+
+</div>
+
 
     </div>
   </div>
@@ -81,7 +89,7 @@
         </p>
 
         <div class="contact-cta-button-wrapper">
-          <button class="contact-cta-action-btn">
+          <button (click)="goCta()" class="contact-cta-action-btn">
             Request Consultation
             <span class="contact-cta-btn-arrow">→</span>
           </button>

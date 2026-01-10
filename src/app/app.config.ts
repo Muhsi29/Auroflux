@@ -1,8 +1,7 @@
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { Home } from './pages/home/home';
 import { About } from './pages/about/about';
-import { Service } from './pages/service/service';
 import { Projects } from './pages/projects/projects';
 import { ProjectsDetails } from './pages/project-details/projects-details';
 import { ContactUs } from './pages/contact-us/contact-us';
@@ -10,23 +9,25 @@ import { Products } from './pages/products/products';
 import { OurClients } from './pages/our-clients/our-clients';
 import { Gallery } from './pages/gallery/gallery';
 
-
-
 export const appConfig = {
   providers: [
-    provideRouter([
-      { path: '', component: Home },
-      {path: 'about',component:About},
-      {path: 'service',component:Service},
-      {path: 'projects',component:Projects},
-      { path: 'projects/:id', component: ProjectsDetails},
-      {path: 'contact',component:ContactUs},
-      {path: 'products',component:Products},
-      {path: 'gallery',component:Gallery},
-      {path: 'contact',component:ContactUs},
-      {path: 'our-clients',component:OurClients}
+    provideRouter(
+      [
+        { path: '', component: Home },
+        { path: 'about', component: About },
+        { path: 'projects', component: Projects },
+        { path: 'projects/:id', component: ProjectsDetails },
+        { path: 'products', component: Products },
+        { path: 'gallery', component: Gallery },
+        { path: 'our-clients', component: OurClients },
+        { path: 'contact', component: ContactUs }
+      ],
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'top',   // Always go to top on navigation
+        anchorScrolling: 'enabled'          // Enables #section links
+      })
+    ),
 
-    ]),
-    provideAnimations(), // ✅ Correct usage
-  ],
+    provideAnimations()
+  ]
 };

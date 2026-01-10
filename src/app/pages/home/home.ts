@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 interface Feature {
   icon: string;
@@ -46,8 +48,13 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
   // Blog Section
   private blogObserver!: IntersectionObserver;
   private blogHasAnimated = false;
-
-
+constructor(private router: Router) {}
+  goAbout() {
+  this.router.navigate(['/about']);
+}
+goCta() {
+  this.router.navigate(['/contact']);
+}
   slides = [
     {
       subtitle: 'YOUR VISION, OUR ENGINEERING',

@@ -79,13 +79,19 @@
    ========================================================= */
 .service-us-banner {
   position: relative;
-  height: 400px;
+  height: 300px;
   width: 100%;
-  background: #1a1d2e url('../../../assets/images/banner-1.webp') center/cover no-repeat;
+  background-color: #1a1d2e;
+  background-image: url('../../../assets/images/banner-1.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 300px 0;
-  overflow: hidden;
+  color: white;
+  padding: 100px 0;
+  margin-top: 80px;
 }
 
 .service-us-banner::before {

@@ -33,7 +33,7 @@
    ============================================ */
 .projects-us-banner {
   position: relative;
-  height: 400px;
+  height: 300px;
   width: 100%;
   background-color: #1a1d2e;
   background-image: url('../../../assets/images/banner-1.webp');
@@ -44,9 +44,8 @@
   display: flex;
   align-items: center;
   color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 300px 0;
+  padding: 100px 0;
+  margin-top: 80px;
 
   &::before {
     content: '';
@@ -498,6 +497,13 @@
   height: 100%;
   border: 2px solid #22B34A;
   padding: 30px 25px;
+  cursor: pointer;
+}
+.projects-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  text-decoration: none;
 }
 
 .projects-card:hover {
@@ -640,6 +646,7 @@
 .projects-card:hover .projects-link:after {
   background-color: #fff;
 }
+
 
 /* ============================================
    RESPONSIVE DESIGN - LAPTOP (1024px)

@@ -89,7 +89,7 @@
       </ul>
 
       <div class="about-footer reveal-item reveal-up-4">
-        <button class="about-btn-read">READ MORE ➔</button>
+        <button class="about-btn-read" (click)="goAbout()">READ MORE ➔</button>
         
         <div class="about-author">
           <img src="../../../assets/images/mama.webp" alt="Author" class="about-author-img">
@@ -434,7 +434,7 @@
         </p>
 
         <div class="contact-cta-button-wrapper">
-          <button class="contact-cta-action-btn">
+          <button (click)="goCta()" class="contact-cta-action-btn">
             Request Consultation
             <span class="contact-cta-btn-arrow">→</span>
           </button>
