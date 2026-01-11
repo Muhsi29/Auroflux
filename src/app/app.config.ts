@@ -9,6 +9,7 @@ import { Products } from './pages/products/products';
 import { OurClients } from './pages/our-clients/our-clients';
 import { Gallery } from './pages/gallery/gallery';
 
+
 export const appConfig = {
   providers: [
     provideRouter(
@@ -18,8 +19,8 @@ export const appConfig = {
         { path: 'projects', component: Projects },
         { path: 'projects/:id', component: ProjectsDetails },
         { path: 'products', component: Products },
-        { path: 'gallery', component: Gallery },
         { path: 'our-clients', component: OurClients },
+        { path: 'gallery', component: Gallery },
         { path: 'contact', component: ContactUs }
       ],
       withInMemoryScrolling({
