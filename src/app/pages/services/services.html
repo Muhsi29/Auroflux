@@ -22,7 +22,6 @@
 
 <section class="services-feature">
   <div class="services-feature-container">
-
     <!-- LEFT IMAGE GROUP -->
     <div class="services-feature-images">
       <div class="main-image">
@@ -36,11 +35,10 @@
 
     <!-- RIGHT CONTENT -->
     <div class="services-feature-content">
-
-      <div class="services-subtitle-wrap">
-        <span class="blog-line-left"></span>
-        <span class="services-tag">AUROFLUX SERVICES</span>
-        <span class="blog-line-right"></span>
+      <div class="service-icon-box-subtitle-wrapper">
+        <span class="service-icon-box-line-left"></span>
+        <span class="service-icon-box-badge">Auroflux Services</span>
+        <span class="service-icon-box-line-right"></span>
       </div>
 
       <h2 class="title">Design and Consulting Services</h2>
@@ -62,8 +60,7 @@
       </ul>
 
       <!-- Button added -->
-      <a href="#" class="services-btn">READ MORE →</a>
-
+      <a href="contact" class="services-btn">READ MORE →</a>
     </div>
   </div>
 </section>
@@ -78,51 +75,56 @@
       </div>
       <h2 class="service-icon-box-title">Repair & Maintenance Services</h2>
       <p class="service-icon-box-description">
-        We provide end-to-end repair and maintenance solutions including genuine spare parts to ensure your equipment runs at peak performance.
+        We provide end-to-end repair and maintenance solutions including genuine spare parts to
+        ensure your equipment runs at peak performance.
       </p>
     </div>
 
     <div class="service-icon-box-grid">
       <div class="service-icon-box-card">
         <div class="service-icon-box-icon-wrapper">
-          <div class="service-icon-box-icon">❄️</div>
+          <img src="assets/icons/cooling-tower.svg" class="service-icon-svg" alt="" />
         </div>
+
         <h3 class="service-icon-box-card-title">Cooling Towers</h3>
-        <p class="service-icon-box-card-description">Expert maintenance and efficiency optimization for industrial cooling systems.</p>
-        <a href="#" class="service-icon-box-card-link">
-          <span>LEARN MORE</span>
-          <span class="service-icon-box-arrow">→</span>
-        </a>
+        <p class="service-icon-box-card-description">
+          Expert maintenance and efficiency optimization for industrial cooling systems.
+        </p>
       </div>
 
       <div class="service-icon-box-card">
         <div class="service-icon-box-icon-wrapper">
-          <div class="service-icon-box-icon">⚙️</div>
+          <img src="assets/icons/chillers.svg" class="service-icon-svg" alt="" />
         </div>
+
         <h3 class="service-icon-box-card-title">Chillers</h3>
-        <p class="service-icon-box-card-description">Comprehensive repair and component replacement for heavy-duty chillers.</p>
-        <a href="#" class="service-icon-box-card-link">
-          <span>LEARN MORE</span>
-          <span class="service-icon-box-arrow">→</span>
-        </a>
+        <p class="service-icon-box-card-description">
+          Comprehensive repair and component replacement for heavy-duty chillers.
+        </p>
       </div>
 
       <div class="service-icon-box-card">
         <div class="service-icon-box-icon-wrapper">
-          <div class="service-icon-box-icon">💨</div>
+          <img src="assets/icons/air.svg" class="service-icon-svg" alt="" />
         </div>
+
         <h3 class="service-icon-box-card-title">Compressed Air Dryers</h3>
-        <p class="service-icon-box-card-description">Technical servicing for refrigerated and desiccant air drying units.</p>
-        <a href="#" class="service-icon-box-card-link">
-          <span>LEARN MORE</span>
-          <span class="service-icon-box-arrow">→</span>
-        </a>
+        <p class="service-icon-box-card-description">
+          Technical servicing for refrigerated and desiccant air drying units.
+        </p>
       </div>
     </div>
   </div>
+
+  <div class="service-icon-box-cta">
+    <a href="#" class="service-cta-btn">
+      View All Products
+      <span class="cta-arrow">→</span>
+    </a>
+  </div>
 </section>
 
-<section class="service-client-slider-section">
+<!-- <section class="service-client-slider-section">
   <div class="service-client-slider-container">
     <div class="service-client-slider-header">
       <div class="service-client-slider-subtitle-wrap">
@@ -136,46 +138,51 @@
       </p>
     </div>
 
-    <div class="service-client-slider-wrapper">
-      <div class="service-client-slider-track" #sliderTrack>
-        @for (client of clients; track client; let i = $index) {
-          <div class="service-client-slider-card" 
-               (mouseenter)="onCardMouseEnter(i)"
-               (mouseleave)="onCardMouseLeave()">
-            <img [src]="client.img" [alt]="client.name" class="service-client-slider-image">
-            
-            <!-- Default content (always visible) -->
-            <div class="service-client-slider-default-content">
-              <h3 class="service-client-slider-client-name">{{ client.name }}</h3>
-              <div class="service-client-slider-divider"></div>
-              <span class="service-client-slider-category">{{ client.category }}</span>
-            </div>
-            
-            <!-- Hover overlay content -->
-            <div class="service-client-slider-overlay">
-              <div class="service-client-slider-overlay-content">
-                <h3 class="service-client-slider-overlay-title">{{ client.name }}</h3>
-                <div class="service-client-slider-overlay-divider"></div>
-                <p class="service-client-slider-overlay-desc">{{ client.description }}</p>
-                <a [href]="client.link" class="service-client-slider-overlay-btn">
-                  VIEW PROJECT DETAILS →
-                </a>
-              </div>
-            </div>
-          </div>
-        }
+<div class="logo-slider">
+  <div class="logo-track">
+    @for (client of clients; track client) {
+      <div class="logo-slide">
+        <img [src]="client.img" [alt]="client.name" />
       </div>
+    }
 
-      <!-- Slider Navigation Dots -->
-      <div class="service-client-slider-dots">
-        @for (dot of dots; track dot; let i = $index) {
-          <button class="service-client-slider-dot" 
-                  [class.active]="currentDot === i"
-                  (click)="goToSlide(i)"
-                  [attr.aria-label]="'Go to slide ' + (i + 1)">
+    @for (client of clients; track client) {
+      <div class="logo-slide">
+        <img [src]="client.img" [alt]="client.name" />
+      </div>
+    }
+  </div>
+</div>
+
+  </div>
+</section> -->
+  <section class="contact-cta-section">
+    <div class="contact-cta-container">
+      <!-- Decorative Elements -->
+      <div class="contact-cta-decoration contact-cta-decoration-1"></div>
+      <div class="contact-cta-decoration contact-cta-decoration-2"></div>
+
+      <div class="contact-cta-content-wrapper">
+        <div class="contact-cta-subtitle-wrapper">
+          <span class="contact-cta-line"></span>
+          <span class="contact-cta-subtitle">GET IN TOUCH</span>
+          <span class="contact-cta-line"></span>
+        </div>
+        
+        <h2 class="contact-cta-heading">Ready to Start Your Next Project?</h2>
+        
+        <p class="contact-cta-description">
+          Our expert engineering team is ready to bring your vision to life with cutting-edge solutions and unmatched precision.
+        </p>
+
+        <div class="contact-cta-button-wrapper">
+          <button class="contact-cta-action-btn">
+            <a class = "white" href="contact">
+            Request Consultation
+            </a>
+            <span class="contact-cta-btn-arrow">→</span>
           </button>
-        }
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
