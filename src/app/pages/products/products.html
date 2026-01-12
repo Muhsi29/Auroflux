@@ -108,8 +108,9 @@
 
     <!-- Remaining products -->
     <div *ngFor="let product of industrialProducts.slice(1); let i = index" 
-         [class]="getSectionClass(i)"
-         class="industrial-products-row-section">
+     class="industrial-products-row-section"
+     [ngClass]="getSectionClass(i)">
+
       
       <div class="industrial-products-page-container">
         <div class="industrial-products-product-row"

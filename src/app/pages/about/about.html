@@ -103,7 +103,9 @@
 <section class="about-service-section" #aboutServiceSection>
   <div class="about-service-container">
     <div class="about-service-header">
+      <span class="about-service-line-left"></span>
       <span class="about-service-badge">OUR SERVICES</span>
+      <span class="about-service-line-right"></span>
       <h1 class="about-service-title">Premium Engineering Services by Auroflux</h1>
       <p class="about-service-subtitle">
         End-to-end piping and energy-efficient engineering solutions for industrial applications.
@@ -128,9 +130,14 @@
 <section class="team-team-section" #teamSection>
   <div class="team-team-container">
     <div class="team-team-header">
-      <span class="team-team-subtitle">GREAT TEAM</span>
-      <h2 class="team-team-title">Meet Our Experience Team</h2>
-    </div>
+  <div class="team-team-subtitle-row">
+    <span class="team-line-left"></span>
+    <span class="team-team-subtitle">GREAT TEAM</span>
+    <span class="team-line-right"></span>
+  </div>
+
+  <h2 class="team-team-title">Meet Our Experience Team</h2>
+</div>
 
     <div class="team-team-grid">
       <div *ngFor="let member of teamMembers; let i = index" 
@@ -173,9 +180,16 @@
 <section class="our-clients-section" #ourClientsSection>
   <div class="our-clients-container">
     <div class="our-clients-header">
-      <span class="our-clients-subtitle">OUR CLIENTS</span>
-      <h2 class="our-clients-title">Our Trusted Clients</h2>
-    </div>
+
+  <div class="our-clients-subtitle-row">
+    <span class="our-clients-line"></span>
+    <span class="our-clients-subtitle">OUR CLIENTS</span>
+    <span class="our-clients-line"></span>
+  </div>
+
+  <h2 class="our-clients-title">Our Trusted Clients</h2>
+</div>
+
 
     <div class="our-clients-slider-container" 
          (mouseenter)="onSliderHover()" 

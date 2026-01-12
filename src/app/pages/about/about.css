@@ -1289,6 +1289,21 @@
   text-align: center;
   margin-bottom: 60px;
 }
+.team-line-left,
+.team-line-right {
+  width: 40px;
+  height: 2px;
+  background-color: #22b34a;
+  margin: 0 5px;
+  display: inline-block;
+}
+.team-team-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
 
 .team-team-subtitle {
   color: #22b34a;
@@ -1296,11 +1311,10 @@
   font-size: 14px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  display: block;
-  margin-bottom: 15px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+  font-family: 'Kanit', sans-serif;
 
   .team-team-section.in-view & {
     opacity: 1;
@@ -1891,6 +1905,20 @@
   text-align: center;
   margin-bottom: 60px;
 }
+.our-clients-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.our-clients-line {
+  width: 40px;
+  height: 2px;
+  background-color: #22b34a;
+  display: inline-block;
+}
 
 .our-clients-subtitle {
   color: #22b34a;
@@ -1898,8 +1926,6 @@
   font-size: 14px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  display: block;
-  margin-bottom: 15px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
@@ -2059,7 +2085,7 @@
   letter-spacing: 4px;
   color: #22b34a;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  font-family: 'Kanit', sans-serif;
 }
 
 .our-clients-title {
@@ -2369,7 +2395,6 @@
   .our-clients-subtitle {
     font-size: 13px;
     letter-spacing: 2px;
-    margin-bottom: 10px;
   }
 
   .our-clients-slider-container {
@@ -2454,7 +2479,6 @@
   .our-clients-subtitle {
     font-size: 12px;
     letter-spacing: 1px;
-    margin-bottom: 8px;
   }
 
   .our-clients-header {
@@ -2721,6 +2745,14 @@
   text-align: center;
   margin-bottom: 50px;
 }
+.about-service-line-left,
+.about-service-line-right {
+  width: 40px;
+  height: 2px;
+  background-color: #22b34a;
+  display: inline-block;
+  margin-bottom: 5px;
+}
 
 .about-service-badge {
   display: inline-block;
@@ -2734,7 +2766,8 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Kanit', sans-serif;
+  padding: 0  8px;
 }
 
 .about-service-section.in-view .about-service-badge {

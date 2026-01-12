@@ -34,7 +34,7 @@ projects: Project[] = [
     id: 2,
     title: 'IMM Closed Loop Cooling System – United Industries',
     description: 'Executed closed loop cooling with gravity flow outlet, reducing pumping head and improving heat transfer efficiency.',
-    imageUrl: 'https://images.unsplash.com/photo-1487956382158-bb926046304a?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-2.jpeg'
   },
   {
     id: 3,
@@ -58,7 +58,7 @@ projects: Project[] = [
     id: 6,
     title: 'Chiller & Cooling Water Revamp – Mainetti India',
     description: 'Revamped large scale IMM cooling and piping system with PPR/HDPE piping and VFD control panels.',
-    imageUrl: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-6.jpg'
   },
   {
     id: 7,
@@ -88,7 +88,7 @@ projects: Project[] = [
     id: 11,
     title: 'Vacuum Furnace Closed Loop System – Delphi TVS',
     description: 'Installed PPR piping with PHE based closed loop system for high precision vacuum furnace, improving energy efficiency.',
-    imageUrl: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-11.jpg'
   },
   {
     id: 12,
@@ -112,55 +112,55 @@ projects: Project[] = [
     id: 15,
     title: 'Large Scale PPR Utility Piping – Sundaram Clayton',
     description: 'Executed 80,000 meter PPR piping project for cooling tower, chiller, RO and DM water lines in new manufacturing facility.',
-    imageUrl: 'https://images.unsplash.com/photo-1581092918484-8313d03c6f07?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-15.webp'
   },
   {
     id: 16,
     title: 'Injection Moulding Utility Design – Shibaura',
     description: 'Designed and executed complete PPR piping system for machine testing facility with cooling tower heat load calculations.',
-    imageUrl: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-16.webp'
   },
   {
     id: 17,
     title: 'Chilled Water Headers – TAFE Maraimalai Nagar',
     description: 'Turnkey chilled water piping for oil and mould cooling with aluminium cladding insulation.',
-    imageUrl: 'https://images.unsplash.com/photo-1606214174585-bbb43b9d95a3?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-17.webp'
   },
   {
     id: 18,
     title: 'Cooling Tower & Closed Loop Systems – VTK Industries',
     description: 'Designed and executed cooling tower, chilled water and PHE based closed loop systems for plastic and die casting plants.',
-    imageUrl: 'https://images.unsplash.com/photo-1581092795360-9e8c3bb3ed0a?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-18.webp'
   },
   {
     id: 19,
     title: 'PPR Utility Piping – Tata Electronics & TP Solar',
     description: 'Executed PPR piping systems for multiple process applications in solar and electronics manufacturing plants.',
-    imageUrl: 'https://images.unsplash.com/photo-1508515053964-ff7d0b5e86e8?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-19.webp'
   },
   {
     id: 20,
     title: 'Boiler Feed Water Piping – Chettinad Cements',
     description: 'Installed PPR boiler feed water header system for AP cement manufacturing plant.',
-    imageUrl: 'https://images.unsplash.com/photo-1601933470096-0e34634ffcde?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-20.webp'
   },
   {
     id: 21,
     title: 'Compressed Air System – Suzlon',
     description: 'Designed and installed compressed air piping system for wind turbine manufacturing facility.',
-    imageUrl: 'https://images.unsplash.com/photo-1581092334810-1d5c8cdbb3fa?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-21.webp'
   },
   {
     id: 22,
     title: 'Compressed Air Piping – Chennai Trade Center',
     description: 'Executed compressed air piping system for new Chennai Trade Center under NCC.',
-    imageUrl: 'https://images.unsplash.com/photo-1601933470928-c55c3b4b5c3b?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-22.webp'
   },
   {
     id: 23,
     title: 'Green PE Cooling & RO Piping – HL Mando',
     description: 'Turnkey execution of cooling tower, chiller and RO water piping using Green PE and electrofusion fittings.',
-    imageUrl: 'https://images.unsplash.com/photo-1581091215367-59ab6baf56f3?auto=format&fit=crop&w=900&q=80'
+    imageUrl: '../../assets/projects/project-23.webp'
   }
 ];
 

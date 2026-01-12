@@ -617,6 +617,49 @@
 .industrial-products-row-section.even-section {
   background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
 }
+/* ===============================
+   ODD SECTION (WHITE) → BLUE
+   =============================== */
+.industrial-products-row-section.odd-section 
+.industrial-products-product-title {
+  color: var(--text-dark); /* Blue */
+}
+
+.industrial-products-row-section.odd-section 
+.industrial-products-feature-icon {
+  color: var(--text-dark);
+}
+
+.industrial-products-row-section.odd-section 
+.industrial-products-features-heading {
+  color: var(--text-dark);
+}
+.industrial-products-row-section.odd-section 
+.industrial-products-spec-link {
+  background-color: var(--text-dark);
+}
+.industrial-products-row-section.odd-section 
+.industrial-products-spec-link:hover {
+  background-color: var(--banner-green);
+}
+
+/* ===============================
+   EVEN SECTION (GRADIENT) → GREEN
+   =============================== */
+.industrial-products-row-section.even-section 
+.industrial-products-product-title {
+  color: #10B981; /* Green */
+}
+
+.industrial-products-row-section.even-section 
+.industrial-products-feature-icon {
+  color: #10B981;
+}
+
+.industrial-products-row-section.even-section 
+.industrial-products-features-heading {
+  color: #10B981;
+}
 
 /* ============================================
    PAGE CONTAINER
@@ -774,6 +817,7 @@
 .industrial-products-feature-icon {
   width: 18px;
   height: 18px;
+  font-weight: 600;
   color: var(--banner-green, #10B981);
   flex-shrink: 0;
   margin-top: 2px;
@@ -825,6 +869,7 @@
 
 .industrial-products-spec-link:hover {
   color: #ffffff;
+  background-color: var(--text-dark);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
 }

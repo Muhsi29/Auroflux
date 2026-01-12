@@ -704,17 +704,26 @@ p {
 }
 
 /* --- CONTENT COLUMN STYLING --- */
+
+.about-line-left,
+.about-line-right {
+  width: 40px;
+  height: 2px;
+  background-color: #22b34a;
+  display: inline-block;
+  margin-bottom: 3px;
+}
 .about-subtitle { 
   font-size: 14px; 
   color: var(--banner-green); 
   font-weight: 700; 
-  letter-spacing: 4px; 
-  display: block; 
+  letter-spacing: 4px;  
   margin-bottom: 15px; 
   opacity: 0;
   transform: translateX(-30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
    font-family: 'Kanit', sans-serif;
+   padding: 0px 5px;
 }
 
 .about-title { 
@@ -1367,6 +1376,14 @@ p {
   animation: bounceRight 2s infinite;
 }
 
+.why-choose-us-line-left,
+.why-choose-us-line-right {
+  width: 40px;
+  height: 2px;
+  background-color: #22b34a;
+  display: inline-block;
+}
+
 .why-choose-us-tag-text {
   color: var(--banner-green, #22b34a);
   font-size: 14px;
@@ -1377,7 +1394,7 @@ p {
    font-family: 'Kanit', sans-serif;
 }
 
-.why-choose-us-tag-text::after {
+/* .why-choose-us-tag-text::after {
   content: '';
   position: absolute;
   left: 0;
@@ -1386,7 +1403,7 @@ p {
   height: 2px;
   background: var(--banner-green, #22b34a);
   transition: width 0.5s ease;
-}
+} */
 
 .why-choose-us-section-tag:hover .why-choose-us-tag-text::after {
   width: 100%;
@@ -1858,7 +1875,7 @@ p {
 
 .home-product-view-all {
   display: inline-flex;
-  align-items: center;
+  align-items: end;
   gap: 12px;
   color: #22b34a;
   font-size: 16px;
@@ -1871,7 +1888,7 @@ p {
   background: white;
   box-shadow: 0 4px 15px rgba(34, 179, 74, 0.1);
   height: fit-content;
-  margin-top: 0;
+  margin-top: 45px;
     font-family: 'kanit', sans-serif;
 }
 
@@ -2232,6 +2249,7 @@ p {
   
   .home-product-view-all {
     align-self: flex-start;
+    margin-top: 0;
   }
   
   .home-product-main-heading {
@@ -3587,6 +3605,15 @@ p {
   padding: 0 20px;
 }
 
+.service-line-left,
+.service-line-right {
+  width: 40px;
+  height: 2px;
+  background-color: #22b34a;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
 .home-service-header .home-service-subtitle {
   color: var(--banner-green);
   font-weight: 700;
@@ -3597,6 +3624,7 @@ p {
   margin-bottom: 15px;
   display: inline-block;
   letter-spacing: 4px;
+  padding: 0 5px;
 }
 
 
