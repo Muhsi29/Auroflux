@@ -68,3 +68,114 @@
   </div>
 </section>
 
+<section class="service-icon-box-section">
+  <div class="service-icon-box-container">
+    <div class="service-icon-box-header">
+      <div class="service-icon-box-subtitle-wrap">
+        <span class="service-icon-box-line-left"></span>
+        <span class="service-icon-box-badge">PROFESSIONAL SERVICES</span>
+        <span class="service-icon-box-line-right"></span>
+      </div>
+      <h2 class="service-icon-box-title">Repair & Maintenance Services</h2>
+      <p class="service-icon-box-description">
+        We provide end-to-end repair and maintenance solutions including genuine spare parts to ensure your equipment runs at peak performance.
+      </p>
+    </div>
+
+    <div class="service-icon-box-grid">
+      <div class="service-icon-box-card">
+        <div class="service-icon-box-icon-wrapper">
+          <div class="service-icon-box-icon">❄️</div>
+        </div>
+        <h3 class="service-icon-box-card-title">Cooling Towers</h3>
+        <p class="service-icon-box-card-description">Expert maintenance and efficiency optimization for industrial cooling systems.</p>
+        <a href="#" class="service-icon-box-card-link">
+          <span>LEARN MORE</span>
+          <span class="service-icon-box-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="service-icon-box-card">
+        <div class="service-icon-box-icon-wrapper">
+          <div class="service-icon-box-icon">⚙️</div>
+        </div>
+        <h3 class="service-icon-box-card-title">Chillers</h3>
+        <p class="service-icon-box-card-description">Comprehensive repair and component replacement for heavy-duty chillers.</p>
+        <a href="#" class="service-icon-box-card-link">
+          <span>LEARN MORE</span>
+          <span class="service-icon-box-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="service-icon-box-card">
+        <div class="service-icon-box-icon-wrapper">
+          <div class="service-icon-box-icon">💨</div>
+        </div>
+        <h3 class="service-icon-box-card-title">Compressed Air Dryers</h3>
+        <p class="service-icon-box-card-description">Technical servicing for refrigerated and desiccant air drying units.</p>
+        <a href="#" class="service-icon-box-card-link">
+          <span>LEARN MORE</span>
+          <span class="service-icon-box-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-client-slider-section">
+  <div class="service-client-slider-container">
+    <div class="service-client-slider-header">
+      <div class="service-client-slider-subtitle-wrap">
+        <span class="service-client-slider-line-left"></span>
+        <span class="service-client-slider-badge">CONSULTANCY SERVICE CLIENTS</span>
+        <span class="service-client-slider-line-right"></span>
+      </div>
+      <h2 class="service-client-slider-title">Our Consultancy Service Clients</h2>
+      <p class="service-client-slider-description">
+        We did the consultancy service for the following clients:
+      </p>
+    </div>
+
+    <div class="service-client-slider-wrapper">
+      <div class="service-client-slider-track" #sliderTrack>
+        @for (client of clients; track client; let i = $index) {
+          <div class="service-client-slider-card" 
+               (mouseenter)="onCardMouseEnter(i)"
+               (mouseleave)="onCardMouseLeave()">
+            <img [src]="client.img" [alt]="client.name" class="service-client-slider-image">
+            
+            <!-- Default content (always visible) -->
+            <div class="service-client-slider-default-content">
+              <h3 class="service-client-slider-client-name">{{ client.name }}</h3>
+              <div class="service-client-slider-divider"></div>
+              <span class="service-client-slider-category">{{ client.category }}</span>
+            </div>
+            
+            <!-- Hover overlay content -->
+            <div class="service-client-slider-overlay">
+              <div class="service-client-slider-overlay-content">
+                <h3 class="service-client-slider-overlay-title">{{ client.name }}</h3>
+                <div class="service-client-slider-overlay-divider"></div>
+                <p class="service-client-slider-overlay-desc">{{ client.description }}</p>
+                <a [href]="client.link" class="service-client-slider-overlay-btn">
+                  VIEW PROJECT DETAILS →
+                </a>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Slider Navigation Dots -->
+      <div class="service-client-slider-dots">
+        @for (dot of dots; track dot; let i = $index) {
+          <button class="service-client-slider-dot" 
+                  [class.active]="currentDot === i"
+                  (click)="goToSlide(i)"
+                  [attr.aria-label]="'Go to slide ' + (i + 1)">
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</section>
