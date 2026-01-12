@@ -1,22 +1,25 @@
 <!-- ==============================
      SERVICE BANNER
      ============================== -->
-<section class="service-us-banner">
-  <div class="service-banner-content">
-    <div class="service-banner-container">
-      <div class="service-banner-text-area">
-        <h1 class="service-banner-title title">Our Clients</h1>
-
-        <nav class="service-banner-breadcrumb" aria-label="breadcrumb">
-          <span class="service-banner-home-link">Home</span>
-          <span class="service-banner-separator">»</span>
-          <span class="service-banner-current-page">Services</span>
+<section class="projects-us-banner">
+  <div class="projects-banner-content">
+    <div class="projects-banner-container">
+      <div class="projects-banner-text-area">
+        <h1 class="projects-banner-title">Our Clients</h1>
+        <nav class="projects-banner-breadcrumb" aria-label="breadcrumb">
+          <span class="projects-banner-home-link">Home</span>
+          <span class="projects-banner-separator">»</span>
+          <span class="projects-banner-current-page">Clients</span>
         </nav>
       </div>
     </div>
   </div>
 
-  <!-- <div class="service-banner-orange-accent"></div> -->
+  <div class="projects-banner-orange-accent"></div>
+
+  <!-- <div class="projects-banner-machine-wrapper">
+    <img src="#" alt="Construction Machine" class="projects-banner-machine-img">
+  </div> -->
 </section>
 
 <!-- ==============================
@@ -24,7 +27,6 @@
      ============================== -->
 <section class="partners-section">
   <div class="partners-container">
-
     <h2 class="partners-title title">Our Partners</h2>
 
     <div class="partners-grid">
@@ -32,7 +34,6 @@
         <img [src]="logo" alt="Client Logo" />
       </div>
     </div>
-
   </div>
 </section>
 
@@ -40,8 +41,10 @@
      FEATURED TESTIMONIAL
      ============================== -->
 <section class="testimonial-modern">
+  <div class="testimonial-header">
+    <h2 class="testimonial-section-title title">Trusted by Industry Leaders</h2>
+  </div>
   <div class="testimonial-wrapper">
-
     <!-- LEFT -->
     <div class="testimonial-left">
       <img
@@ -51,7 +54,7 @@
       />
 
       <div class="testimonial-client-card">
-        <strong class="subtitle">MR. K. P. Manoharan</strong>
+        <strong class="subtitle">MR. K. P. Manoharan</strong><br />
         <span class="description">
           Managing Director<br />
           Gem Equipments Pvt Ltd &<br />
@@ -62,7 +65,6 @@
 
     <!-- RIGHT -->
     <div class="testimonial-right">
-
       <div class="testimonial-stars">★★★★★</div>
 
       <h3 class="testimonial-headline title">
@@ -70,26 +72,24 @@
       </h3>
 
       <p class="description">
-        Over the past 25 years, I have been closely associated with Mr. Raja of Auroflux.
-        While my expertise lies in heat transfer design, Raja excels in piping design and
-        optimized integration of heat exchangers, chillers, cooling towers, dry cooling
-        towers, and adiabatic cooling systems with automation.
+        Over the past 25 years, I have been closely associated with Mr. Raja of Auroflux. While my
+        expertise lies in heat transfer design, Raja excels in piping design and optimized
+        integration of heat exchangers, chillers, cooling towers, dry cooling towers, and adiabatic
+        cooling systems with automation.
       </p>
 
       <p class="description">
         This approach has resulted in exceptional outcomes for customers through energy
-        conservation, water savings, and reliable long-term operation. In my 35 years of
-        experience, Raja’s system-level perspective truly sets him apart.
+        conservation, water savings, and reliable long-term operation. In my 35 years of experience,
+        Raja’s system-level perspective truly sets him apart.
       </p>
 
       <p class="description">
-        Our collaborations across projects such as Ashok Leyland, Funskool, United
-        Industries, and a prestigious Oman project have delivered optimized power usage,
-        reduced pump head, and sustainable performance.
+        Our collaborations across projects such as Ashok Leyland, Funskool, United Industries, and a
+        prestigious Oman project have delivered optimized power usage, reduced pump head, and
+        sustainable performance.
       </p>
-
     </div>
-
   </div>
 </section>
 
@@ -98,21 +98,16 @@
      ============================== -->
 <section class="testimonial-certificates">
   <div class="certificates-container">
-
-    <h2 class="certificates-heading title">
-      Testimonials from Some of Our Customers
-    </h2>
+    <h2 class="certificates-heading title">Testimonials from Some of Our Customers</h2>
 
     <p class="certificates-subtext description">
-      The following certificates and letters reflect our long-standing
-      relationships with customers and the trust built through consistent
-      engineering excellence and delivery.
+      The following certificates and letters reflect our long-standing relationships with customers
+      and the trust built through consistent engineering excellence and delivery.
     </p>
 
     <!-- Slider -->
     <div class="certificate-slider">
       <div class="certificate-track">
-
         <div
           class="certificate-slide"
           *ngFor="let cert of testimonialCertificates"
@@ -126,22 +121,15 @@
             {{ cert.title }}
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 
   <!-- ==============================
        CERTIFICATE LIGHTBOX
        ============================== -->
-  <div
-    class="certificate-lightbox"
-    *ngIf="activeCertificate"
-    (click)="closeLightbox()"
-  >
+  <div class="certificate-lightbox" *ngIf="activeCertificate" (click)="closeLightbox()">
     <div class="lightbox-content" (click)="$event.stopPropagation()">
-
       <div class="lightbox-controls">
         <button (click)="zoomIn($event)">＋</button>
         <button (click)="zoomOut($event)">－</button>
@@ -154,7 +142,6 @@
         alt="Certificate Full View"
         [style.transform]="'scale(' + zoomLevel + ')'"
       />
-
     </div>
   </div>
 </section>

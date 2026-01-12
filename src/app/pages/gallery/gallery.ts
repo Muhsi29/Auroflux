@@ -3,138 +3,124 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-gallery',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './gallery.html',
   styleUrl: './gallery.css',
 })
 export class Gallery {
-  gallery = [
+
+  activeImage: string | null = null;
+  currentIndex = 0;
+  currentImages: string[] = [];
+  zoomLevel = 1;
+
+  gallerySections = [
     {
-      title: 'Compressed Air Line',
+      title: 'Industrial Installations',
       images: [
-        'assets/gallery/gallery-1-1.webp',
-        'assets/gallery/gallery-1-2.webp',
-        'assets/gallery/gallery-1-3.webp',
-        'assets/gallery/gallery-1-4.webp',
-        'assets/gallery/gallery-1-5.webp',
-        
+        'assets/gallery/gallery-1/1.webp',
+        'assets/gallery/gallery-1/2.webp',
+        'assets/gallery/gallery-1/3.webp',
+        'assets/gallery/gallery-1/4.webp',
+        'assets/gallery/gallery-1/5.webp',
+        'assets/gallery/gallery-1/6.webp',
+        'assets/gallery/gallery-1/7.webp',
+        'assets/gallery/gallery-1/8.webp',
+        'assets/gallery/gallery-1/9.webp',
       ]
     },
     {
-      title: 'Chiller Gallery',
+      title: 'Cooling Solutions',
       images: [
-        'assets/gallery/2-min.webp',
-        'assets/gallery/gallery-2-2.webp',
-        'assets/gallery/galler-2-3.webp',
-        'assets/gallery/gallery-2-4.webp',
-        'assets/gallery/gallery-2-5.webp',
+        'assets/gallery/gallery-2/1.webp',
+        'assets/gallery/gallery-2/2.webp',
+        'assets/gallery/gallery-2/3.webp',
+        'assets/gallery/gallery-2/4.webp',
+        'assets/gallery/gallery-2/5.webp',
+        'assets/gallery/gallery-2/6.webp',
+        'assets/gallery/gallery-2/7.webp',
+        'assets/gallery/gallery-2/8.webp',
+        'assets/gallery/gallery-2/9.webp',
       ]
     },
     {
-      title: 'Cooling Tower Gallery',
+      title: 'Piping Infrastructure',
       images: [
-        'assets/gallery/gallery-3-1.webp',
-        'assets/gallery/gallery-3-2.webp',
-        'assets/gallery/gallery-3-3.webp',
-        'assets/gallery/gallery-3-4.webp',
-        'assets/gallery/gallery-3-5.webp',
+        'assets/gallery/gallery-3/1.webp',
+        'assets/gallery/gallery-3/2.webp',
+        'assets/gallery/gallery-3/3.webp',
+        'assets/gallery/gallery-3/4.webp',
+        'assets/gallery/gallery-3/5.webp',
       ]
     },
     {
-      title: 'Solar Hot Water',
+      title: 'Plant Engineering',
       images: [
-        'assets/gallery/1-2.webp',
-        'assets/gallery/2-2.webp',
-        'assets/gallery/3-2.webp',
-        'assets/gallery/4-2.webp',
-        'assets/gallery/3-2.webp',
-        'assets/gallery/8-1.webp',
+        'assets/gallery/gallery-4/1.webp',
+        'assets/gallery/gallery-4/2.webp',
+        'assets/gallery/gallery-4/3.webp',
+        'assets/gallery/gallery-4/4.webp',
+        'assets/gallery/gallery-4/5.webp',
+        'assets/gallery/gallery-4/6.webp',
+        'assets/gallery/gallery-4/7.webp',
+        'assets/gallery/gallery-4/8.webp',
+        'assets/gallery/gallery-4/9.webp',
+        'assets/gallery/gallery-4/10.webp',
+        'assets/gallery/gallery-4/11.webp',
       ]
     },
     {
-      title: 'Dry Cooler Gallery',
+      title: 'Site Executions',
       images: [
-        'assets/gallery/2-3.webp',
-        'assets/gallery/gallery-5-3.webp',
-        'assets/gallery/gallery-5-4.webp',
+        'assets/gallery/gallery-5/1.webp',
+        'assets/gallery/gallery-5/2.webp',
+        'assets/gallery/gallery-5/3.webp',
+        'assets/gallery/gallery-5/4.webp',
       ]
     }
   ];
 
-  lightboxOpen = false;
-  isZoomed = false;
-  activeTopicIndex = 0;
-  activeImageIndex = 0;
-
-  get activeImage() {
-    return this.gallery[this.activeTopicIndex].images[this.activeImageIndex];
-  }
-
-  get activeTopic() {
-    return this.gallery[this.activeTopicIndex];
-  }
-
-  openLightbox(topicIndex: number, imageIndex: number) {
-    this.activeTopicIndex = topicIndex;
-    this.activeImageIndex = imageIndex;
-    this.lightboxOpen = true;
-    this.isZoomed = false;
-    document.body.style.overflow = 'hidden';
+  openLightbox(images: string[], index: number) {
+    this.currentImages = images;
+    this.currentIndex = index;
+    this.activeImage = images[index];
+    this.zoomLevel = 1;
   }
 
   closeLightbox() {
-    this.lightboxOpen = false;
-    this.isZoomed = false;
-    document.body.style.overflow = '';
+    this.activeImage = null;
   }
 
-  nextImage() {
-    const images = this.gallery[this.activeTopicIndex].images;
-    this.activeImageIndex = (this.activeImageIndex + 1) % images.length;
-    this.isZoomed = false; // Reset zoom when changing images
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.currentImages.length;
+    this.activeImage = this.currentImages[this.currentIndex];
+    this.zoomLevel = 1;
   }
 
-  prevImage() {
-    const images = this.gallery[this.activeTopicIndex].images;
-    this.activeImageIndex = (this.activeImageIndex - 1 + images.length) % images.length;
-    this.isZoomed = false; // Reset zoom when changing images
+  prev() {
+    this.currentIndex =
+      (this.currentIndex - 1 + this.currentImages.length) % this.currentImages.length;
+    this.activeImage = this.currentImages[this.currentIndex];
+    this.zoomLevel = 1;
   }
 
-  toggleZoom() {
-    this.isZoomed = !this.isZoomed;
+  zoomIn() {
+    this.zoomLevel = Math.min(this.zoomLevel + 0.2, 3);
   }
 
-  handleImageClick(event: MouseEvent) {
-    if (this.isZoomed) {
-      // If zoomed, clicking should zoom out
-      this.isZoomed = false;
-      event.stopPropagation();
-    }
+  zoomOut() {
+    this.zoomLevel = Math.max(this.zoomLevel - 0.2, 1);
   }
 
-  // Keyboard navigation
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (this.lightboxOpen) {
-      switch (event.key) {
-        case 'Escape':
-          this.closeLightbox();
-          break;
-        case 'ArrowRight':
-          this.nextImage();
-          event.preventDefault();
-          break;
-        case 'ArrowLeft':
-          this.prevImage();
-          event.preventDefault();
-          break;
-        case 'z':
-        case 'Z':
-          this.toggleZoom();
-          event.preventDefault();
-          break;
-      }
-    }
+  @HostListener('document:keydown.escape') onEsc() {
+    this.closeLightbox();
+  }
+
+  @HostListener('document:keydown.arrowright') onRight() {
+    if (this.activeImage) this.next();
+  }
+
+  @HostListener('document:keydown.arrowleft') onLeft() {
+    if (this.activeImage) this.prev();
   }
 }

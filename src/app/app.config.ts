@@ -8,6 +8,8 @@ import { ContactUs } from './pages/contact-us/contact-us';
 import { Products } from './pages/products/products';
 import { OurClients } from './pages/our-clients/our-clients';
 import { Gallery } from './pages/gallery/gallery';
+import { Services } from './pages/services/services';
+
 
 export const appConfig = {
   providers: [
@@ -18,8 +20,9 @@ export const appConfig = {
         { path: 'projects', component: Projects },
         { path: 'projects/:id', component: ProjectsDetails },
         { path: 'products', component: Products },
-        { path: 'gallery', component: Gallery },
         { path: 'our-clients', component: OurClients },
+        { path: 'gallery', component: Gallery },
+        { path: 'services', component: Services },
         { path: 'contact', component: ContactUs }
       ],
       withInMemoryScrolling({

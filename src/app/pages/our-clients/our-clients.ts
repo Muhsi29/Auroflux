@@ -92,8 +92,6 @@ resetZoom(event: Event) {
     document.body.style.overflow = 'hidden';
   }
 
-
-
   closeLightbox() {
     this.activeCertificate = null;
     document.body.style.overflow = '';
