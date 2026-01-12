@@ -1019,8 +1019,13 @@
   top: 50%;
   transform: translateY(-50%);
   color: #888;
-  font-size: 18px;
+  font-size: 16px;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
 }
 
 .contact-form-textarea {
@@ -1076,13 +1081,11 @@
   align-items: center;
   gap: 12px;
   transition: all 0.3s ease;
- 
   letter-spacing: 0.5px;
 }
 
 .contact-form-submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
- 
   background: var(--text-dark);
 }
 
@@ -1238,7 +1241,7 @@
   }
   
   .contact-form-icon {
-    font-size: 16px;
+    font-size: 14px;
     right: 14px;
   }
   

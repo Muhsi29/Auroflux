@@ -6,7 +6,6 @@ interface TeamMember {
   name: string;
   role: string;
   image: string;
-  phone: string;
 }
 
 interface Client {
@@ -53,40 +52,34 @@ export class About implements AfterViewInit, OnDestroy {
   activeSocialIndex: number | null = null;
 
   teamMembers: TeamMember[] = [
-    //  { 
-    //   name: 'Raja Srinivasan', 
-    //   role: 'Founder', 
-    //   image: '../../../assets/teams/mama.webp', 
-    //   phone: '(704) 555-0127' 
-    // },
+     { 
+      name: 'Raja Srinivasan', 
+      role: 'Founder', 
+      image: '../../../assets/teams/mama.webp'
+    },
     { 
       name: 'Bhoovarahan Thirumalai', 
       role: 'Director', 
-      image: '../../../assets/teams/Bhoo-asp.jpg', 
-      phone: '(704) 555-0127' 
+      image: '../../../assets/teams/Bhoo-asp.jpg'
     },
     { 
       name: 'Manoharan', 
       role: 'Chief Technical Officer', 
-      image: '../../../assets/teams/manoharan-1.jpg', 
-      phone: '(704) 555-0127' 
+      image: '../../../assets/teams/manoharan-1.jpg'
     },
     { 
       name: 'Muniyandi', 
       role: 'Chief Consultant', 
-      image: '../../../assets/teams/muniyandi.jpg', 
-      phone: '(704) 555-0127' 
+      image: '../../../assets/teams/muniyandi.jpg' 
     },
     { 
       name: 'A. Rajathi', 
       role: 'CEO Finance', 
-      image: '../../../assets/teams/Rajathi.jpeg', 
-      phone: '(704) 555-0127' 
+      image: '../../../assets/teams/Rajathi.jpeg' 
     },{ 
       name: 'Vasanth', 
       role: 'Head - Electrical & Automation', 
-      image: '../../../assets/teams/vasanth1.jpg', 
-      phone: '(704) 555-0127' 
+      image: '../../../assets/teams/vasanth1.jpg'
     }
   ];
 

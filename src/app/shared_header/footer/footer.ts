@@ -1,32 +1,38 @@
-import { Component , OnInit, ElementRef, ViewChild, AfterViewInit, HostListener} from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './footer.html',
-  styleUrl: './footer.css',
+  styleUrls: ['./footer.css']
 })
 export class FooterComponent {
-  scrollToTop() {
+  
+  /**
+   * Scrolls to the top of the page smoothly
+   */
+  scrollToTop(): void {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   }
 
+  /**
+   * Listens to window scroll events to show/hide the back-to-top button
+   */
   @HostListener('window:scroll', [])
-  onWindowScroll() {
-    // Optional: Show/hide back-to-top button
+  onWindowScroll(): void {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    const backToTopBtn = document.querySelector('.back-to-top') as HTMLElement;
+    const backToTopBtn = document.querySelector('.auroflux-back-to-top') as HTMLElement;
     
     if (backToTopBtn) {
-      if (scrollPosition > 500) {
-        backToTopBtn.style.opacity = '1';
-        backToTopBtn.style.visibility = 'visible';
+      if (scrollPosition > 300) {
+        backToTopBtn.classList.add('visible');
       } else {
-        backToTopBtn.style.opacity = '0';
-        backToTopBtn.style.visibility = 'hidden';
+        backToTopBtn.classList.remove('visible');
       }
     }
   }
