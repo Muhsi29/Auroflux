@@ -276,6 +276,9 @@
 .hamburger-btn.active .hamburger-line {
   background: #0f2027;
 }
+.main-header.menu-open .logo-subtitle {
+  color: #ffffff;
+}
 
 /* On sticky state - white hamburger */
 .main-header.sticky .hamburger-line {
@@ -421,7 +424,7 @@
   }
   
   .quote-btn {
-    padding: 10px 20px;
+    padding: 10px 5px;
     font-size: 12px;
     display: none;
   }

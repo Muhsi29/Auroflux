@@ -1,4 +1,4 @@
-<header class="main-header" [class.sticky]="isSticky" #header>
+<header class="main-header" [class.sticky]="isSticky" [class.menu-open]="isMenuOpen" #header>
   <div class="header-container">
     <!-- Logo Section - Only image with subtitle -->
     <div class="logo-box">
@@ -28,7 +28,7 @@
       <button routerLink="/contact" class="quote-btn">Get Quote</button>
       
       <!-- Hamburger Menu Button -->
-      <button class="hamburger-btn" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <button class="hamburger-btn" (click)="toggleMenu()" [class.active]="isMenuOpen" [class.menu-open]="isMenuOpen">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>

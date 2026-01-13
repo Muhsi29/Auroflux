@@ -344,7 +344,6 @@
 .partners-title {
   text-align: center;
   margin-bottom: 40px;
-  
 }
 
 .partners-grid {
@@ -363,9 +362,11 @@
 }
 
 .partner-card img {
-  width: 100%;
-  /* height: 100%; */
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   filter: none;
 }
 
@@ -444,71 +445,106 @@
 .partner-card:nth-child(55) { grid-column: span 1; grid-row: span 1; }
 .partner-card:nth-child(56) { grid-column: span 1; grid-row: span 1; }
 
-/* Responsive */
-@media (max-width: 1200px) {
+/* Responsive - Laptop 1024px */
+@media (max-width: 1024px) {
   .partners-grid {
     grid-template-columns: repeat(5, 1fr);
-    grid-auto-rows: 110px;
-    gap: 10px;
+    grid-auto-rows: 120px;
+    gap: 12px;
   }
-  .partner-card { padding: 20px; }
+  
+  .partner-card {
+    padding: 22px;
+  }
+  
+  .partner-card img {
+    max-height: 85px;
+  }
+  
+  .partners-section {
+    padding: 60px 0;
+  }
+  
+  .partners-title {
+    margin-bottom: 35px;
+  }
 }
 
-@media (max-width: 992px) {
+/* Responsive - Tablet 768px */
+@media (max-width: 768px) {
   .partners-grid {
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 100px;
     gap: 10px;
   }
   
-  .partners-section { padding: 60px 0; }
-  .partners-title { font-size: 2rem; margin-bottom: 50px; }
-  .partner-card { padding: 18px; }
-  
-  /* Simplify collage on smaller screens */
-  .partner-card:nth-child(3n+1) { grid-column: span 2; grid-row: span 1; }
-  .partner-card:nth-child(4n+2) { grid-column: span 1; grid-row: span 2; }
-}
-
-@media (max-width: 768px) {
-  .partners-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 90px;
-    gap: 10px;
+  .partner-card {
+    padding: 18px;
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
   }
   
-  .partner-card { padding: 16px; }
-  .partners-title { font-size: 1.75rem; margin-bottom: 40px; }
+  .partner-card img {
+    max-height: 60px;
+  }
   
-  .partner-card:nth-child(5n+1) { grid-column: span 2; grid-row: span 1; }
-  .partner-card:nth-child(6n+3) { grid-column: span 1; grid-row: span 2; }
+  .partners-section {
+    padding: 50px 0;
+  }
+  
+  .partners-title {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+  }
 }
 
-@media (max-width: 576px) {
+/* Responsive - Mobile 480px */
+@media (max-width: 480px) {
   .partners-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 85px;
-    gap: 10px;
+    gap: 8px;
   }
   
-  .partners-section { padding: 40px 0; }
-  .partner-card { padding: 14px; }
-  .partners-title { font-size: 1.5rem; margin-bottom: 30px; }
+  .partners-section {
+    padding: 40px 0;
+  }
   
-  .partner-card:nth-child(4n+1) { grid-column: span 2; grid-row: span 1; }
-  .partner-card:nth-child(5n+2) { grid-column: span 1; grid-row: span 2; }
+  .partner-card {
+    padding: 12px;
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+  
+  .partner-card img {
+    max-width: 100%;
+    max-height: 50px;
+  }
+  
+  .partners-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
 }
 
 @media (max-width: 400px) {
   .partners-grid {
     grid-auto-rows: 75px;
-    gap: 8px;
+    gap: 6px;
   }
   
-  .partner-card { padding: 12px; }
-  .partners-section { padding: 30px 0; }
+  .partner-card {
+    padding: 10px;
+  }
+  
+  .partner-card img {
+    max-height: 45px;
+  }
+  
+  .partners-section {
+    padding: 30px 0;
+  }
 }
-
 /* =========================================================
    FEATURED TESTIMONIAL
    ========================================================= */
@@ -845,7 +881,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
+  overflow: auto;
   z-index: 9999;
 }
 
@@ -867,24 +903,32 @@
   border-radius: 12px;
   transition: transform .25s ease;
   background: transparent;
+  cursor: grab;
 }
 
+.lightbox-content img:active {
+  cursor: grabbing;
+}
+
+/* Close Button */
 .lightbox-close {
   position: fixed;
-  top: 24px;
-  right: 30px;
-  font-size: 34px;
+  top: 20px;
+  right: 20px;
+  font-size: 36px;
   color: #ffffff;
   cursor: pointer;
-  z-index: 10000;
-  width: 40px;
-  height: 40px;
+  z-index: 10001;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.15);
   border-radius: 50%;
   transition: all 0.3s ease;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .lightbox-close:hover {
@@ -895,16 +939,16 @@
 /* Zoom Controls */
 .lightbox-controls {
   position: fixed;
-  top: 24px;
-  right: 80px;
+  top: 20px;
+  left: 20px;
   display: flex;
   gap: 10px;
   z-index: 10001;
 }
 
 .lightbox-controls button {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(255,255,255,.15);
   border: none;
@@ -915,11 +959,16 @@
   align-items: center;
   justify-content: center;
   transition: all 0.25s ease;
+  font-weight: 500;
 }
 
 .lightbox-controls button:hover {
   background: var(--banner-green);
   transform: scale(1.1);
+}
+
+.lightbox-controls button:active {
+  transform: scale(0.95);
 }
 
 /* Lightbox Responsive */
@@ -929,87 +978,130 @@
   }
   
   .lightbox-close { 
-    top: 20px; 
-    right: 25px; 
+    top: 18px; 
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 34px;
   }
   
   .lightbox-controls { 
-    top: 20px; 
-    right: 70px; 
+    top: 18px; 
+    left: 18px;
+    gap: 10px;
+  }
+  
+  .lightbox-controls button {
+    width: 38px;
+    height: 38px;
+    font-size: 19px;
   }
 }
 
 @media (max-width: 768px) {
   .certificate-lightbox { 
-    padding: 40px 20px; 
+    padding: 70px 15px 20px 15px;
   }
   
   .lightbox-close { 
-    top: 18px; 
-    right: 18px;
+    top: 15px; 
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+  }
+  
+  .lightbox-controls { 
+    top: 15px; 
+    left: 15px;
+    gap: 8px;
+  }
+  
+  .lightbox-controls button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  
+  .lightbox-content {
+    padding-top: 0;
+  }
+  
+  .lightbox-content img {
+    max-height: calc(100vh - 100px);
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certificate-lightbox { 
+    padding: 65px 10px 15px 10px;
+  }
+  
+  .lightbox-close { 
+    top: 12px; 
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    font-size: 30px;
+    background: rgba(0,0,0,.7);
+    backdrop-filter: blur(5px);
+  }
+  
+  .lightbox-controls { 
+    top: 12px; 
+    left: 12px;
+    gap: 6px;
+  }
+  
+  .lightbox-controls button {
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+    background: rgba(0,0,0,.7);
+    backdrop-filter: blur(5px);
+  }
+  
+  .lightbox-content {
+    padding-top: 0;
+    width: 100%;
+  }
+  
+  .lightbox-content img {
+    max-height: calc(100vh - 85px);
+    padding: 8px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .certificate-lightbox { 
+    padding: 60px 8px 12px 8px;
+  }
+  
+  .lightbox-close { 
+    top: 10px; 
+    right: 10px;
     width: 36px;
     height: 36px;
     font-size: 28px;
   }
   
   .lightbox-controls { 
-    top: 18px; 
-    right: 60px; 
+    top: 10px; 
+    left: 10px;
+    gap: 5px;
   }
   
   .lightbox-controls button {
-    width: 34px;
-    height: 34px;
-    font-size: 18px;
-  }
-  
-  .lightbox-content img {
-    max-height: calc(100vh - 120px);
-    padding: 16px;
-  }
-}
-
-@media (max-width: 576px) {
-  .certificate-lightbox { 
-    padding: 30px 15px; 
-  }
-  
-  .lightbox-close { 
-    top: 15px; 
-    right: 15px;
     width: 32px;
     height: 32px;
-    font-size: 24px;
-  }
-  
-  .lightbox-controls { 
-    top: 15px; 
-    right: 55px; 
-    gap: 8px;
-  }
-  
-  .lightbox-controls button {
-    width: 30px;
-    height: 30px;
     font-size: 16px;
   }
   
   .lightbox-content img {
-    max-height: calc(100vh - 100px);
-    padding: 12px;
-  }
-}
-
-@media (max-width: 400px) {
-  .lightbox-controls { 
-    flex-direction: column;
-    gap: 6px;
-  }
-  
-  .lightbox-close { 
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    max-height: calc(100vh - 75px);
+    padding: 5px;
   }
 }
 

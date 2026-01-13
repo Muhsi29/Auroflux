@@ -1092,7 +1092,6 @@
   .who-we-about-experience-badge {
     padding: 14px 20px;
     bottom: -15px;
-    right: 10px;
   }
 
   .who-we-about-number {
@@ -1697,7 +1696,7 @@
   }
 
   .team-team-card {
-    max-width: 320px;
+    width: 250px;
     margin: 0 auto;
     
     &:hover {

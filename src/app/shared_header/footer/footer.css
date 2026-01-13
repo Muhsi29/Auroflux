@@ -295,51 +295,53 @@
     padding: 50px 0 25px;
   }
   
+  /* 3-column layout for Explore, Office, Social */
   .auroflux-footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
-  
+
+  /* Logo section full width */
   .auroflux-footer-col-logo {
-    grid-column: span 2;
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Explore, Contact, Social in one row */
+  .auroflux-footer-col-explore {
+    grid-column: 1 / 2;
     text-align: center;
   }
-  
+
+  .auroflux-footer-col-contact {
+    grid-column: 2 / 3;
+    text-align: center;
+  }
+
   .auroflux-footer-col-social {
-    grid-column: span 2;
+    grid-column: 3 / 4;
     text-align: center;
   }
-  
-  .auroflux-logo-img {
-    margin: 0 auto 10px;
-  }
-  
-  .auroflux-footer-container {
-    padding: 0 25px;
-  }
-  
-  .auroflux-company-description p {
-    text-align: center;
-  }
-  
+
+  /* Center everything nicely */
   .auroflux-col-title::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
-  .auroflux-footer-col-explore,
-  .auroflux-footer-col-contact {
-    text-align: center;
-  }
-  
-  .auroflux-footer-link:hover {
+
+  .auroflux-footer-links {
     padding-left: 0;
   }
-  
+
   .auroflux-social-icons-footer {
     justify-content: center;
   }
-  
+
+  .auroflux-company-description p,
+  .auroflux-footer-text,
   .auroflux-social-description p {
     text-align: center;
   }
@@ -352,95 +354,94 @@
   }
 }
 
-/* Mobile (480px) */
 @media screen and (max-width: 480px) {
+
   .auroflux-footer {
     padding: 40px 0 20px;
   }
-  
+
+  /* 2-column grid for mobile middle row */
   .auroflux-footer-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
   }
-  
-  .auroflux-footer-col-logo,
+
+  /* LOGO + DESCRIPTION full width */
+  .auroflux-footer-col-logo {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  /* Explore on left */
+  .auroflux-footer-col-explore {
+    grid-column: 1 / 2;
+    text-align: center;
+  }
+
+  /* Registered Office on right */
+  .auroflux-footer-col-contact {
+    grid-column: 2 / 3;
+    text-align: center;
+  }
+
+  /* Follow Us full width below */
   .auroflux-footer-col-social {
-    grid-column: span 1;
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 25px;
   }
-  
-  .auroflux-footer-container {
-    padding: 0 20px;
+
+  /* Center align */
+  .auroflux-footer-links {
+    padding-left: 0;
   }
-  
+
+  .auroflux-social-icons-footer {
+    justify-content: center;
+  }
+
+  .auroflux-company-description p,
+  .auroflux-footer-text,
+  .auroflux-social-description p {
+    text-align: center;
+  }
+
+  /* Text sizing */
   .auroflux-footer-subtext {
     font-size: 10px;
     letter-spacing: 2px;
   }
-  
+
   .auroflux-company-description p {
     font-size: 13px;
   }
-  
+
   .auroflux-col-title {
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
-  
-  .auroflux-footer-link {
-    font-size: 13px;
-    margin-bottom: 10px;
-  }
-  
-  .auroflux-footer-text {
-    font-size: 13px;
-  }
-  
+
+  .auroflux-footer-link,
+  .auroflux-footer-text,
   .auroflux-contact-link {
     font-size: 13px;
   }
-  
-  .auroflux-social-icons-footer {
-    gap: 10px;
-  }
-  
+
   .auroflux-social-link-footer {
     width: 36px;
     height: 36px;
   }
-  
+
   .auroflux-developer-link {
     font-size: 12px;
   }
-  
+
   .auroflux-back-to-top {
     width: 35px;
     height: 35px;
     right: 15px;
     bottom: 15px;
     font-size: 16px;
-  }
-}
-
-/* Extra Small Devices (360px) */
-@media screen and (max-width: 360px) {
-  .auroflux-footer-container {
-    padding: 0 15px;
-  }
-  
-  .auroflux-logo-img {
-    width: 120px;
-  }
-  
-  .auroflux-social-icons-footer {
-    gap: 8px;
-  }
-  
-  .auroflux-social-link-footer {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .auroflux-social-link-footer i {
-    font-size: 12px;
   }
 }

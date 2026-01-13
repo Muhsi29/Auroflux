@@ -1173,7 +1173,7 @@ p {
   }
   
   .about-btn-read {
-    width: 30%;
+    width: 40%;
     padding: 10px 10px;
     text-align: center;
     font-size: 10px;
@@ -3027,7 +3027,7 @@ p {
   }
 
   .blog-featured-card {
-    height: 380px;
+    height: 430px;
   }
 
   .blog-featured-overlay {

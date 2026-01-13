@@ -772,7 +772,8 @@
   }
 
   .pd-features-grid {
-    gap: 18px;
+    grid-template-columns: 1fr;   /* ONE COLUMN */
+  gap: 20px;
   }
 
   .pd-feature-card {
@@ -790,11 +791,13 @@
   }
 
   .pd-feature-card-title {
-    font-size: var(--pd-font-base);
+     font-size: 15px;
+  line-height: 1.4;
   }
 
   .pd-feature-card-description {
-    font-size: 14px;
+    font-size: 13px;
+  line-height: 1.5;
   }
 }
 

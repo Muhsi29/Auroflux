@@ -331,7 +331,7 @@ goCta() {
   private homeProductCalculateCardsPerView() {
     if (window.innerWidth < 640) {
       this.homeProductCardsPerView = 1;
-      this.homeProductCardWidth = window.innerWidth - 40;
+      this.homeProductCardWidth = window.innerWidth - 50;
     } else if (window.innerWidth < 1024) {
       this.homeProductCardsPerView = 2;
       this.homeProductCardWidth = (window.innerWidth - 80) / 2;
