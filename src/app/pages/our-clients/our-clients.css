@@ -617,6 +617,7 @@
 
 .testimonial-right .description {
   margin-bottom: 15px;
+  align-items: justify;
 }
 
 .testimonial-right .description:last-child {
@@ -864,7 +865,9 @@
   .certificate-card {
     height: 220px;
   }
-  
+    .certificates-subtext.description {
+      align-items: justify;
+  }
   .certificate-track {
     gap: 15px;
   }

@@ -143,7 +143,6 @@
   right: 0;
   width: 30%;
   height: 100%;
-  background: #ff5e14;
   clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
   z-index: 1;
   opacity: 0.8;
@@ -346,23 +345,6 @@
   .about-banner-home-link::after {
     transition: none;
     transform: none;
-  }
-}
-
-/* ============================================
-   DARK MODE SUPPORT
-   ============================================ */
-@media (prefers-color-scheme: dark) {
-  .about-us-banner::before {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
-  }
-
-  .about-banner-title {
-    color: #f1f5f9;
-  }
-
-  .about-banner-current-page {
-    color: #e2e8f0;
   }
 }
 
@@ -997,6 +979,7 @@
     width: 100%;
     max-width: 300px;
     margin: 25px auto 0;
+    text-align: center;
   }
 
   .who-we-about-vertical-line {
@@ -1014,7 +997,14 @@
     justify-content: center;
     display: flex;
   }
+  .who-we-about-client-text {
+  text-align: center;
+  margin-bottom: 10px;
+}
 
+.who-we-about-client-avatars {
+  justify-content: center;
+}
   .who-we-are-subtitle-wrapper,
   .who-we-about-title,
   .who-we-about-description,
@@ -1061,14 +1051,15 @@
     margin-bottom: 15px;
   }
   .who-we-about-btn-quote {
-    width: 100%;
-    max-width: 150px;
-    justify-content: center;
-    display: flex;
+      margin: 0 auto;          /* center horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
   .who-we-about-description {
     font-size: 15px;
     margin-bottom: 20px;
+    text-align: justify;
   }
 
   .who-we-about-subtitle-text {
@@ -1758,7 +1749,7 @@
     }
     &.active {
     opacity: 1;
-    right: 250px;
+    right: 180px;
     pointer-events: all;
   }
   }

@@ -1,12 +1,15 @@
 <header class="main-header" [class.sticky]="isSticky" [class.menu-open]="isMenuOpen" #header>
   <div class="header-container">
     <!-- Logo Section - Only image with subtitle -->
-    <div class="logo-box">
-      <img src="../../../assets/images/auroflux-logo.webp" alt="AUROFLUX" class="logo">
-      <div class="logo-text">
-        <small class="logo-subtitle">Engineering Solutions</small>
-      </div>
+    <a href="/" class="logo-link">
+  <div class="logo-box">
+    <img src="../../../assets/images/auroflux-logo.webp" alt="AUROFLUX" class="logo">
+    <div class="logo-text">
+      <small class="logo-subtitle">Engineering Solutions</small>
     </div>
+  </div>
+</a>
+
 
     <!-- Desktop Navigation - No dropdowns -->
     <nav class="nav-menu" [class.active]="isMenuOpen">

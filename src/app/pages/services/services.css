@@ -369,6 +369,11 @@
     padding: 5px;
   }
 }
+@media (max-width :480px) {
+  .services-feature-content .title {
+    text-align: center;
+  }
+}
 
 /* Service Seciton - 2 */
 /* Service Icon Box Section */
@@ -404,11 +409,12 @@
 
 .service-icon-box-line-left,
 .service-icon-box-line-right {
-  flex: 0 1 40px;
+  width: 40px;
   height: 2px;
   background: #22b34a;
-  opacity: 0.6;
+  opacity: 0.7;
 }
+
 
 @media (min-width: 768px) {
   .service-icon-box-line-left,
@@ -639,8 +645,12 @@
   
   .service-icon-box-description {
     font-size: 14px;
+    text-align: center;
   }
-  
+.service-icon-box-icon-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .service-icon-box-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -648,23 +658,33 @@
   
   .service-icon-box-card {
     padding: 25px 20px;
+    text-align: center;
   }
   
   .service-icon-box-subtitle-wrap {
     gap: 10px;
   }
+   .service-icon-box-subtitle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
   
-  .service-icon-box-line-left,
+   .service-icon-box-line-left,
   .service-icon-box-line-right {
-    flex: 0 1 30px;
+    flex: 0 0 30px;
   }
   
   .service-icon-box-badge {
     font-size: 12px;
+    text-align: center;
   }
   
   .service-icon-box-card-title {
     font-size: 1.3rem;
+    text-align: center;
   }
   
   .service-icon-box-card-description {
@@ -718,7 +738,7 @@
   font-weight: 600;
   font-size: 15px;
   transition: all 0.3s ease;
-  background: transparent;
+  background: #fff;
 }
 
 .service-cta-btn:hover {

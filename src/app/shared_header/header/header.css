@@ -51,6 +51,12 @@
 }
 
 /* Logo Section */
+.logo-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
 .logo-box {
   margin-top: -20px;
   align-items: center;
@@ -426,7 +432,7 @@
   .quote-btn {
     padding: 10px 5px;
     font-size: 12px;
-    display: none;
+    display: block;
   }
   
   .hamburger-btn {

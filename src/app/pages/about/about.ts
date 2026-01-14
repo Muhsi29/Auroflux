@@ -102,11 +102,11 @@ export class About implements AfterViewInit, OnDestroy {
     },
     { 
       name: 'Toshiba Machine', 
-      logo: '../../../assets/client-logo/logo-5.jfif' 
+      logo: '../../../assets/client-logo/logo-5.png' 
     },
     { 
       name: 'Flexol', 
-      logo: '../../../assets/client-logo/logo-6.jfif' 
+      logo: '../../../assets/client-logo/logo-6.png' 
     },
     { 
       name: 'Delphi-Tvs', 
@@ -138,7 +138,7 @@ export class About implements AfterViewInit, OnDestroy {
     },
     { 
       name: 'Gem Trust Technology', 
-      logo: '../../../assets/client-logo/logo-14.jfif' 
+      logo: '../../../assets/client-logo/logo-14.png' 
     }
   ];
 

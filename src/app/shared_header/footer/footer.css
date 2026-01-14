@@ -110,6 +110,11 @@
   padding-left: 15px;
   margin: 0;
 }
+.auroflux-logo-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
 
 .auroflux-footer-link {
   display: block;

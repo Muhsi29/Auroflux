@@ -64,19 +64,19 @@ projects: Project[] = [
     id: 7,
     title: 'Combination Cooling System – Ashok Leyland',
     description: 'Designed and commissioned adiabatic dry coolers with PHE and VFD based automation integrated with existing cooling system.',
-    imageUrl: 'https://images.unsplash.com/photo-1581092334494-1a0f6e8d4f98?auto=format&fit=crop&w=900&q=80'
+    imageUrl: 'https://picsum.photos/id/1073/1600/900'
   },
   {
     id: 8,
     title: 'Chiller Based IMM Cooling – Funskool',
     description: 'Designed centralized chiller based oil and mould cooling system for 24 IMM machines, saving water and capital cost.',
-    imageUrl: 'https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=900&q=80'
+    imageUrl: 'https://picsum.photos/id/1011/1600/900'
   },
   {
     id: 9,
     title: 'Induction Furnace Cooling – ABI Showatech',
     description: 'Delivered closed loop cooling solutions for induction furnace, sand cooling and aerospace chiller piping systems.',
-    imageUrl: 'https://images.unsplash.com/photo-1598887142489-32e5a6bfc7f5?auto=format&fit=crop&w=900&q=80'
+    imageUrl: 'https://picsum.photos/id/1003/1600/900'
   },
   {
     id: 10,
@@ -94,19 +94,19 @@ projects: Project[] = [
     id: 12,
     title: 'Compressed Air & Cooling Utilities – Super Auto Forge',
     description: 'Designed and executed compressed air, dry cooler and chilled water piping systems across multiple manufacturing plants.',
-    imageUrl: 'https://images.unsplash.com/photo-1581091012184-5c1d7b9bdf7a?auto=format&fit=crop&w=900&q=80'
+    imageUrl: 'https://picsum.photos/id/1040/1600/900'
   },
   {
     id: 13,
     title: 'Cooling & RO Water Piping – Mando Automotive',
     description: 'Delivered engineered cooling water and RO water piping systems with complete hydraulic design.',
-    imageUrl: 'https://images.unsplash.com/photo-1605902711622-cfb43c4437d1?auto=format&fit=crop&w=900&q=80'
+    imageUrl: 'https://picsum.photos/id/1024/1600/900'
   },
   {
     id: 14,
     title: 'Closed Loop Cooling for PDC Machines – Arul Casting',
     description: 'Installed PHE based closed loop piping with advanced VFD panel system for pressure die casting machines.',
-    imageUrl: 'https://images.unsplash.com/photo-1590641931531-9c93c32d2d44?auto=format&fit=crop&w=900&q=80'
+    imageUrl: 'https://picsum.photos/id/1050/1600/900'
   },
   {
     id: 15,
