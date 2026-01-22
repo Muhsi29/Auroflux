@@ -3891,6 +3891,32 @@ p {
   background: var(--primary-green);
   transform: scale(1.2);
 }
+.home-service-viewall-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.home-service-viewall-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border: 2px solid var(--banner-green);
+  border-radius: 999px;
+  color: var(--banner-green);
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.home-service-viewall-btn:hover {
+  background: var(--banner-green);
+  color: #fff;
+}
+
+
 
 /* Responsive Styles for Mobile */
 @media (max-width: 480px) {

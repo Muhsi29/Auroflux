@@ -141,7 +141,7 @@
               <h3 class="home-service-card-title">{{service.title}}</h3>
               <p class="home-service-card-description">{{service.description}}</p>
               <hr class="home-service-card-divider">
-              <a 
+              <!-- <a 
                 href="#" 
                 class="home-service-explore-link"
                 [attr.aria-label]="'Explore more about ' + service.title">
@@ -149,7 +149,7 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="display: inline-block; margin-left: 5px;">
                   <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -162,6 +162,7 @@
       </div>
     </div>
 
+
     <!-- Pagination Dots -->
     <div class="home-service-pagination-dots" *ngIf="homeServiceShowDots">
       <button 
@@ -173,6 +174,23 @@
       </button>
     </div>
   </div>
+
+<div style="text-align: center;">
+  <a href="/services" class="home-product-view-all">
+    View All Services
+    <span class="home-product-view-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+</div>
+
+
 </section>
 <!-- Why Choose US-->
 
