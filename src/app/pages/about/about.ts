@@ -59,14 +59,14 @@ export class About implements AfterViewInit, OnDestroy {
     },
     { 
       name: 'Bhoovarahan Thirumalai', 
-      role: 'Director', 
+      role: 'Mentor', 
       image: '../../../assets/teams/Bhoo-asp.jpg'
     },
-    { 
-      name: 'Manoharan', 
-      role: 'Chief Technical Officer', 
-      image: '../../../assets/teams/manoharan-1.jpg'
-    },
+    // { 
+    //   name: 'Manoharan', 
+    //   role: 'Chief Technical Officer', 
+    //   image: '../../../assets/teams/manoharan-1.jpg'
+    // },
     { 
       name: 'Muniyandi', 
       role: 'Chief Consultant', 
@@ -76,11 +76,12 @@ export class About implements AfterViewInit, OnDestroy {
       name: 'A. Rajathi', 
       role: 'CEO Finance', 
       image: '../../../assets/teams/Rajathi.jpeg' 
-    },{ 
-      name: 'Vasanth', 
-      role: 'Head - Electrical & Automation', 
-      image: '../../../assets/teams/vasanth1.jpg'
-    }
+    },
+    // { 
+    //   name: 'Vasanth', 
+    //   role: 'Head - Electrical & Automation', 
+    //   image: '../../../assets/teams/vasanth1.jpg'
+    // }
   ];
 
   clients: Client[] = [

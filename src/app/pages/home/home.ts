@@ -302,17 +302,29 @@ goCta() {
     
     },
     {
-      name: 'Solar Thermal Systems',
-      description: 'Solar thermal piping and erection solutions executed for large-scale industrial heat applications.',
-      image: '../../../assets/images/Product-5.webp',
-
-    },
-    {
       name: 'VFD Control Panels',
       description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
       image: '../../../assets/images/Product-6.webp',
   
-    }
+    },
+    {
+      name: 'FRP Cooling Tower',
+      description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
+      image: '../../../assets/images/Product-6.webp',
+  
+    },
+    {
+      name: 'Compressed Air Dryer',
+      description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
+      image: '../../../assets/images/Product-6.webp',
+  
+    },
+    {
+      name: 'Dry Cooling Tower',
+      description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
+      image: '../../../assets/images/Product-6.webp',
+  
+    },
   ];
 
   private homeProductAutoScrollInterval: any;
@@ -475,7 +487,7 @@ goCta() {
   {
     id: '01',
     title: 'Engineering Consultancy Services',
-    description: 'Industrial engineering consultancy focused on safety, performance.',
+    description: 'Industrial Process Cooling Tower, Chiller and Compressed air system design.',
     icon: 'fa fa-user-cog',
     image: '../../../assets/images/service-1.webp'
   },
@@ -510,7 +522,7 @@ goCta() {
   {
     id: '06',
     title: 'Repair & Maintenance Services',
-    description: 'Reliable repair and maintenance for critical industrial equipment.',
+    description: 'Repair and Maintenances of Process Chillers, Cooling Towers and Compressed Air Treatment Products and Plate Heat Exchangers.',
     icon: 'fa fa-wrench',
     image: '../../../assets/images/service-6.png'
   }

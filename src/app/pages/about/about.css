@@ -1339,11 +1339,11 @@
    ============================================ */
 .team-team-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, 250px);
   gap: 25px;
   justify-content: center;
-  align-items: center;
 }
+
 
 /* ============================================
    TEAM CARD STYLES - Updated hover effects
