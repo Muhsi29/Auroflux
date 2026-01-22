@@ -280,7 +280,7 @@ goCta() {
     {
       name: 'HDPE & PPR Piping Systems',
       description: 'Durable HDPE and PPR piping solutions designed and installed for reliable industrial applications.',
-      image: '../../../assets/images/Product-1.webp',
+      image: '../../../assets/products/Product-2.jpg',
 
     },
     {
@@ -298,31 +298,31 @@ goCta() {
     {
       name: 'Process Chillers',
       description: 'Process chillers selected and integrated based on detailed heat load studies for industrial cooling needs..',
-      image: '../../../assets/images/Product-4.webp',
+      image: '../../../assets/products/Product-7.jpg',
     
     },
     {
       name: 'VFD Control Panels',
       description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
-      image: '../../../assets/images/Product-6.webp',
+      image: '../../../assets/products/Product-11.jpg',
   
     },
     {
       name: 'FRP Cooling Tower',
       description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
-      image: '../../../assets/images/Product-6.webp',
+      image: '../../../assets/products/Product-6.jpg',
   
     },
     {
       name: 'Compressed Air Dryer',
       description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
-      image: '../../../assets/images/Product-6.webp',
+      image:'../../../assets/products/Product-10.jpg',
   
     },
     {
       name: 'Dry Cooling Tower',
       description: 'Energy-efficient VFD control panels designed and supplied for automated industrial pumping systems.',
-      image: '../../../assets/images/Product-6.webp',
+      image: '../../../assets/products/Product-8.jpg',
   
     },
   ];
