@@ -16,37 +16,6 @@
   <div class="products-banner-orange-accent"></div>
 </section>
 
-<!-- Products Cards Section -->
-<section class="kpt-products-section">
-  <div class="kpt-products-container">
-    <header class="kpt-products-header">
-      <h1 class="kpt-products-main-title">KPT Pipes and Fittings</h1>
-      <p class="kpt-products-subtitle">
-        Premium quality PPR pipes designed for superior performance in plumbing, 
-        industrial, and HVAC applications with exceptional durability and reliability.
-      </p>
-    </header>
-
-    <div class="kpt-products-card-grid">
-      <div class="kpt-products-card" *ngFor="let product of kptProducts; let i = index">
-        <div class="kpt-products-card-top" [style.background]="' url(' + product.image + ')'">
-        </div>
-
-        <div class="kpt-products-card-bottom">
-          <h2 class="kpt-products-card-title">{{ product.title }}</h2>
-          <p class="kpt-products-card-description">{{ product.description }}</p>
-          
-          <ul class="kpt-products-feature-list">
-            <li *ngFor="let feature of product.features">
-              <span class="kpt-products-check">✓</span> {{ feature }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="industrial-products-section">
   <div class="industrial-products-content-section">
     <!-- First section with header merged -->
@@ -55,7 +24,7 @@
       <div class="industrial-products-page-container">
         <!-- Header inside first section -->
         <header class="industrial-products-header">
-          <h1 class="industrial-products-main-title">Industrial Equipment Solutions</h1>
+          <h1 class="industrial-products-main-title">Turnkey Piping Solutions</h1>
           <p class="industrial-products-subtitle">
             Advanced industrial solutions for manufacturing, processing, and facility management needs. 
             Engineered for performance, reliability, and operational excellence.
@@ -79,14 +48,17 @@
           <!-- Content Section -->
           <div class="industrial-products-text-content">
             <h2 class="industrial-products-product-title">{{ industrialProducts[0].title }}</h2>
-            <p class="industrial-products-description">
+            
+            <!-- Description -->
+            <p *ngIf="industrialProducts[0].description" class="industrial-products-description">
               {{ industrialProducts[0].description }}
             </p>
             
-            <!-- Features Section with Heading -->
-            <div class="industrial-products-features-section">
-              <h3 class="industrial-products-features-heading">Key Features</h3>
-              <div class="industrial-products-features-grid">
+            <!-- Features Section -->
+            <div *ngIf="industrialProducts[0].features && industrialProducts[0].features.length > 0" 
+                 class="industrial-products-features-section">
+              <div class="industrial-products-features-grid"
+                   [ngClass]="{'single-column': industrialProducts[0].features.length < 5, 'two-columns': industrialProducts[0].features.length >= 5}">
                 <div *ngFor="let feature of industrialProducts[0].features" 
                      class="industrial-products-feature-item">
                   <svg class="industrial-products-feature-icon" viewBox="0 0 24 24">
@@ -108,9 +80,8 @@
 
     <!-- Remaining products -->
     <div *ngFor="let product of industrialProducts.slice(1); let i = index" 
-     class="industrial-products-row-section"
-     [ngClass]="getSectionClass(i)">
-
+         class="industrial-products-row-section"
+         [ngClass]="getSectionClass(i)">
       
       <div class="industrial-products-page-container">
         <div class="industrial-products-product-row"
@@ -129,14 +100,17 @@
           <!-- Content Section -->
           <div class="industrial-products-text-content">
             <h2 class="industrial-products-product-title">{{ product.title }}</h2>
-            <p class="industrial-products-description">
+            
+            <!-- Description -->
+            <p *ngIf="product.description" class="industrial-products-description" style="white-space: pre-line;">
               {{ product.description }}
             </p>
             
-            <!-- Features Section with Heading -->
-            <div class="industrial-products-features-section">
-              <h3 class="industrial-products-features-heading">Key Features</h3>
-              <div class="industrial-products-features-grid">
+            <!-- Features Section -->
+            <div *ngIf="product.features && product.features.length > 0" 
+                 class="industrial-products-features-section">
+              <div class="industrial-products-features-grid"
+                   [ngClass]="{'single-column': product.features.length < 5, 'two-columns': product.features.length >= 5}">
                 <div *ngFor="let feature of product.features" 
                      class="industrial-products-feature-item">
                   <svg class="industrial-products-feature-icon" viewBox="0 0 24 24">
@@ -158,34 +132,6 @@
   </div>
 </section>
 
-<!--Solar Section-->
-
-<div class="solar-products-main-container">
-  <header class="solar-products-header-section">
-    <h1 class="solar-products-main-title">Solar Energy Solutions</h1>
-    <p class="solar-products-subtitle">
-      Harness the power of the sun with our comprehensive range of solar thermal and photovoltaic solutions for sustainable energy generation.
-    </p>
-  </header>
-
-  <div class="solar-products-grid-container">
-    <div class="solar-products-card" *ngFor="let solution of solutions; let i = index">
-      <div class="solar-products-card-visual">
-        <img 
-          [src]="getSolutionImage(i)" 
-          [alt]="solution.title"
-          class="solar-products-image"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="solar-products-card-content">
-        <h2 class="solar-products-card-title">{{ solution.title }}</h2>
-        <p class="solar-products-card-description">{{ solution.description }}</p>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- CTA Section -->
   <section class="contact-cta-section">
     <div class="contact-cta-container">
