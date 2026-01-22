@@ -1497,7 +1497,7 @@
 
   &.active {
     opacity: 1;
-    right: 180px;
+    right: 140px;
     pointer-events: all;
   }
 

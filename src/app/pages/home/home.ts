@@ -59,7 +59,7 @@ goCta() {
     {
       subtitle: 'YOUR VISION, OUR ENGINEERING',
       title: 'Solutions for Modern Infrastructure',
-      description: 'Auroflux is an end-to-end engineering solutions provider specializing in PPR pipes and fittings. We combine strong engineering fundamentals with advanced technology to deliver reliable, energy-efficient solutions for mechanical and automation needs.',
+      description: 'Auroflux is an end to end engineering solutions provider in Utility Piping and Cooling Solutions  We are specializing in PPR/PE plastic piping technology. We combine strong engineering fundamentals with advanced technology to deliver reliable, energy-efficient solutions for mechanical and automation needs.',
       image: '../../../assets/images/banner-1.webp'
     },  
     {
@@ -71,7 +71,7 @@ goCta() {
     {
       subtitle: 'BUILDING TOMORROW, TODAY',
       title: 'Reliable PPR Systems',
-      description: 'Auroflux Technology Private Limited provides advanced PPR pipes and fittings with end-to-end engineering support. Our solutions are designed to optimize energy usage and deliver indirect cost savings through smart, efficient engineering.',
+      description: 'Auroflux Technology provides advanced PPR pipes and fittings with end-to-end engineering support. Our solutions are designed to optimize energy usage and deliver indirect cost savings through smart, efficient engineering.',
       image: '../../../assets/images/service-1.webp'
     }
   ];
