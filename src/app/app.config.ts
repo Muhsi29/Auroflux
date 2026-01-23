@@ -10,7 +10,7 @@ import { OurClients } from './pages/our-clients/our-clients';
 import { Gallery } from './pages/gallery/gallery';
 import { Services } from './pages/services/services';
 import { Testimonials } from './pages/testimonials/testimonials';
-
+import { Blogs } from './pages/blogs/blogs';
 
 export const appConfig = {
   providers: [
@@ -25,7 +25,7 @@ export const appConfig = {
         { path: 'gallery', component: Gallery },
         { path: 'services', component: Services },
         {path: 'testimonials', component: Testimonials},
-        { path: 'contact', component: ContactUs }
+        {path: 'blogs', component: Blogs},
       ],
       withInMemoryScrolling({
         scrollPositionRestoration: 'top',   // Always go to top on navigation

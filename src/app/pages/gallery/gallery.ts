@@ -27,6 +27,17 @@ export class Gallery {
         'assets/gallery/gallery-1/7.webp',
         'assets/gallery/gallery-1/8.webp',
         'assets/gallery/gallery-1/9.webp',
+        'assets/gallery/gallery-1/10.webp',
+        'assets/gallery/gallery-1/11.webp',
+        'assets/gallery/gallery-1/12.webp',
+        'assets/gallery/gallery-1/13.jpg',
+        'assets/gallery/gallery-1/14.jpg',
+        'assets/gallery/gallery-1/15.jpg',
+        'assets/gallery/gallery-1/16.jpg',
+        'assets/gallery/gallery-1/17.jpg',
+        'assets/gallery/gallery-1/18.jpg',
+        'assets/gallery/gallery-1/19.jpg',
+        'assets/gallery/gallery-1/20.jpg',
       ]
     },
     {
