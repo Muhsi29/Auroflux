@@ -519,15 +519,24 @@
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - TABLET (768px - 1023px)
+   RESPONSIVE DESIGN - TABLET (768px - 1023px) - UPDATED
    ============================================ */
-@media screen and (max-width: 1023px) and (min-width: 769px) {
+@media screen and (max-width: 1023px) and (min-width: 768px) {
   .industrial-products-page-container {
     padding: 0 30px;
+    max-width: 1200px;
   }
   
   .industrial-products-product-row {
     padding: 60px 0;
+    display: flex; /* Keep side-by-side layout */
+    align-items: center;
+    gap: 40px; /* Reduced gap for tablet */
+    flex-direction: row; /* Keep row layout */
+  }
+  
+  .industrial-products-reverse {
+    flex-direction: row-reverse; /* Keep reverse layout */
   }
   
   .industrial-products-header {
@@ -544,17 +553,11 @@
     padding: 0 20px;
   }
   
-  .industrial-products-product-row,
-  .industrial-products-reverse {
-    flex-direction: column;
-    gap: 35px;
-    margin-bottom: 0;
-  }
-  
+  /* Keep side-by-side layout for tablet */
   .industrial-products-text-content,
   .industrial-products-image-container {
-    width: 100%;
-    flex: none;
+    width: auto;
+    flex: 1;
   }
   
   .industrial-products-product-title {
@@ -563,28 +566,37 @@
   }
   
   .industrial-products-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin-bottom: 24px;
   }
   
   .industrial-products-image-container {
-    height: 360px;
-    min-height: 360px;
+    height: 320px; /* Smaller height for tablet */
+    min-height: 320px;
   }
   
-  /* Tablet: Force single column for both layouts */
-  .industrial-products-features-grid {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-    margin-bottom: 28px;
+  /* Tablet: Keep two columns for features if needed, else single column */
+  .industrial-products-features-grid.two-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+  
+  .industrial-products-features-grid.single-column {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
   
   .industrial-products-feature-item {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+  
+  .industrial-products-feature-text {
+    font-size: 0.9rem;
   }
   
   .industrial-products-spec-link {
-    padding: 11px 24px;
+    padding: 10px 22px;
+    font-size: 0.95rem;
   }
   
   .industrial-products-row-section.first-section {
@@ -593,7 +605,7 @@
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - SMALL TABLET (600px - 768px)
+   RESPONSIVE DESIGN - SMALL TABLET (600px - 768px) - UPDATED
    ============================================ */
 @media screen and (max-width: 768px) {
   .industrial-products-page-container {
@@ -602,6 +614,13 @@
   
   .industrial-products-product-row {
     padding: 50px 0;
+    display: flex; /* Still side-by-side for small tablets */
+    align-items: center;
+    gap: 30px; /* Smaller gap */
+  }
+  
+  .industrial-products-reverse {
+    flex-direction: row-reverse;
   }
   
   .industrial-products-header {
@@ -619,11 +638,10 @@
     padding: 0 20px;
   }
   
-  .industrial-products-product-row,
-  .industrial-products-reverse {
-    flex-direction: column;
-    gap: 30px;
-    margin-bottom: 0;
+  .industrial-products-text-content,
+  .industrial-products-image-container {
+    width: auto;
+    flex: 1;
   }
   
   .industrial-products-product-title {
@@ -632,33 +650,33 @@
   }
   
   .industrial-products-description {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-bottom: 22px;
   }
   
   .industrial-products-image-container {
-    height: 320px;
-    min-height: 320px;
+    height: 280px;
+    min-height: 280px;
   }
   
-  /* Small Tablet: Force single column */
+  /* Force single column for features on small tablets */
   .industrial-products-features-grid {
     grid-template-columns: 1fr !important;
-    gap: 12px !important;
+    gap: 10px !important;
     margin-bottom: 24px;
   }
   
   .industrial-products-feature-item {
-    align-items: center;
+    align-items: flex-start;
   }
   
   .industrial-products-feature-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   
   .industrial-products-spec-link {
-    font-size: 0.95rem;
-    padding: 10px 22px;
+    font-size: 0.9rem;
+    padding: 9px 20px;
   }
   
   .industrial-products-row-section.first-section {
@@ -676,6 +694,13 @@
   
   .industrial-products-product-row {
     padding: 40px 0;
+    flex-direction: column; /* Switch to column layout on mobile */
+    gap: 30px;
+    margin-bottom: 0;
+  }
+  
+  .industrial-products-reverse {
+    flex-direction: column; /* Keep column for reverse on mobile */
   }
   
   .industrial-products-header {
@@ -693,25 +718,27 @@
     padding: 0 15px;
   }
   
-  .industrial-products-product-row,
-  .industrial-products-reverse {
-    gap: 25px;
-    margin-bottom: 0;
+  .industrial-products-text-content,
+  .industrial-products-image-container {
+    width: 100%;
+    flex: none;
   }
   
   .industrial-products-product-title {
     font-size: 24px;
     margin-bottom: 14px;
+    text-align: center;
   }
   
   .industrial-products-description {
     font-size: 0.9rem;
     margin-bottom: 20px;
+    text-align: justify;
   }
   
   .industrial-products-image-container {
-    height: 280px;
-    min-height: 280px;
+    height: 260px;
+    min-height: 260px;
     border-radius: 8px;
   }
   
@@ -724,6 +751,7 @@
   
   .industrial-products-feature-item {
     gap: 8px;
+    align-items: center;
   }
   
   .industrial-products-feature-icon {
@@ -738,6 +766,8 @@
   .industrial-products-spec-link {
     font-size: 0.9rem;
     padding: 9px 20px;
+    margin: 0 auto; /* Center button on mobile */
+    display: block;
   }
   
   .industrial-products-row-section.first-section {
@@ -755,6 +785,7 @@
   
   .industrial-products-product-row {
     padding: 35px 0;
+    gap: 25px;
   }
   
   .industrial-products-header {
@@ -776,9 +807,11 @@
     font-size: 22px;
     text-align: center;
   }
-  .industrial-products-description{
+  
+  .industrial-products-description {
     text-align: justify;
   }
+  
   .industrial-products-image-container {
     height: 240px;
     min-height: 240px;
@@ -791,11 +824,11 @@
   
   .industrial-products-spec-link {
     font-size: 0.85rem;
-    margin: 20px auto 0 auto;   /* centers horizontally */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
   }
   
   .industrial-products-row-section.first-section {
@@ -866,6 +899,1926 @@
   
   .industrial-products-spec-link::before {
     display: none;
+  }
+}
+/* ============================================
+   MAIN SECTION
+   ============================================ */
+.irrigation-products-section {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ============================================
+   PRODUCT ROW BACKGROUND SECTION
+   ============================================ */
+.irrigation-products-row-section {
+  width: 100%;
+  padding: 0;
+}
+
+/* First section (header + first product) */
+.irrigation-products-row-section.first-section {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding-top: 60px;
+}
+
+/* Odd sections (2nd, 4th, 6th, etc.) - WHITE BACKGROUND */
+.irrigation-products-row-section.odd-section {
+  background-color: #ffffff;
+}
+
+/* Even sections (3rd, 5th, 7th, etc.) - GRADIENT BACKGROUND */
+.irrigation-products-row-section.even-section {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+/* ===============================
+   ODD SECTION (WHITE) → BLUE
+   =============================== */
+.irrigation-products-row-section.odd-section 
+.irrigation-products-product-title {
+  color: var(--text-dark); /* Sky Blue */
+}
+
+.irrigation-products-row-section.odd-section 
+.irrigation-products-feature-icon {
+   color: var(--text-dark); 
+}
+
+.irrigation-products-row-section.odd-section 
+.irrigation-products-spec-link {
+  background-color: var(--text-dark);
+}
+.irrigation-products-row-section.odd-section 
+.irrigation-products-spec-link:hover {
+  background-color: var(--banner-green);
+}
+
+/* ===============================
+   EVEN SECTION (GRADIENT) → TEAL
+   =============================== */
+.irrigation-products-row-section.even-section 
+.irrigation-products-product-title {
+  color: var(--banner-green); /* Teal */
+}
+
+.irrigation-products-row-section.even-section 
+.irrigation-products-feature-icon {
+  color: var(--banner-green);
+}
+
+/* ============================================
+   PAGE CONTAINER
+   ============================================ */
+.irrigation-products-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+}
+
+/* ============================================
+   HEADER SECTION - MERGED WITH FIRST SECTION
+   ============================================ */
+.irrigation-products-header {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0;
+}
+
+.irrigation-products-main-title {
+  font-size: 42px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.irrigation-products-subtitle {
+  font-size: 17px;
+  color: #000;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   PRODUCT ROW LAYOUT
+   ============================================ */
+.irrigation-products-content-section {
+  width: 100%;
+}
+
+.irrigation-products-product-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 0;
+  padding: 80px 0;
+}
+
+.irrigation-products-reverse {
+  flex-direction: row-reverse;
+}
+
+.irrigation-products-text-content,
+.irrigation-products-image-container {
+  flex: 1;
+}
+
+/* ============================================
+   IMAGE STYLING
+   ============================================ */
+.irrigation-products-image-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(14, 165, 233, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 420px;
+  min-height: 420px;
+}
+
+.irrigation-products-image-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 50px rgba(14, 165, 233, 0.12);
+}
+
+.irrigation-products-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.irrigation-products-image-container:hover .irrigation-products-image {
+  transform: scale(1.03);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.irrigation-products-product-title {
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--banner-green);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.irrigation-products-description {
+  line-height: 1.6;
+  color: #1e293b;
+  margin-bottom: 28px;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+.irrigation-products-features-section {
+  margin-bottom: 32px;
+}
+
+/* ============================================
+   FEATURES GRID - DYNAMIC COLUMNS
+   ============================================ */
+.irrigation-products-features-grid {
+  display: grid;
+  gap: 14px;
+}
+
+/* Single column (for less than 5 features) */
+.irrigation-products-features-grid.single-column {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Two columns (for 5 or more features) */
+.irrigation-products-features-grid.two-columns {
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 32px;
+}
+
+.irrigation-products-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.irrigation-products-feature-icon {
+  width: 18px;
+  height: 18px;
+  font-weight: 600;
+  color: var(--banner-green);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.irrigation-products-feature-text {
+  font-size: 0.95rem;
+  color: #1e293b;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   BUTTON STYLING
+   ============================================ */
+.irrigation-products-spec-link {
+  background-color: var(--banner-green);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px 28px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  box-shadow: 0 3px 12px rgba(13, 148, 136, 0.15);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.irrigation-products-spec-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.irrigation-products-spec-link:hover {
+  color: #ffffff;
+  background-color: var(--text-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.25);
+}
+
+.irrigation-products-spec-link:hover::before {
+  width: 100%;
+}
+
+.irrigation-products-spec-link:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(13, 148, 136, 0.25);
+}
+
+.irrigation-products-spec-link:focus {
+  outline: 2px solid rgba(13, 148, 136, 0.5);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+/* ============================================
+   SPRINKLER PRODUCT TABLE STYLES - UPDATED
+   ============================================ */
+/* ============================================
+   SPRINKLER PRODUCT TABLE STYLES - UPDATED
+   ============================================ */
+.irrigation-products-sprinkler-table-container {
+  margin: 0 0 32px 0;
+  width: 100%;
+}
+
+.irrigation-products-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.irrigation-products-sprinkler-table {
+  width: 100%;
+  min-width: 0; /* Changed from 500px to allow shrinking */
+  border-collapse: collapse;
+  background-color: white;
+  font-family: 'Inter', sans-serif;
+  table-layout: fixed; /* Ensures consistent column widths */
+}
+
+.irrigation-products-sprinkler-table thead th {
+  background-color: var(--banner-green);
+  color: white;
+  padding: 18px 15px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  white-space: nowrap; /* Prevent text wrapping in headers */
+}
+
+.irrigation-products-table-subtitle {
+  font-size: 0.8rem;
+  font-weight: 400;
+  opacity: 0.9;
+  display: block;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.irrigation-products-sprinkler-table tbody td {
+  padding: 15px;
+  font-size: 0.95rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #1e293b;
+  font-weight: 500;
+  white-space: nowrap; /* Keep table data on one line */
+}
+
+.irrigation-products-sprinkler-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.2s ease;
+}
+
+.irrigation-products-sprinkler-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.irrigation-products-sprinkler-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Table responsive styles for odd/even sections */
+.irrigation-products-row-section.odd-section 
+.irrigation-products-sprinkler-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.irrigation-products-row-section.even-section 
+.irrigation-products-sprinkler-table tbody tr:nth-child(even) {
+  background-color: rgba(241, 245, 249, 0.5);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP/DESKTOP (1200px and above)
+   ============================================ */
+@media screen and (min-width: 1201px) {
+  .irrigation-products-page-container {
+    max-width: 1400px;
+    padding: 0 60px;
+  }
+  
+  .irrigation-products-product-row {
+    gap: 60px;
+    padding: 80px 0;
+  }
+  
+  .irrigation-products-image-container {
+    height: 420px;
+    min-height: 420px;
+  }
+  
+  .irrigation-products-row-section.first-section {
+    padding-top: 60px;
+  }
+  
+  /* Table column widths for desktop */
+  .irrigation-products-sprinkler-table {
+    table-layout: auto; /* Auto layout for desktop */
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px - 1200px)
+   ============================================ */
+@media screen and (max-width: 1200px) and (min-width: 1024px) {
+  .irrigation-products-page-container {
+    max-width: 100%;
+    padding: 0 40px;
+  }
+  
+  .irrigation-products-product-row {
+    gap: 50px;
+    padding: 70px 0;
+  }
+  
+  .irrigation-products-main-title {
+    font-size: 38px;
+  }
+  
+  .irrigation-products-product-title {
+    font-size: 32px;
+  }
+  
+  .irrigation-products-image-container {
+    height: 380px;
+    min-height: 380px;
+  }
+  
+  .irrigation-products-features-grid.two-columns {
+    gap: 12px 28px;
+  }
+  
+  .irrigation-products-row-section.first-section {
+    padding-top: 50px;
+  }
+  
+  /* Table adjustments for laptop */
+  .irrigation-products-sprinkler-table thead th {
+    padding: 16px 12px;
+    font-size: 0.95rem;
+  }
+  
+  .irrigation-products-sprinkler-table tbody td {
+    padding: 14px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .irrigation-products-table-subtitle {
+    font-size: 0.75rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px - 1023px)
+   ============================================ */
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+  .irrigation-products-page-container {
+    padding: 0 30px;
+  }
+  
+  .irrigation-products-product-row {
+    padding: 60px 0;
+  }
+  
+  .irrigation-products-header {
+    margin-bottom: 50px;
+  }
+  
+  .irrigation-products-main-title {
+    font-size: 32px;
+    margin-bottom: 14px;
+  }
+  
+  .irrigation-products-subtitle {
+    font-size: 1.05rem;
+    padding: 0 20px;
+  }
+  
+  .irrigation-products-product-row,
+  .irrigation-products-reverse {
+    flex-direction: column;
+    gap: 35px;
+    margin-bottom: 0;
+  }
+  
+  .irrigation-products-text-content,
+  .irrigation-products-image-container {
+    width: 100%;
+    flex: none;
+  }
+  
+  .irrigation-products-product-title {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+  
+  .irrigation-products-description {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  
+  .irrigation-products-image-container {
+    height: 360px;
+    min-height: 360px;
+  }
+  
+  /* Tablet: Force single column for both layouts */
+  .irrigation-products-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 28px;
+  }
+  
+  .irrigation-products-feature-item {
+    font-size: 0.95rem;
+  }
+  
+  .irrigation-products-spec-link {
+    padding: 11px 24px;
+  }
+  
+  .irrigation-products-row-section.first-section {
+    padding-top: 40px;
+  }
+  
+  /* Table adjustments for tablet */
+  .irrigation-products-sprinkler-table-container {
+    margin: 0 0 28px 0;
+  }
+  
+  .irrigation-products-table-wrapper {
+    border-radius: 6px;
+  }
+  
+  .irrigation-products-sprinkler-table thead th {
+    padding: 14px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .irrigation-products-sprinkler-table tbody td {
+    padding: 12px 10px;
+    font-size: 0.85rem;
+  }
+  
+  .irrigation-products-table-subtitle {
+    font-size: 0.7rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL TABLET (600px - 768px)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .irrigation-products-page-container {
+    padding: 0 25px;
+  }
+  
+  .irrigation-products-product-row {
+    padding: 50px 0;
+  }
+  
+  .irrigation-products-header {
+    margin-bottom: 40px;
+  }
+  
+  .irrigation-products-main-title {
+    font-size: 28px;
+    margin-bottom: 14px;
+    padding: 0 15px;
+  }
+  
+  .irrigation-products-subtitle {
+    font-size: 15px;
+    padding: 0 20px;
+  }
+  
+  .irrigation-products-product-row,
+  .irrigation-products-reverse {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 0;
+  }
+  
+  .irrigation-products-product-title {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+  
+  .irrigation-products-description {
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+  }
+  
+  .irrigation-products-image-container {
+    height: 320px;
+    min-height: 320px;
+  }
+  
+  /* Small Tablet: Force single column */
+  .irrigation-products-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 24px;
+  }
+  
+  .irrigation-products-feature-item {
+    align-items: center;
+  }
+  
+  .irrigation-products-feature-text {
+    font-size: 0.9rem;
+  }
+  
+  .irrigation-products-spec-link {
+    font-size: 0.95rem;
+    padding: 10px 22px;
+  }
+  
+  .irrigation-products-row-section.first-section {
+    padding-top: 35px;
+  }
+  
+  /* Table adjustments for small tablet */
+  .irrigation-products-sprinkler-table-container {
+    margin: 0 0 26px 0;
+  }
+  
+  .irrigation-products-table-wrapper {
+    border-radius: 6px;
+    margin: 0;
+    width: 100%;
+    overflow-x: visible; /* No scrolling needed */
+  }
+  
+  .irrigation-products-sprinkler-table {
+    width: 100%; /* Full width */
+    table-layout: fixed; /* Fixed layout for consistent columns */
+  }
+  
+  .irrigation-products-sprinkler-table thead th {
+    padding: 12px 8px;
+    font-size: 0.85rem;
+    white-space: normal; /* Allow text wrapping */
+  }
+  
+  .irrigation-products-sprinkler-table tbody td {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+    white-space: normal; /* Allow text wrapping */
+  }
+  
+  .irrigation-products-table-subtitle {
+    font-size: 0.65rem;
+    white-space: normal;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px - 599px)
+   ============================================ */
+@media screen and (max-width: 599px) {
+  .irrigation-products-page-container {
+    padding: 0 20px;
+  }
+  
+  .irrigation-products-product-row {
+    padding: 40px 0;
+  }
+  
+  .irrigation-products-header {
+    margin-bottom: 35px;
+  }
+  
+  .irrigation-products-main-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+    padding: 0 10px;
+  }
+  
+  .irrigation-products-subtitle {
+    font-size: 0.95rem;
+    padding: 0 15px;
+  }
+  
+  .irrigation-products-product-row,
+  .irrigation-products-reverse {
+    gap: 25px;
+    margin-bottom: 0;
+  }
+  
+  .irrigation-products-product-title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+  
+  .irrigation-products-description {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .irrigation-products-image-container {
+    height: 280px;
+    min-height: 280px;
+    border-radius: 8px;
+  }
+  
+  /* Mobile: Force single column */
+  .irrigation-products-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-bottom: 22px;
+  }
+  
+  .irrigation-products-feature-item {
+    gap: 8px;
+  }
+  
+  .irrigation-products-feature-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .irrigation-products-feature-text {
+    font-size: 0.85rem;
+  }
+  
+  .irrigation-products-spec-link {
+    font-size: 0.9rem;
+    padding: 9px 20px;
+  }
+  
+  .irrigation-products-row-section.first-section {
+    padding-top: 30px;
+  }
+  
+  /* Table adjustments for mobile - FIXED TO FILL SPACE */
+  .irrigation-products-sprinkler-table-container {
+    margin: 0 0 24px 0;
+    width: 100%;
+  }
+  
+  .irrigation-products-table-wrapper {
+    margin: 0;
+    width: 100%;
+    border-radius: 4px;
+    overflow-x: hidden; /* No scrolling - table fills space */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .irrigation-products-sprinkler-table {
+    width: 100%; /* Full width of container */
+    min-width: 100%; /* Force full width */
+    table-layout: fixed; /* Fixed layout for mobile */
+  }
+  
+  /* Fixed column widths for 3-column table on mobile */
+  .irrigation-products-sprinkler-table th:nth-child(1),
+  .irrigation-products-sprinkler-table td:nth-child(1) {
+    width: 33%; /* First column - 33% */
+  }
+  
+  .irrigation-products-sprinkler-table th:nth-child(2),
+  .irrigation-products-sprinkler-table td:nth-child(2) {
+    width: 33%; /* Second column - 33% */
+  }
+  
+  .irrigation-products-sprinkler-table th:nth-child(3),
+  .irrigation-products-sprinkler-table td:nth-child(3) {
+    width: 34%; /* Third column - 34% */
+  }
+  
+  .irrigation-products-sprinkler-table thead th {
+    padding: 10px 5px;
+    font-size: 0.75rem;
+    white-space: normal; /* Allow header text to wrap */
+    word-break: break-word;
+    line-height: 1.2;
+  }
+  
+  .irrigation-products-sprinkler-table tbody td {
+    padding: 8px 5px;
+    font-size: 0.7rem;
+    white-space: normal; /* Allow text wrapping on mobile */
+    word-break: break-word;
+    line-height: 1.2;
+  }
+  
+  .irrigation-products-table-subtitle {
+    font-size: 0.6rem;
+    white-space: normal;
+    display: block;
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (320px - 479px)
+   ============================================ */
+@media screen and (max-width: 479px) {
+  .irrigation-products-page-container {
+    padding: 0 15px;
+  }
+  
+  .irrigation-products-product-row {
+    padding: 35px 0;
+  }
+  
+  .irrigation-products-header {
+    margin-bottom: 30px;
+  }
+  
+  .irrigation-products-main-title {
+    font-size: 22px;
+    padding: 0;
+  }
+  
+  .irrigation-products-subtitle {
+    font-size: 14px;
+    padding: 0 10px;
+    text-align: justify;
+  }
+  
+  .irrigation-products-product-title {
+    font-size: 22px;
+    text-align: center;
+  }
+  
+  .irrigation-products-description {
+    text-align: justify;
+  }
+  
+  .irrigation-products-image-container {
+    height: 240px;
+    min-height: 240px;
+    border-radius: 6px;
+  }
+  
+  .irrigation-products-feature-text {
+    font-size: 0.8rem;
+  }
+  
+  .irrigation-products-spec-link {
+    font-size: 0.85rem;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+  }
+  
+  .irrigation-products-row-section.first-section {
+    padding-top: 25px;
+  }
+  
+  /* CRITICAL FIX: Table fills entire space on small mobile */
+  .irrigation-products-sprinkler-table-container {
+    margin: 0 0 22px 0;
+    width: 100%;
+    display: block;
+  }
+  
+  .irrigation-products-table-wrapper {
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden; /* No scrolling - table fills space */
+    border-radius: 4px;
+    display: block;
+  }
+  
+  .irrigation-products-sprinkler-table {
+    width: 100%; /* Full width */
+    min-width: 100%; /* Force full width */
+    table-layout: fixed; /* Fixed layout for consistent columns */
+    display: table;
+  }
+  
+  /* Adjust column widths for very small screens */
+  .irrigation-products-sprinkler-table th:nth-child(1),
+  .irrigation-products-sprinkler-table td:nth-child(1) {
+    width: 30%; /* Slightly smaller first column */
+  }
+  
+  .irrigation-products-sprinkler-table th:nth-child(2),
+  .irrigation-products-sprinkler-table td:nth-child(2) {
+    width: 35%; /* Middle column */
+  }
+  
+  .irrigation-products-sprinkler-table th:nth-child(3),
+  .irrigation-products-sprinkler-table td:nth-child(3) {
+    width: 35%; /* Last column */
+  }
+  
+  .irrigation-products-sprinkler-table thead th {
+    padding: 8px 4px;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .irrigation-products-sprinkler-table tbody td {
+    padding: 6px 4px;
+    font-size: 0.65rem;
+    white-space: normal;
+    line-height: 1.2;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .irrigation-products-table-subtitle {
+    font-size: 0.55rem;
+    white-space: normal;
+    line-height: 1.1;
+    margin-top: 2px;
+    word-break: break-word;
+  }
+  
+  /* Extra small mobile optimization */
+  @media screen and (max-width: 360px) {
+    .irrigation-products-sprinkler-table {
+      width: 100%;
+    }
+    
+    .irrigation-products-sprinkler-table th:nth-child(1),
+    .irrigation-products-sprinkler-table td:nth-child(1) {
+      width: 28%;
+    }
+    
+    .irrigation-products-sprinkler-table th:nth-child(2),
+    .irrigation-products-sprinkler-table td:nth-child(2) {
+      width: 36%;
+    }
+    
+    .irrigation-products-sprinkler-table th:nth-child(3),
+    .irrigation-products-sprinkler-table td:nth-child(3) {
+      width: 36%;
+    }
+    
+    .irrigation-products-sprinkler-table thead th,
+    .irrigation-products-sprinkler-table tbody td {
+      padding: 5px 3px;
+      font-size: 0.6rem;
+    }
+    
+    .irrigation-products-table-subtitle {
+      font-size: 0.5rem;
+    }
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.irrigation-products-spec-link:focus-visible {
+  outline: 2px solid rgba(13, 148, 136, 0.5);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.irrigation-products-table-wrapper:focus-within {
+  outline: 2px solid rgba(13, 148, 136, 0.5);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .irrigation-products-page-container {
+    padding: 0;
+  }
+  
+  .irrigation-products-row-section {
+    background: none !important;
+    padding: 20px 0 !important;
+  }
+  
+  .irrigation-products-image-container {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+    height: 300px !important;
+  }
+  
+  .irrigation-products-spec-link {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+    border: 1px solid #cbd5e0 !important;
+  }
+  
+  .irrigation-products-feature-icon {
+    color: #000000 !important;
+  }
+  
+  .irrigation-products-sprinkler-table {
+    min-width: auto !important;
+    width: 100% !important;
+    table-layout: auto !important;
+    box-shadow: none !important;
+    border: 1px solid #cbd5e0 !important;
+  }
+  
+  .irrigation-products-table-wrapper {
+    overflow-x: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  .irrigation-products-sprinkler-table thead th {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+    border: 1px solid #cbd5e0 !important;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .irrigation-products-image-container,
+  .irrigation-products-image,
+  .irrigation-products-spec-link,
+  .irrigation-products-sprinkler-table tbody tr {
+    transition: none;
+  }
+  
+  .irrigation-products-image-container:hover {
+    transform: none;
+  }
+  
+  .irrigation-products-image-container:hover .irrigation-products-image {
+    transform: none;
+  }
+  
+  .irrigation-products-spec-link:hover {
+    transform: none;
+  }
+  
+  .irrigation-products-spec-link::before {
+    display: none;
+  }
+}
+
+/* ============================================
+   DRIP IRRIGATION FITTINGS SECTION
+   ============================================ */
+.irrigation-img-section {
+  text-align: center;
+  padding: 80px 20px;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  width: 100%;
+}
+
+.irrigation-img-title {
+  color: var(--text-dark);
+  margin-bottom: 50px;
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.irrigation-img-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Changed to flex-start for consistent alignment */
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.irrigation-img-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+.irrigation-img-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Hexagon Shape */
+.irrigation-img-hexagon-wrapper {
+  width: 150px;
+  height: 165px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.irrigation-img-hexagon-border {
+  width: 100%;
+  height: 100%;
+  background-color: var(--banner-green);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(13, 148, 136, 0.15);
+}
+
+.irrigation-img-hexagon-content {
+  width: 94%;
+  height: 94%;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.irrigation-img-card:hover .irrigation-img-hexagon-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+}
+
+.irrigation-img-hexagon-content img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.irrigation-img-card:hover .irrigation-img-hexagon-content img {
+  transform: scale(1.05);
+}
+
+/* Label Box */
+.irrigation-img-label-box {
+  background-color: var(--banner-green);
+  color: #ffffff;
+  width: 140px;
+  padding: 10px 5px;
+  border-radius: 8px;
+  margin-top: -18px;
+  z-index: 2;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(13, 148, 136, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.irrigation-img-label-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.irrigation-img-card:hover .irrigation-img-label-box {
+  background-color: var(--text-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 148, 136, 0.25);
+}
+
+.irrigation-img-card:hover .irrigation-img-label-box::before {
+  width: 100%;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - DESKTOP (1200px and above)
+   ============================================ */
+@media screen and (min-width: 1200px) {
+  .irrigation-img-section {
+    padding: 80px 40px;
+  }
+  
+  .irrigation-img-title {
+    font-size: 45px;
+    margin-bottom: 50px;
+  }
+  
+  .irrigation-img-grid {
+    justify-content: flex-start;
+    gap: 30px;
+    max-width: 1400px;
+  }
+  
+  .irrigation-img-card {
+    /* 6 items per row: (100% - (30px * 5)) / 6 = 14.166% */
+    width: calc((100% - (30px * 5)) / 6);
+    margin-bottom: 30px;
+  }
+  
+  .irrigation-img-hexagon-wrapper {
+    width: 150px;
+    height: 165px;
+    margin: 0 auto;
+  }
+  
+  .irrigation-img-label-box {
+    width: 140px;
+    padding: 10px 5px;
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px - 1199px)
+   ============================================ */
+@media screen and (max-width: 1199px) and (min-width: 1024px) {
+  .irrigation-img-section {
+    padding: 80px 40px;
+  }
+  
+  .irrigation-img-title {
+    font-size: 45px;
+    margin-bottom: 50px;
+  }
+  
+  .irrigation-img-grid {
+    justify-content: flex-start;
+    gap: 25px;
+    max-width: 1200px;
+  }
+  
+  .irrigation-img-card {
+    /* 6 items per row: (100% - (25px * 5)) / 6 = 14.583% */
+    width: calc((100% - (25px * 5)) / 6);
+    margin-bottom: 25px;
+  }
+  
+  .irrigation-img-hexagon-wrapper {
+    width: 130px;
+    height: 143px;
+    margin: 0 auto;
+  }
+  
+  .irrigation-img-label-box {
+    width: 120px;
+    padding: 9px 4px;
+    font-size: 14px;
+    margin-top: -16px;
+  }
+  
+  .irrigation-img-hexagon-content img {
+    width: 95%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px - 1023px)
+   ============================================ */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .irrigation-img-section {
+    padding: 60px 30px;
+  }
+  
+  .irrigation-img-title {
+    font-size: 35px;
+    margin-bottom: 40px;
+  }
+  
+  .irrigation-img-grid {
+    justify-content: flex-start;
+    gap: 20px;
+    max-width: 900px;
+  }
+  
+  .irrigation-img-card {
+    /* 4 items per row: (100% - (20px * 3)) / 4 = 22.5% */
+    width: calc((100% - (20px * 3)) / 4);
+    margin-bottom: 20px;
+  }
+  
+  .irrigation-img-hexagon-wrapper {
+    width: 120px;
+    height: 132px;
+    margin: 0 auto;
+  }
+  
+  .irrigation-img-label-box {
+    width: 110px;
+    padding: 8px 3px;
+    font-size: 13px;
+    margin-top: -14px;
+  }
+  
+  .irrigation-img-hexagon-content img {
+    width: 90%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (481px - 767px)
+   ============================================ */
+@media screen and (max-width: 767px) and (min-width: 481px) {
+  .irrigation-img-section {
+    padding: 50px 20px;
+  }
+  
+  .irrigation-img-title {
+    font-size: 35px;
+    margin-bottom: 35px;
+  }
+  
+  .irrigation-img-grid {
+    justify-content: flex-start;
+    gap: 15px;
+    max-width: 500px;
+  }
+  
+  .irrigation-img-card {
+    /* 3 items per row: (100% - (15px * 2)) / 3 = 30% */
+    width: calc((100% - (15px * 2)) / 3);
+    margin-bottom: 15px;
+  }
+  
+  .irrigation-img-hexagon-wrapper {
+    width: 90px;
+    height: 99px;
+    margin: 0 auto;
+  }
+  
+  .irrigation-img-label-box {
+    width: 85px;
+    padding: 6px 2px;
+    font-size: 11px;
+    margin-top: -10px;
+    border-radius: 5px;
+  }
+  
+  .irrigation-img-hexagon-content img {
+    width: 85%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (480px and below)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .irrigation-img-section {
+    padding: 40px 15px;
+  }
+  
+  .irrigation-img-title {
+    font-size: 25px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+  
+  .irrigation-img-grid {
+    justify-content: flex-start;
+    gap: 12px;
+    max-width: 360px;
+  }
+  
+  .irrigation-img-card {
+    /* 3 items per row: (100% - (12px * 2)) / 3 = 30.666% */
+    width: calc((100% - (12px * 2)) / 3);
+    margin-bottom: 12px;
+  }
+  
+  .irrigation-img-hexagon-wrapper {
+    width: 80px;
+    height: 88px;
+    margin: 0 auto;
+  }
+  
+  .irrigation-img-label-box {
+    width: 75px;
+    padding: 5px 2px;
+    font-size: 10px;
+    margin-top: -8px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(13, 148, 136, 0.15);
+  }
+  
+  .irrigation-img-hexagon-content img {
+    width: 80%;
+  }
+  
+  /* Disable hover effects on mobile for better performance */
+  .irrigation-img-card:hover {
+    transform: none;
+  }
+  
+  .irrigation-img-card:hover .irrigation-img-hexagon-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  }
+  
+  .irrigation-img-card:hover .irrigation-img-hexagon-content img {
+    transform: none;
+  }
+  
+  .irrigation-img-card:hover .irrigation-img-label-box {
+    background-color: var(--banner-green);
+    transform: none;
+    box-shadow: 0 6px 15px rgba(13, 148, 136, 0.2);
+  }
+  
+  .irrigation-img-card:hover .irrigation-img-label-box::before {
+    width: 0%;
+  }
+}
+
+/* ============================================
+   FIX FOR UNEVEN ROWS
+   ============================================ */
+/* This ensures each row starts from the left edge */
+.irrigation-img-card:nth-child(6n+1) {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .irrigation-img-card:nth-child(4n+1) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .irrigation-img-card:nth-child(3n+1) {
+    margin-left: 0;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.irrigation-img-hexagon-content:focus-within {
+  outline: 2px solid rgba(13, 148, 136, 0.5);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.irrigation-img-label-box:focus-visible {
+  outline: 2px solid rgba(13, 148, 136, 0.5);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .irrigation-img-section {
+    background: none !important;
+    padding: 40px 20px !important;
+  }
+  
+  .irrigation-img-grid {
+    justify-content: flex-start !important;
+    gap: 15px !important;
+  }
+  
+  .irrigation-img-card {
+    width: calc((100% - (15px * 5)) / 6) !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .irrigation-img-hexagon-border {
+    background-color: #f1f5f9 !important;
+    box-shadow: none !important;
+  }
+  
+  .irrigation-img-hexagon-content {
+    background: #ffffff !important;
+  }
+  
+  .irrigation-img-label-box {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: 1px solid #cbd5e0 !important;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .irrigation-img-card,
+  .irrigation-img-hexagon-content img,
+  .irrigation-img-label-box,
+  .irrigation-img-hexagon-content {
+    transition: none;
+  }
+  
+  .irrigation-img-card:hover {
+    transform: none;
+  }
+  
+  .irrigation-img-card:hover .irrigation-img-hexagon-content img {
+    transform: none;
+  }
+  
+  .irrigation-img-card:hover .irrigation-img-label-box {
+    transform: none;
+  }
+  
+  .irrigation-img-label-box::before {
+    display: none;
+  }
+}
+
+/* ============================================
+   PRODUCTS SPARES SECTION
+   ============================================ */
+.products-spares-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.products-spares-section-title {
+  color: var(--text-dark);
+  margin-bottom: 50px;
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ============================================
+   PRODUCTS GRID
+   ============================================ */
+.products-spares-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Laptop: 4 per row */
+  gap: 40px 60px;
+}
+
+/* ============================================
+   PRODUCT CARD
+   ============================================ */
+.products-spares-card {
+  border: 2px solid #27ae60;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================================
+   IMAGE WRAPPER
+   ============================================ */
+.products-spares-image-wrapper {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products-spares-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   BUTTON
+   ============================================ */
+.products-spares-btn {
+  margin-top: 20px;
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: default;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px and above)
+   ============================================ */
+@media screen and (min-width: 1024px) {
+  .products-spares-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+  }
+  
+  .products-spares-section-title {
+    font-size: 45px;
+    margin-bottom: 40px;
+  }
+  
+  .products-spares-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 per row */
+    gap: 40px 60px;
+  }
+  
+  .products-spares-card {
+    padding: 25px;
+  }
+  
+  .products-spares-image-wrapper {
+    height: 220px;
+  }
+  
+  .products-spares-btn {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px - 1023px)
+   ============================================ */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .products-spares-section {
+    padding: 35px 20px;
+    max-width: 900px;
+  }
+  
+  .products-spares-section-title {
+    font-size: 45px;
+    margin-bottom: 35px;
+  }
+  
+  .products-spares-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 30px 40px;
+  }
+  
+  .products-spares-card {
+    padding: 22px;
+  }
+  
+  .products-spares-image-wrapper {
+    height: 200px;
+  }
+  
+  .products-spares-btn {
+    font-size: 13px;
+    padding: 7px 16px;
+    margin-top: 18px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (767px and below)
+   ============================================ */
+@media screen and (max-width: 767px) {
+  .products-spares-section {
+    padding: 30px 15px;
+    max-width: 600px;
+  }
+  
+  .products-spares-section-title {
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+  
+  .products-spares-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    gap: 25px 30px;
+  }
+  
+  .products-spares-card {
+    padding: 20px;
+  }
+  
+  .products-spares-image-wrapper {
+    height: 180px;
+  }
+  
+  .products-spares-btn {
+    font-size: 12px;
+    padding: 6px 14px;
+    margin-top: 16px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (480px and below)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .products-spares-section {
+    padding: 25px 10px;
+    max-width: 400px;
+  }
+  
+  .products-spares-section-title {
+    font-size: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  .products-spares-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    gap: 20px 25px;
+  }
+  
+  .products-spares-card {
+    padding: 18px;
+  }
+  
+  .products-spares-image-wrapper {
+    height: 160px;
+  }
+  
+  .products-spares-btn {
+    font-size: 11px;
+    padding: 5px 12px;
+    margin-top: 14px;
+  }
+}
+
+/* ============================================
+   OTHER PRODUCTS SECTION
+   ============================================ */
+.other-products-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.other-products-section-title {
+  color: var(--text-dark);
+  margin-bottom: 50px;
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ============================================
+   PRODUCTS GRID
+   ============================================ */
+.other-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Laptop: 4 per row */
+  gap: 40px 60px;
+}
+
+/* ============================================
+   PRODUCT CARD
+   ============================================ */
+.other-products-card {
+  border: 2px solid #27ae60;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================================
+   IMAGE WRAPPER
+   ============================================ */
+.other-products-image-wrapper {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.other-products-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================
+   BUTTON
+   ============================================ */
+.other-products-btn {
+  margin-top: 20px;
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: default;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - LAPTOP (1024px and above)
+   ============================================ */
+@media screen and (min-width: 1024px) {
+  .other-products-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+  }
+  
+  .other-products-section-title {
+    font-size: 45px;
+    margin-bottom: 40px;
+  }
+  
+  .other-products-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 per row */
+    gap: 40px 60px;
+  }
+  
+  .other-products-card {
+    padding: 25px;
+  }
+  
+  .other-products-image-wrapper {
+    height: 220px;
+  }
+  
+  .other-products-btn {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET (768px - 1023px)
+   ============================================ */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .other-products-section {
+    padding: 35px 20px;
+    max-width: 900px;
+  }
+  
+  .other-products-section-title {
+    font-size: 45px;
+    margin-bottom: 35px;
+  }
+  
+  .other-products-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    gap: 30px 40px;
+  }
+  
+  .other-products-card {
+    padding: 22px;
+  }
+  
+  .other-products-image-wrapper {
+    height: 200px;
+  }
+  
+  .other-products-btn {
+    font-size: 13px;
+    padding: 7px 16px;
+    margin-top: 18px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE (767px and below)
+   ============================================ */
+@media screen and (max-width: 767px) {
+  .other-products-section {
+    padding: 30px 15px;
+    max-width: 600px;
+  }
+  
+  .other-products-section-title {
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+  
+  .other-products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    gap: 25px 30px;
+  }
+  
+  .other-products-card {
+    padding: 20px;
+  }
+  
+  .other-products-image-wrapper {
+    height: 180px;
+  }
+  
+  .other-products-btn {
+    font-size: 12px;
+    padding: 6px 14px;
+    margin-top: 16px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - SMALL MOBILE (480px and below)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .other-products-section {
+    padding: 25px 10px;
+    max-width: 400px;
+  }
+  
+  .other-products-section-title {
+    font-size: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  .other-products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    gap: 20px 25px;
+  }
+  
+  .other-products-card {
+    padding: 18px;
+  }
+  
+  .other-products-image-wrapper {
+    height: 160px;
+  }
+  
+  .other-products-btn {
+    font-size: 11px;
+    padding: 5px 12px;
+    margin-top: 14px;
   }
 }
 

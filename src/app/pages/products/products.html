@@ -132,6 +132,207 @@
   </div>
 </section>
 
+<section class="irrigation-products-section">
+  <div class="irrigation-products-content-section">
+    <!-- First section with header merged -->
+    <div class="irrigation-products-row-section first-section">
+      
+      <div class="irrigation-products-page-container">
+        <!-- Header inside first section -->
+        <header class="irrigation-products-header">
+          <h1 class="irrigation-products-main-title">Drip Irrigation Lateral</h1>
+          <p class="irrigation-products-subtitle">
+            The drip irrigation system provides water in form of droplets to the root of the plant. Our drip irrigation lateral tubes 
+are manufactured from 100% virgin PE material by using advanced German technology.
+These tubes are UV stabilized and are able to withstand environmental effects. Design parameters are strictly followed 
+to ensure smooth functioning of the system & uniform discharge. Smooth inner surface reduces frictional losses.
+          </p>
+        </header>
+        
+        <!-- First product row -->
+        <div *ngIf="irrigationProducts.length > 0"
+             class="irrigation-products-product-row">
+          
+          <!-- Image Section -->
+          <div class="irrigation-products-image-container">
+            <img 
+              [src]="getProductImageUrl_1(irrigationProducts[0].id)" 
+              [alt]="irrigationProducts[0].title + ' irrigation equipment'"
+              class="irrigation-products-image"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Content Section -->
+          <div class="irrigation-products-text-content">
+            <h2 class="irrigation-products-product-title">{{ irrigationProducts[0].title }}</h2>
+            
+            <!-- Description -->
+            <p *ngIf="irrigationProducts[0].description" class="irrigation-products-description">
+              {{ irrigationProducts[0].description }}
+            </p>
+            
+            <!-- Features Section -->
+            <div *ngIf="irrigationProducts[0].features && irrigationProducts[0].features.length > 0" 
+                 class="irrigation-products-features-section">
+              <div class="irrigation-products-features-grid"
+                   [ngClass]="{'single-column': irrigationProducts[0].features.length < 5, 'two-columns': irrigationProducts[0].features.length >= 5}">
+                <div *ngFor="let feature of irrigationProducts[0].features" 
+                     class="irrigation-products-feature-item">
+                  <svg class="irrigation-products-feature-icon" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+                  </svg>
+                  <span class="irrigation-products-feature-text">{{ feature }}</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Get a Quote Button -->
+            <button class="irrigation-products-spec-link" (click)="goCta()">
+              Get a Quote →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remaining products -->
+    <div *ngFor="let product of irrigationProducts.slice(1); let i = index" 
+         class="irrigation-products-row-section"
+         [ngClass]="getSectionClass(i)">
+      
+      <div class="irrigation-products-page-container">
+        <div class="irrigation-products-product-row"
+             [class.irrigation-products-reverse]="shouldReverse(i)">
+          
+          <!-- Image Section -->
+          <div class="irrigation-products-image-container">
+            <img 
+              [src]="getProductImageUrl_1(product.id)" 
+              [alt]="product.title + ' irrigation equipment'"
+              class="irrigation-products-image"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Content Section -->
+          <div class="irrigation-products-text-content">
+            <h2 class="irrigation-products-product-title">{{ product.title }}</h2>
+            
+            <!-- Description -->
+            <p *ngIf="product.description" class="irrigation-products-description">
+              {{ product.description }}
+            </p>
+            
+            <!-- For product with id=2 (Sprinkler Irrigation Systems), show table instead of features -->
+            <div *ngIf="product.id === 2" class="irrigation-products-sprinkler-table-container">
+              <div class="irrigation-products-table-wrapper">
+                <table class="irrigation-products-sprinkler-table">
+                  <thead>
+                    <tr>
+                      <th>PIPE OD (mm)</th>
+                      <th>
+                        CLASS - 1<br>
+                        <span class="irrigation-products-table-subtitle">WALL THICKNESS (MM)</span>
+                      </th>
+                      <th>
+                        CLASS - 2<br>
+                        <span class="irrigation-products-table-subtitle">WALL THICKNESS (MM)</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let row of pipeData">
+                      <td>{{ row.od }}</td>
+                      <td>{{ row.class1 }}</td>
+                      <td>{{ row.class2 }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <!-- For other products, show features as usual -->
+            <div *ngIf="product.id !== 2 && product.features && product.features.length > 0" 
+                 class="irrigation-products-features-section">
+              <div class="irrigation-products-features-grid"
+                   [ngClass]="{'single-column': product.features.length < 5, 'two-columns': product.features.length >= 5}">
+                <div *ngFor="let feature of product.features" 
+                     class="irrigation-products-feature-item">
+                  <svg class="irrigation-products-feature-icon" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+                  </svg>
+                  <span class="irrigation-products-feature-text">{{ feature }}</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Get a Quote Button -->
+            <button class="irrigation-products-spec-link" (click)="goCta()">
+              Get a Quote →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--Irrigaition -drip - image-->
+<div class="irrigation-img-section">
+  <h2 class="irrigation-img-title">Drip Irrigation Fittings</h2>
+  
+  <div class="irrigation-img-grid">
+    <div class="irrigation-img-card" *ngFor="let item of fittings">
+      <div class="irrigation-img-hexagon-wrapper">
+        <div class="irrigation-img-hexagon-border">
+          <div class="irrigation-img-hexagon-content">
+            <img [src]="item.img" [alt]="item.name + ' fitting'">
+          </div>
+        </div>
+      </div>
+      <div class="irrigation-img-label-box">
+        {{ item.name }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Products Spares-->
+<section class="products-spares-section">
+  <h2 class="products-spares-section-title">Spares Of Cooling Tower</h2>
+
+  <div class="products-spares-grid">
+    <div class="products-spares-card" *ngFor="let item of products">
+      <div class="products-spares-image-wrapper">
+        <img [src]="item.image" [alt]="item.title" />
+      </div>
+
+      <button class="products-spares-btn">
+        {{ item.title }}
+      </button>
+    </div>
+  </div>
+</section>
+
+<!--Other Products-->
+<section class="other-products-section">
+  <h2 class="other-products-section-title">Other Products</h2>
+
+  <div class="other-products-grid">
+    <div class="other-products-card" *ngFor="let product of other_products">
+      <div class="other-products-image-wrapper">
+        <img [src]="product.image" [alt]="product.title" />
+      </div>
+
+      <button class="other-products-btn">
+        {{ product.title }}
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- CTA Section -->
   <section class="contact-cta-section">
     <div class="contact-cta-container">
