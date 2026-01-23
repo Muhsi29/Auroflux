@@ -1,0 +1,74 @@
+<!-- ==============================
+     SERVICE BANNER
+     ============================== -->
+<section class="projects-us-banner">
+  <div class="projects-banner-content">
+    <div class="projects-banner-container">
+      <div class="projects-banner-text-area">
+        <h1 class="projects-banner-title">Our Clients</h1>
+        <nav class="projects-banner-breadcrumb" aria-label="breadcrumb">
+          <span class="projects-banner-home-link">Home</span>
+          <span class="projects-banner-separator">»</span>
+          <span class="projects-banner-current-page">Clients</span>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="projects-banner-orange-accent"></div>
+
+  <!-- <div class="projects-banner-machine-wrapper">
+    <img src="#" alt="Construction Machine" class="projects-banner-machine-img">
+  </div> -->
+</section>
+
+<!-- ==============================
+     BLOGS SECTION
+     ============================== -->
+<section class="blogs-section">
+  <div class="blogs-container">
+    <h2 class="blogs-title title">Latest Articles</h2>
+    <p class="blogs-subtitle subtitle">Discover engineering insights, project highlights, and practical solutions from Auroflux — your source for expertise in piping systems, compressed air systems, heat transfer, and industrial fluid solutions.</p>
+
+    <div class="blogs-grid">
+      <!-- Blog cards will be dynamically inserted here -->
+      <div class="blog-card" *ngFor="let blog of displayedBlogs">
+        <div class="blog-card-image">
+          <img [src]="blog.image" [alt]="blog.title" />
+        </div>
+        <div class="blog-card-content">
+          <h3 class="blog-card-title">{{ blog.title }}</h3>
+          <p class="blog-card-description description">{{ blog.description }}</p>
+          <a [href]="blog.link" class="blog-card-link">Read Article</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination (only shown if more than 9 blogs) -->
+    <div class="blogs-pagination" *ngIf="totalPages > 1">
+      <button 
+        class="pagination-btn prev-btn" 
+        [disabled]="currentPage === 1"
+        (click)="goToPage(currentPage - 1)">
+        ← Previous
+      </button>
+      
+      <div class="pagination-numbers">
+        <button 
+          *ngFor="let page of pageNumbers" 
+          class="pagination-number"
+          [class.active]="page === currentPage"
+          (click)="goToPage(page)">
+          {{ page }}
+        </button>
+      </div>
+      
+      <button 
+        class="pagination-btn next-btn" 
+        [disabled]="currentPage === totalPages"
+        (click)="goToPage(currentPage + 1)">
+        Next →
+      </button>
+    </div>
+  </div>
+</section>
