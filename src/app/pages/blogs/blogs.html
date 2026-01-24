@@ -39,7 +39,7 @@
         <div class="blog-card-content">
           <h3 class="blog-card-title">{{ blog.title }}</h3>
           <p class="blog-card-description description">{{ blog.description }}</p>
-          <a [href]="blog.link" class="blog-card-link">Read Article</a>
+          <a [routerLink]="['/blogs', blog.id]" class="blog-card-link">Read Article</a>
         </div>
       </div>
     </div>

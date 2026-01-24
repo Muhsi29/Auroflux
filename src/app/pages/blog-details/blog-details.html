@@ -1,0 +1,19 @@
+<section class="blog-details-section" *ngIf="selectedBlog">
+  <div class="blog-details-container">
+
+    <img
+      [src]="selectedBlog.image"
+      [alt]="selectedBlog.title"
+      class="blog-details-image"
+    />
+
+    <h1 class="blog-details-title">
+      {{ selectedBlog.title }}
+    </h1>
+
+    <p class="blog-details-description">
+      {{ selectedBlog.description }}
+    </p>
+
+  </div>
+</section>

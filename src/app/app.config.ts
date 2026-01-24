@@ -1,4 +1,5 @@
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { Home } from './pages/home/home';
 import { About } from './pages/about/about';
@@ -11,6 +12,7 @@ import { Gallery } from './pages/gallery/gallery';
 import { Services } from './pages/services/services';
 import { Testimonials } from './pages/testimonials/testimonials';
 import { Blogs } from './pages/blogs/blogs';
+import { BlogDetails } from './pages/blog-details/blog-details';
 
 export const appConfig = {
   providers: [
@@ -26,6 +28,7 @@ export const appConfig = {
         { path: 'services', component: Services },
         {path: 'testimonials', component: Testimonials},
         {path: 'blogs', component: Blogs},
+        { path: 'blogs/:id', component: BlogDetails }
       ],
       withInMemoryScrolling({
         scrollPositionRestoration: 'top',   // Always go to top on navigation
