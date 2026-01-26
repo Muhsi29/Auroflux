@@ -5,11 +5,11 @@
   <div class="projects-banner-content">
     <div class="projects-banner-container">
       <div class="projects-banner-text-area">
-        <h1 class="projects-banner-title">Our Clients</h1>
+        <h1 class="projects-banner-title">Blogs</h1>
         <nav class="projects-banner-breadcrumb" aria-label="breadcrumb">
           <span class="projects-banner-home-link">Home</span>
           <span class="projects-banner-separator">»</span>
-          <span class="projects-banner-current-page">Clients</span>
+          <span class="projects-banner-current-page">Blogs</span>
         </nav>
       </div>
     </div>
@@ -39,7 +39,7 @@
         <div class="blog-card-content">
           <h3 class="blog-card-title">{{ blog.title }}</h3>
           <p class="blog-card-description description">{{ blog.description }}</p>
-          <a [routerLink]="['/blogs', blog.id]" class="blog-card-link">Read Article</a>
+          <a [routerLink]="['/blog', blog.id]" class="blog-card-link">Read Article</a>
         </div>
       </div>
     </div>

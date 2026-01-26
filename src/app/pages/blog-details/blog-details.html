@@ -1,19 +1,166 @@
-<section class="blog-details-section" *ngIf="selectedBlog">
-  <div class="blog-details-container">
-
-    <img
-      [src]="selectedBlog.image"
-      [alt]="selectedBlog.title"
-      class="blog-details-image"
-    />
-
-    <h1 class="blog-details-title">
-      {{ selectedBlog.title }}
-    </h1>
-
-    <p class="blog-details-description">
-      {{ selectedBlog.description }}
-    </p>
-
+<!-- Blogs Details Banner -->
+<section class="blogs-details-banner">
+  <div class="blogs-banner-content">
+    <div class="blogs-banner-container">
+      <div class="blogs-banner-text-area">
+        <h1 class="blogs-banner-title">Blog Details</h1>
+        <nav class="blogs-banner-breadcrumb" aria-label="breadcrumb">
+          <span class="blogs-banner-home-link">Home</span>
+          <span class="blogs-banner-separator">»</span>
+          <span class="blogs-banner-current-page">Blog Details</span>
+        </nav>
+      </div>
+    </div>
   </div>
 </section>
+<div class="blog_details_section">
+  <div class="blog_details_container">
+    <!-- Main Content Area -->
+    <main class="blog_details_main">
+      <!-- Hero Image -->
+      <div class="blog_details_hero_image">
+        <img [src]="currentBlog?.image" [alt]="currentBlog?.title" />
+      </div>
+
+      <!-- Article Content -->
+      <article class="blog_details_article">
+        <!-- Breadcrumb -->
+        <div class="blog_details_breadcrumb">
+          <span>📂 Blog</span> | <span>📄 {{ currentBlog?.category }}</span> |
+          <span>📅 {{ currentBlog?.date }}</span> |
+          <span>🔗 Share</span>
+        </div>
+
+        <!-- Blog Title -->
+        <h1 class="blog_details_title">{{ currentBlog?.title }}</h1>
+
+        <!-- Author & Meta Info -->
+        <div class="blog_details_meta">
+          <span class="blog_details_author">By {{ currentBlog?.author }}</span>
+          <span class="blog_details_read_time">{{ currentBlog?.readTime }}</span>
+          <div class="blog_details_tags">
+            <span *ngFor="let tag of currentBlog?.tags" class="blog_details_tag"> #{{ tag }} </span>
+          </div>
+        </div>
+
+        <!-- Dynamic Blog Sections -->
+        <!-- Dynamic Blog Sections -->
+        <div class="blog_details_content">
+          <ng-container *ngFor="let section of currentBlog?.sections">
+            <h3 class="blog_details_subtitle" *ngIf="section.heading">
+              {{ section.heading }}
+            </h3>
+
+            <p class="blog_details_paragraph" *ngIf="section.content">
+              {{ section.content }}
+            </p>
+
+            <!-- SIMPLE LIST -->
+            <ul class="blog_details_list" *ngIf="isSimpleList(section.list)">
+              <li *ngFor="let item of section.list">› {{ item }}</li>
+            </ul>
+
+            <!-- NESTED LIST -->
+            <div class="blog_details_nested_wrapper" *ngIf="isNestedList(section.list)">
+              <div class="blog_details_nested_block" *ngFor="let sub of section.list">
+                <h4 class="blog_details_nested_title">
+                  {{ sub.heading }}
+                </h4>
+
+                <ul class="blog_details_list">
+                  <li *ngFor="let item of sub.list">› {{ item }}</li>
+                </ul>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- Navigation Between Blogs -->
+        <div class="blog_details_navigation">
+          <button
+            class="blog_details_nav_btn blog_details_prev_btn"
+            (click)="loadPreviousBlog()"
+            [disabled]="currentIndex === 0"
+          >
+            ← Previous Post
+          </button>
+          <button
+            class="blog_details_nav_btn blog_details_next_btn"
+            (click)="loadNextBlog()"
+            [disabled]="currentIndex === blogPosts.length - 1"
+          >
+            Next Post →
+          </button>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="blog_details_sidebar">
+      <!-- Related Posts Card -->
+      <div class="blog_details_card blog_details_dark_card">
+        <h4 class="blog_details_card_title">Related Blogs</h4>
+        <ul class="blog_details_related_list">
+          <li *ngFor="let blog of relatedBlogs" class="blog_details_related_item">
+            <a [routerLink]="['/blog', blog.id]">
+              {{ blog.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Technical Consultation Card -->
+      <div class="blog_details_card blog_details_form_card">
+        <h4 class="blog_details_card_title">Request Technical Consultation</h4>
+        <form class="blog_details_consultation_form">
+          <input type="text" placeholder="Your Name" class="blog_details_form_input" required />
+          <input type="email" placeholder="Your Email" class="blog_details_form_input" required />
+          <input type="tel" placeholder="Your Phone" class="blog_details_form_input" required />
+          <input type="text" placeholder="Company Name" class="blog_details_form_input" />
+          <textarea
+            placeholder="Project Requirements"
+            class="blog_details_form_textarea"
+            rows="3"
+          ></textarea>
+          <button type="submit" class="blog_details_btn_primary">Request Consultation</button>
+        </form>
+      </div>
+
+      <!-- Download Resources Card -->
+      <div class="blog_details_card blog_details_cta_card">
+        <h4 class="blog_details_card_title">Download Technical Resources</h4>
+        <p class="blog_details_cta_text">
+          Access our technical specifications, installation guides, and maintenance manuals for
+          comprehensive support.
+        </p>
+        <button class="blog_details_btn_secondary">Download Resources</button>
+      </div>
+
+      <!-- Follow Us Card -->
+      <div class="blog_details_card blog_details_dark_card">
+        <h4 class="blog_details_card_title">Follow Our Updates</h4>
+        <p class="blog_details_social_text">
+          Stay updated with the latest industrial solutions, technical insights, and project
+          highlights.
+        </p>
+        <div class="blog_details_social_icons">
+          <a class="blog_details_social_icon" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
+          <a class="blog_details_social_icon" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+
+          <a class="blog_details_social_icon" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a class="blog_details_social_icon" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

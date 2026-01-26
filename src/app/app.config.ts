@@ -12,7 +12,7 @@ import { Gallery } from './pages/gallery/gallery';
 import { Services } from './pages/services/services';
 import { Testimonials } from './pages/testimonials/testimonials';
 import { Blogs } from './pages/blogs/blogs';
-import { BlogDetails } from './pages/blog-details/blog-details';
+import { BlogDetailsComponent } from './pages/blog-details/blog-details';
 
 export const appConfig = {
   providers: [
@@ -28,7 +28,10 @@ export const appConfig = {
         { path: 'services', component: Services },
         {path: 'testimonials', component: Testimonials},
         {path: 'blogs', component: Blogs},
-        { path: 'blogs/:id', component: BlogDetails }
+        { path: 'blog/:id', component: BlogDetailsComponent },
+        { path: 'contact', loadComponent: () => import('./pages/contact-us/contact-us').then(m => m.ContactUs) }
+
+
       ],
       withInMemoryScrolling({
         scrollPositionRestoration: 'top',   // Always go to top on navigation

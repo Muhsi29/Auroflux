@@ -13,7 +13,7 @@
           <p class="banner-description banner-anim-up-3">{{ slide.description }}</p>
           
           <div class="banner-btn-group banner-anim-up-4">
-            <button class="banner-btn-main">Explore Our Solutions ➔</button>
+            <button (click)="goCta()" class="banner-btn-main">Explore Our Solutions ➔</button>
           </div>
         </div>
       </div>
@@ -311,7 +311,7 @@
             
             <!-- Card Footer -->
             <div class="home-product-card-footer">
-              <a href="#" class="home-product-details-link">
+              <a href="/products" class="home-product-details-link">
                 View Details
                 <span class="home-product-link-arrow">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -392,8 +392,8 @@
         </div>
         <h3 class="blog-featured-title">{{featuredPost.title}}</h3>
         <p class="blog-featured-excerpt">{{featuredPost.excerpt}}</p>
-        <a href="#" class="blog-read-more">
-          Read Full Article <span class="blog-arrow-icon">&rarr;</span>
+        <a href="/blogs" class="blog-read-more">
+          View Blogs <span class="blog-arrow-icon">&rarr;</span>
         </a>
       </div>
     </article>
@@ -418,9 +418,9 @@
           </div>
           <h4 class="blog-card-title">{{post.title}}</h4>
           <p class="blog-card-excerpt">{{post.excerpt}}</p>
-          <a href="#" class="blog-read-more-sm">
+          <!-- <a href="#" class="blog-read-more-sm">
             Read More <span class="blog-arrow-icon-sm">&rarr;</span>
-          </a>
+          </a> -->
         </div>
         <div class="blog-card-image">
           <img [src]="post.image" [alt]="post.title" class="blog-horizontal-image">
@@ -451,7 +451,7 @@
         </p>
 
         <div class="contact-cta-button-wrapper">
-          <button (click)="goCta()" class="contact-cta-action-btn">
+          <button  type="button" (click)="goCta()" class="contact-cta-action-btn">
             Request Consultation
             <span class="contact-cta-btn-arrow">→</span>
           </button>

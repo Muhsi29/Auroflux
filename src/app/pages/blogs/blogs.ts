@@ -10,24 +10,24 @@ import { RouterModule } from '@angular/router';
 })
 export class Blogs implements OnInit {
     allBlogs: any[] = [
-    {
+          {
       id: 1,
-      title: 'Compressed Air Dryers: Ensuring Clean, Dry & Efficient Air Systems',
-      description: 'Exploring the Inner Workings of Compressed Air Dryers...',
-      image: '../../../assets/images/blog-3.webp',
-      link: '#'
-    },
-    {
-      id: 2,
       title: 'UPVC Pipes: Advantages, Applications, Uses, and Benefits',
       description: 'The Versatility and Benefits of UPVC Pipes: A Guide to Modern Plumbing Solutions...',
       image: '../../../assets/images/blog-1.webp',
       link: '#'
     },
-    {
-      id: 3,
+       {
+      id: 2,
       title: 'Exploring the Inner Workings of Compressed Air Dryers.',
       description: 'Discover how plate heat exchangers improve heat transfer efficiency, reduce energy consumption, and support reliable performance across industrial applications...',
+      image: '../../../assets/images/blog-3.webp',
+      link: '#'
+    },
+    {
+      id: 3,
+      title: 'Compressed Air Dryers: Ensuring Clean, Dry & Efficient Air Systems',
+      description: 'Exploring the Inner Workings of Compressed Air Dryers...',
       image: '../../../assets/images/blog-4.webp',
       link: '#'
     },
@@ -45,13 +45,13 @@ export class Blogs implements OnInit {
       image: '../../../assets/images/blog-6.webp',
       link: '#'
     },
-    {
-      id: 6,
-      title: 'Navigating Life\'s Demands',
-      description: 'Tips on managing life\'s demands, from work-life balance to emotional well-being.',
-      image: '../../../assets/blog-images/life-balance.jpg',
-      link: '#'
-    },
+    // {
+    //   id: 6,
+    //   title: 'Navigating Life\'s Demands',
+    //   description: 'Tips on managing life\'s demands, from work-life balance to emotional well-being.',
+    //   image: '../../../assets/blog-images/life-balance.jpg',
+    //   link: '#'
+    // },
     // Add more blogs as needed...
   ];
 
