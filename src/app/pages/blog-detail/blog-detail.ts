@@ -1,11 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule  } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 import { Subscription } from 'rxjs';
 
 interface Blog {
   id: number;
   slug: string;
   title: string;
+  image?: string;
   content: string;
   excerpt: string;
   featuredImage: string;
@@ -25,6 +28,10 @@ interface Category {
 @Component({
   selector: 'app-blog-detail',
   templateUrl: './blog-detail.html',
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
   styleUrls: ['./blog-detail.css']
 })
 export class BlogDetailComponent implements OnInit, OnDestroy {
