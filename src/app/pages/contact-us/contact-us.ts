@@ -1,43 +1,71 @@
 import { Component } from '@angular/core';
-import { CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-us',
-   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './contact-us.html',
   styleUrl: './contact-us.css',
 })
 export class ContactUs {
-contactForm: FormGroup;
-  isSubmitted = false;
 
-  constructor(private fb: FormBuilder) {
+  contactForm: FormGroup;
+  isSubmitted = false;
+  isLoading = false;
+
+  successMessage = '';
+  errorMessage = '';
+
+  private apiUrl = 'https://auroflux.com/api/send-mail.php';
+
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient
+  ) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.pattern('^[0-9\\-\\+]{9,15}$')]],
-      subject: ['general'],
+      subject: ['general', Validators.required],
       message: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 
   onSubmit() {
     this.isSubmitted = true;
-    
-    if (this.contactForm.valid) {
-      console.log('Form Data:', this.contactForm.value);
-      // Add your API call logic here
-      alert('Form submitted successfully!');
-      this.contactForm.reset();
-      this.isSubmitted = false;
-    } else {
-      // Mark all fields as touched to show validation errors
-      Object.keys(this.contactForm.controls).forEach(key => {
-        this.contactForm.get(key)?.markAsTouched();
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    if (this.contactForm.invalid) {
+      Object.values(this.contactForm.controls).forEach(control => {
+        control.markAsTouched();
       });
+      return;
     }
+
+    this.isLoading = true;
+
+    this.http.post<any>(this.apiUrl, this.contactForm.value)
+      .subscribe({
+        next: (res) => {
+          this.isLoading = false;
+
+          if (res.success) {
+            this.successMessage = res.message;
+            this.contactForm.reset();
+            this.isSubmitted = false;
+          } else {
+            this.errorMessage = res.message || 'Something went wrong.';
+          }
+        },
+        error: () => {
+          this.isLoading = false;
+          this.errorMessage = 'Server error. Please try again later.';
+        }
+      });
   }
 
   get name() { return this.contactForm.get('name'); }

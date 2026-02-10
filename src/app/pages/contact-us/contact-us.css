@@ -95,6 +95,26 @@
   font-size: 16px;
 }
 
+.form-alert {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.form-alert.success {
+  background: #e6fffa;
+  color: #065f46;
+  border: 1px solid #99f6e4;
+}
+
+.form-alert.error {
+  background: #fee2e2;
+  color: #7f1d1d;
+  border: 1px solid #fecaca;
+}
+
+
 .contact-us-banner-home-link {
   color: #22b34a;
   font-weight: 700;

@@ -132,6 +132,17 @@
         <div *ngIf="isSubmitted && contactForm.invalid" class="contact-form-general-error">
           Please fix the errors above before submitting.
         </div>
+
+        <!-- SUCCESS MESSAGE -->
+<div *ngIf="successMessage" class="form-alert success">
+  {{ successMessage }}
+</div>
+
+<!-- ERROR MESSAGE -->
+<div *ngIf="errorMessage" class="form-alert error">
+  {{ errorMessage }}
+</div>
+
       </div>
     </form>
   </div>
