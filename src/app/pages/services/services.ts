@@ -1,28 +1,29 @@
 import { Component } from '@angular/core';
-
-interface Client {
-  name: string;
-  img: string;
-}
+import { CommonModule } from '@angular/common';  
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,RouterModule],
   templateUrl: './services.html',
   styleUrl: './services.css',
 })
 export class Services {
 
-  // clients: Client[] = [
-  //   { name: 'United Industrial Plastics', img: 'assets/client-logo/logo-1.png' },
-  //   { name: 'Mainetti India Pvt Ltd', img: 'assets/client-logo/logo-2.png' },
-  //   { name: 'Ashok Leyland', img: 'assets/client-logo/logo-3.png' },
-  //   { name: 'MRF Vapocure Paints', img: 'assets/client-logo/logo-4.png' },
-  //   { name: 'TVS Motors', img: 'assets/client-logo/logo-5.png' },
-  //   { name: 'Bosch Limited', img: 'assets/client-logo/logo-6.png' },
-  //   { name: 'Ford India', img: 'assets/logos/client-7.png' },
-  //   { name: 'Hyundai Motors', img: 'assets/logos/client-8.png' },
-  // ];
+  // Services array
+  services = [
+    'Fire Risk Assessment & System Design',
+    'Hydrant & Sprinkler Systems Installation',
+    'Fire Alarm & Detection Systems',
+    'Pump Room Setup',
+    'Piping Network & Valve Installation',
+    'Testing & Commissioning'
+  ];
+
+  // Method to handle button click
+  requestConsultation() {
+    alert('Thank you for your interest! Our fire safety expert will contact you within 24 hours.');
+  }
 
 }

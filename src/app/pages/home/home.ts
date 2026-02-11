@@ -525,7 +525,15 @@ goCta() {
     description: 'Repair and Maintenances of Process Chillers, Cooling Towers and Compressed Air Treatment Products and Plate Heat Exchangers.',
     icon: 'fa fa-wrench',
     image: '../../../assets/images/service-6.png'
-  }
+  },
+  {
+  id: '07',
+  title: 'Complete Turnkey Fire Fighting Systems',
+  description: 'End-to-end fire protection solutions from design and installation to testing and commissioning.',
+  icon: 'fa fa-fire-extinguisher',
+  image: '../../../assets/images/fire-protection.webp'
+}
+
 ];
 
 

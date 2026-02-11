@@ -19,7 +19,7 @@ export class OurClients {
     '../../../assets/client-logo/logo-8.png',
     '../../../assets/client-logo/logo-9.png',
     '../../../assets/client-logo/logo-10.png',
-    '../../../assets/client-logo/logo-11.webp',
+    '../../../assets/client-logo/logo-11.png',
     '../../../assets/client-logo/logo-12.jpg',
     '../../../assets/client-logo/logo-13.png',
     '../../../assets/client-logo/logo-14.png',
@@ -39,9 +39,15 @@ export class OurClients {
     '../../../assets/client-logo/logo-28.png',
     '../../../assets/client-logo/logo-29.jpg',
     '../../../assets/client-logo/logo-30.png',
-    '../../../assets/client-logo/logo-31.jfif',
+    // '../../../assets/client-logo/logo-31.jfif',
     '../../../assets/client-logo/logo-32.png',
     '../../../assets/client-logo/logo-33.png',
+    // '../../../assets/client-logo/logo-34.png',
+    '../../../assets/client-logo/logo-35.png',
+    '../../../assets/client-logo/logo-36.png',
+    '../../../assets/client-logo/logo-37.png',
+    '../../../assets/client-logo/logo-38.png',
+    '../../../assets/client-logo/logo-39.png',
     
   ];
 
