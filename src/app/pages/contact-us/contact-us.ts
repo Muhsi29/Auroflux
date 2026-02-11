@@ -19,7 +19,7 @@ export class ContactUs {
   successMessage = '';
   errorMessage = '';
 
-  private apiUrl = 'https://auroflux.com/api/send-mail.php';
+  private apiUrl = 'http://localhost/Auroflux/api/send-mail.php';
 
   constructor(
     private fb: FormBuilder,
