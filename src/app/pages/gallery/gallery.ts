@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-gallery',
@@ -16,8 +17,45 @@ export class Gallery {
 
   gallerySections = [
     {
+      title: 'Employee Appreciation Moments',
+      images: [
+        'assets/gallery/gift-employee/gallery-family.webp',
+        'assets/gallery/gift-employee/employee-1.webp',
+        'assets/gallery/gift-employee/employee-2.webp',
+        'assets/gallery/gift-employee/employee-3.webp',
+        'assets/gallery/gift-employee/employee-4.webp',
+        'assets/gallery/gift-employee/employee-5.webp',
+        'assets/gallery/gift-employee/employee-6.webp',
+        'assets/gallery/gift-employee/employee-7.webp',
+        'assets/gallery/gift-employee/employee-8.webp',
+        'assets/gallery/gift-employee/employee-9.webp',
+        'assets/gallery/gift-employee/employee-10.webp',
+        'assets/gallery/gift-employee/employee-11.webp',
+        'assets/gallery/gift-employee/employee-12.webp',
+        'assets/gallery/gift-employee/employee-13.webp',
+        'assets/gallery/gift-employee/employee-14.webp',
+        'assets/gallery/gift-employee/employee-15.webp',
+        'assets/gallery/gift-employee/employee-16.webp',
+        'assets/gallery/gift-employee/employee_team.webp',
+        'assets/gallery/gift-employee/award_1.webp',
+        'assets/gallery/gift-employee/award_2.webp'
+
+      ]
+    },
+    {
       title: 'Industrial Installations',
       images: [
+        'assets/gallery/gallery-1/21.webp',
+        'assets/gallery/gallery-1/22.webp',
+        'assets/gallery/gallery-1/23.webp',
+        'assets/gallery/gallery-1/24.webp',
+        'assets/gallery/gallery-1/25.webp',
+        'assets/gallery/gallery-1/26.webp',
+        'assets/gallery/gallery-1/27.webp',
+        'assets/gallery/gallery-1/28.webp',
+        'assets/gallery/gallery-1/29.webp',
+        'assets/gallery/gallery-1/30.webp',
+        'assets/gallery/gallery-1/31.webp',
         'assets/gallery/gallery-1/1.webp',
         'assets/gallery/gallery-1/2.webp',
         'assets/gallery/gallery-1/3.webp',
@@ -43,6 +81,12 @@ export class Gallery {
     {
       title: 'Cooling Solutions',
       images: [
+        'assets/gallery/gallery-2/10.webp',
+        'assets/gallery/gallery-2/11.webp',
+        'assets/gallery/gallery-2/12.webp',
+        'assets/gallery/gallery-2/13.webp',
+        'assets/gallery/gallery-2/14.webp',
+        'assets/gallery/gallery-2/15.webp',
         'assets/gallery/gallery-2/1.webp',
         'assets/gallery/gallery-2/2.webp',
         'assets/gallery/gallery-2/3.webp',
@@ -57,6 +101,14 @@ export class Gallery {
     {
       title: 'Piping Infrastructure',
       images: [
+         'assets/gallery/gallery-3/6.webp',
+        'assets/gallery/gallery-3/7.webp',
+        'assets/gallery/gallery-3/8.webp',
+        'assets/gallery/gallery-3/9.webp',
+        'assets/gallery/gallery-3/10.webp',
+         'assets/gallery/gallery-3/11.webp',
+        'assets/gallery/gallery-3/12.webp',
+        'assets/gallery/gallery-3/13.webp',
         'assets/gallery/gallery-3/1.webp',
         'assets/gallery/gallery-3/2.webp',
         'assets/gallery/gallery-3/3.webp',
@@ -67,6 +119,14 @@ export class Gallery {
     {
       title: 'Plant Engineering',
       images: [
+        'assets/gallery/gallery-4/12.webp',
+        'assets/gallery/gallery-4/13.webp',
+        'assets/gallery/gallery-4/14.webp',
+        'assets/gallery/gallery-4/15.webp',
+        'assets/gallery/gallery-4/16.webp',
+        'assets/gallery/gallery-4/17.webp',
+        'assets/gallery/gallery-4/18.webp',
+        'assets/gallery/gallery-4/11.webp',
         'assets/gallery/gallery-4/1.webp',
         'assets/gallery/gallery-4/2.webp',
         'assets/gallery/gallery-4/3.webp',
@@ -77,12 +137,19 @@ export class Gallery {
         'assets/gallery/gallery-4/8.webp',
         'assets/gallery/gallery-4/9.webp',
         'assets/gallery/gallery-4/10.webp',
-        'assets/gallery/gallery-4/11.webp',
+       
       ]
     },
     {
       title: 'Site Executions',
       images: [
+         'assets/gallery/gallery-5/5.webp',
+        'assets/gallery/gallery-5/6.webp',
+        'assets/gallery/gallery-5/7.webp',
+        'assets/gallery/gallery-5/8.webp',
+         'assets/gallery/gallery-5/9.webp',
+        'assets/gallery/gallery-5/10.webp',
+        'assets/gallery/gallery-5/11.webp',
         'assets/gallery/gallery-5/1.webp',
         'assets/gallery/gallery-5/2.webp',
         'assets/gallery/gallery-5/3.webp',

@@ -64,6 +64,75 @@
     </div>
   </div>
 </section>
+<section class="fire-service-section">
+
+  <!-- HEADER SECTION -->
+  <div class="fire-service-header">
+    <p class="fire-service-tag">Industrial Fire Protection Experts</p>
+    <h2 class="fire-service-title">
+      Complete Turnkey Fire Fighting Systems – From Design to Commissioning
+    </h2>
+    <p class="fire-service-intro">
+      Auroflux delivers end-to-end fire fighting system solutions for industrial facilities,
+      ensuring safety, compliance, and reliable protection. Our certified team handles projects
+      of all scales with precision engineering and adherence to global safety standards.
+    </p>
+  </div>
+
+  <!-- MAIN CONTENT SECTION - Image Right / Content Left -->
+  <div class="fire-service-main">
+    
+    <!-- Left Content Column -->
+    <div class="fire-service-content">
+      <h3>End-to-End Fire Fighting System Solutions</h3>
+    <p>
+  We handle everything from risk assessment and system design to installation,
+  testing, and commissioning for industrial fire safety systems. Our comprehensive
+  approach ensures seamless integration with your facility's operations.
+</p>
+
+<p>
+  With over 15 years of experience in industrial safety, Auroflux has protected
+  manufacturing plants, warehouses, chemical facilities, and power stations across
+  India and Southeast Asia.
+</p>
+
+<p>
+  Our solutions comply with international fire safety standards and local regulatory
+  requirements, ensuring both safety and legal assurance for your operations. We use
+  advanced detection technologies, high-performance suppression systems, and
+  intelligent monitoring tools to provide fast response and maximum protection.
+</p>
+
+      <ul class="fire-service-list">
+        <li *ngFor="let item of services">
+          <span class="check-icon">✔</span> {{item}}
+        </li>
+      </ul>
+
+      <button class="fire-service-btn" routerLink="/contact">
+        Request a Project Consultation
+      </button>
+      
+      <!-- Standards Information -->
+      <!-- <div class="fire-service-standards">
+        <h4>Compliant with Safety Standards:</h4>
+        <p>NFPA | IS 2189 | TAC | Factory Act | NBC | ISO 9001:2015 Certified</p>
+      </div> -->
+    </div>
+
+    <!-- Right Image Column -->
+    <div class="fire-service-image">
+      <img src="../../../assets/images/fire-protection.webp" alt="Industrial Fire System Installation" loading="lazy">
+      <div class="fire-service-image-caption">
+        <p>Industrial Fire Protection System Installation at a Manufacturing Facility</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
 
 <section class="service-icon-box-section">
   <div class="service-icon-box-container">

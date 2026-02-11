@@ -55,7 +55,7 @@ export class About implements AfterViewInit, OnDestroy {
      { 
       name: 'Raja Srinivasan', 
       role: 'Founder', 
-      image: '../../../assets/teams/mama.webp'
+      image: '../../../assets/teams/Raja Srinivasan.webp'
     },
     { 
       name: 'Bhoovarahan Thirumalai', 
@@ -75,7 +75,7 @@ export class About implements AfterViewInit, OnDestroy {
     { 
       name: 'A. Rajathi', 
       role: 'CEO Finance', 
-      image: '../../../assets/teams/Rajathi.jpeg' 
+      image: '../../../assets/teams/Rajathi.webp' 
     },
     // { 
     //   name: 'Vasanth', 
@@ -86,15 +86,15 @@ export class About implements AfterViewInit, OnDestroy {
 
   clients: Client[] = [
     { 
-      name: 'Tractors and Farm Equipment Limited', 
+      name: 'TP Solar', 
       logo: '../../../assets/client-logo/logo-1.png' 
     },
     { 
-      name: 'Valeo', 
+      name: 'Ploycab Wire & Cables', 
       logo: '../../../assets/client-logo/logo-2.png' 
     },
     { 
-      name: 'wheels India Limited', 
+      name: 'Bongiglioli', 
       logo: '../../../assets/client-logo/logo-3.png' 
     },
     { 
@@ -106,19 +106,19 @@ export class About implements AfterViewInit, OnDestroy {
       logo: '../../../assets/client-logo/logo-5.png' 
     },
     { 
-      name: 'Flexol', 
+      name: 'Shibaura Machine', 
       logo: '../../../assets/client-logo/logo-6.png' 
     },
     { 
-      name: 'Delphi-Tvs', 
+      name: 'United Industry', 
       logo: '../../../assets/client-logo/logo-7.png' 
     },
     { 
-      name: 'Reynolds', 
+      name: 'HCL', 
       logo: '../../../assets/client-logo/logo-8.png' 
     },
     { 
-      name: 'Power Ventures Pic', 
+      name: 'Adani', 
       logo: '../../../assets/client-logo/logo-9.png' 
     },
     { 
@@ -127,19 +127,83 @@ export class About implements AfterViewInit, OnDestroy {
     },
     { 
       name: 'Saint Gobain', 
-      logo: '../../../assets/client-logo/logo-11.webp' 
+      logo: '../../../assets/client-logo/logo-11.png' 
     },
     { 
-      name: 'Sundaram-Clayton Limited', 
+      name: 'TATA Electronics', 
       logo: '../../../assets/client-logo/logo-12.jpg' 
     },
     { 
-      name: 'Aspiration Energy', 
+      name: 'L&T', 
       logo: '../../../assets/client-logo/logo-13.png' 
     },
     { 
       name: 'Gem Trust Technology', 
       logo: '../../../assets/client-logo/logo-14.png' 
+    },
+       { 
+      name: 'TATA Steel', 
+      logo: '../../../assets/client-logo/logo-15.png' 
+    },
+       { 
+      name: 'TVS', 
+      logo: '../../../assets/client-logo/logo-16.png' 
+    },
+       { 
+      name: 'UCAL Fuel Systems', 
+      logo: '../../../assets/client-logo/logo-17.jpg' 
+    },
+       { 
+      name: 'Smr', 
+      logo: '../../../assets/client-logo/logo-18.jpg' 
+    },
+       { 
+      name: 'Pepsi', 
+      logo: '../../../assets/client-logo/logo-19.png' 
+    },
+       { 
+      name: 'Suzlon', 
+      logo: '../../../assets/client-logo/logo-20.png' 
+    },
+       { 
+      name: 'Sterling & Wilson', 
+      logo: '../../../assets/client-logo/logo-21.png' 
+    },
+       { 
+      name: 'Maruthi Suzuki', 
+      logo: '../../../assets/client-logo/logo-22.jpg' 
+    },
+       { 
+      name: 'Tablets(Indian)Ltd', 
+      logo: '../../../assets/client-logo/logo-23.jpg' 
+    },
+       { 
+      name: 'Ashok Leyland', 
+      logo: '../../../assets/client-logo/logo-24.png' 
+    },
+       { 
+      name: 'ABI - SHOWATECH', 
+      logo: '../../../assets/client-logo/logo-25.png' 
+    },
+       { 
+      name: 'Blue Star', 
+      logo: '../../../assets/client-logo/logo-26.png' 
+    },
+       { 
+      name: 'Ultra Tech Cement', 
+      logo: '../../../assets/client-logo/logo-27.png' 
+    },
+       { 
+      name: 'HP', 
+      logo: '../../../assets/client-logo/logo-28.png' 
+    },
+       { 
+      name: 'UCAL Fuel Systems', 
+      logo: '../../../assets/client-logo/logo-29.jpg' 
+    },
+       { 
+      name: 'Sintex ', 
+      logo: '../../../assets/client-logo/logo-30.png' 
     }
   ];
 
