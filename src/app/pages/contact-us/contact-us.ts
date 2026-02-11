@@ -19,7 +19,10 @@ export class ContactUs {
   successMessage = '';
   errorMessage = '';
 
-  private apiUrl = 'http://localhost/Auroflux/api/send-mail.php';
+  // private apiUrl = 'http://localhost/Auroflux/api/send-mail.php';
+  // Replace 'yourdomain.com' with your actual website address
+  private apiUrl = 'https://auroflux.com/api/send-mail.php';
+
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +32,7 @@ export class ContactUs {
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.pattern('^[0-9\\-\\+]{9,15}$')]],
-      subject: ['general', Validators.required],
+      subject: ['', Validators.required],
       message: ['', [Validators.required, Validators.minLength(10)]]
     });
   }

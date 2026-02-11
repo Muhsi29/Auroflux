@@ -1,12 +1,17 @@
 <?php
+// Disable display_errors to prevent HTML from breaking JSON response
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
 
-// ✅ CORS
-header("Access-Control-Allow-Origin: http://localhost:4200");
-header("Access-Control-Allow-Headers: Content-Type");
+// ✅ CORS (Allow any origin for development, or specify localhost:4200)
+// Old (Dev)
+// header("Access-Control-Allow-Origin: *");
+// New (Live)
+header("Access-Control-Allow-Origin: https://auroflux.com");
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Content-Type: application/json");
+header("Content-Type: application/json; charset=UTF-8");
 
 // Handle preflight
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -14,7 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require __DIR__ . '/vendor/autoload.php';
+$autoloadPath = __DIR__ . '/vendor/autoload.php';
+if (!file_exists($autoloadPath)) {
+    echo json_encode(["success" => false, "message" => "Backend Error: Vendor dependencies missing. Run 'composer install' in the api directory."]);
+    exit;
+}
+
+require $autoloadPath;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -27,12 +38,13 @@ if (!$data) {
     exit;
 }
 
+
 // Validate fields
-$name    = htmlspecialchars($input['name']);
-$email   = htmlspecialchars($input['email']);
-$message = htmlspecialchars($input['message']);
-$phone   = !empty($input['phone']) ? htmlspecialchars($input['phone']) : 'Not provided';
-$subject = !empty($input['subject']) ? htmlspecialchars($input['subject']) : 'General Inquiry';
+$name    = isset($data['name']) ? htmlspecialchars($data['name']) : '';
+$email   = isset($data['email']) ? htmlspecialchars($data['email']) : '';
+$message = isset($data['message']) ? htmlspecialchars($data['message']) : '';
+$phone   = !empty($data['phone']) ? htmlspecialchars($data['phone']) : 'Not provided';
+$subject = !empty($data['subject']) ? htmlspecialchars($data['subject']) : 'General Inquiry';
 
 
 if (!$name || !$email || !$message) {

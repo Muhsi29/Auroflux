@@ -447,6 +447,72 @@
     height: 35px;
     right: 15px;
     bottom: 15px;
-    font-size: 16px;
+  }
+
+}
+
+
+/* ===========================
+   WHATSAPP BUTTON STYLES
+================================ */
+.auroflux-whatsapp-btn {
+  position: fixed;
+  right: 90px; /* 30px (scroll btn right) + 45px (scroll btn width) + 15px (gap) */
+  bottom: 30px; /* Aligned with scroll button */
+  width: 50px;
+  height: 50px;
+  background-color: #25D366;
+  color: #ffffff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 28px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  z-index: 1001; /* Ensure it stays above other elements */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.auroflux-whatsapp-btn:hover {
+  background-color: #128C7E;
+  transform: scale(1.1);
+  box-shadow: 2px 4px 8px rgba(0,0,0,0.4);
+  color: #ffffff;
+}
+
+/* ===========================
+   WHATSAPP RESPONSIVE STYLES
+=========================== */
+
+/* Laptop */
+@media screen and (max-width: 1024px) {
+  .auroflux-whatsapp-btn {
+    right: 85px; /* 25px + 45px + 15px */
+    bottom: 25px;
   }
 }
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .auroflux-whatsapp-btn {
+    width: 45px;
+    height: 45px;
+    right: 75px; /* 20px + 40px + 15px */
+    bottom: 20px;
+    font-size: 24px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .auroflux-whatsapp-btn {
+    width: 35px; /* Match scroll button size */
+    height: 35px;
+    right: 60px; /* 15px + 35px + 10px */
+    bottom: 15px; /* Aligned with scroll button */
+    font-size: 18px;
+  }
+}
+
