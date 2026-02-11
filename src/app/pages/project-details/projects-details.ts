@@ -56,7 +56,7 @@ goCta() {
     title: 'IMM Closed Loop Cooling System',
     category: 'Injection Moulding Cooling System',
     description: 'PHE based closed loop cooling system designed to ensure clean mould operation, stable temperature control and long-term system reliability.',
-    imageUrl: '../../../assets/images/service-1.webp',
+    imageUrl: '../../assets/projects/project-1.png',
     location: 'Southern Polymers, Thirumazhisai',
     year: '2009',
     introText: [
@@ -98,7 +98,7 @@ goCta() {
     title: 'IMM Closed Loop Cooling System with Gravity Flow',
     category: 'Injection Moulding Cooling System',
     description: 'Closed loop cooling system incorporating gravity flow outlet design to reduce pumping head and improve heat transfer efficiency.',
-    imageUrl: '../../../assets/projects/project-2.jpeg',
+    imageUrl: '../../assets/projects/project-2.webp',
     location: 'United Industries, Gerugambakkam & Pillaipakkam',
     year: '2009',
     introText: [
@@ -140,7 +140,7 @@ goCta() {
     title: 'IMM Closed Loop Cooling System – GM Pens',
     category: 'Injection Moulding Cooling System',
     description: 'Closed loop cooling system with gravity flow outlet designed for a new injection moulding manufacturing facility.',
-   imageUrl: '../../../assets/images/service-3.webp',
+   imageUrl: '../../assets/projects/auroflux.webp',
     location: 'GM Pens, Thirubhuvanai, Pondicherry',
     year: '2010',
     introText: [
@@ -182,7 +182,7 @@ goCta() {
     title: 'Engine Testing Bed Cooling System',
     category: 'Industrial Cooling System',
     description: 'Revamp of engine testing bed cooling system with closed loop design and advanced VFD based control.',
-    imageUrl: '../../../assets/images/service-4.webp',
+    imageUrl: '../../assets/projects/project-4.jpg',
     location: 'TAFE',
     year: '2014',
     introText: [
@@ -224,7 +224,7 @@ goCta() {
     title: 'Compressed Air Ring Main System',
     category: 'Compressed Air System',
     description: 'Compressed air ring main system designed for lowest pressure drop and efficient air distribution.',
-    imageUrl: '../../../assets/images/service-5.webp',
+    imageUrl: '../../assets/projects/project-5.png',
     location: 'Nordex India, Mappedu',
     year: '2017',
     introText: [
@@ -266,7 +266,7 @@ goCta() {
     title: 'Chiller & Cooling Water System Revamp',
     category: 'IMM Cooling System Revamp',
     description: 'Large scale revamp of cooling water and piping systems for injection moulding machines.',
-    imageUrl: '../../../assets/projects/project-6.jpg',
+    imageUrl: '../../assets/projects/project-6.avif',
     location: 'Mainetti India Pvt Ltd',
     year: '2018 - 2019',
     introText: [
@@ -307,7 +307,7 @@ goCta() {
   title: 'Hybrid Adiabatic Dry Cooler & PHE Cooling System',
   category: 'Hybrid Industrial Cooling',
   description: 'Advanced hybrid cooling system integrating adiabatic dry coolers, plate heat exchangers and VFD controlled automation for reduced water consumption and high thermal performance.',
-  imageUrl: 'https://images.unsplash.com/photo-1581092795360-9e8c3bb3ed0a?auto=format&fit=crop&w=1200&q=80',
+  imageUrl: '../../assets/projects/project-7.png',
   location: 'Ashok Leyland, Chennai',
   year: '2018',
   introText: [
@@ -338,7 +338,7 @@ goCta() {
   title: 'Centralized Chiller Based Oil & Mould Cooling System',
   category: 'Injection Moulding Cooling',
   description: 'High efficiency chiller based oil and mould cooling system designed to eliminate centralized piping, reduce water consumption and optimize energy usage.',
-  imageUrl: 'https://images.unsplash.com/photo-1581091215367-59ab6baf56f3?auto=format&fit=crop&w=1200&q=80',
+  imageUrl: '../../assets/projects/project-8.png',
   location: 'Funskool, Ranipet',
   year: '2018',
   introText: [
@@ -369,7 +369,7 @@ goCta() {
   title: 'Induction Furnace & Sand Cooling System',
   category: 'Heavy Industrial Cooling',
   description: 'Closed loop cooling systems designed for induction furnace, sand cooling and aerospace manufacturing utilities.',
-  imageUrl: 'https://images.unsplash.com/photo-1598887142489-32e5a6bfc7f5?auto=format&fit=crop&w=1200&q=80',
+  imageUrl:'../../assets/projects/project-9.png',
   location: 'ABI Showatech',
   year: '2019',
   introText: [
@@ -400,7 +400,7 @@ goCta() {
   title: 'Large Scale Solar Thermal Piping System',
   category: 'Solar Thermal Utilities',
   description: 'High temperature PPR piping system designed for Asia’s largest rooftop solar thermal installation and multiple industrial solar plants.',
-  imageUrl: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80',
+  imageUrl:  '../../assets/projects/project-10.jpg',
   location: 'Aspiration Energy – Wheels India, Hosur',
   year: '2019',
   introText: [
@@ -462,7 +462,7 @@ goCta() {
   title: 'Multi-Plant Compressed Air & Cooling Utilities',
   category: 'Industrial Utilities',
   description: 'Turnkey compressed air, dry cooler and chilled water systems delivered across multiple forging plants.',
-  imageUrl: 'https://images.unsplash.com/photo-1581091012184-5c1d7b9bdf7a?auto=format&fit=crop&w=1200&q=80',
+  imageUrl: '../../assets/projects/project-12.jpg',
   location: 'Super Auto Forge Limited',
   year: '2020 – Ongoing',
   introText: [
@@ -493,7 +493,7 @@ goCta() {
   title: 'Cooling Water & RO Piping System',
   category: 'Industrial Piping',
   description: 'Engineered cooling water and RO water piping systems designed for automotive manufacturing reliability.',
-  imageUrl: 'https://images.unsplash.com/photo-1605902711622-cfb43c4437d1?auto=format&fit=crop&w=1200&q=80',
+  imageUrl:  '../../assets/projects/project-13.png',
   location: 'Mando Automotive India',
   year: '2020',
   introText: [
@@ -523,7 +523,7 @@ goCta() {
   title: 'Robotic Welding Line Cooling & Utility System',
   category: 'Automotive Process Cooling',
   description: 'Closed loop cooling and utility distribution system designed for high-speed robotic welding lines in automotive body manufacturing.',
-  imageUrl: 'https://images.unsplash.com/photo-1581092795360-9e8c3bb3ed0a?auto=format&fit=crop&w=1200&q=80',
+  imageUrl: '../../assets/projects/project-14.jpg',
   location: 'TVS Motor Company, Hosur',
   year: '2020',
   introText: [
@@ -554,7 +554,7 @@ goCta() {
   title: 'Precision CNC Machine Cooling System',
   category: 'Machine Tool Cooling',
   description: 'High stability closed loop cooling solution designed for CNC machining centers to maintain dimensional accuracy and tool life.',
-  imageUrl: '../../assets/projects/project-15.webp',
+  imageUrl: '../../assets/projects/project-15.avif',
   location: 'Brakes India',
   year: '2021',
   introText: [
@@ -585,7 +585,7 @@ goCta() {
   title: 'Forging Furnace Cooling & Utilities',
   category: 'Heavy Industry Utilities',
   description: 'High capacity cooling water, compressed air and process piping systems for large scale forging furnaces.',
-  imageUrl: '../../assets/projects/project-16.webp',
+  imageUrl: '../../assets/projects/project-16.png',
   location: 'Rane Madras',
   year: '2021',
   introText: [
@@ -616,7 +616,7 @@ goCta() {
   title: 'Automotive Assembly Line Cooling Network',
   category: 'Automotive Utilities',
   description: 'Plant-wide cooling water and utility distribution system for high throughput automotive assembly operations.',
-  imageUrl: '../../assets/projects/project-17.webp',
+  imageUrl:  '../../assets/projects/auroflux.webp',
   location: 'Renault Nissan',
   year: '2021',
   introText: [
@@ -647,7 +647,7 @@ goCta() {
   title: 'Pharmaceutical Process Cooling System',
   category: 'Pharma Utilities',
   description: 'Hygienic closed loop chilled water system designed for pharmaceutical manufacturing processes.',
-  imageUrl: '../../assets/projects/project-18.webp',
+  imageUrl: '../../assets/projects/project-18.png',
   location: 'Sun Pharma',
   year: '2022',
   introText: [
@@ -678,7 +678,7 @@ goCta() {
   title: 'Data Center Cooling Infrastructure',
   category: 'Critical Cooling Systems',
   description: 'Redundant chilled water and heat rejection systems designed for mission-critical data center operations.',
-  imageUrl: '../../assets/projects/project-19.webp',
+  imageUrl: '../../assets/projects/project-19.png',
   location: 'Confidential Data Center',
   year: '2022',
   introText: [
@@ -709,7 +709,7 @@ goCta() {
   title: 'Paint Shop Cooling & Utilities',
   category: 'Automotive Paint Shop',
   description: 'Chilled water and process utility systems designed for automotive paint booths and curing ovens.',
-  imageUrl: '../../assets/projects/project-20.webp',
+  imageUrl: '../../assets/projects/project-20.png',
   location: 'Hyundai Motors',
   year: '2022',
   introText: [
@@ -740,7 +740,7 @@ goCta() {
   title: 'Steel Rolling Mill Cooling System',
   category: 'Metallurgical Cooling',
   description: 'High volume cooling water systems designed for continuous steel rolling mill operations.',
-  imageUrl: '../../assets/projects/project-21.webp',
+  imageUrl: '../../assets/projects/project-21.png',
   location: 'JSW Steel',
   year: '2023',
   introText: [
@@ -771,7 +771,7 @@ goCta() {
   title: 'Electronics Manufacturing Clean Cooling System',
   category: 'Electronics Utilities',
   description: 'Ultra-clean chilled water and cooling distribution system for electronics and semiconductor manufacturing.',
-  imageUrl: '../../assets/projects/project-22.webp',
+  imageUrl: '../../assets/projects/project-22.png',
   location: 'Foxconn',
   year: '2023',
   introText: [
@@ -802,7 +802,7 @@ goCta() {
   title: 'Battery Manufacturing Cooling & Utilities',
   category: 'EV Manufacturing',
   description: 'Precision cooling and utility systems designed for lithium-ion battery cell and pack manufacturing.',
-  imageUrl: '../../assets/projects/project-23.webp',
+  imageUrl: '../../assets/projects/project-23.png',
   location: 'EV Battery Plant',
   year: '2024',
   introText: [

@@ -1339,7 +1339,7 @@
 }
 
 .check-icon {
-  color: #d32f2f;
+  color: var(--banner-green);
   margin-right: 12px;
   font-weight: bold;
   flex-shrink: 0;
