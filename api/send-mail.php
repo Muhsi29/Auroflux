@@ -71,7 +71,7 @@ try {
 
     // ✅ Email Setup
     $mail->setFrom('mailresponses07@gmail.com', 'Auroflux Website');
-    $mail->addAddress('muhsinsameer123@gmail.com');
+    $mail->addAddress('aurofluxsales@gmail.com');
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(true);
