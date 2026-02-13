@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router'; 
 
 @Component({
   selector: 'app-testimonials',
-  imports: [CommonModule],
+   standalone: true,
+  imports: [CommonModule,RouterModule],
   templateUrl: './testimonials.html',
   styleUrl: './testimonials.css',
 })
 export class Testimonials {
-  router: any;
+  constructor(private router: Router) {}
   testimonialCertificates = [
     {
       image: '../../../assets/testimonials/testimonial 1.webp',
@@ -74,6 +75,6 @@ resetZoom(event: Event) {
   }
   goCta() {
   this.router.navigate(['/contact']);
-}
+} 
 
 }
