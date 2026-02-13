@@ -424,6 +424,53 @@
 }
 
 /* ============================================
+   CONTACT MAP SECTION
+   ============================================ */
+.contact-map-section {
+  width: 100%;
+  padding: 80px 0 0 0; /* Add top padding only, bottom handled by next section */
+  background: #ffffff;
+}
+
+.contact-map-container {
+  width: 100%;
+  max-width: 1400px; /* Match other containers */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact-map-container iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .contact-map-section {
+    padding: 50px 0 0 0;
+  }
+  
+  .contact-map-container {
+    padding: 0 15px;
+  }
+  
+  .contact-map-container iframe {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-map-section {
+    padding: 40px 0 0 0;
+  }
+  
+  .contact-map-container iframe {
+    height: 300px;
+  }
+}
+
+/* ============================================
    CONTACT DETAILS SECTION - BASE STYLES
    ============================================ */
 .contact-details-section {

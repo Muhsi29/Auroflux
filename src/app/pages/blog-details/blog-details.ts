@@ -364,4 +364,8 @@ export class BlogDetailsComponent implements OnInit {
       this.router.navigate(['/blog', this.blogPosts[this.currentIndex + 1].id]);
     }
   }
+
+  redirectToContact() {
+    this.router.navigate(['/contact']);
+  }
 }

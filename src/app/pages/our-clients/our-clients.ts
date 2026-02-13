@@ -37,18 +37,18 @@ export class OurClients {
     '../../../assets/client-logo/logo-26.png',
     '../../../assets/client-logo/logo-27.png',
     '../../../assets/client-logo/logo-28.png',
-    '../../../assets/client-logo/logo-29.jpg',
+    // '../../../assets/client-logo/logo-29.jpg',
     '../../../assets/client-logo/logo-30.png',
     // '../../../assets/client-logo/logo-31.jfif',
     '../../../assets/client-logo/logo-32.png',
-    '../../../assets/client-logo/logo-33.png',
+    // '../../../assets/client-logo/logo-33.png',
     // '../../../assets/client-logo/logo-34.png',
     '../../../assets/client-logo/logo-35.png',
     '../../../assets/client-logo/logo-36.png',
     '../../../assets/client-logo/logo-37.png',
     '../../../assets/client-logo/logo-38.png',
     '../../../assets/client-logo/logo-39.png',
-    
+
   ];
 
 }

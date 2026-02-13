@@ -112,17 +112,18 @@
       <!-- Technical Consultation Card -->
       <div class="blog_details_card blog_details_form_card">
         <h4 class="blog_details_card_title">Request Technical Consultation</h4>
+        <button type="button" class="blog_details_btn_primary" (click)="redirectToContact()">Request Consultation</button>
+        <p class="blog_details_form_instruction">Fill the form and click the button below to proceed.</p>
         <form class="blog_details_consultation_form">
-          <input type="text" placeholder="Your Name" class="blog_details_form_input" required />
-          <input type="email" placeholder="Your Email" class="blog_details_form_input" required />
-          <input type="tel" placeholder="Your Phone" class="blog_details_form_input" required />
+          <input type="text" placeholder="Your Name" class="blog_details_form_input"/>
+          <input type="email" placeholder="Your Email" class="blog_details_form_input"/>
+          <input type="tel" placeholder="Your Phone" class="blog_details_form_input"/>
           <input type="text" placeholder="Company Name" class="blog_details_form_input" />
           <textarea
             placeholder="Project Requirements"
             class="blog_details_form_textarea"
             rows="3"
           ></textarea>
-          <button type="submit" class="blog_details_btn_primary">Request Consultation</button>
         </form>
       </div>
 
@@ -133,7 +134,13 @@
           Access our technical specifications, installation guides, and maintenance manuals for
           comprehensive support.
         </p>
-        <button class="blog_details_btn_secondary">Download Resources</button>
+        <a
+          href="assets/Catalogue/AT-Catalogue-2025-FINAL.pdf"
+          download="AT-Catalogue-2025-FINAL.pdf"
+          class="blog_details_btn_secondary"
+        >
+          Download Resources
+        </a>
       </div>
 
       <!-- Follow Us Card -->

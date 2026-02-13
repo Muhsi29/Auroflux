@@ -1487,6 +1487,9 @@
   .fire-service-title {
     font-size: 25px;
   }
+  .fire-service-intro{
+    font-size: 14px;
+  }
   
   .fire-service-main {
     gap: 30px;

@@ -282,9 +282,9 @@
 .hamburger-btn.active .hamburger-line {
   background: #0f2027;
 }
-.main-header.menu-open .logo-subtitle {
+/* .main-header.menu-open .logo-subtitle {
   color: #ffffff;
-}
+} REMOVED TO FIX TABLET COLOR ISSUE */
 
 /* On sticky state - white hamburger */
 .main-header.sticky .hamburger-line {
@@ -331,13 +331,13 @@
   
   .nav-list {
     flex-direction: column;
-    gap: 25px;
+    gap: 15px; /* Reduced gap from 25px */
   }
   
   .nav-link {
     font-size: 18px;
     color: #ffffff;
-    padding: 12px 0;
+    padding: 8px 0; /* Reduced padding from 12px */
     display: block;
   }
   .main-header.sticky .nav-link {
@@ -427,6 +427,11 @@
   
   .main-header {
     height: 80px;
+  }
+
+  /* Only change subtitle color on mobile where menu covers it */
+  .main-header.menu-open .logo-subtitle {
+     color: #ffffff;
   }
   
   .main-header.sticky {

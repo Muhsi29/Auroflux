@@ -769,10 +769,23 @@
   border: 1px solid #e0e0e0;
 }
 
+.blog_details_form_instruction {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
 .blog_details_consultation_form {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.blog_details_btn_secondary {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
 }
 
 .blog_details_form_input,
@@ -810,6 +823,7 @@
   cursor: pointer;
   font-size: 0.95rem;
   transition: background-color 0.3s ease;
+  margin-bottom: 15px;
 }
 
 .blog_details_btn_primary:hover {
