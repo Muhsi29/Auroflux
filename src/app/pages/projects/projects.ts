@@ -34,7 +34,7 @@ projects: Project[] = [
     id: 2,
     title: 'IMM Closed Loop Cooling System – United Industries',
     description: 'Executed closed loop cooling with gravity flow outlet, reducing pumping head and improving heat transfer efficiency.',
-    imageUrl: '../../assets/projects/project-2.webp'
+    imageUrl: '../../assets/projects/project-2.png'
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ projects: Project[] = [
     id: 4,
     title: 'Engine Testing Bed Cooling System – TAFE',
     description: 'Upgraded engine testing bed cooling system using closed loop design, VFD panel, cooling tower and GI piping.',
-    imageUrl: '../../assets/projects/project-4.jpg'
+    imageUrl: '../../assets/projects/project-4.png'
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ projects: Project[] = [
     id: 6,
     title: 'Chiller & Cooling Water Revamp – Mainetti India',
     description: 'Revamped large scale IMM cooling and piping system with PPR/HDPE piping and VFD control panels.',
-    imageUrl:'../../assets/projects/project-6.avif'
+    imageUrl:'../../assets/projects/project-6.png'
   },
   {
     id: 7,
@@ -82,19 +82,19 @@ projects: Project[] = [
     id: 10,
     title: 'Solar Thermal Plant Piping – Aspiration Energy',
     description: 'Executed complete PPR piping design and installation for Asia’s largest solar thermal rooftop projects.',
-    imageUrl: '../../assets/projects/project-10.jpg'
+    imageUrl: '../../assets/projects/project-10.png'
   },
   {
     id: 11,
     title: 'Vacuum Furnace Closed Loop System – Delphi TVS',
     description: 'Installed PPR piping with PHE based closed loop system for high precision vacuum furnace, improving energy efficiency.',
-    imageUrl: '../../assets/projects/project-11.jpg'
+    imageUrl: '../../assets/projects/project-11.png'
   },
   {
     id: 12,
     title: 'Compressed Air & Cooling Utilities – Super Auto Forge',
     description: 'Designed and executed compressed air, dry cooler and chilled water piping systems across multiple manufacturing plants.',
-    imageUrl: '../../assets/projects/project-12.jpg'
+    imageUrl: '../../assets/projects/project-12.png'
   },
   {
     id: 13,
@@ -106,13 +106,13 @@ projects: Project[] = [
     id: 14,
     title: 'Closed Loop Cooling for PDC Machines – Arul Casting',
     description: 'Installed PHE based closed loop piping with advanced VFD panel system for pressure die casting machines.',
-    imageUrl: '../../assets/projects/project-14.jpg'
+    imageUrl: '../../assets/projects/project-14.png'
   },
   {
     id: 15,
     title: 'Large Scale PPR Utility Piping – Sundaram Clayton',
     description: 'Executed 80,000 meter PPR piping project for cooling tower, chiller, RO and DM water lines in new manufacturing facility.',
-    imageUrl: '../../assets/projects/project-15.avif'
+    imageUrl: '../../assets/projects/project-15.png'
   },
   {
     id: 16,
