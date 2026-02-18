@@ -129,7 +129,10 @@
   color: #22b34a;
   padding-left: 10px;
 }
-
+.auroflux-footer-text a{
+text-decoration: none;
+color: var(--auroflux-text-light);
+}
 /* ===========================
    CONTACT INFORMATION STYLES
 =========================== */
