@@ -87,7 +87,7 @@
   font-family: var(--auroflux-font-heading);
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   position: relative;
   color: #1e9c3f;
 }
@@ -144,7 +144,12 @@ color: var(--auroflux-text-light);
 }
 
 .auroflux-contact-info {
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.title-follow {
+  margin-top: 10px;
 }
 
 .auroflux-contact-item {
@@ -393,11 +398,32 @@ color: var(--auroflux-text-light);
     text-align: center;
   }
 
-  /* Follow Us full width below */
+  /* Contact & Follow Us side-by-side on mobile */
   .auroflux-footer-col-social {
     grid-column: 1 / -1;
     text-align: center;
     margin-top: 25px;
+  }
+
+  .auroflux-mobile-row-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .auroflux-contact-section,
+  .auroflux-social-section {
+    flex: 1;
+    min-width: 0; /* Prevent overflow */
+  }
+
+  .auroflux-contact-info {
+    margin-bottom: 0; /* Reduce space since it's now in a row */
+  }
+
+  .title-follow {
+    margin-top: 0; /* Align with Contact Info title */
   }
 
   /* Center align */
