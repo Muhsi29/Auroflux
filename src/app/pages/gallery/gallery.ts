@@ -45,6 +45,8 @@ export class Gallery {
     {
       title: 'Industrial Installations',
       images: [
+        'assets/gallery/gallery-1/Project-auro-1.webp',
+        'assets/gallery/gallery-1/project-auro-2.webp',
         'assets/gallery/gallery-1/21.webp',
         'assets/gallery/gallery-1/22.webp',
         'assets/gallery/gallery-1/23.webp',
