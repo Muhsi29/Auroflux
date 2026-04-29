@@ -98,7 +98,7 @@ goCta() {
     title: 'IMM Closed Loop Cooling System with Gravity Flow',
     category: 'Injection Moulding Cooling System',
     description: 'Closed loop cooling system incorporating gravity flow outlet design to reduce pumping head and improve heat transfer efficiency.',
-    imageUrl: '../../assets/projects/project-2.webp',
+    imageUrl: '../../assets/projects/project-2.png',
     location: 'United Industries, Gerugambakkam & Pillaipakkam',
     year: '2009',
     introText: [
@@ -182,7 +182,7 @@ goCta() {
     title: 'Engine Testing Bed Cooling System',
     category: 'Industrial Cooling System',
     description: 'Revamp of engine testing bed cooling system with closed loop design and advanced VFD based control.',
-    imageUrl: '../../assets/projects/project-4.jpg',
+    imageUrl: '../../assets/projects/project-4.png',
     location: 'TAFE',
     year: '2014',
     introText: [
@@ -266,7 +266,7 @@ goCta() {
     title: 'Chiller & Cooling Water System Revamp',
     category: 'IMM Cooling System Revamp',
     description: 'Large scale revamp of cooling water and piping systems for injection moulding machines.',
-    imageUrl: '../../assets/projects/project-6.avif',
+    imageUrl: '../../assets/projects/project-6.png',
     location: 'Mainetti India Pvt Ltd',
     year: '2018 - 2019',
     introText: [
@@ -400,7 +400,7 @@ goCta() {
   title: 'Large Scale Solar Thermal Piping System',
   category: 'Solar Thermal Utilities',
   description: 'High temperature PPR piping system designed for Asia’s largest rooftop solar thermal installation and multiple industrial solar plants.',
-  imageUrl:  '../../assets/projects/project-10.jpg',
+  imageUrl:  '../../assets/projects/project-10.png',
   location: 'Aspiration Energy – Wheels India, Hosur',
   year: '2019',
   introText: [
@@ -431,7 +431,7 @@ goCta() {
   title: 'Vacuum Furnace Closed Loop Cooling System',
   category: 'Precision Process Cooling',
   description: 'PHE based closed loop cooling system designed for high precision vacuum furnace operations with significant energy savings.',
-  imageUrl: '../../assets/projects/project-11.jpg',
+  imageUrl: '../../assets/projects/project-11.png',
   location: 'Delphi TVS, Oragadam',
   year: '2020',
   introText: [
@@ -462,7 +462,7 @@ goCta() {
   title: 'Multi-Plant Compressed Air & Cooling Utilities',
   category: 'Industrial Utilities',
   description: 'Turnkey compressed air, dry cooler and chilled water systems delivered across multiple forging plants.',
-  imageUrl: '../../assets/projects/project-12.jpg',
+  imageUrl: '../../assets/projects/project-12.png',
   location: 'Super Auto Forge Limited',
   year: '2020 – Ongoing',
   introText: [
@@ -523,7 +523,7 @@ goCta() {
   title: 'Robotic Welding Line Cooling & Utility System',
   category: 'Automotive Process Cooling',
   description: 'Closed loop cooling and utility distribution system designed for high-speed robotic welding lines in automotive body manufacturing.',
-  imageUrl: '../../assets/projects/project-14.jpg',
+  imageUrl: '../../assets/projects/project-14.png',
   location: 'TVS Motor Company, Hosur',
   year: '2020',
   introText: [
@@ -554,7 +554,7 @@ goCta() {
   title: 'Precision CNC Machine Cooling System',
   category: 'Machine Tool Cooling',
   description: 'High stability closed loop cooling solution designed for CNC machining centers to maintain dimensional accuracy and tool life.',
-  imageUrl: '../../assets/projects/project-15.avif',
+  imageUrl: '../../assets/projects/project-15.png',
   location: 'Brakes India',
   year: '2021',
   introText: [

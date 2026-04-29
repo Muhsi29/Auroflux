@@ -16,7 +16,7 @@
 .auroflux-footer {
   background: #1a1d2e;
   color: #ffffff;
-  padding: 50px 0 30px;
+  padding: 50px 0 10px;
   position: relative;
   overflow: hidden;
   font-family: var(--auroflux-font-body);
@@ -233,7 +233,7 @@ color: var(--auroflux-text-light);
 =========================== */
 .auroflux-footer-bottom {
   text-align: center;
-  padding: 20px 0;
+  padding: 0;
 }
 
 .auroflux-developer-link {
