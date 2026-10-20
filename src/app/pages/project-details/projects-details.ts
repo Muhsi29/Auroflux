@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { SeoService, summarize } from '../../seo/seo.service';
 
 interface ProjectInfo {
   category: string;
@@ -43,7 +44,8 @@ export class ProjectsDetails implements OnInit {
   
 constructor(
   private route: ActivatedRoute,
-  private router: Router
+  private router: Router,
+  private seo: SeoService
 ) {}
 
 goCta() {
@@ -834,6 +836,31 @@ goCta() {
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.project = this.projects.find(p => p.id === id)!;
+    this.updateSeo(id);
+  }
+
+  private updateSeo(id: number) {
+    const path = `/projects/${id}`;
+    if (!this.project) {
+      this.seo.update({ title: 'Project not found | Auroflux Technology', description: 'This project does not exist.', path, noindex: true });
+      return;
+    }
+
+    // Several projects share a title, so add the client to keep page titles unique.
+    const { title, projectInfo } = this.project;
+    const client = projectInfo?.client;
+    const name = client && client !== 'Confidential' && !title.includes(client) ? `${title} – ${client}` : title;
+
+    this.seo.update({
+      title: `${name} | Auroflux`,
+      description: summarize(this.project.description),
+      path,
+      image: this.project.imageUrl,
+      breadcrumb: [
+        { name: 'Projects', path: '/projects' },
+        { name, path },
+      ],
+    });
   }
 
   getFeatureIcon(index: number): string {

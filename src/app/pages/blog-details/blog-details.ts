@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ORG_ID, SeoService, absoluteUrl, isoDate, summarize } from '../../seo/seo.service';
 
 
 @Component({
@@ -319,7 +320,7 @@ export class BlogDetailsComponent implements OnInit {
   relatedBlogs: any[] = [];
   currentIndex = 0;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private seo: SeoService) { }
   isSimpleList(list: any[]): boolean {
     return (
       Array.isArray(list) &&
@@ -351,6 +352,46 @@ export class BlogDetailsComponent implements OnInit {
     this.currentBlog = this.blogPosts.find(b => b.id === id);
     this.currentIndex = this.blogPosts.findIndex(b => b.id === id);
     this.relatedBlogs = this.blogPosts.filter(b => b.id !== id);
+    this.updateSeo(id);
+  }
+
+  private updateSeo(id: number) {
+    const blog = this.currentBlog;
+    const path = `/blog/${id}`;
+    if (!blog) {
+      this.seo.update({ title: 'Blog not found | Auroflux Technology', description: 'This article does not exist.', path, noindex: true });
+      return;
+    }
+
+    const url = absoluteUrl(path);
+    const description = summarize(blog.sections?.[0]?.content ?? blog.title);
+    this.seo.update({
+      title: `${blog.title} | Auroflux`,
+      description,
+      path,
+      image: blog.image,
+      ogType: 'article',
+      breadcrumb: [
+        { name: 'Blogs', path: '/blogs' },
+        { name: blog.title, path },
+      ],
+      schema: [
+        {
+          '@type': 'BlogPosting',
+          '@id': `${url}#article`,
+          headline: blog.title,
+          description,
+          image: absoluteUrl(blog.image),
+          datePublished: isoDate(blog.date),
+          articleSection: blog.category,
+          keywords: blog.tags?.join(', '),
+          author: { '@id': ORG_ID },
+          publisher: { '@id': ORG_ID },
+          mainEntityOfPage: { '@id': `${url}#webpage` },
+          inLanguage: 'en-IN',
+        },
+      ],
+    });
   }
 
   loadPreviousBlog() {

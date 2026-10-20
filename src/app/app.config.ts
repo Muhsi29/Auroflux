@@ -13,23 +13,25 @@ import { Services } from './pages/services/services';
 import { Testimonials } from './pages/testimonials/testimonials';
 import { Blogs } from './pages/blogs/blogs';
 import { BlogDetailsComponent } from './pages/blog-details/blog-details';
+import { SEO_PAGES } from './seo/seo-pages';
 
 export const appConfig = {
   providers: [
     provideRouter(
       [
-        { path: '', component: Home },
-        { path: 'about', component: About },
-        { path: 'projects', component: Projects },
+        // Detail pages (projects/:id, blog/:id) set their own SEO once their data loads.
+        { path: '', component: Home, data: { seo: SEO_PAGES.home } },
+        { path: 'about', component: About, data: { seo: SEO_PAGES.about } },
+        { path: 'projects', component: Projects, data: { seo: SEO_PAGES.projects } },
         { path: 'projects/:id', component: ProjectsDetails },
-        { path: 'products', component: Products },
-        { path: 'our-clients', component: OurClients },
-        { path: 'gallery', component: Gallery },
-        { path: 'services', component: Services },
-        {path: 'testimonials', component: Testimonials},
-        {path: 'blogs', component: Blogs},
+        { path: 'products', component: Products, data: { seo: SEO_PAGES.products } },
+        { path: 'our-clients', component: OurClients, data: { seo: SEO_PAGES.clients } },
+        { path: 'gallery', component: Gallery, data: { seo: SEO_PAGES.gallery } },
+        { path: 'services', component: Services, data: { seo: SEO_PAGES.services } },
+        {path: 'testimonials', component: Testimonials, data: { seo: SEO_PAGES.testimonials }},
+        {path: 'blogs', component: Blogs, data: { seo: SEO_PAGES.blogs }},
         { path: 'blog/:id', component: BlogDetailsComponent },
-        { path: 'contact', loadComponent: () => import('./pages/contact-us/contact-us').then(m => m.ContactUs) }
+        { path: 'contact', loadComponent: () => import('./pages/contact-us/contact-us').then(m => m.ContactUs), data: { seo: SEO_PAGES.contact } }
 
 
       ],

@@ -1,0 +1,23 @@
+# Auroflux Technology – https://auroflux.com
+# Search engines and AI assistants are welcome to crawl the whole site.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# AI search and assistant crawlers (GEO) – explicitly allowed
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+
+Sitemap: https://auroflux.com/sitemap.xml

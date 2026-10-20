@@ -1,0 +1,26 @@
+# Auroflux – Apache / Hostinger rules (copied into the build output root)
+
+Options -MultiViews
+RewriteEngine On
+
+# One canonical host: send www.auroflux.com to auroflux.com
+# (http -> https is already handled by the Hostinger CDN)
+RewriteCond %{HTTP_HOST} ^www\.auroflux\.com$ [NC]
+RewriteRule ^ https://auroflux.com%{REQUEST_URI} [R=301,L]
+
+# Leave the PHP API alone
+RewriteRule ^api/ - [L]
+
+# Serve real files and folders as-is
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Every other URL (/about, /projects/3, /blog/2 ...) is an Angular route:
+# answer with index.html and a 200 instead of the host's 404 page
+RewriteRule ^ index.html [L]
+
+<IfModule mod_mime.c>
+  AddType text/plain .txt
+  AddType application/xml .xml
+</IfModule>
