@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { HOME_FAQ } from '../../seo/seo-pages';
 
 
 interface Feature {
@@ -25,7 +24,6 @@ export interface HomeServiceService {
   styleUrl: './home.css',
 })
 export class Home implements OnInit, OnDestroy, AfterViewInit {
-  readonly faqs = HOME_FAQ;
   @ViewChild('aboutSection') aboutSection!: ElementRef;
   @ViewChild('bannerSection') bannerSection!: ElementRef;
   @ViewChild('whyChooseSection') whyChooseSection!: ElementRef;

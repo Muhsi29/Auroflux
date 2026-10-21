@@ -430,26 +430,6 @@
     </div>
   </div>
 </section>
-<!-- FAQ Section (also published as FAQPage structured data) -->
-<section class="home-faq-section" aria-labelledby="home-faq-title">
-  <div class="blog-section-header">
-    <div class="blog-subtitle-wrapper">
-      <span class="blog-line-left"></span>
-      <span class="blog-subtitle-text">FAQ</span>
-      <span class="blog-line-right"></span>
-    </div>
-    <h2 class="blog-main-title" id="home-faq-title">Frequently Asked Questions</h2>
-  </div>
-
-  <div class="home-faq-list">
-    @for (faq of faqs; track faq.question; let first = $first) {
-      <details class="home-faq-item" [open]="first">
-        <summary class="home-faq-question">{{ faq.question }}</summary>
-        <p class="home-faq-answer">{{ faq.answer }}</p>
-      </details>
-    }
-  </div>
-</section>
 <!-- CTA Section -->
   <section class="contact-cta-section">
     <div class="contact-cta-container">
