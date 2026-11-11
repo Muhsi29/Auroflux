@@ -375,6 +375,80 @@
   }
 }
 
+/* Cooling Tower Performance Testing: same frame sizes as the Design section,
+   mirrored on desktop (content left, images right). The images are product
+   shots on a white background, so each product is shown whole (contain) on a
+   light panel, and multiply blends the white background into the panel colour. */
+.services-feature--cooling {
+  padding-top: 40px;
+}
+
+.services-feature--cooling .main-image {
+  background: #f1f5f9;
+  border-radius: 20px;
+}
+
+.services-feature--cooling .main-image img {
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: contain;
+  /* extra room bottom-left so the floating card does not cover the tower */
+  padding: 5% 6% 12% 34%;
+  mix-blend-mode: multiply;
+}
+
+/* white frame as a border, so the panel colour can sit behind the image */
+.services-feature--cooling .floating-image {
+  padding: 0;
+  border: 8px solid #fff;
+  background: #f1f5f9;
+}
+
+.services-feature--cooling .floating-image img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: contain;
+  padding: 4%;
+  border-radius: 10px;
+  mix-blend-mode: multiply;
+}
+
+/* desktop: content left, images right, floating card on the bottom-left */
+@media (min-width: 1025px) {
+  .services-feature--cooling .services-feature-container {
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .services-feature--cooling .services-feature-images {
+    order: 2;
+  }
+
+  .services-feature--cooling .floating-image {
+    right: auto;
+    left: -40px;
+  }
+}
+
+/* single column: the floating card sits on the right, so keep the tower
+   clear of it */
+@media (max-width: 1024px) {
+  .services-feature--cooling .main-image img {
+    padding: 4% 46% 10% 4%;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-feature--cooling .main-image img {
+    padding: 4% 40% 4% 4%;
+    object-position: center top;
+  }
+
+  .services-feature--cooling .floating-image {
+    width: 50%;
+    border-width: 5px;
+  }
+}
+
 /* Service Seciton - 2 */
 /* Service Icon Box Section */
 .service-icon-box-section {
