@@ -22,21 +22,25 @@ export class Testimonials {
     },
     {
       image: '../../../assets/testimonials/testimonial 3.webp',
-      title: 'Ashok Leyland',
+      title: 'MRF Corp Limited',
     },
     {
       image: '../../../assets/testimonials/testimonail 4.webp',
-      title: 'United Industries',
+      title: 'Southern Polymers',
     },
     {
       image: '../../../assets/testimonials/testimonial 5.webp',
-      title: 'Funskool India Ltd',
+      title: 'Super Auto Forge Private Limited',
     },
     {
       image: '../../../assets/testimonials/testimonial 6.webp',
-      title: 'International Project – Oman',
+      title: 'Tablets (India) Limited',
     },
   ];
+
+  // Two copies back to back for a seamless infinite slider
+  sliderCertificates = [...this.testimonialCertificates, ...this.testimonialCertificates];
+
    activeCertificate: string | null = null;
 
    zoomLevel = 1;

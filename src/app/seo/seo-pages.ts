@@ -119,7 +119,7 @@ export const SEO_PAGES = {
   testimonials: {
     title: 'Client Testimonials | Auroflux Industrial Engineering',
     description:
-      'Appreciation letters for Auroflux industrial piping and cooling work from Ashok Leyland, Greaves Cotton, Funskool India, United Industries and more.',
+      'Appreciation letters for Auroflux industrial piping and cooling work from Greaves Cotton, MRF Corp, Aspiration Energy, Super Auto Forge, Southern Polymers and Tablets India.',
     path: '/testimonials',
     breadcrumb: [{ name: 'Testimonials', path: '/testimonials' }],
   },

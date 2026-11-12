@@ -93,9 +93,11 @@
     <!-- Slider -->
     <div class="certificate-slider">
       <div class="certificate-track">
+        <!-- List is rendered twice so the loop is seamless (6th card is followed by the 1st) -->
         <div
           class="certificate-slide"
-          *ngFor="let cert of testimonialCertificates"
+          *ngFor="let cert of sliderCertificates; let i = index"
+          [attr.aria-hidden]="i >= testimonialCertificates.length ? 'true' : null"
           (click)="openLightbox(cert.image)"
         >
           <div class="certificate-card">

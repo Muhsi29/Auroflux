@@ -351,10 +351,12 @@
   position: relative;
 }
 
+/* Speed: lower number = faster. Time to scroll through all 6 certificates once. */
 .certificate-track {
+  --cert-gap: 40px;
   display: flex;
-  gap: 40px;
-  animation: slideCertificates 30s linear infinite;
+  width: max-content;
+  animation: slideCertificates 60s linear infinite;
 }
 
 .certificates-heading.title {
@@ -370,8 +372,11 @@
   margin-right: auto;
 }
 
+/* Spacing uses margin (not gap) so each copy of the list is exactly 50% of the track */
 .certificate-slide {
-  min-width: 320px;
+  width: 320px;
+  flex-shrink: 0;
+  margin-right: var(--cert-gap);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -423,11 +428,11 @@
   }
   
   .certificate-track {
-    gap: 30px;
+    --cert-gap: 30px;
   }
   
   .certificate-slide {
-    min-width: 280px;
+    width: 280px;
   }
   
   .certificate-card {
@@ -445,12 +450,12 @@
   }
   
   .certificate-track {
-    gap: 25px;
-    animation-duration: 25s;
+    --cert-gap: 25px;
+    animation-duration: 50s;
   }
   
   .certificate-slide {
-    min-width: 250px;
+    width: 250px;
   }
   
   .certificate-card {
@@ -469,12 +474,12 @@
   }
   
   .certificate-track {
-    gap: 20px;
-    animation-duration: 20s;
+    --cert-gap: 20px;
+    animation-duration: 45s;
   }
   
   .certificate-slide {
-    min-width: 200px;
+    width: 200px;
   }
   
   .certificate-card {
@@ -493,7 +498,7 @@
 
 @media (max-width: 400px) {
   .certificate-slide {
-    min-width: 180px;
+    width: 180px;
   }
   
   .certificate-card {
@@ -503,7 +508,7 @@
       align-items: justify;
   }
   .certificate-track {
-    gap: 15px;
+    --cert-gap: 15px;
   }
 }
 
